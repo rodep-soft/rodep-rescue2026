@@ -1,0 +1,42 @@
+name: Docker and Colcon Build Check
+
+# ワークフローが実行されるタイミングを定義
+on:
+  # mainブランチへのpush時に実行
+  push:
+    branches: [ "main" ]
+  # mainブランチに対するpull request時に実行
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build_and_test:
+    # 実行環境として最新のUbuntuを使用
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. リポジトリのソースコードをチェックアウト
+      # これにより、ros_ws/src も含めてファイルが利用可能
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Dockerのビルド環境をセットアップ (Buildx)
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # 3. Dockerイメージをビルド
+      # 上記で変更したDockerfileを使い、ソースコードを含んだイメージが作成される
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          tags: ros2-working-image:latest
+          load: true
+
+      # 4. 【追加】作成したイメージ内で colcon build を実行
+      # このステップで、ROS 2パッケージのビルドが成功するかをテスト
+      - name: Run colcon build check
+        run: |
+          docker run --rm --workdir /root/ros_ws ros2-working-image:latest /bin/bash -c "source /opt/ros/jazzy/setup.bash && colcon build"

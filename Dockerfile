@@ -3,7 +3,7 @@ FROM osrf/ros:jazzy-desktop
 # --- Step 1: Install base tools and ROS packages ---
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y \
-    gh git vim less tree fzf tmux fish lsof curl \
+    gh git vim less tree fzf tmux fish lsof curl wget \
     lsb-release gnupg \
     ros-jazzy-xacro \
     ccache && \

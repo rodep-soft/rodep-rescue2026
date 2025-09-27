@@ -1,47 +1,41 @@
-
-# Dockerfile
 FROM osrf/ros:jazzy-desktop
 
-# --- Install ROS 2 Packages and System Dependencies ---
+# --- Step 1: Install base tools and ROS packages ---
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y \
-    gh \
-    git \
-    vim \
-    less \
-    tree \
-    fzf \
-    tmux \
-    fish \
-    lsof \
+    gh git vim less tree fzf tmux fish lsof curl wget \
+    lsb-release gnupg \
+    ros-jazzy-xacro \
     ccache && \
-    # ros-jazzy-foxglove-bridge \
-    rm -rf /var/lib/apt/lists/* # Clean up apt cache 
-
+    rm -rf /var/lib/apt/lists/*
 
 ENV CCACHE_DIR=/root/.ccache
 ENV PATH="/usr/lib/ccache:$PATH"
 ENV CCACHE_MAXSIZE=30G
 
+# --- Step 2: Install Gazebo Harmonic (Separated RUNs for stability) ---
+# Layer 1: Add OSRF Key and Repository List
+RUN set -eux; \
+    wget -O /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg https://packages.osrfoundation.org/gazebo.gpg; \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] https://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" \
+    | tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
 
+# Layer 2: Update cache for the new OSRF repository
+# This MUST be run in its own step because the repository was just added
+RUN apt-get update
 
-# --- Configure Shell Defaults and ROS 2 setup ---
-# This ensures colcon --symlink-install is default and ROS setup.bash is sourced
+# Layer 3: Install Gazebo Harmonic
+RUN apt-get install -y gz-harmonic
+
+# --- Step 3: Configure Shell Defaults and Workdir ---
 RUN mkdir -p /root/.config/colcon && \
     echo 'build:' > /root/.config/colcon/defaults.yaml && \
     echo '  args: ['\''--symlink-install'\'']' >> /root/.config/colcon/defaults.yaml && \
     echo 'source /opt/ros/jazzy/setup.bash' >> /root/.bashrc && \
     echo 'source /opt/ros/jazzy/setup.bash' >> /root/.profile
 
-
-# Set the working directory for subsequent commands and when the container starts
-# This should match the working_dir in docker-compose.yml
 WORKDIR /root/ros_ws
 
 COPY ./ros_ws/src ./src/
 
 CMD ["bash"]
-
-
-# launch foxglove
-# ros2 launch foxglove_bridge foxglove_bridge_launch.xml &

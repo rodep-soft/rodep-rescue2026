@@ -15,11 +15,14 @@ services:
     environment:
       - ROS_DOMAIN_ID=0
       - DEBIAN_FRONTEND=noninteractive
+      - DISPLAY=${DISPLAY}   # <-- CRUCIAL: Passes the host's display variab
     volumes:
       # Mount host ~/.ssh to the new user's home in container
       - ~/.ssh:/root/.ssh:ro # <--- REPLACE with your actual host username
       # Mount your ROS workspace
       - ./ros_ws:/root/ros_ws # <--- REPLACE with your actual host username
       - ~/.ccache:/root/.ccache
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw # <-- Shares the X server socket
+
     # devices:
     #   - /dev:/dev

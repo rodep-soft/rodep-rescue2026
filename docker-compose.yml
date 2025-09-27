@@ -1,0 +1,25 @@
+services:
+  ros2_container:
+    # Instead of 'image', use 'build' to build from your Dockerfile
+    build:
+      context: . # Looks for Dockerfile in the current directory
+      dockerfile: Dockerfile
+
+    container_name: ros2_working_container
+    tty: true
+    privileged: true
+    network_mode: host
+    # Update working_dir to match the user's home in Dockerfile
+    working_dir: /root/ros_ws 
+
+    environment:
+      - ROS_DOMAIN_ID=0
+      - DEBIAN_FRONTEND=noninteractive
+    volumes:
+      # Mount host ~/.ssh to the new user's home in container
+      - ~/.ssh:/root/.ssh:ro # <--- REPLACE with your actual host username
+      # Mount your ROS workspace
+      - ./ros_ws:/root/ros_ws # <--- REPLACE with your actual host username
+      - ~/.ccache:/root/.ccache
+    # devices:
+    #   - /dev:/dev

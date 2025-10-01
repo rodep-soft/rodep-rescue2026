@@ -6,6 +6,7 @@ RUN apt-get update && apt-get upgrade -y && \
     gh git vim less tree fzf tmux fish lsof curl wget \
     lsb-release gnupg \
     ros-jazzy-xacro \
+    ros-jazzy-dynamixel-sdk \
     ccache && \
     rm -rf /var/lib/apt/lists/*
 

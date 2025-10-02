@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(crawler_driver)
+project(flipper_driver)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -11,14 +11,15 @@ find_package(rclcpp REQUIRED)
 find_package(dynamixel_sdk REQUIRED)
 find_package(sensor_msgs REQUIRED)
 
-add_executable(crawler_driver src/crawler_driver.cpp)
-ament_target_dependencies(crawler_driver 
-  rclcpp 
-  dynamixel_sdk 
+add_executable(flipper_driver_node src/flipper_driver.cpp)
+
+ament_target_dependencies(flipper_driver_node
+  rclcpp
+  dynamixel_sdk
   sensor_msgs)
 
 install(TARGETS
-  crawler_driver
+  flipper_driver_node
   DESTINATION lib/${PROJECT_NAME})
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)

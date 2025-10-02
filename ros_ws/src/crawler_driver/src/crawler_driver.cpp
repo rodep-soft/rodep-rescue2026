@@ -95,8 +95,8 @@ class DynamixelController : public rclcpp::Node {
     }
 
    private:
-    dynamixel::PortHandler *portHandler;
-    dynamixel::PacketHandler *packetHandler;
+    dynamixel::PortHandler* portHandler;
+    dynamixel::PacketHandler* packetHandler;
     int qos_depth;
     int baudrate;
     std::string device_name;
@@ -144,7 +144,7 @@ class DynamixelController : public rclcpp::Node {
     }
 };
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
     rclcpp::init(argc, argv);
     rclcpp::spin(std::make_shared<DynamixelController>());
     rclcpp::shutdown();

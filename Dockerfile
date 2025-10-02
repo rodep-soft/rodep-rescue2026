@@ -29,7 +29,6 @@ RUN rosdep init && rosdep update
 # Install dependencies 
 RUN rosdep install --from-paths src -y --ignore-src
 
-# Update cache for the new OSRF repository
 # This MUST be run in its own step because the repository was just added
 RUN apt-get update
 

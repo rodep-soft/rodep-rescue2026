@@ -23,11 +23,14 @@ RUN set -eux; \
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] https://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" \
     | tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
 
+# --- Copy the ROS workspace to the container ---
+COPY ./ros_ws/src /root/ros_ws/src/
+
 # Update rosdep
 RUN rosdep update
 
 # Install dependencies 
-RUN rosdep install --from-paths src -y --ignore-src
+RUN rosdep install --from-paths /root/ros_ws/src -y --ignore-src
 
 # This MUST be run in its own step because the repository was just added
 RUN apt-get update
@@ -43,7 +46,5 @@ RUN mkdir -p /root/.config/colcon && \
     echo 'source /opt/ros/jazzy/setup.bash' >> /root/.profile
 
 WORKDIR /root/ros_ws
-
-COPY ./ros_ws/src ./src/
 
 CMD ["bash"]

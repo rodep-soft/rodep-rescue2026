@@ -11,14 +11,15 @@ find_package(rclcpp REQUIRED)
 find_package(dynamixel_sdk REQUIRED)
 find_package(sensor_msgs REQUIRED)
 
-add_executable(flipper_driver src/flipper_driver.cpp)
-ament_target_dependencies(crawler_driver
+add_executable(flipper_driver_node src/flipper_driver.cpp)
+
+ament_target_dependencies(flipper_driver_node
   rclcpp
   dynamixel_sdk
   sensor_msgs)
 
 install(TARGETS
-  crawler_driver
+  flipper_driver_node
   DESTINATION lib/${PROJECT_NAME})
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)

@@ -21,6 +21,8 @@ install(TARGETS
   crawler_driver
   DESTINATION lib/${PROJECT_NAME})
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

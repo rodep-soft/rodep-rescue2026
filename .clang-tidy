@@ -1,0 +1,7 @@
+Checks: '*, -clang-analyzer-*'
+WarningsAsErrors: ''
+CheckOptions:
+  - key:             modernize-use-auto.MinSize
+    value:           '1000'
+  - key:             readability-identifier-naming.ClassCase
+    value:           'CamelCase'

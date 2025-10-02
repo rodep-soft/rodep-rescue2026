@@ -10,7 +10,7 @@ services:
     privileged: true
     network_mode: host
     # Update working_dir to match the user's home in Dockerfile
-    working_dir: /root/ros_ws 
+    working_dir: /root/ros_ws
 
     environment:
       - ROS_DOMAIN_ID=0

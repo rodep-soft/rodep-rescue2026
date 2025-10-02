@@ -29,7 +29,7 @@ COPY ./ros_ws/src /root/ros_ws/src/
 # Update rosdep
 RUN rosdep update
 
-# Install dependencies 
+# Install dependencies
 RUN rosdep install --from-paths /root/ros_ws/src -y --ignore-src
 
 # This MUST be run in its own step because the repository was just added

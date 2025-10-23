@@ -35,4 +35,14 @@ install(DIRECTORY urdf
   DESTINATION share/${PROJECT_NAME}
 )
 
+# meshesディレクトリをインストール
+install(DIRECTORY meshes
+  DESTINATION share/${PROJECT_NAME}
+)
+
+# rvizディレクトリをインストール
+install(DIRECTORY rviz
+  DESTINATION share/${PROJECT_NAME}
+)
+
 ament_package()

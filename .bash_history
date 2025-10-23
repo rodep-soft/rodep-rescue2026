@@ -58,10 +58,10 @@ bg
 ros2 topic list
 ros2 node list
 ls /dev/ttyA*
-lsof /dev/ttyACM0 
+lsof /dev/ttyACM0
 jobs
 kill %1
-lsof /dev/ttyACM0 
+lsof /dev/ttyACM0
 ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyUSB0
 bg
 ros2 node list
@@ -78,3 +78,16 @@ fish
 exit
 fish
 exit
+fish
+fish
+. install/setup.bash
+fish
+. install/setup.bash
+fish
+. install/setup.bsah
+. install/setup.bash
+fish
+. install/setup.bash
+fish
+. install/setup.bash
+fish

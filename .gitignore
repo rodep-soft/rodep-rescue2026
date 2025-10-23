@@ -4,4 +4,7 @@
 .vscode/
 __pycache__/
 *.py[cod]
-microros_ws/firmware/toolchain/espressif/dist/
+**/dist/
+**/bin/
+**/toolchain/
+

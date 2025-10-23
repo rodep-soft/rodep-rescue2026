@@ -7,6 +7,7 @@ RUN apt-get update && apt-get upgrade -y && \
     lsb-release gnupg libopencv-dev\
     ros-jazzy-xacro \
     ros-jazzy-dynamixel-sdk \
+    ros-jazzy-rosbridge-server \
     python3-rosdep \
     ccache && \
     rm -rf /var/lib/apt/lists/*

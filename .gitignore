@@ -4,3 +4,7 @@
 .vscode/
 __pycache__/
 *.py[cod]
+**/dist/
+**/bin/
+**/toolchain/
+

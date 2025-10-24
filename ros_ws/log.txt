@@ -1,0 +1,256 @@
+[INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-24-08-11-49-140192-rodeppc-118573
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [static_transform_publisher-1]: process started with pid [118576]
+[INFO] [robot_state_publisher-2]: process started with pid [118577]
+[INFO] [joint_state_publisher_gui-3]: process started with pid [118578]
+[INFO] [move_group-4]: process started with pid [118579]
+[INFO] [rviz2-5]: process started with pid [118580]
+[static_transform_publisher-1] [WARN] [1761293509.256812705] []: Old-style arguments are deprecated; see --help for new-style arguments
+[static_transform_publisher-1] [INFO] [1761293509.275795405] [static_transform_publisher]: Spinning until stopped - publishing transform
+[static_transform_publisher-1] translation: ('0.000000', '0.000000', '0.000000')
+[static_transform_publisher-1] rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+[static_transform_publisher-1] from 'world' to 'base_link'
+[robot_state_publisher-2] [WARN] [1761293509.277961295] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[robot_state_publisher-2] [INFO] [1761293509.278040291] [robot_state_publisher]: Robot initialized
+[rviz2-5] QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
+[move_group-4] [WARN] [1761293509.312923209] [move_group]: Using default pipeline 'ompl'
+[move_group-4] [INFO] [1761293509.314587971] [moveit.moveit.ros.rdf_loader]: Loaded robot model in 0.00147956 seconds
+[move_group-4] [INFO] [1761293509.314629309] [moveit.moveit.core.robot_model]: Loading robot model 'sekirei'...
+[move_group-4] [INFO] [1761293509.314644263] [moveit.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[move_group-4] [WARN] [1761293509.314747092] [moveit.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
+[move_group-4] [WARN] [1761293509.317885544] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[move_group-4] [INFO] [1761293509.317946376] [moveit.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
+[move_group-4] [INFO] [1761293509.336572198] [moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[move_group-4] [INFO] [1761293509.336679396] [moveit.moveit.ros.moveit_cpp]: Listening to 'joint_states' for joint states
+[move_group-4] [INFO] [1761293509.337243292] [moveit.moveit.ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[move_group-4] [INFO] [1761293509.337518778] [moveit.moveit.ros.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
+[move_group-4] [INFO] [1761293509.337531223] [moveit.moveit.ros.planning_scene_monitor]: Stopping existing planning scene publisher.
+[move_group-4] [INFO] [1761293509.337620797] [moveit.moveit.ros.planning_scene_monitor]: Stopped publishing maintained planning scene.
+[move_group-4] [INFO] [1761293509.337780333] [moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[move_group-4] [INFO] [1761293509.337817228] [moveit.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+[move_group-4] [INFO] [1761293509.338257412] [moveit.moveit.ros.planning_scene_monitor]: Listening to '/planning_scene'
+[move_group-4] [INFO] [1761293509.338270389] [moveit.moveit.ros.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[move_group-4] [INFO] [1761293509.338492398] [moveit.moveit.ros.planning_scene_monitor]: Listening to 'collision_object'
+[move_group-4] [INFO] [1761293509.338773181] [moveit.moveit.ros.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[move_group-4] [WARN] [1761293509.339223213] [moveit.moveit.ros.occupancy_map_monitor]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
+[move_group-4] [ERROR] [1761293509.339237721] [moveit.moveit.ros.occupancy_map_monitor]: No 3D sensor plugin(s) defined for octomap updates
+[joint_state_publisher_gui-3] QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
+[rviz2-5] [INFO] [1761293509.973311757] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-5] [INFO] [1761293509.973439183] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
+[rviz2-5] [INFO] [1761293510.002602045] [rviz2]: Stereo is NOT SUPPORTED
+[joint_state_publisher_gui-3] [INFO] [1761293510.015060227] [joint_state_publisher_gui]: Waiting for robot_description to be published on the robot_description topic...
+[joint_state_publisher_gui-3] [INFO] [1761293510.023662188] [joint_state_publisher_gui]: Centering
+[rviz2-5] Warning: class_loader.impl: SEVERE WARNING!!! A namespace collision has occurred with plugin factory for class rviz_default_plugins::displays::InteractiveMarkerDisplay. New factory will OVERWRITE existing one. This situation occurs when libraries containing plugins are directly linked against an executable (the one running right now generating this message). Please separate plugins out into their own library or just don't link against the library and use either class_loader::ClassLoader/MultiLibraryClassLoader to open.
+[rviz2-5]          at line 321 in /opt/ros/jazzy/include/class_loader/class_loader/class_loader_core.hpp
+[rviz2-5] [WARN] [1761293510.097904728] [rcl.logging_rosout]: Publisher already registered for node name: 'rviz2'. If this is due to multiple nodes with the same name then all logs for the logger named 'rviz2' will go out over the existing publisher. As soon as any node with that name is destructed it will unregister the publisher, preventing any further logs for that name from being published on the rosout topic.
+[joint_state_publisher_gui-3] [INFO] [1761293510.173581769] [joint_state_publisher_gui]: Centering
+[joint_state_publisher_gui-3] [INFO] [1761293510.276738568] [joint_state_publisher_gui]: Centering
+[move_group-4] [INFO] [1761293510.433387163] [moveit.moveit.ros.planning_pipeline]: Successfully loaded planner 'OMPL'
+[move_group-4] [INFO] [1761293510.435117825] [move_group]: Try loading adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[move_group-4] [INFO] [1761293510.435948467] [move_group]: Loaded adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[move_group-4] [INFO] [1761293510.435959928] [move_group]: Try loading adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[move_group-4] [INFO] [1761293510.436226218] [move_group]: Loaded adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[move_group-4] [INFO] [1761293510.436237027] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[move_group-4] [INFO] [1761293510.436256292] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[move_group-4] [INFO] [1761293510.436261352] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-4] [INFO] [1761293510.436270584] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-4] [WARN] [1761293510.436274905] [moveit.moveit.ros.planning_pipeline]: No planning response adapter names specified.
+[move_group-4] [ERROR] [1761293510.449085572] [moveit.moveit.plugins.simple_controller_manager]: No controller_names specified.
+[move_group-4] [INFO] [1761293510.449207247] [moveit.moveit.plugins.simple_controller_manager]: Returned 0 controllers in list
+[move_group-4] [INFO] [1761293510.449223223] [moveit.moveit.plugins.simple_controller_manager]: Returned 0 controllers in list
+[move_group-4] [INFO] [1761293510.449667200] [moveit.moveit.ros.trajectory_execution_manager]: Trajectory execution is managing controllers
+[move_group-4] [INFO] [1761293510.449682860] [move_group]: MoveGroup debug mode is ON
+[move_group-4] [INFO] [1761293510.464475691] [moveit.moveit.ros.move_group.executable]: 
+[move_group-4] 
+[move_group-4] ********************************************************
+[move_group-4] * MoveGroup using: 
+[move_group-4] *     - apply_planning_scene_service
+[move_group-4] *     - clear_octomap_service
+[move_group-4] *     - get_group_urdf
+[move_group-4] *     - load_geometry_from_file
+[move_group-4] *     - CartesianPathService
+[move_group-4] *     - execute_trajectory_action
+[move_group-4] *     - get_planning_scene_service
+[move_group-4] *     - kinematics_service
+[move_group-4] *     - move_action
+[move_group-4] *     - motion_plan_service
+[move_group-4] *     - query_planners_service
+[move_group-4] *     - state_validation_service
+[move_group-4] *     - save_geometry_to_file
+[move_group-4] ********************************************************
+[move_group-4] 
+[move_group-4] [INFO] [1761293510.464518864] [moveit.moveit.ros.move_group.context]: MoveGroup context using pipeline ompl
+[move_group-4] [INFO] [1761293510.464529364] [moveit.moveit.ros.move_group.context]: MoveGroup context initialization complete
+[move_group-4] [96mLoading 'move_group/ApplyPlanningSceneService'...[0m
+[move_group-4] [96mLoading 'move_group/ClearOctomapService'...[0m
+[move_group-4] [96mLoading 'move_group/GetUrdfService'...[0m
+[move_group-4] [96mLoading 'move_group/LoadGeometryFromFileService'...[0m
+[move_group-4] [96mLoading 'move_group/MoveGroupCartesianPathService'...[0m
+[move_group-4] [96mLoading 'move_group/MoveGroupExecuteTrajectoryAction'...[0m
+[move_group-4] [96mLoading 'move_group/MoveGroupGetPlanningSceneService'...[0m
+[move_group-4] [96mLoading 'move_group/MoveGroupKinematicsService'...[0m
+[move_group-4] [96mLoading 'move_group/MoveGroupMoveAction'...[0m
+[move_group-4] [96mLoading 'move_group/MoveGroupPlanService'...[0m
+[move_group-4] [96mLoading 'move_group/MoveGroupQueryPlannersService'...[0m
+[move_group-4] [96mLoading 'move_group/MoveGroupStateValidationService'...[0m
+[move_group-4] [96mLoading 'move_group/SaveGeometryToFileService'...[0m
+[move_group-4] 
+[move_group-4] [92mYou can start planning now![0m
+[move_group-4] 
+[rviz2-5] [ERROR] [1761293513.137856816] [rviz2.moveit.ros.motion_planning_frame]: Action server: /recognize_objects not available
+[rviz2-5] [INFO] [1761293513.157820977] [rviz2.moveit.ros.motion_planning_frame]: MoveGroup namespace changed: / -> . Reloading params.
+[rviz2-5] [ERROR] [1761293513.165405219] [rviz2]: PluginlibFactory: The plugin for class 'rviz_visual_tools/RvizVisualToolsGui' failed to load. Error: According to the loaded plugin descriptions the class rviz_visual_tools/RvizVisualToolsGui with base class type rviz_common::Panel does not exist. Declared types are 
+[rviz2-5] [INFO] [1761293513.205938298] [rviz2.moveit.ros.rdf_loader]: Loaded robot model in 0.00298154 seconds
+[rviz2-5] [INFO] [1761293513.206060377] [rviz2.moveit.core.robot_model]: Loading robot model 'sekirei'...
+[rviz2-5] [INFO] [1761293513.206462560] [rviz2.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[rviz2-5] [WARN] [1761293513.206689454] [rviz2.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
+[rviz2-5] [WARN] [1761293513.213388777] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[rviz2-5] [INFO] [1761293513.213611307] [rviz2.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
+[rviz2-5] [INFO] [1761293513.244581583] [rviz2.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+[rviz2-5] [INFO] [1761293513.245608930] [rviz2.moveit.ros.planning_scene_monitor]: Listening to '/monitored_planning_scene'
+[rviz2-5] [INFO] [1761293513.612206317] [interactive_marker_display_100687109073760]: Connected on namespace: /rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic
+[rviz2-5] [WARN] [1761293513.613892593] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[rviz2-5] [INFO] [1761293513.618577664] [rviz2.moveit.ros.motion_planning_frame]: group sekirei_arm
+[rviz2-5] [INFO] [1761293513.618639501] [rviz2.moveit.ros.motion_planning_frame]: Constructing new MoveGroup connection for group 'sekirei_arm' in namespace ''
+[rviz2-5] [INFO] [1761293513.631519671] [rviz2.moveit.ros.move_group_interface]: Ready to take commands for planning group sekirei_arm.
+[rviz2-5] [INFO] [1761293513.662058106] [interactive_marker_display_100687109073760]: Sending request for interactive markers
+[rviz2-5] [INFO] [1761293513.695016342] [interactive_marker_display_100687109073760]: Service response received for initialization
+[rviz2-5] [INFO] [1761293543.525416551] [rviz2.moveit.ros.motion_planning_frame]: Connect to database: {host: 127.0.0.1, port: 33829}
+[rviz2-5] [ERROR] [1761293543.537905707] [warehouse_ros.database_loader]: Exception while loading database plugin 'warehouse_ros_mongo::MongoDatabaseConnection': According to the loaded plugin descriptions the class warehouse_ros_mongo::MongoDatabaseConnection with base class type warehouse_ros::DatabaseConnection does not exist. Declared types are 
+[rviz2-5] 
+[rviz2-5] [INFO] [1761293545.484732187] [rviz2.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+[move_group-4] [INFO] [1761293545.487462132] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[rviz2-5] [INFO] [1761293545.488189311] [rviz2.moveit.ros.move_group_interface]: Planning request accepted
+[move_group-4] [INFO] [1761293545.488607986] [moveit.moveit.ros.move_group.move_action]: executing..
+[move_group-4] [INFO] [1761293545.520201274] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-4] [INFO] [1761293545.520358773] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[move_group-4] [INFO] [1761293545.521029866] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[move_group-4] [INFO] [1761293545.521192052] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[move_group-4] [INFO] [1761293545.521265893] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[move_group-4] [INFO] [1761293545.521384256] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[move_group-4] [INFO] [1761293545.523735190] [moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm[RRT]' will use planner 'geometric::RRT'. Additional configuration parameters will be set when the planner is constructed.
+[move_group-4] [INFO] [1761293545.535635372] [move_group]: Calling Planner 'OMPL'
+[move_group-4] [INFO] [1761293545.586756172] [moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[rviz2-5] [INFO] [1761293545.587272941] [rviz2.moveit.ros.move_group_interface]: Planning request complete!
+[rviz2-5] [INFO] [1761293545.587294630] [rviz2.moveit.ros.move_group_interface]: time taken to generate plan: 0.0506046 seconds
+[move_group-4] [INFO] [1761293547.165878029] [moveit.moveit.ros.move_group.clear_octomap_service]: Execution request received
+[move_group-4] [INFO] [1761293547.166060898] [moveit.moveit.plugins.simple_controller_manager]: Returned 0 controllers in list
+[move_group-4] [INFO] [1761293547.166154839] [moveit.moveit.plugins.simple_controller_manager]: Returned 0 controllers in list
+[move_group-4] [INFO] [1761293547.166216368] [moveit.moveit.plugins.simple_controller_manager]: Returned 0 controllers in list
+[move_group-4] [INFO] [1761293547.166281939] [moveit.moveit.plugins.simple_controller_manager]: Returned 0 controllers in list
+[rviz2-5] [INFO] [1761293547.166065971] [rviz2.moveit.ros.move_group_interface]: Execute request accepted
+[move_group-4] [ERROR] [1761293547.166319962] [moveit.moveit.ros.trajectory_execution_manager]: Unable to identify any set of controllers that can actuate the specified joints: [ arm_joint1 arm_joint2 arm_joint3 arm_joint4 arm_joint5 arm_joint6 ]
+[move_group-4] [ERROR] [1761293547.166391295] [moveit.moveit.ros.trajectory_execution_manager]: Known controllers and their joints:
+[move_group-4] 
+[rviz2-5] [INFO] [1761293547.166838389] [rviz2.moveit.ros.move_group_interface]: Execute request aborted
+[rviz2-5] [ERROR] [1761293547.166933320] [rviz2.moveit.ros.move_group_interface]: MoveGroupInterface::execute() failed or timeout reached
+[rviz2-5] [INFO] [1761293548.167995400] [rviz2.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+[move_group-4] [INFO] [1761293548.168784386] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[move_group-4] [INFO] [1761293548.169338658] [moveit.moveit.ros.move_group.move_action]: executing..
+[rviz2-5] [INFO] [1761293548.169388617] [rviz2.moveit.ros.move_group_interface]: Planning request accepted
+[move_group-4] [INFO] [1761293548.219885300] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-4] [INFO] [1761293548.220041030] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[move_group-4] [INFO] [1761293548.220345214] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[move_group-4] [INFO] [1761293548.220442340] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[move_group-4] [INFO] [1761293548.220488848] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[move_group-4] [INFO] [1761293548.220560450] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[move_group-4] [INFO] [1761293548.221799888] [moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm[RRT]' will use planner 'geometric::RRT'. Additional configuration parameters will be set when the planner is constructed.
+[move_group-4] [INFO] [1761293548.222147444] [move_group]: Calling Planner 'OMPL'
+[move_group-4] [INFO] [1761293548.272967434] [moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[rviz2-5] [INFO] [1761293548.273183269] [rviz2.moveit.ros.move_group_interface]: Planning request complete!
+[rviz2-5] [INFO] [1761293548.273974101] [rviz2.moveit.ros.move_group_interface]: time taken to generate plan: 0.0506524 seconds
+[rviz2-5] [INFO] [1761293550.748611354] [rviz2.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+[move_group-4] [INFO] [1761293550.749550008] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[move_group-4] [INFO] [1761293550.749959240] [moveit.moveit.ros.move_group.move_action]: executing..
+[rviz2-5] [INFO] [1761293550.749996109] [rviz2.moveit.ros.move_group_interface]: Planning request accepted
+[move_group-4] [INFO] [1761293550.819279659] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-4] [INFO] [1761293550.819394232] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[move_group-4] [INFO] [1761293550.819525333] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[move_group-4] [INFO] [1761293550.819578015] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[move_group-4] [INFO] [1761293550.819591101] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[move_group-4] [INFO] [1761293550.819627204] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[move_group-4] [INFO] [1761293550.819922780] [moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm[RRT]' will use planner 'geometric::RRT'. Additional configuration parameters will be set when the planner is constructed.
+[move_group-4] [INFO] [1761293550.819973276] [move_group]: Calling Planner 'OMPL'
+[move_group-4] [INFO] [1761293550.836581894] [moveit.moveit.core.kinematic_constraints]: Constraint satisfied:: Joint name: 'arm_joint1', actual value: -1.839052, desired value: -1.838970, tolerance_above: 0.000100, tolerance_below: 0.000100
+[move_group-4] [INFO] [1761293550.836756022] [moveit.moveit.core.kinematic_constraints]: Constraint satisfied:: Joint name: 'arm_joint2', actual value: -2.257072, desired value: -2.257146, tolerance_above: 0.000100, tolerance_below: 0.000100
+[move_group-4] [INFO] [1761293550.836788203] [moveit.moveit.core.kinematic_constraints]: Constraint satisfied:: Joint name: 'arm_joint3', actual value: 2.017484, desired value: 2.017422, tolerance_above: 0.000100, tolerance_below: 0.000100
+[move_group-4] [INFO] [1761293550.836805870] [moveit.moveit.core.kinematic_constraints]: Constraint satisfied:: Joint name: 'arm_joint4', actual value: -0.921151, desired value: -0.921233, tolerance_above: 0.000100, tolerance_below: 0.000100
+[move_group-4] [INFO] [1761293550.836822277] [moveit.moveit.core.kinematic_constraints]: Constraint satisfied:: Joint name: 'arm_joint5', actual value: 0.497339, desired value: 0.497287, tolerance_above: 0.000100, tolerance_below: 0.000100
+[move_group-4] [INFO] [1761293550.836837700] [moveit.moveit.core.kinematic_constraints]: Constraint satisfied:: Joint name: 'arm_joint6', actual value: -1.786598, desired value: -1.786696, tolerance_above: 0.000100, tolerance_below: 0.000100
+[move_group-4] [INFO] [1761293550.836911749] [moveit.moveit.core.moveit_collision_detection_fcl]: Found a contact between 'gui_t265_link' (type 'Robot link') and 'arm2_link' (type 'Robot link'), which constitutes a collision. Contact information is not stored.
+[move_group-4] [INFO] [1761293550.836935672] [moveit.moveit.core.moveit_collision_detection_fcl]: Collision checking is considered complete (collision was found and 0 contacts are stored)
+[move_group-4] [WARN] [1761293555.821111374] [moveit.moveit.planners.ompl.planner_manager]: ./src/ompl/tools/multiplan/src/ParallelPlan.cpp:138 - ParallelPlan::solve(): Unable to find solution by any of the threads in 5.001078 seconds
+[move_group-4] [ERROR] [1761293555.821269815] [moveit.moveit.planners.ompl.model_based_planning_context]: Unable to solve the planning problem
+[move_group-4] [ERROR] [1761293555.821339508] [move_group]: Planner 'OMPL' failed with error code FAILURE
+[move_group-4] [ERROR] [1761293555.821360936] [moveit.moveit.ros.move_group.move_action]: Generating a plan with planning pipeline failed.
+[move_group-4] [INFO] [1761293555.821380422] [moveit.moveit.ros.move_group.move_action]: FAILURE
+[rviz2-5] [INFO] [1761293555.821607228] [rviz2.moveit.ros.move_group_interface]: Planning request aborted
+[rviz2-5] [ERROR] [1761293555.822561692] [rviz2.moveit.ros.move_group_interface]: MoveGroupInterface::plan() failed or timeout reached
+[rviz2-5] [INFO] [1761293556.901626087] [rviz2.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+[move_group-4] [INFO] [1761293556.902359150] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[move_group-4] [INFO] [1761293556.902814454] [moveit.moveit.ros.move_group.move_action]: executing..
+[rviz2-5] [INFO] [1761293556.902842806] [rviz2.moveit.ros.move_group_interface]: Planning request accepted
+[move_group-4] [INFO] [1761293556.919929561] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-4] [INFO] [1761293556.920061164] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[move_group-4] [INFO] [1761293556.920384636] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[move_group-4] [INFO] [1761293556.920473178] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[move_group-4] [INFO] [1761293556.920519036] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[move_group-4] [INFO] [1761293556.920606255] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[move_group-4] [INFO] [1761293556.921623763] [moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm[RRT]' will use planner 'geometric::RRT'. Additional configuration parameters will be set when the planner is constructed.
+[move_group-4] [INFO] [1761293556.921851960] [move_group]: Calling Planner 'OMPL'
+[move_group-4] [INFO] [1761293556.987954624] [moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[rviz2-5] [INFO] [1761293556.988336370] [rviz2.moveit.ros.move_group_interface]: Planning request complete!
+[rviz2-5] [INFO] [1761293556.989101275] [rviz2.moveit.ros.move_group_interface]: time taken to generate plan: 0.0658257 seconds
+[move_group-4] [INFO] [1761293560.926210596] [moveit.moveit.ros.move_group.clear_octomap_service]: Execution request received
+[move_group-4] [INFO] [1761293560.926333269] [moveit.moveit.plugins.simple_controller_manager]: Returned 0 controllers in list
+[move_group-4] [INFO] [1761293560.926370604] [moveit.moveit.plugins.simple_controller_manager]: Returned 0 controllers in list
+[move_group-4] [INFO] [1761293560.926406148] [moveit.moveit.plugins.simple_controller_manager]: Returned 0 controllers in list
+[move_group-4] [INFO] [1761293560.926433158] [moveit.moveit.plugins.simple_controller_manager]: Returned 0 controllers in list
+[move_group-4] [ERROR] [1761293560.926454295] [moveit.moveit.ros.trajectory_execution_manager]: Unable to identify any set of controllers that can actuate the specified joints: [ arm_joint1 arm_joint2 arm_joint3 arm_joint4 arm_joint5 arm_joint6 ]
+[move_group-4] [ERROR] [1761293560.926517296] [moveit.moveit.ros.trajectory_execution_manager]: Known controllers and their joints:
+[move_group-4] 
+[rviz2-5] [INFO] [1761293560.926368479] [rviz2.moveit.ros.move_group_interface]: Execute request accepted
+[rviz2-5] [INFO] [1761293560.926909303] [rviz2.moveit.ros.move_group_interface]: Execute request aborted
+[rviz2-5] [ERROR] [1761293560.927776148] [rviz2.moveit.ros.move_group_interface]: MoveGroupInterface::execute() failed or timeout reached
+[rviz2-5] [INFO] [1761293561.928677872] [rviz2.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+[move_group-4] [INFO] [1761293561.929359909] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[move_group-4] [INFO] [1761293561.929812337] [moveit.moveit.ros.move_group.move_action]: executing..
+[rviz2-5] [INFO] [1761293561.929810850] [rviz2.moveit.ros.move_group_interface]: Planning request accepted
+[move_group-4] [INFO] [1761293562.019947417] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-4] [INFO] [1761293562.020138480] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[move_group-4] [INFO] [1761293562.020420380] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[move_group-4] [INFO] [1761293562.020536616] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[move_group-4] [INFO] [1761293562.020609033] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[move_group-4] [INFO] [1761293562.020708033] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[move_group-4] [INFO] [1761293562.022522347] [moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm[RRT]' will use planner 'geometric::RRT'. Additional configuration parameters will be set when the planner is constructed.
+[move_group-4] [INFO] [1761293562.022816633] [move_group]: Calling Planner 'OMPL'
+[move_group-4] [INFO] [1761293562.071481611] [moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[rviz2-5] [INFO] [1761293562.071850379] [rviz2.moveit.ros.move_group_interface]: Planning request complete!
+[rviz2-5] [INFO] [1761293562.072655607] [rviz2.moveit.ros.move_group_interface]: time taken to generate plan: 0.0482864 seconds
+[ERROR] [rviz2-5]: process has died [pid 118580, exit code -11, cmd '/opt/ros/jazzy/lib/rviz2/rviz2 -d /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/moveit.rviz --ros-args -r __node:=rviz2 --params-file /tmp/launch_params_q_y9e21x'].
+[INFO] [joint_state_publisher_gui-3]: process has finished cleanly [pid 118578]
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[move_group-4] [INFO] [1761293702.891622221] [rclcpp]: signal_handler(signum=2)
+[robot_state_publisher-2] [INFO] [1761293702.891622036] [rclcpp]: signal_handler(signum=2)
+[static_transform_publisher-1] [INFO] [1761293702.891626272] [rclcpp]: signal_handler(signum=2)
+[move_group-4] [INFO] [1761293702.920556833] [moveit.moveit.ros.moveit_cpp]: Deleting MoveItCpp
+[move_group-4] [INFO] [1761293702.930929052] [moveit.moveit.ros.planning_scene_monitor]: Stopped publishing maintained planning scene.
+[move_group-4] [INFO] [1761293702.932697389] [moveit.moveit.ros.planning_scene_monitor]: Stopping world geometry monitor
+[move_group-4] [INFO] [1761293702.933568117] [moveit.moveit.ros.planning_scene_monitor]: Stopping planning scene monitor
+[move_group-4] Stack trace (most recent call last):
+[move_group-4] #11   Object "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2", at 0xffffffffffffffff, in 
+[move_group-4] #10   Object "/opt/ros/jazzy/lib/moveit_ros_move_group/move_group", at 0x607f542a1a44, in _start
+[move_group-4] #9    Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x77d0c0e2928a, in __libc_start_main
+[move_group-4] #8    Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x77d0c0e291c9, in 
+[move_group-4] #7    Object "/opt/ros/jazzy/lib/moveit_ros_move_group/move_group", at 0x607f542a0586, in main
+[move_group-4] #6    Object "/opt/ros/jazzy/lib/moveit_ros_move_group/move_group", at 0x607f542a30a5, in 
+[move_group-4] #5    Object "/opt/ros/jazzy/lib/librclcpp.so", at 0x77d0c14307f4, in rclcpp::Node::~Node()
+[move_group-4] #4    Object "/opt/ros/jazzy/lib/librclcpp.so", at 0x77d0c13eb745, in 
+[move_group-4] #3    Object "/opt/ros/jazzy/lib/librclcpp.so", at 0x77d0c142f0c0, in 
+[move_group-4] #2    Object "/opt/ros/jazzy/lib/librclcpp.so", at 0x77d0c142f003, in rclcpp::node_interfaces::NodeBase::~NodeBase()
+[move_group-4] #1    Object "/opt/ros/jazzy/lib/librclcpp.so", at 0x77d0c13eb809, in 
+[move_group-4] #0    Object "/opt/ros/jazzy/lib/librclcpp.so", at 0x77d0c13f02d9, in rclcpp::CallbackGroup::~CallbackGroup()
+[move_group-4] Segmentation fault (Address not mapped to object [0x77d0a610a010])
+[INFO] [static_transform_publisher-1]: process has finished cleanly [pid 118576]
+[INFO] [robot_state_publisher-2]: process has finished cleanly [pid 118577]
+[ERROR] [move_group-4]: process has died [pid 118579, exit code -11, cmd '/opt/ros/jazzy/lib/moveit_ros_move_group/move_group --ros-args -r __ns:=/ --params-file /tmp/launch_params_ycv01vd8'].

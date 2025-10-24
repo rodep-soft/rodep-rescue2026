@@ -6,12 +6,12 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     pkg_name = "urdf_test_node"
-    
+
     pkg_share_dir = get_package_share_directory(pkg_name)
 
     # Path to sekirei.urdf file
     urdf_path = os.path.join(pkg_share_dir, "urdf", "sekirei.urdf")
-    
+
     # Read URDF file content
     with open(urdf_path, 'r') as urdf_file:
         robot_description_content = urdf_file.read()

@@ -8,6 +8,7 @@ RUN apt-get update && apt-get upgrade -y && \
     ros-jazzy-xacro \
     ros-jazzy-dynamixel-sdk \
     ros-jazzy-rosbridge-server \
+    ros-jazzy-osrf-testing-tools-cpp \
     python3-rosdep \
     ccache && \
     rm -rf /var/lib/apt/lists/*

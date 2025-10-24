@@ -3,8 +3,8 @@ Panels:
     Name: Displays
   - Class: rviz_common/Views
     Name: Views
-  - Class: rviz_visual_tools/RvizVisualToolsGui
-    Name: RvizVisualToolsGui
+  - Class: moveit_rviz_plugin/MotionPlanning
+    Name: MotionPlanningPanel
 Visualization Manager:
   Displays:
     - Class: rviz_default_plugins/Grid
@@ -19,14 +19,32 @@ Visualization Manager:
     - Class: moveit_rviz_plugin/MotionPlanning
       Enabled: true
       Name: MotionPlanning
+      Move Group Namespace: ""
       Planning Request:
         Planning Group: sekirei_arm
-        Goal State: <current>
-        Interactive Marker Size: 0.3
+        Query Goal State: true
+        Query Start State: false
+        Goal State:
+          Type: "<current>"
+        Interactive Marker Size: 0.5
+        Workspace:
+          Center:
+            X: 0
+            Y: 0
+            Z: 0
+          Size:
+            X: 2
+            Y: 2
+            Z: 2
       Planning Scene Topic: /monitored_planning_scene
       Robot Description: robot_description
       Scene Geometry:
         Scene Alpha: 0.9
+        Scene Display Time: 0.2
+      Start State Alpha: 1
+      Goal State Alpha: 1
+      Trajectory Topic: /display_planned_path
+      Use Sim Time: false
       Value: true
   Global Options:
     Fixed Frame: base_link

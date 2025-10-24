@@ -2,7 +2,7 @@
 build:
 	colcon build --symlink-install
 
-source:
+src:
 	bass source ./install/setup.bash
 
 clean:
@@ -10,6 +10,9 @@ clean:
 
 find:
 	ros2 pkg executables | fzf
+
+
+	
 
 
 .PHONY: build source clean

@@ -1,0 +1,54 @@
+# MoveIt Servo parameters for real-time control
+servo_node:
+  ros__parameters:
+    # Servo type: 'pose' or 'twist'
+    command_in_type: "twist"
+    
+    # Planning group
+    move_group_name: "sekirei_arm"
+    
+    # Planning scene monitor options
+    monitored_planning_scene_topic: "/monitored_planning_scene"
+    
+    # Status publishing
+    status_topic: "~/status"
+    
+    # Command timeout (seconds)
+    incoming_command_timeout: 0.5
+    
+    # Servo update rate (Hz)
+    publish_period: 0.034  # Roughly 30 Hz
+    
+    # Joint limits
+    check_limits: true
+    
+    # Collision checking
+    check_collisions: true
+    collision_check_rate: 10.0
+    
+    # Smoothing
+    use_smoothing: true
+    smoothing_filter_plugin_name: "online_signal_smoothing::ButterworthFilterPlugin"
+    
+    # Scale factors for twist commands
+    linear_scale: 0.4
+    rotational_scale: 0.8
+    
+    # Joint limit checking
+    lower_singularity_threshold: 17.0  # degrees
+    hard_stop_singularity_threshold: 9.0  # degrees
+    
+    # Joint topic for state updates
+    joint_topic: "/joint_states"
+    
+    # Control dimensions [x, y, z, roll, pitch, yaw]
+    command_out_topic: "/fake_arm_controller/joint_trajectory"
+    
+    # Planning frame
+    planning_frame: "base_link"
+    
+    # End effector link
+    ee_frame_name: "arm6_link"
+    
+    # Low pass filter coefficient
+    low_pass_filter_coeff: 2.0

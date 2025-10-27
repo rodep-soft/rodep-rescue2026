@@ -3,10 +3,12 @@ FROM osrf/ros:jazzy-desktop
 # --- Install base tools and ROS packages ---
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y \
-    gh git vim less tree fzf tmux fish lsof curl wget \
-    lsb-release gnupg \
+    gh git vim less tree fzf tmux fish lsof curl wget usbutils v4l-utils \
+    lsb-release gnupg libopencv-dev\
     ros-jazzy-xacro \
     ros-jazzy-dynamixel-sdk \
+    ros-jazzy-rosbridge-server \
+    ros-jazzy-osrf-testing-tools-cpp \
     python3-rosdep \
     ccache && \
     rm -rf /var/lib/apt/lists/*
@@ -24,13 +26,17 @@ RUN set -eux; \
     | tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
 
 # --- Copy the ROS workspace to the container ---
-COPY ./ros_ws/src /root/ros_ws/src/
+COPY ./ /root/
 
 # Update rosdep
 RUN rosdep update
 
-# Install dependencies
-RUN rosdep install --from-paths /root/ros_ws/src -y --ignore-src
+# Ensure universe repository is enabled so common dev packages (flex, clang-tidy, ...) are available
+RUN apt-get update && apt-get install -y software-properties-common && \
+    add-apt-repository universe || true && \
+    apt-get update && \
+    # Install dependencies (skip micro-ROS and other keys that are not available in the base image)
+    rosdep install --from-paths /root/ros_ws/src -y --ignore-src --skip-keys="opencv4 microcdr microxrcedds_client clang-tidy osrf_testing_tools_cpp"
 
 # This MUST be run in its own step because the repository was just added
 RUN apt-get update

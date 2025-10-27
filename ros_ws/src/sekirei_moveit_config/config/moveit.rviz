@@ -1,0 +1,61 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: rviz_common/Views
+    Name: Views
+  - Class: moveit_rviz_plugin/MotionPlanning
+    Name: MotionPlanningPanel
+Visualization Manager:
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Reference Frame: base_link
+      Value: true
+    - Class: rviz_default_plugins/RobotModel
+      Name: RobotModel
+      Robot Description: robot_description
+      Visual Enabled: true
+      Value: true
+    - Class: moveit_rviz_plugin/MotionPlanning
+      Enabled: true
+      Name: MotionPlanning
+      Move Group Namespace: ""
+      Planning Request:
+        Planning Group: sekirei_arm
+        Query Goal State: true
+        Query Start State: false
+        Goal State:
+          Type: "<current>"
+        Interactive Marker Size: 0.5
+        Workspace:
+          Center:
+            X: 0
+            Y: 0
+            Z: 0
+          Size:
+            X: 2
+            Y: 2
+            Z: 2
+      Planning Scene Topic: /monitored_planning_scene
+      Robot Description: robot_description
+      Scene Geometry:
+        Scene Alpha: 0.9
+        Scene Display Time: 0.2
+      Start State Alpha: 1
+      Goal State Alpha: 1
+      Trajectory Topic: /display_planned_path
+      Use Sim Time: false
+      Value: true
+  Global Options:
+    Fixed Frame: base_link
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 2.5
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0.5
+      Name: Current View
+      Pitch: 0.5
+      Yaw: 0.785

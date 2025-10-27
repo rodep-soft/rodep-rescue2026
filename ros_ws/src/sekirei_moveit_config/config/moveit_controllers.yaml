@@ -1,0 +1,19 @@
+# MoveIt uses this configuration for controllers
+moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+# Fake execution - connects to our Python fake controller action server
+moveit_simple_controller_manager:
+  controller_names:
+    - fake_arm_controller
+
+  fake_arm_controller:
+    type: FollowJointTrajectory
+    action_ns: follow_joint_trajectory
+    default: true
+    joints:
+      - arm_joint1
+      - arm_joint2
+      - arm_joint3
+      - arm_joint4
+      - arm_joint5
+      - arm_joint6

@@ -10,7 +10,7 @@ services:
     privileged: true
     network_mode: host
     # Update working_dir to match the user's home in Dockerfile
-    working_dir: /root/ros_ws
+    working_dir: /root/
 
     environment:
       - ROS_DOMAIN_ID=0
@@ -19,10 +19,9 @@ services:
     volumes:
       # Mount host ~/.ssh to the new user's home in container
       - ~/.ssh:/root/.ssh:ro # <--- REPLACE with your actual host username
+      - ~/.bashrc:/root/.bashrc 
+      - ~/.config/fish/config.fish:/root/.config/fish/config.fish
       # Mount your ROS workspace
-      - ./ros_ws:/root/ros_ws # <--- REPLACE with your actual host username
+      - ./:/root/ # <--- REPLACE with your actual host username
       - ~/.ccache:/root/.ccache
       - /tmp/.X11-unix:/tmp/.X11-unix:rw # <-- Shares the X server socket
-
-    # devices:
-    #   - /dev:/dev

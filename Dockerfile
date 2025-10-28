@@ -3,12 +3,15 @@ FROM osrf/ros:jazzy-desktop
 # --- Install base tools and ROS packages ---
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y \
-    gh git vim less tree fzf tmux fish lsof curl wget usbutils v4l-utils \
+    gh git vim less tree fzf tmux fish lsof curl wget usbutils v4l-utils libx264-dev ffmpeg \
     lsb-release gnupg libopencv-dev\
     ros-jazzy-xacro \
+    ros-jazzy-moveit \
+    ros-jazzy-usb-cam \
     ros-jazzy-dynamixel-sdk \
     ros-jazzy-rosbridge-server \
     ros-jazzy-osrf-testing-tools-cpp \
+    ros-jazzy-ffmpeg-image-transport \
     python3-rosdep \
     ccache && \
     rm -rf /var/lib/apt/lists/*

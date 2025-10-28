@@ -43,9 +43,3 @@ WORKDIR /flutter
 
 # ---- Default command ----
 CMD ["bash"]
-
-
-
-
-
-

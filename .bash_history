@@ -186,3 +186,52 @@ exit
 . install/setup.bash
 fish
 exit
+ls
+make find
+cat Makefile 
+ls
+exit
+make
+ls
+make clean
+make
+. install/setup.bash
+fish
+exit
+fish
+exit
+. install/setup.bash
+ls
+cd src
+ls
+cd sekirei_moveit_config/
+ls
+cd launch/
+s
+ls
+ros2 launch demo.launch.py 
+ls
+cd ..
+ls
+cd ..
+ls
+cd launch
+ls
+cd camera/
+ls
+ros2 launch ffmpeg_compression_test.py 
+bg
+rqt
+ros2 topic olist
+ros2 topic list
+ros2 topic info /image_raw/compressed
+ros2 topic info /image_raw/compressed --verbose
+rqt
+lsusb
+ls /dev/tty*
+ls /dev/tty* | grep video
+ls /dev/ | fzf
+v4l2-ctl --list-devices
+ros2 run v4l2_camera v4l2_camera_node --ros-args -p video_device:=/dev/video0
+fihs
+fish

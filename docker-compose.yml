@@ -3,7 +3,7 @@ services:
     # Instead of 'image', use 'build' to build from your Dockerfile
     build:
       context: . # Looks for Dockerfile in the current directory
-      dockerfile: Dockerfile
+      dockerfile: ./ros_ws/Dockerfile
 
     container_name: ros2_working_container
     tty: true
@@ -25,3 +25,21 @@ services:
       - ./:/root/ # <--- REPLACE with your actual host username
       - ~/.ccache:/root/.ccache
       - /tmp/.X11-unix:/tmp/.X11-unix:rw # <-- Shares the X server socket
+
+  flutter:
+    build:
+      context: .
+      dockerfile: ./flutter/Dockerfile
+    tty: true
+    privileged: true
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ${XAUTHORITY:-$HOME/.Xauthority}:/root/.Xauthority:ro
+      - ./flutter:/flutter
+    environment:
+      - DISPLAY=${DISPLAY:-:0}
+    network_mode: "host"
+    working_dir: /flutter
+    ipc: host 
+    depends_on:
+      - ros2_container

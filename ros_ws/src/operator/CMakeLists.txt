@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(crawler_driver)
+project(operator)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -12,15 +12,18 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 
 find_package(rclcpp REQUIRED)
-find_package(std_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(custom_interfaces REQUIRED)
 
-add_executable(crawler_driver_node src/crawler_driver.cpp)
-ament_target_dependencies(crawler_driver_node rclcpp std_msgs geometry_msgs custom_interfaces)
+add_executable(operator_node src/operator.cpp)
+ament_target_dependencies(operator_node rclcpp sensor_msgs geometry_msgs custom_interfaces)
 
-install(TARGETS crawler_driver_node
-	DESTINATION lib/${PROJECT_NAME})
+install(TARGETS
+	operator_node
+	DESTINATION lib/${PROJECT_NAME}	
+
+)
 
 
 if(BUILD_TESTING)

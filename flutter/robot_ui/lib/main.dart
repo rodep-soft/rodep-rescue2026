@@ -36,7 +36,7 @@ class ROS2HomePage extends StatefulWidget {
 // Separate widget for image display to reduce flickering
 class CameraImageWidget extends StatefulWidget {
   final Stream<Uint8List?> imageStream;
-  
+
   const CameraImageWidget({super.key, required this.imageStream});
 
   @override
@@ -132,7 +132,13 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
   String _talkerMessage = 'Waiting for talker...';
   bool _isConnected = false;
   final List<String> _messageHistory = [];
-  
+  final Map<String, List<String>> _customTopicMessages = {};
+  final List<String> _subscribedTopics = [];
+
+  // Controllers for custom topic subscription
+  final TextEditingController _topicController = TextEditingController();
+  final TextEditingController _messageTypeController = TextEditingController();
+
   // Stream controller for image data
   final _imageStreamController = StreamController<Uint8List?>.broadcast();
 
@@ -193,7 +199,7 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
   void _handleROSMessage(dynamic message) {
     try {
       final data = jsonDecode(message);
-      
+
       // Check if it's a message from the /chatter topic
       if (data['topic'] == '/chatter' && data['msg'] != null) {
         final talkerData = data['msg']['data'];
@@ -205,7 +211,7 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
           }
         });
       }
-      
+
       // Check if it's a compressed image message
       if (data['topic'] == '/image_raw/compressed' && data['msg'] != null) {
         try {
@@ -220,7 +226,24 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
           print('Error decoding image: $e');
         }
       }
-      
+
+      // Handle custom subscribed topics
+      if (data['topic'] != null && _subscribedTopics.contains(data['topic'])) {
+        final topic = data['topic'] as String;
+        final msgData = data['msg'];
+        if (msgData != null) {
+          setState(() {
+            if (!_customTopicMessages.containsKey(topic)) {
+              _customTopicMessages[topic] = [];
+            }
+            _customTopicMessages[topic]!.insert(0, jsonEncode(msgData));
+            if (_customTopicMessages[topic]!.length > 20) {
+              _customTopicMessages[topic]!.removeLast();
+            }
+          });
+        }
+      }
+
       print('Received ROS message: $data');
     } catch (e) {
       print('Error parsing message: $e');
@@ -269,6 +292,56 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
     _subscribeToTopic('/cmd_vel', 'geometry_msgs/Twist');
   }
 
+  // Subscribe to custom topic
+  void _subscribeToCustomTopic() {
+    final topic = _topicController.text.trim();
+    final messageType = _messageTypeController.text.trim();
+
+    if (topic.isEmpty || messageType.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please enter topic name and message type')),
+      );
+      return;
+    }
+
+    if (_subscribedTopics.contains(topic)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Already subscribed to $topic')),
+      );
+      return;
+    }
+
+    _subscribeToTopic(topic, messageType);
+    setState(() {
+      _subscribedTopics.add(topic);
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Subscribed to $topic ($messageType)')),
+    );
+  }
+
+  // Unsubscribe from custom topic
+  void _unsubscribeFromTopic(String topic) {
+    if (_channel == null) return;
+
+    final unsubscribeMsg = jsonEncode({
+      'op': 'unsubscribe',
+      'topic': topic,
+    });
+
+    _channel!.sink.add(unsubscribeMsg);
+
+    setState(() {
+      _subscribedTopics.remove(topic);
+      _customTopicMessages.remove(topic);
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Unsubscribed from $topic')),
+    );
+  }
+
   // Example: Publish a message
   void _publishTestMessage() {
     _publishToTopic(
@@ -280,6 +353,8 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
 
   @override
   void dispose() {
+    _topicController.dispose();
+    _messageTypeController.dispose();
     _imageStreamController.close();
     _channel?.sink.close();
     super.dispose();
@@ -379,6 +454,110 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
               ),
             ),
             const SizedBox(height: 20),
+
+            // Custom Topic Subscription
+            Card(
+              color: Colors.green.shade50,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.subscriptions, color: Colors.green.shade700),
+                        const SizedBox(width: 8),
+                        const Text(
+                          'Custom Topic Subscription:',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    TextField(
+                      controller: _topicController,
+                      decoration: const InputDecoration(
+                        labelText: 'Topic Name',
+                        hintText: '/my_topic',
+                        border: OutlineInputBorder(),
+                        prefixIcon: Icon(Icons.topic),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    TextField(
+                      controller: _messageTypeController,
+                      decoration: const InputDecoration(
+                        labelText: 'Message Type',
+                        hintText: 'std_msgs/String',
+                        border: OutlineInputBorder(),
+                        prefixIcon: Icon(Icons.code),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    ElevatedButton.icon(
+                      onPressed: _isConnected ? _subscribeToCustomTopic : null,
+                      icon: const Icon(Icons.add),
+                      label: const Text('Subscribe'),
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: const Size.fromHeight(40),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+
+            // Subscribed Topics List
+            if (_subscribedTopics.isNotEmpty) ...[
+              const Text(
+                'Subscribed Topics:',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8),
+              ...(_subscribedTopics.map((topic) => Card(
+                    child: ExpansionTile(
+                      title: Text(topic),
+                      leading: const Icon(Icons.topic),
+                      trailing: IconButton(
+                        icon: const Icon(Icons.close),
+                        onPressed: () => _unsubscribeFromTopic(topic),
+                      ),
+                      children: [
+                        Container(
+                          constraints: const BoxConstraints(maxHeight: 200),
+                          child: _customTopicMessages[topic]?.isEmpty ?? true
+                              ? const Padding(
+                                  padding: EdgeInsets.all(16.0),
+                                  child: Text('No messages yet'),
+                                )
+                              : ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: _customTopicMessages[topic]!.length,
+                                  itemBuilder: (context, index) {
+                                    return ListTile(
+                                      dense: true,
+                                      title: Text(
+                                        _customTopicMessages[topic]![index],
+                                        style: const TextStyle(fontSize: 12),
+                                        maxLines: 3,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    );
+                                  },
+                                ),
+                        ),
+                      ],
+                    ),
+                  ))),
+              const SizedBox(height: 20),
+            ],
 
             // Action Buttons
             Wrap(

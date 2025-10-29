@@ -1,5 +1,5 @@
 #include <boost/asio.hpp>
-#include <custom_interfaces/msg/driver_velocity.hpp>
+#include <custom_interfaces/msg/crawler_velocity.hpp>
 #include <iostream>
 #include <memory>
 #include <rclcpp/rclcpp.hpp>
@@ -181,7 +181,7 @@ class CrawlerDriver : public rclcpp::Node {
         initParams();
 
         subscription_ =
-            create_subscription<custom_interfaces::msg::DriverVelocity>(
+            create_subscription<custom_interfaces::msg::CrawlerVelocity>(
                 "/crawler_driver", 10,
                 bind(&CrawlerDriver::driver_callback, this, _1));
 
@@ -201,7 +201,7 @@ class CrawlerDriver : public rclcpp::Node {
     double counts_per_meter_;
     bool estop_active_ = false;  // E-stop state
 
-    rclcpp::Subscription<custom_interfaces::msg::DriverVelocity>::SharedPtr
+    rclcpp::Subscription<custom_interfaces::msg::CrawlerVelocity>::SharedPtr
         subscription_;
     rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr estop_subscription_;
 
@@ -257,7 +257,7 @@ class CrawlerDriver : public rclcpp::Node {
         }
     }
 
-    void driver_callback(const custom_interfaces::msg::DriverVelocity& msg) {
+    void driver_callback(const custom_interfaces::msg::CrawlerVelocity& msg) {
         if (estop_active_) {
             RCLCPP_WARN(get_logger(),
                         "E-stop is active. Ignoring motor commands.");

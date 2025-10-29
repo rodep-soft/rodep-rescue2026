@@ -135,9 +135,15 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
   final Map<String, List<String>> _customTopicMessages = {};
   final List<String> _subscribedTopics = [];
 
+  // WebSocket address configuration
+  String _wsAddress = 'localhost';
+  String _wsPort = '9090';
+
   // Controllers for custom topic subscription
   final TextEditingController _topicController = TextEditingController();
   final TextEditingController _messageTypeController = TextEditingController();
+  final TextEditingController _wsAddressController = TextEditingController();
+  final TextEditingController _wsPortController = TextEditingController();
 
   // Stream controller for image data
   final _imageStreamController = StreamController<Uint8List?>.broadcast();
@@ -145,14 +151,17 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
   @override
   void initState() {
     super.initState();
+    _wsAddressController.text = _wsAddress;
+    _wsPortController.text = _wsPort;
     _connectToROS();
   }
 
   void _connectToROS() {
     try {
-      // Connect to rosbridge_server (default port 9090)
+      // Connect to rosbridge_server with configurable address
+      final wsUrl = 'ws://$_wsAddress:$_wsPort';
       _channel = WebSocketChannel.connect(
-        Uri.parse('ws://localhost:9090'),
+        Uri.parse(wsUrl),
       );
 
       setState(() {
@@ -355,9 +364,71 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
   void dispose() {
     _topicController.dispose();
     _messageTypeController.dispose();
+    _wsAddressController.dispose();
+    _wsPortController.dispose();
     _imageStreamController.close();
     _channel?.sink.close();
     super.dispose();
+  }
+
+  void _showSettingsDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('WebSocket Settings'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: _wsAddressController,
+              decoration: const InputDecoration(
+                labelText: 'WebSocket Address',
+                hintText: 'localhost or IP address',
+                prefixIcon: Icon(Icons.computer),
+              ),
+            ),
+            const SizedBox(height: 12),
+            TextField(
+              controller: _wsPortController,
+              decoration: const InputDecoration(
+                labelText: 'WebSocket Port',
+                hintText: '9090',
+                prefixIcon: Icon(Icons.settings_ethernet),
+              ),
+              keyboardType: TextInputType.number,
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'Current: ws://$_wsAddress:$_wsPort',
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.grey.shade600,
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                _wsAddress = _wsAddressController.text.trim();
+                _wsPort = _wsPortController.text.trim();
+                _isConnected = false;
+                _rosStatus = 'Disconnected';
+              });
+              _channel?.sink.close();
+              Navigator.pop(context);
+              _connectToROS();
+            },
+            child: const Text('Connect'),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -366,6 +437,13 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: _showSettingsDialog,
+            tooltip: 'WebSocket Settings',
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -381,7 +459,25 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
                   color: _isConnected ? Colors.green : Colors.red,
                 ),
                 title: const Text('ROS2 Bridge Status'),
-                subtitle: Text(_rosStatus),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(_rosStatus),
+                    const SizedBox(height: 4),
+                    Text(
+                      'ws://$_wsAddress:$_wsPort',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey.shade600,
+                      ),
+                    ),
+                  ],
+                ),
+                trailing: IconButton(
+                  icon: const Icon(Icons.refresh),
+                  onPressed: !_isConnected ? _connectToROS : null,
+                  tooltip: 'Reconnect',
+                ),
               ),
             ),
             const SizedBox(height: 20),

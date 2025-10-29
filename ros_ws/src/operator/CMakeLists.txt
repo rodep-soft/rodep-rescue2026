@@ -21,7 +21,7 @@ ament_target_dependencies(operator_node rclcpp sensor_msgs geometry_msgs custom_
 
 install(TARGETS
 	operator_node
-	DESTINATION lib/${PROJECT_NAME}	
+	DESTINATION lib/${PROJECT_NAME}
 
 )
 

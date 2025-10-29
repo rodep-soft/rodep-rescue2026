@@ -1,0 +1,26 @@
+crawler_driver_v3:
+  ros__parameters:
+    # Roboclaw設定
+    roboclaw_port: "/dev/roboclaw"
+    roboclaw_address: 128  # 0x80
+    
+    # ロボット物理パラメータ
+    # これらは実機測定値に基づいて設定する
+    wheel_base: 0.5       # 左右クローラー間の距離 [m]
+    wheel_radius: 0.062   # クローラーの有効半径 [m]
+    
+    # エンコーダ仕様
+    encoder_cpr: 256      # Encoder Counts Per Revolution
+    gearbox_ratio: 66     # ギアボックス減速比
+    pulley_ratio: 2       # プーリー減速比
+    
+    # PID設定（Roboclaw Manual参照）
+    m1_pid:
+      p: 0.464
+      i: 0.021
+      d: 0.0
+    
+    m2_pid:
+      p: 0.438
+      i: 0.020
+      d: 0.0

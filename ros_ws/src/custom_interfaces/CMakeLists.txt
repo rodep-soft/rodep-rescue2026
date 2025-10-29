@@ -14,7 +14,8 @@ find_package(rosidl_default_generators REQUIRED)
 
 # define custom messages
 rosidl_generate_interfaces(${PROJECT_NAME}
-		msg/DriverVelocity.msg
+		msg/CrawlerVelocity.msg
+    msg/FlipperVelocity.msg
 )
 
 install(

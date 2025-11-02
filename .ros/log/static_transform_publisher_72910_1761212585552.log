@@ -1,0 +1,5 @@
+[WARN] [1761212585.553210000] []: Old-style arguments are deprecated; see --help for new-style arguments
+[INFO] [1761212585.572215638] [static_transform_publisher]: Spinning until stopped - publishing transform
+translation: ('0.000000', '0.000000', '0.000000')
+rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+from 'world' to 'base_link'

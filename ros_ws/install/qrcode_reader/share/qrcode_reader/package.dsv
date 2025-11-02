@@ -1,0 +1,8 @@
+source;share/qrcode_reader/hook/cmake_prefix_path.ps1
+source;share/qrcode_reader/hook/cmake_prefix_path.dsv
+source;share/qrcode_reader/hook/cmake_prefix_path.sh
+source;share/qrcode_reader/local_setup.bash
+source;share/qrcode_reader/local_setup.dsv
+source;share/qrcode_reader/local_setup.ps1
+source;share/qrcode_reader/local_setup.sh
+source;share/qrcode_reader/local_setup.zsh

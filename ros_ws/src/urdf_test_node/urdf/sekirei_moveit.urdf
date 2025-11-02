@@ -290,4 +290,111 @@
         <child link="gui_t265_link"/>
     </joint>
 
+    <!-- transmissions for ros2_control / dynamixel_hardware -->
+    <!-- SimpleTransmission used to map actuator to joint -->
+    <transmission name="arm_joint1_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="arm_joint1_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="arm_joint1">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <transmission name="arm_joint2_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="arm_joint2_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="arm_joint2">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <transmission name="arm_joint3_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="arm_joint3_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="arm_joint3">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <transmission name="arm_joint4_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="arm_joint4_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="arm_joint4">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <transmission name="arm_joint5_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="arm_joint5_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="arm_joint5">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <transmission name="arm_joint6_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="arm_joint6_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="arm_joint6">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <!-- ros2_control configuration for dynamixel_hardware -->
+    <ros2_control name="sekirei_dynamixel_hw" type="system">
+        <hardware>
+            <!-- plugin provided by dynamixel_hardware package -->
+            <plugin>dynamixel_hardware/DynamixelHardware</plugin>
+            <!-- Assumptions: XM540-W270 on /dev/ttyUSB0 at 1Mbps. Edit as needed. -->
+            <param name="usb_port">/dev/ttyUSB0</param>
+            <param name="baud_rate">1000000</param>
+            <!-- set use_dummy to true if testing without real motors -->
+            <param name="use_dummy">true</param>
+        </hardware>
+
+        <joint name="arm_joint1">
+            <param name="id">1</param>
+            <param name="Profile_Velocity">100</param>
+        </joint>
+        <joint name="arm_joint2">
+            <param name="id">2</param>
+            <param name="Profile_Velocity">100</param>
+        </joint>
+        <joint name="arm_joint3">
+            <param name="id">3</param>
+            <param name="Profile_Velocity">100</param>
+        </joint>
+        <joint name="arm_joint4">
+            <param name="id">4</param>
+            <param name="Profile_Velocity">100</param>
+        </joint>
+        <joint name="arm_joint5">
+            <param name="id">5</param>
+            <param name="Profile_Velocity">100</param>
+        </joint>
+        <joint name="arm_joint6">
+            <param name="id">6</param>
+            <param name="Profile_Velocity">100</param>
+        </joint>
+
+    </ros2_control>
+
 </robot>

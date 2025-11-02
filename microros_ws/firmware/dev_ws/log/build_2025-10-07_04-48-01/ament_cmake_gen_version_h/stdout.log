@@ -1,0 +1,65 @@
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/lib/ccache/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/lib/ccache/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake_core: 2.5.4 (/root/microros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Found ament_cmake_gtest: 2.5.4 (/root/microros_ws/firmware/dev_ws/install/ament_cmake_gtest/share/ament_cmake_gtest/cmake)
+-- Create new version file for version 2.5.4
+-- Create new version file for version 2.5.4
+-- Create new version file for version 2.5.4
+-- Create new version file for version 2.5.4
+-- Found gtest sources under '/root/microros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor': C++ tests using 'Google Test' will be built
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Configuring done (1.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /root/microros_ws/firmware/dev_ws/build/ament_cmake_gen_version_h
+[ 25%] [34m[1mGenerating ament_generate_version_header/version.hpp[0m
+[ 25%] [32mBuilding CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o[0m
+[ 25%] [32mBuilding CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o[0m
+[ 33%] [32m[1mLinking CXX static library libgtest_main.a[0m
+[ 33%] Built target ament_generate_version_header__some_lib
+[ 41%] [32m[1mLinking CXX static library libgtest.a[0m
+[ 41%] Built target gtest_main
+[ 41%] Built target gtest
+[ 75%] [32mBuilding CXX object CMakeFiles/test_ament_cmake_gen_version_h.dir/test/test_version_custom.cpp.o[0m
+[ 75%] [32mBuilding CXX object CMakeFiles/test_ament_cmake_gen_version_h.dir/test/test_version1_h.cpp.o[0m
+[ 75%] [32mBuilding CXX object CMakeFiles/test_ament_cmake_gen_version_h.dir/test/test_version_h.cpp.o[0m
+[ 75%] [32mBuilding CXX object CMakeFiles/test_ament_generate_version_header.dir/test/test_version_hpp.cpp.o[0m
+[ 83%] [32mBuilding CXX object CMakeFiles/test_ament_cmake_gen_version_h.dir/test/test_version2_h.cpp.o[0m
+[100%] [32m[1mLinking CXX executable test_ament_generate_version_header[0m
+[100%] [32m[1mLinking CXX executable test_ament_cmake_gen_version_h[0m
+[100%] Built target test_ament_generate_version_header
+[100%] Built target test_ament_cmake_gen_version_h
+-- Install configuration: ""
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_index/resource_index/package_run_dependencies/ament_cmake_gen_version_h
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_index/resource_index/parent_prefix_path/ament_cmake_gen_version_h
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_cmake_gen_version_h/environment/ament_prefix_path.sh
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_cmake_gen_version_h/environment/ament_prefix_path.dsv
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_cmake_gen_version_h/environment/path.sh
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_cmake_gen_version_h/environment/path.dsv
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_cmake_gen_version_h/local_setup.bash
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_cmake_gen_version_h/local_setup.sh
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_cmake_gen_version_h/local_setup.zsh
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_cmake_gen_version_h/local_setup.dsv
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_cmake_gen_version_h/package.dsv
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_index/resource_index/packages/ament_cmake_gen_version_h
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_cmake_gen_version_h/cmake/ament_cmake_gen_version_h-extras.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_cmake_gen_version_h/cmake/ament_cmake_gen_version_hConfig.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_cmake_gen_version_h/cmake/ament_cmake_gen_version_hConfig-version.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_cmake_gen_version_h/package.xml
+-- Up-to-date: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_cmake_gen_version_h/cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_cmake_gen_version_h/cmake/generate_version_header.cmake.in
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_cmake_gen_version_h/cmake/ament_cmake_gen_version_h.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_cmake_gen_version_h/cmake/ament_generate_version_header.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_gen_version_h/share/ament_cmake_gen_version_h/cmake/version.h.in

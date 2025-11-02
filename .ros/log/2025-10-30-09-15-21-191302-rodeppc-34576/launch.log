@@ -1,0 +1,3 @@
+1761815721.1921473 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-30-09-15-21-191302-rodeppc-34576
+1761815721.1923137 [INFO] [launch]: Default logging verbosity is set to INFO
+1761815721.2491271 [ERROR] [launch]: Caught exception in launch (see debug for traceback): file not found: [Errno 2] No such file or directory: 'bash-lccat'

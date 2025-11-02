@@ -1,0 +1,1 @@
+/root/ros_ws/build/sensor_msgs/rosidl_generator_c/sensor_msgs/msg/detail/point_cloud2__struct.h

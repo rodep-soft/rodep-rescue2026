@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/CMakeFiles/exlib_bad"
+		},
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/CMakeFiles/exlib_bad.rule"
+		},
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/CMakeFiles/exlib_bad-complete.rule"
+		},
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/src/exlib_bad-stamp/exlib_bad-build.rule"
+		},
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/src/exlib_bad-stamp/exlib_bad-configure.rule"
+		},
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/src/exlib_bad-stamp/exlib_bad-download.rule"
+		},
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/src/exlib_bad-stamp/exlib_bad-install.rule"
+		},
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/src/exlib_bad-stamp/exlib_bad-mkdir.rule"
+		},
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/src/exlib_bad-stamp/exlib_bad-patch_disconnected.rule"
+		},
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/src/exlib_bad-stamp/exlib_bad-update_disconnected.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"exlib_bad"
+		],
+		"name" : "exlib_bad"
+	}
+}

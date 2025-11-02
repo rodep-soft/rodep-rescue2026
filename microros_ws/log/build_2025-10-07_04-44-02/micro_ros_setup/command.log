@@ -1,0 +1,6 @@
+Invoking command in '/root/microros_ws/build/micro_ros_setup': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /root/microros_ws/src/micro_ros_setup -DCMAKE_INSTALL_PREFIX=/root/microros_ws/install/micro_ros_setup
+Invoked command in '/root/microros_ws/build/micro_ros_setup' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /root/microros_ws/src/micro_ros_setup -DCMAKE_INSTALL_PREFIX=/root/microros_ws/install/micro_ros_setup
+Invoking command in '/root/microros_ws/build/micro_ros_setup': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /root/microros_ws/build/micro_ros_setup -- -j16 -l16
+Invoked command in '/root/microros_ws/build/micro_ros_setup' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /root/microros_ws/build/micro_ros_setup -- -j16 -l16
+Invoking command in '/root/microros_ws/build/micro_ros_setup': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /root/microros_ws/build/micro_ros_setup
+Invoked command in '/root/microros_ws/build/micro_ros_setup' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /root/microros_ws/build/micro_ros_setup

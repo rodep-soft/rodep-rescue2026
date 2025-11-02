@@ -1,0 +1,7 @@
+/root/microros_ws/firmware/dev_ws/build/ament_cmake/CMakeFiles/uninstall.dir
+/root/microros_ws/firmware/dev_ws/build/ament_cmake/CMakeFiles/ament_cmake_uninstall.dir
+/root/microros_ws/firmware/dev_ws/build/ament_cmake/CMakeFiles/edit_cache.dir
+/root/microros_ws/firmware/dev_ws/build/ament_cmake/CMakeFiles/rebuild_cache.dir
+/root/microros_ws/firmware/dev_ws/build/ament_cmake/CMakeFiles/list_install_components.dir
+/root/microros_ws/firmware/dev_ws/build/ament_cmake/CMakeFiles/install.dir
+/root/microros_ws/firmware/dev_ws/build/ament_cmake/CMakeFiles/install/local.dir

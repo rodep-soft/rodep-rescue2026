@@ -1,0 +1,3 @@
+1761290393.7987692 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-24-07-19-53-798135-rodeppc-66567
+1761290393.7988913 [INFO] [launch]: Default logging verbosity is set to INFO
+1761290393.8190360 [ERROR] [launch]: Caught exception in launch (see debug for traceback): Unrecognized data type: string_array

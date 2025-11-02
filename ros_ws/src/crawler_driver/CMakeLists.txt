@@ -5,6 +5,10 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+# Require C++20 for this package (uses std::span and std::bit_cast)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # find dependencies
 find_package(ament_cmake REQUIRED)
 # uncomment the following section in order to fill in
@@ -38,15 +42,15 @@ ament_target_dependencies(crawler_driver_v2_node rclcpp std_msgs custom_interfac
 # V3ドライバー（改善版・推奨）
 add_executable(crawler_driver_v3_node src/crawler_driver_v3.cpp)
 target_link_libraries(crawler_driver_v3_node roboclaw_driver)
-ament_target_dependencies(crawler_driver_v3_node 
-  rclcpp 
-  std_msgs 
-  geometry_msgs 
+ament_target_dependencies(crawler_driver_v3_node
+  rclcpp
+  std_msgs
+  geometry_msgs
   nav_msgs
   tf2
   tf2_ros)
 
-install(TARGETS 
+install(TARGETS
   crawler_driver_node
   crawler_driver_v2_node
   crawler_driver_v3_node

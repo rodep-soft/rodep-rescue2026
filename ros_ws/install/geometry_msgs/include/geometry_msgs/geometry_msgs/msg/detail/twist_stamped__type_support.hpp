@@ -1,0 +1,1 @@
+/root/ros_ws/build/geometry_msgs/rosidl_generator_cpp/geometry_msgs/msg/detail/twist_stamped__type_support.hpp

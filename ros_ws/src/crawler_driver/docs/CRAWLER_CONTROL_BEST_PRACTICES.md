@@ -65,7 +65,7 @@ right_track_velocity = linear_x + angular_z * wheel_base / 2;
 class DifferentialDriveController {
     std::pair<double, double> twistToWheelVelocities(
         double linear_x, double angular_z) const {
-        
+
         const double v_left = linear_x - (angular_z * wheel_base / 2.0);
         const double v_right = linear_x + (angular_z * wheel_base / 2.0);
         return {v_left, v_right};
@@ -86,20 +86,20 @@ class DifferentialDriveController {
 ```cpp
 class TrackedDriveController {
     std::pair<double, double> twistToTrackVelocities(
-        double linear_x, double angular_z, 
+        double linear_x, double angular_z,
         double slip_factor = 1.2) const {
-        
+
         // 基本の差動駆動計算
         double v_left = linear_x - (angular_z * wheel_base / 2.0);
         double v_right = linear_x + (angular_z * wheel_base / 2.0);
-        
+
         // クローラー特有の滑り補正
         // 旋回時は実際より速く指令する必要がある
         if (std::abs(angular_z) > 0.1) {
             v_left *= slip_factor;
             v_right *= slip_factor;
         }
-        
+
         return {v_left, v_right};
     }
 };
@@ -120,17 +120,17 @@ class TrackedDriveController {
 class AdaptiveTrackedController {
     // IMUとエンコーダを融合
     // Extended Kalman Filter (EKF) で滑りを推定
-    
+
     void update(const EncoderData& enc, const ImuData& imu) {
         // エンコーダからのオドメトリ
         Pose odom_pose = calculateOdometry(enc);
-        
+
         // IMUからの角速度
         double actual_angular_vel = imu.gyro_z;
-        
+
         // 滑り率の推定
         double slip_rate = estimateSlip(odom_pose, actual_angular_vel);
-        
+
         // 次回の制御に反映
         adaptSlipCompensation(slip_rate);
     }
@@ -209,7 +209,7 @@ cmd_vel → AdaptiveController → RoboclawDriver
    ```
    あなたのケース:
    Roboclaw → 直接制御可能
-   
+
    ros2_control:
    Roboclaw → HardwareInterface → ControllerManager → Controller
    ↑ 3層の抽象化、必要？
@@ -230,13 +230,13 @@ cmd_vel → AdaptiveController → RoboclawDriver
 class CrawlerDriverV3 : public rclcpp::Node {
     // 1. 物理パラメータは明確に
     RobotParameters robot_params_;  // wheel_base, track_radius
-    
+
     // 2. 差動駆動として制御
     DifferentialDriveController controller_;
-    
+
     // 3. オプションで滑り補正
     double slip_compensation_ = 1.0;  // キャリブレーション可能
-    
+
     // 4. センサーフュージョン（将来）
     // robot_localization との連携
 };

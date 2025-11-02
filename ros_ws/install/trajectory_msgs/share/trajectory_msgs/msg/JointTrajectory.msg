@@ -1,0 +1,1 @@
+/root/ros_ws/src/ros2/common_interfaces/trajectory_msgs/msg/JointTrajectory.msg

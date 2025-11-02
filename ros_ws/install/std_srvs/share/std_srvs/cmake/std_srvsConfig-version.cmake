@@ -1,0 +1,1 @@
+/root/ros_ws/build/std_srvs/ament_cmake_core/std_srvsConfig-version.cmake

@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/CMakeFiles/depender"
+		},
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/CMakeFiles/depender.rule"
+		},
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/CMakeFiles/depender-complete.rule"
+		},
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/depender-prefix/src/depender-stamp/depender-build.rule"
+		},
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/depender-prefix/src/depender-stamp/depender-configure.rule"
+		},
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/depender-prefix/src/depender-stamp/depender-download.rule"
+		},
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/depender-prefix/src/depender-stamp/depender-install.rule"
+		},
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/depender-prefix/src/depender-stamp/depender-mkdir.rule"
+		},
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/depender-prefix/src/depender-stamp/depender-patch_disconnected.rule"
+		},
+		{
+			"file" : "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/depender-prefix/src/depender-stamp/depender-update_disconnected.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"depender"
+		],
+		"name" : "depender"
+	}
+}

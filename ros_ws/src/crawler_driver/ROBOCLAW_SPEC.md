@@ -69,7 +69,7 @@ uint32_t bits = std::bit_cast<uint32_t>(float_value);
 
 ### 5. CRC-16計算（CCITT）
 
-**多項式**: 0x1021  
+**多項式**: 0x1021
 **初期値**: 0x0000
 
 ```cpp

@@ -1,0 +1,1 @@
+/root/ros_ws/build/rosidl_typesupport_microxrcedds_test_msg/rosidl_typesupport_introspection_cpp/rosidl_typesupport_microxrcedds_test_msg/msg/detail/sequence__rosidl_typesupport_introspection_cpp.hpp

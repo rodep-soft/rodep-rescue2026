@@ -1,0 +1,44 @@
+[0.490s] Invoking command in '/root/microros_ws/firmware/dev_ws/ament/ament_lint/ament_flake8': AMENT_PREFIX_PATH=/root/microros_ws/firmware/dev_ws/install/ament_lint PYTHONPATH=/root/microros_ws/firmware/dev_ws/build/ament_flake8/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/microros_ws/firmware/dev_ws/install/ament_flake8/lib/python3.12/site-packages:/root/microros_ws/firmware/dev_ws/install/ament_lint/lib/python3.12/site-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/ament_flake8 build --build-base /root/microros_ws/firmware/dev_ws/build/ament_flake8/build install --record /root/microros_ws/firmware/dev_ws/build/ament_flake8/install.log --single-version-externally-managed install_data
+[0.722s] running egg_info
+[0.722s] creating ../../../build/ament_flake8/ament_flake8.egg-info
+[0.733s] writing ../../../build/ament_flake8/ament_flake8.egg-info/PKG-INFO
+[0.733s] writing dependency_links to ../../../build/ament_flake8/ament_flake8.egg-info/dependency_links.txt
+[0.734s] writing entry points to ../../../build/ament_flake8/ament_flake8.egg-info/entry_points.txt
+[0.734s] writing requirements to ../../../build/ament_flake8/ament_flake8.egg-info/requires.txt
+[0.734s] writing top-level names to ../../../build/ament_flake8/ament_flake8.egg-info/top_level.txt
+[0.734s] writing manifest file '../../../build/ament_flake8/ament_flake8.egg-info/SOURCES.txt'
+[0.757s] reading manifest file '../../../build/ament_flake8/ament_flake8.egg-info/SOURCES.txt'
+[0.758s] writing manifest file '../../../build/ament_flake8/ament_flake8.egg-info/SOURCES.txt'
+[0.758s] running build
+[0.758s] running build_py
+[0.758s] creating /root/microros_ws/firmware/dev_ws/build/ament_flake8/build
+[0.758s] creating /root/microros_ws/firmware/dev_ws/build/ament_flake8/build/lib
+[0.759s] creating /root/microros_ws/firmware/dev_ws/build/ament_flake8/build/lib/ament_flake8
+[0.759s] copying ament_flake8/main.py -> /root/microros_ws/firmware/dev_ws/build/ament_flake8/build/lib/ament_flake8
+[0.759s] copying ament_flake8/pytest_marker.py -> /root/microros_ws/firmware/dev_ws/build/ament_flake8/build/lib/ament_flake8
+[0.759s] copying ament_flake8/__init__.py -> /root/microros_ws/firmware/dev_ws/build/ament_flake8/build/lib/ament_flake8
+[0.759s] creating /root/microros_ws/firmware/dev_ws/build/ament_flake8/build/lib/ament_flake8/configuration
+[0.760s] copying ament_flake8/configuration/ament_flake8.ini -> /root/microros_ws/firmware/dev_ws/build/ament_flake8/build/lib/ament_flake8/configuration
+[0.760s] running install
+[0.767s] running install_lib
+[0.778s] creating /root/microros_ws/firmware/dev_ws/install/ament_flake8/lib/python3.12/site-packages/ament_flake8
+[0.779s] copying /root/microros_ws/firmware/dev_ws/build/ament_flake8/build/lib/ament_flake8/main.py -> /root/microros_ws/firmware/dev_ws/install/ament_flake8/lib/python3.12/site-packages/ament_flake8
+[0.779s] copying /root/microros_ws/firmware/dev_ws/build/ament_flake8/build/lib/ament_flake8/pytest_marker.py -> /root/microros_ws/firmware/dev_ws/install/ament_flake8/lib/python3.12/site-packages/ament_flake8
+[0.779s] creating /root/microros_ws/firmware/dev_ws/install/ament_flake8/lib/python3.12/site-packages/ament_flake8/configuration
+[0.779s] copying /root/microros_ws/firmware/dev_ws/build/ament_flake8/build/lib/ament_flake8/configuration/ament_flake8.ini -> /root/microros_ws/firmware/dev_ws/install/ament_flake8/lib/python3.12/site-packages/ament_flake8/configuration
+[0.779s] copying /root/microros_ws/firmware/dev_ws/build/ament_flake8/build/lib/ament_flake8/__init__.py -> /root/microros_ws/firmware/dev_ws/install/ament_flake8/lib/python3.12/site-packages/ament_flake8
+[0.780s] byte-compiling /root/microros_ws/firmware/dev_ws/install/ament_flake8/lib/python3.12/site-packages/ament_flake8/main.py to main.cpython-312.pyc
+[0.783s] byte-compiling /root/microros_ws/firmware/dev_ws/install/ament_flake8/lib/python3.12/site-packages/ament_flake8/pytest_marker.py to pytest_marker.cpython-312.pyc
+[0.783s] byte-compiling /root/microros_ws/firmware/dev_ws/install/ament_flake8/lib/python3.12/site-packages/ament_flake8/__init__.py to __init__.cpython-312.pyc
+[0.784s] running install_data
+[0.784s] copying package.xml -> /root/microros_ws/firmware/dev_ws/install/ament_flake8/share/ament_flake8
+[0.784s] creating /root/microros_ws/firmware/dev_ws/install/ament_flake8/share/ament_index
+[0.784s] creating /root/microros_ws/firmware/dev_ws/install/ament_flake8/share/ament_index/resource_index
+[0.784s] creating /root/microros_ws/firmware/dev_ws/install/ament_flake8/share/ament_index/resource_index/packages
+[0.784s] copying resource/ament_flake8 -> /root/microros_ws/firmware/dev_ws/install/ament_flake8/share/ament_index/resource_index/packages
+[0.784s] running install_egg_info
+[0.798s] Copying ../../../build/ament_flake8/ament_flake8.egg-info to /root/microros_ws/firmware/dev_ws/install/ament_flake8/lib/python3.12/site-packages/ament_flake8-0.17.3-py3.12.egg-info
+[0.799s] running install_scripts
+[0.898s] Installing ament_flake8 script to /root/microros_ws/firmware/dev_ws/install/ament_flake8/bin
+[0.899s] writing list of installed files to '/root/microros_ws/firmware/dev_ws/build/ament_flake8/install.log'
+[0.947s] Invoked command in '/root/microros_ws/firmware/dev_ws/ament/ament_lint/ament_flake8' returned '0': AMENT_PREFIX_PATH=/root/microros_ws/firmware/dev_ws/install/ament_lint PYTHONPATH=/root/microros_ws/firmware/dev_ws/build/ament_flake8/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/microros_ws/firmware/dev_ws/install/ament_flake8/lib/python3.12/site-packages:/root/microros_ws/firmware/dev_ws/install/ament_lint/lib/python3.12/site-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/ament_flake8 build --build-base /root/microros_ws/firmware/dev_ws/build/ament_flake8/build install --record /root/microros_ws/firmware/dev_ws/build/ament_flake8/install.log --single-version-externally-managed install_data

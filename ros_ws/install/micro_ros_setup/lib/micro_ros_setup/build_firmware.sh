@@ -1,0 +1,1 @@
+/root/ros_ws/src/micro_ros_setup/scripts/build_firmware.sh

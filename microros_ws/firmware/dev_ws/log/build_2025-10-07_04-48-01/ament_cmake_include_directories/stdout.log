@@ -1,0 +1,24 @@
+-- Found ament_cmake_core: 2.5.4 (/root/microros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Configuring done (0.4s)
+-- Generating done (0.0s)
+-- Build files have been written to: /root/microros_ws/firmware/dev_ws/build/ament_cmake_include_directories
+-- Install configuration: ""
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_include_directories/share/ament_index/resource_index/package_run_dependencies/ament_cmake_include_directories
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_include_directories/share/ament_index/resource_index/parent_prefix_path/ament_cmake_include_directories
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_include_directories/share/ament_cmake_include_directories/environment/ament_prefix_path.sh
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_include_directories/share/ament_cmake_include_directories/environment/ament_prefix_path.dsv
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_include_directories/share/ament_cmake_include_directories/environment/path.sh
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_include_directories/share/ament_cmake_include_directories/environment/path.dsv
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_include_directories/share/ament_cmake_include_directories/local_setup.bash
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_include_directories/share/ament_cmake_include_directories/local_setup.sh
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_include_directories/share/ament_cmake_include_directories/local_setup.zsh
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_include_directories/share/ament_cmake_include_directories/local_setup.dsv
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_include_directories/share/ament_cmake_include_directories/package.dsv
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_include_directories/share/ament_index/resource_index/packages/ament_cmake_include_directories
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_include_directories/share/ament_cmake_include_directories/cmake/ament_cmake_include_directories-extras.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_include_directories/share/ament_cmake_include_directories/cmake/ament_cmake_include_directoriesConfig.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_include_directories/share/ament_cmake_include_directories/cmake/ament_cmake_include_directoriesConfig-version.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_include_directories/share/ament_cmake_include_directories/package.xml
+-- Up-to-date: /root/microros_ws/firmware/dev_ws/install/ament_cmake_include_directories/share/ament_cmake_include_directories/cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_include_directories/share/ament_cmake_include_directories/cmake/ament_include_directories_order.cmake

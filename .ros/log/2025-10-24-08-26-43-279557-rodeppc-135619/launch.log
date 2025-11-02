@@ -1,0 +1,95 @@
+1761294403.2802842 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-24-08-26-43-279557-rodeppc-135619
+1761294403.2804022 [INFO] [launch]: Default logging verbosity is set to INFO
+1761294403.4188604 [INFO] [static_transform_publisher-1]: process started with pid [135622]
+1761294403.4190235 [INFO] [robot_state_publisher-2]: process started with pid [135623]
+1761294403.4191163 [INFO] [joint_state_publisher-3]: process started with pid [135624]
+1761294403.4192088 [INFO] [move_group-4]: process started with pid [135625]
+1761294403.4192803 [INFO] [rviz2-5]: process started with pid [135626]
+1761294403.4362102 [static_transform_publisher-1] [WARN] [1761294403.435842458] []: Old-style arguments are deprecated; see --help for new-style arguments
+1761294403.4578202 [static_transform_publisher-1] [INFO] [1761294403.457591118] [static_transform_publisher]: Spinning until stopped - publishing transform
+1761294403.4579442 [static_transform_publisher-1] translation: ('0.000000', '0.000000', '0.000000')
+1761294403.4580271 [static_transform_publisher-1] rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+1761294403.4580941 [static_transform_publisher-1] from 'world' to 'base_link'
+1761294403.4620180 [robot_state_publisher-2] [WARN] [1761294403.461814285] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+1761294403.4623125 [robot_state_publisher-2] [INFO] [1761294403.461930438] [robot_state_publisher]: Robot initialized
+1761294403.4760566 [rviz2-5] QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
+1761294403.7161758 [joint_state_publisher-3] [INFO] [1761294403.715919941] [joint_state_publisher]: Waiting for robot_description to be published on the robot_description topic...
+1761294404.2279742 [rviz2-5] [INFO] [1761294404.227569570] [rviz2]: Stereo is NOT SUPPORTED
+1761294404.2285593 [rviz2-5] [INFO] [1761294404.227902622] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
+1761294404.2556539 [rviz2-5] [INFO] [1761294404.255418864] [rviz2]: Stereo is NOT SUPPORTED
+1761294404.3549659 [rviz2-5] Warning: class_loader.impl: SEVERE WARNING!!! A namespace collision has occurred with plugin factory for class rviz_default_plugins::displays::InteractiveMarkerDisplay. New factory will OVERWRITE existing one. This situation occurs when libraries containing plugins are directly linked against an executable (the one running right now generating this message). Please separate plugins out into their own library or just don't link against the library and use either class_loader::ClassLoader/MultiLibraryClassLoader to open.
+1761294404.3553395 [rviz2-5]          at line 321 in /opt/ros/jazzy/include/class_loader/class_loader/class_loader_core.hpp
+1761294404.3561699 [rviz2-5] [WARN] [1761294404.356034893] [rcl.logging_rosout]: Publisher already registered for node name: 'rviz2'. If this is due to multiple nodes with the same name then all logs for the logger named 'rviz2' will go out over the existing publisher. As soon as any node with that name is destructed it will unregister the publisher, preventing any further logs for that name from being published on the rosout topic.
+1761294407.3901913 [rviz2-5] [ERROR] [1761294407.389911780] [rviz2.moveit.ros.motion_planning_frame]: Action server: /recognize_objects not available
+1761294407.4027162 [rviz2-5] [INFO] [1761294407.402521727] [rviz2.moveit.ros.motion_planning_frame]: MoveGroup namespace changed: / -> . Reloading params.
+1761294407.4121029 [rviz2-5] [ERROR] [1761294407.411909150] [rviz2]: PluginlibFactory: The plugin for class 'moveit_rviz_plugin/MotionPlanning' failed to load. Error: According to the loaded plugin descriptions the class moveit_rviz_plugin/MotionPlanning with base class type rviz_common::Panel does not exist. Declared types are 
+1761294407.4485590 [rviz2-5] [INFO] [1761294407.448233109] [rviz2.moveit.ros.rdf_loader]: Loaded robot model in 0.00283722 seconds
+1761294407.4492998 [rviz2-5] [INFO] [1761294407.448324804] [rviz2.moveit.core.robot_model]: Loading robot model 'sekirei'...
+1761294407.4494808 [rviz2-5] [INFO] [1761294407.448345711] [rviz2.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+1761294407.4497163 [rviz2-5] [WARN] [1761294407.448644652] [rviz2.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
+1761294407.4577966 [rviz2-5] [WARN] [1761294407.457467706] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+1761294407.4583492 [rviz2-5] [INFO] [1761294407.457718352] [rviz2.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
+1761294407.5058899 [rviz2-5] [INFO] [1761294407.505471264] [rviz2.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+1761294407.5076630 [rviz2-5] [INFO] [1761294407.507334551] [rviz2.moveit.ros.planning_scene_monitor]: Listening to '/monitored_planning_scene'
+1761294407.9347832 [rviz2-5] [INFO] [1761294407.934583651] [interactive_marker_display_103673926564736]: Connected on namespace: /rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic
+1761294407.9365971 [rviz2-5] [WARN] [1761294407.936453085] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+1761294407.9423428 [rviz2-5] [INFO] [1761294407.941863118] [rviz2.moveit.ros.motion_planning_frame]: group sekirei_arm
+1761294407.9425502 [rviz2-5] [INFO] [1761294407.941967478] [rviz2.moveit.ros.motion_planning_frame]: Constructing new MoveGroup connection for group 'sekirei_arm' in namespace ''
+1761294407.9624074 [rviz2-5] [INFO] [1761294407.962106848] [rviz2.moveit.ros.move_group_interface]: Ready to take commands for planning group sekirei_arm.
+1761294407.9920886 [rviz2-5] [INFO] [1761294407.991037090] [interactive_marker_display_103673926564736]: Sending request for interactive markers
+1761294408.0602453 [rviz2-5] [INFO] [1761294408.059876605] [interactive_marker_display_103673926564736]: Service response received for initialization
+1761294419.5098789 [rviz2-5] [INFO] [1761294419.509599182] [rviz2.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+1761294419.5114202 [rviz2-5] [INFO] [1761294419.510970732] [rviz2.moveit.ros.move_group_interface]: Planning request accepted
+1761294419.5376081 [rviz2-5] [INFO] [1761294419.537411470] [rviz2.moveit.ros.move_group_interface]: Planning request complete!
+1761294419.5379755 [rviz2-5] [INFO] [1761294419.537679088] [rviz2.moveit.ros.move_group_interface]: time taken to generate plan: 0.0137256 seconds
+1761294484.4798865 [rviz2-5] [INFO] [1761294484.479349205] [rviz2.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+1761294484.4809558 [rviz2-5] [INFO] [1761294484.480499682] [rviz2.moveit.ros.move_group_interface]: Planning request accepted
+1761294484.5401866 [rviz2-5] [INFO] [1761294484.539949241] [rviz2.moveit.ros.move_group_interface]: Planning request complete!
+1761294484.5409312 [rviz2-5] [INFO] [1761294484.540814858] [rviz2.moveit.ros.move_group_interface]: time taken to generate plan: 0.0179281 seconds
+1761294484.8925903 [rviz2-5] [INFO] [1761294484.892362209] [rviz2.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+1761294484.8933740 [rviz2-5] [INFO] [1761294484.893021553] [rviz2.moveit.ros.move_group_interface]: Planning request accepted
+1761294484.9385321 [rviz2-5] [INFO] [1761294484.938374214] [rviz2.moveit.ros.move_group_interface]: Planning request complete!
+1761294484.9392459 [rviz2-5] [INFO] [1761294484.939166778] [rviz2.moveit.ros.move_group_interface]: time taken to generate plan: 0.016195 seconds
+1761294485.0455773 [rviz2-5] [INFO] [1761294485.044920948] [rviz2.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+1761294485.0466888 [rviz2-5] [INFO] [1761294485.046394022] [rviz2.moveit.ros.move_group_interface]: Planning request accepted
+1761294485.1375306 [rviz2-5] [INFO] [1761294485.137223372] [rviz2.moveit.ros.move_group_interface]: Planning request complete!
+1761294485.1381152 [rviz2-5] [INFO] [1761294485.138001456] [rviz2.moveit.ros.move_group_interface]: time taken to generate plan: 0.015045 seconds
+1761294485.2046876 [rviz2-5] [INFO] [1761294485.204186643] [rviz2.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+1761294485.2056599 [rviz2-5] [INFO] [1761294485.205065429] [rviz2.moveit.ros.move_group_interface]: Planning request accepted
+1761294485.2477865 [rviz2-5] [INFO] [1761294485.247550646] [rviz2.moveit.ros.move_group_interface]: Planning request complete!
+1761294485.2481375 [rviz2-5] [INFO] [1761294485.248051737] [rviz2.moveit.ros.move_group_interface]: time taken to generate plan: 0.0259138 seconds
+1761294485.3483324 [rviz2-5] [INFO] [1761294485.347785183] [rviz2.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+1761294485.3494468 [rviz2-5] [INFO] [1761294485.348801176] [rviz2.moveit.ros.move_group_interface]: Planning request accepted
+1761294485.4279060 [rviz2-5] [INFO] [1761294485.427594435] [rviz2.moveit.ros.move_group_interface]: Planning request complete!
+1761294485.4282403 [rviz2-5] [INFO] [1761294485.428002476] [rviz2.moveit.ros.move_group_interface]: time taken to generate plan: 0.00632112 seconds
+1761294485.4934978 [rviz2-5] [INFO] [1761294485.493105561] [rviz2.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+1761294485.4944074 [rviz2-5] [INFO] [1761294485.493953618] [rviz2.moveit.ros.move_group_interface]: Planning request accepted
+1761294485.5397494 [rviz2-5] [INFO] [1761294485.539468967] [rviz2.moveit.ros.move_group_interface]: Planning request complete!
+1761294485.5401616 [rviz2-5] [INFO] [1761294485.540018928] [rviz2.moveit.ros.move_group_interface]: time taken to generate plan: 0.0170298 seconds
+1761294485.6490943 [rviz2-5] [INFO] [1761294485.648676083] [rviz2.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+1761294485.6502385 [rviz2-5] [INFO] [1761294485.649777454] [rviz2.moveit.ros.move_group_interface]: Planning request accepted
+1761294485.7282887 [rviz2-5] [INFO] [1761294485.727776321] [rviz2.moveit.ros.move_group_interface]: Planning request complete!
+1761294485.7285216 [rviz2-5] [INFO] [1761294485.728443506] [rviz2.moveit.ros.move_group_interface]: time taken to generate plan: 0.00588283 seconds
+1761294485.7989120 [rviz2-5] [INFO] [1761294485.798545618] [rviz2.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+1761294485.8005140 [rviz2-5] [INFO] [1761294485.799627001] [rviz2.moveit.ros.move_group_interface]: Planning request accepted
+1761294485.8406730 [rviz2-5] [INFO] [1761294485.840367847] [rviz2.moveit.ros.move_group_interface]: Planning request complete!
+1761294485.8409064 [rviz2-5] [INFO] [1761294485.840500602] [rviz2.moveit.ros.move_group_interface]: time taken to generate plan: 0.0176089 seconds
+1761294485.9485025 [rviz2-5] [INFO] [1761294485.948192770] [rviz2.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+1761294485.9492676 [rviz2-5] [INFO] [1761294485.948871986] [rviz2.moveit.ros.move_group_interface]: Planning request accepted
+1761294486.0380428 [rviz2-5] [INFO] [1761294486.037875700] [rviz2.moveit.ros.move_group_interface]: Planning request complete!
+1761294486.0389192 [rviz2-5] [INFO] [1761294486.038833463] [rviz2.moveit.ros.move_group_interface]: time taken to generate plan: 0.0166409 seconds
+1761294486.1090903 [rviz2-5] [INFO] [1761294486.108777173] [rviz2.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+1761294486.1100447 [rviz2-5] [INFO] [1761294486.109594672] [rviz2.moveit.ros.move_group_interface]: Planning request accepted
+1761294486.1381238 [rviz2-5] [INFO] [1761294486.137917149] [rviz2.moveit.ros.move_group_interface]: Planning request complete!
+1761294486.1392920 [rviz2-5] [INFO] [1761294486.138987554] [rviz2.moveit.ros.move_group_interface]: time taken to generate plan: 0.0161978 seconds
+1761294503.2336092 [rviz2-5] [ERROR] [1761294503.232999024] [rviz2.moveit.ros.motion_planning_frame]: Object recognition action server not responsive
+1761294516.8280246 [rviz2-5] [ERROR] [1761294516.827723019] [rviz2.moveit.ros.background_processing]: Exception caught while processing action 'detect objects': std::future_error: Broken promise
+1761294516.8556604 [rviz2-5] [INFO] [1761294516.855186295] [rviz2.moveit.ros.planning_scene_monitor]: Stopping planning scene monitor
+1761294517.0552392 [INFO] [rviz2-5]: process has finished cleanly [pid 135626]
+1761294518.7682455 [WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+1761294518.7780585 [robot_state_publisher-2] [INFO] [1761294518.767748112] [rclcpp]: signal_handler(signum=2)
+1761294518.7789338 [static_transform_publisher-1] [INFO] [1761294518.767801499] [rclcpp]: signal_handler(signum=2)
+1761294518.9018700 [INFO] [static_transform_publisher-1]: process has finished cleanly [pid 135622]
+1761294518.9094467 [INFO] [robot_state_publisher-2]: process has finished cleanly [pid 135623]
+1761294518.9831295 [INFO] [joint_state_publisher-3]: process has finished cleanly [pid 135624]
+1761294518.9929168 [ERROR] [move_group-4]: process has died [pid 135625, exit code -11, cmd '/opt/ros/jazzy/lib/moveit_ros_move_group/move_group --ros-args -r __ns:=/ --params-file /tmp/launch_params_2slvfesr'].

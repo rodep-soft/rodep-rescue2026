@@ -70,7 +70,7 @@ Serial commands
 ### 1. 物理パラメータの抽象化
 ```cpp
 // ❌ V2: 直接計算
-counts_per_meter_ = (counts_per_rev_ * gearhead_ratio_ * pulley_ratio_) 
+counts_per_meter_ = (counts_per_rev_ * gearhead_ratio_ * pulley_ratio_)
                     / crawler_circumference_;
 
 // ✅ V3: 意味のあるメソッド
@@ -89,7 +89,7 @@ double counts_per_meter() const {
 // ✅ 標準的な差動駆動計算
 std::pair<double, double> twistToWheelVelocities(
     double linear_x, double angular_z) const {
-    
+
     const double v_left = linear_x - (angular_z * wheel_base / 2.0);
     const double v_right = linear_x + (angular_z * wheel_base / 2.0);
     return {v_left, v_right};
@@ -163,12 +163,12 @@ TEST(DifferentialDriveController, TwistToWheelVelocities) {
         .wheel_radius = 0.062
     };
     DifferentialDriveController controller(params);
-    
+
     // 前進のみ
     auto [left, right] = controller.twistToWheelVelocities(1.0, 0.0);
     EXPECT_DOUBLE_EQ(left, 1.0);
     EXPECT_DOUBLE_EQ(right, 1.0);
-    
+
     // 回転のみ
     auto [left2, right2] = controller.twistToWheelVelocities(0.0, 1.0);
     EXPECT_DOUBLE_EQ(left2, -0.25);  // -0.5 * 0.5 / 2

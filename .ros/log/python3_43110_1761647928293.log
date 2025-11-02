@@ -1,0 +1,38 @@
+[INFO] [1761647928.352233476] [rosbridge_websocket]: Rosbridge WebSocket server started on port 9090
+[INFO] [1761647955.793434089] [rosbridge_websocket]: Calling services in new thread
+[INFO] [1761647955.794218540] [rosbridge_websocket]: Sending action goals in new thread
+[INFO] [1761647955.796262405] [rosbridge_websocket]: Client connected. 1 clients total.
+[INFO] [1761647956.276187518] [rosbridge_websocket]: [Client 3ce244bc-d86a-42fc-8765-098252e98f9b] Subscribed to /chatter
+[INFO] [1761648007.599736849] [rosbridge_websocket]: Client disconnected. 0 clients total.
+[INFO] [1761651586.733077299] [rosbridge_websocket]: Calling services in new thread
+[INFO] [1761651586.733449322] [rosbridge_websocket]: Sending action goals in new thread
+[INFO] [1761651586.734270083] [rosbridge_websocket]: Client connected. 1 clients total.
+[INFO] [1761651586.838319850] [rosbridge_websocket]: [Client 4afc23a8-4df6-427a-ab7d-b9c8ebebeb01] Subscribed to /chatter
+[INFO] [1761651586.849738189] [rosbridge_websocket]: [Client 4afc23a8-4df6-427a-ab7d-b9c8ebebeb01] Subscribed to /image_raw/compressed
+[INFO] [1761651596.695669325] [rosbridge_websocket]: Client disconnected. 0 clients total.
+[INFO] [1761651723.020186065] [rosbridge_websocket]: Calling services in new thread
+[INFO] [1761651723.020624113] [rosbridge_websocket]: Sending action goals in new thread
+[INFO] [1761651723.021344538] [rosbridge_websocket]: Client connected. 1 clients total.
+[INFO] [1761651723.126383702] [rosbridge_websocket]: [Client c78d257f-b029-433e-9d18-d7bc5eef8d20] Subscribed to /chatter
+[INFO] [1761651723.127828387] [rosbridge_websocket]: [Client c78d257f-b029-433e-9d18-d7bc5eef8d20] Subscribed to /image_raw/compressed
+[INFO] [1761651733.907243272] [rosbridge_websocket]: Client disconnected. 0 clients total.
+[INFO] [1761651815.443077660] [rosbridge_websocket]: Calling services in new thread
+[INFO] [1761651815.443602532] [rosbridge_websocket]: Sending action goals in new thread
+[INFO] [1761651815.444279811] [rosbridge_websocket]: Client connected. 1 clients total.
+[INFO] [1761651815.515797322] [rosbridge_websocket]: [Client 552c4da6-2582-4aef-8878-52c91d791e99] Subscribed to /chatter
+[INFO] [1761651815.524939115] [rosbridge_websocket]: [Client 552c4da6-2582-4aef-8878-52c91d791e99] Subscribed to /image_raw/compressed
+[INFO] [1761651930.777511416] [rosbridge_websocket]: Client disconnected. 0 clients total.
+[INFO] [1761652310.074686857] [rosbridge_websocket]: Calling services in new thread
+[INFO] [1761652310.075150119] [rosbridge_websocket]: Sending action goals in new thread
+[INFO] [1761652310.076077597] [rosbridge_websocket]: Client connected. 1 clients total.
+[INFO] [1761652310.111783677] [rosbridge_websocket]: [Client cc0ac97d-4212-4878-981d-f28a69f2007f] Subscribed to /chatter
+[INFO] [1761652310.113458561] [rosbridge_websocket]: [Client cc0ac97d-4212-4878-981d-f28a69f2007f] Subscribed to /image_raw/compressed
+[INFO] [1761652345.045900078] [rosbridge_websocket]: [Client cc0ac97d-4212-4878-981d-f28a69f2007f] Subscribed to /image_raw/compressed
+[INFO] [1761652370.536254478] [rosbridge_websocket]: Client disconnected. 0 clients total.
+[INFO] [1761654730.904956194] [rosbridge_websocket]: Calling services in new thread
+[INFO] [1761654730.905302627] [rosbridge_websocket]: Sending action goals in new thread
+[INFO] [1761654730.917367476] [rosbridge_websocket]: Client connected. 1 clients total.
+[INFO] [1761654730.932060447] [rosbridge_websocket]: [Client 3d016bc3-0614-47bf-b3c7-95608d8dcff2] Subscribed to /chatter
+[INFO] [1761654730.933744600] [rosbridge_websocket]: [Client 3d016bc3-0614-47bf-b3c7-95608d8dcff2] Subscribed to /image_raw/compressed
+[WARN] [1761654777.815887375] [rosbridge_websocket]: WebSocketClosedError: Tried to write to a closed websocket
+[INFO] [1761654777.816593739] [rosbridge_websocket]: Client disconnected. 0 clients total.

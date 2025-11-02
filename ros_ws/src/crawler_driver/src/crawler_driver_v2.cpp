@@ -1,28 +1,28 @@
-#include "crawler_driver/roboclaw_driver.hpp"
-#include <rclcpp/rclcpp.hpp>
 #include <custom_interfaces/msg/crawler_velocity.hpp>
-#include <std_msgs/msg/Bool.hpp>
 #include <memory>
+#include <rclcpp/rclcpp.hpp>
+#include <std_msgs/msg/bool.hpp>
 #include <string>
+
+#include "crawler_driver/roboclaw_driver.hpp"
 
 using namespace crawler_driver::roboclaw;
 using std::placeholders::_1;
 
 /**
  * @brief ROS2 Crawler Driver Node (Roboclaw V2)
- * 
+ *
  * 新しいRoboclawDriverライブラリを使用した改善版
  * - モダンなC++20機能
  * - 型安全性の向上
  * - エラーハンドリングの改善
  */
 class CrawlerDriverV2 : public rclcpp::Node {
-public:
-    CrawlerDriverV2() 
-        : Node("crawler_driver_v2")
-        , roboclaw_(std::make_unique<RoboclawDriver>("/dev/roboclaw"))
-        , estop_active_(false)
-    {
+   public:
+    CrawlerDriverV2()
+        : Node("crawler_driver_v2"),
+          roboclaw_(std::make_unique<RoboclawDriver>("/dev/roboclaw")),
+          estop_active_(false) {
         // パラメータ宣言
         declare_parameter("crawler_circumference", 0.39);
         declare_parameter("counts_per_rev", 256);
@@ -39,9 +39,10 @@ public:
         initParams();
 
         // サブスクライバー
-        velocity_sub_ = create_subscription<custom_interfaces::msg::CrawlerVelocity>(
-            "/crawler_driver", 10,
-            std::bind(&CrawlerDriverV2::velocityCallback, this, _1));
+        velocity_sub_ =
+            create_subscription<custom_interfaces::msg::CrawlerVelocity>(
+                "/crawler_driver", 10,
+                std::bind(&CrawlerDriverV2::velocityCallback, this, _1));
 
         estop_sub_ = create_subscription<std_msgs::msg::Bool>(
             "/emergency_stop", 10,
@@ -51,41 +52,44 @@ public:
         initialize();
     }
 
-private:
+   private:
     // Roboclawドライバー
     std::unique_ptr<RoboclawDriver> roboclaw_;
-    
+
     // パラメータ
     double crawler_circumference_;
     int counts_per_rev_;
     int gearhead_ratio_;
     int pulley_ratio_;
     double counts_per_meter_;
-    
+
     // PID定数
     PIDConstants m1_pid_;
     PIDConstants m2_pid_;
-    
+
     // 状態
     bool estop_active_;
     bool initialized_;
 
     // サブスクライバー
-    rclcpp::Subscription<custom_interfaces::msg::CrawlerVelocity>::SharedPtr velocity_sub_;
+    rclcpp::Subscription<custom_interfaces::msg::CrawlerVelocity>::SharedPtr
+        velocity_sub_;
     rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr estop_sub_;
 
     /**
      * @brief パラメータ初期化
      */
     void initParams() {
-        crawler_circumference_ = get_parameter("crawler_circumference").as_double();
+        crawler_circumference_ =
+            get_parameter("crawler_circumference").as_double();
         counts_per_rev_ = get_parameter("counts_per_rev").as_int();
         gearhead_ratio_ = get_parameter("gearhead_ratio").as_int();
         pulley_ratio_ = get_parameter("pulley_ratio").as_int();
-        
+
         // counts/meterの計算
-        counts_per_meter_ = (counts_per_rev_ * gearhead_ratio_ * pulley_ratio_) / 
-                           crawler_circumference_;
+        counts_per_meter_ =
+            (counts_per_rev_ * gearhead_ratio_ * pulley_ratio_) /
+            crawler_circumference_;
 
         // PID定数の設定
         m1_pid_.p = static_cast<float>(get_parameter("m1_pid_p").as_double());
@@ -111,7 +115,7 @@ private:
      */
     void initialize() {
         RCLCPP_INFO(get_logger(), "Roboclaw初期化中...");
-        
+
         initialized_ = false;
 
         // モーター停止
@@ -170,18 +174,19 @@ private:
     /**
      * @brief 速度コマンドコールバック
      */
-    void velocityCallback(const custom_interfaces::msg::CrawlerVelocity::SharedPtr msg) {
+    void velocityCallback(
+        const custom_interfaces::msg::CrawlerVelocity::SharedPtr msg) {
         // E-stop チェック
         if (estop_active_) {
             RCLCPP_WARN_THROTTLE(get_logger(), *get_clock(), 1000,
-                                "⚠️ E-stop有効: モーターコマンド無視");
+                                 "⚠️ E-stop有効: モーターコマンド無視");
             return;
         }
 
         // 初期化チェック
         if (!initialized_) {
             RCLCPP_WARN_THROTTLE(get_logger(), *get_clock(), 1000,
-                                "⚠️ 初期化未完了: モーターコマンド無視");
+                                 "⚠️ 初期化未完了: モーターコマンド無視");
             return;
         }
 
@@ -189,14 +194,16 @@ private:
         const double m1_counts = velocityToCountsPerSec(msg->m1_vel);
         const double m2_counts = velocityToCountsPerSec(msg->m2_vel);
 
-        RCLCPP_DEBUG(get_logger(), "速度指令: M1=%.2f m/s (%.0f counts/s), M2=%.2f m/s (%.0f counts/s)",
-                    msg->m1_vel, m1_counts, msg->m2_vel, m2_counts);
+        RCLCPP_DEBUG(get_logger(),
+                     "速度指令: M1=%.2f m/s (%.0f counts/s), M2=%.2f m/s (%.0f "
+                     "counts/s)",
+                     msg->m1_vel, m1_counts, msg->m2_vel, m2_counts);
 
         // M1速度設定
         roboclaw_->setVelocity(Motor::M1, m1_counts, [this](bool success) {
             if (!success) {
                 RCLCPP_ERROR_THROTTLE(get_logger(), *get_clock(), 1000,
-                                     "M1 速度設定失敗");
+                                      "M1 速度設定失敗");
             }
         });
 
@@ -204,7 +211,7 @@ private:
         roboclaw_->setVelocity(Motor::M2, m2_counts, [this](bool success) {
             if (!success) {
                 RCLCPP_ERROR_THROTTLE(get_logger(), *get_clock(), 1000,
-                                     "M2 速度設定失敗");
+                                      "M2 速度設定失敗");
             }
         });
     }
@@ -244,16 +251,16 @@ private:
 
 int main(int argc, char* argv[]) {
     rclcpp::init(argc, argv);
-    
+
     try {
         auto node = std::make_shared<CrawlerDriverV2>();
         rclcpp::spin(node);
     } catch (const std::exception& e) {
-        RCLCPP_FATAL(rclcpp::get_logger("main"), 
-                     "ノード起動失敗: %s", e.what());
+        RCLCPP_FATAL(rclcpp::get_logger("main"), "ノード起動失敗: %s",
+                     e.what());
         return 1;
     }
-    
+
     rclcpp::shutdown();
     return 0;
 }

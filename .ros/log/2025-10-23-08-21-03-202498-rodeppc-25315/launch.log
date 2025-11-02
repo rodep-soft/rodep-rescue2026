@@ -1,0 +1,10 @@
+1761207663.2031918 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-23-08-21-03-202498-rodeppc-25315
+1761207663.2032905 [INFO] [launch]: Default logging verbosity is set to INFO
+1761207663.2637849 [INFO] [robot_state_publisher-1]: process started with pid [25318]
+1761207663.2639663 [INFO] [joint_state_publisher-2]: process started with pid [25319]
+1761207663.2640483 [INFO] [rviz2-3]: process started with pid [25320]
+1761207697.4787333 [INFO] [rviz2-3]: process has finished cleanly [pid 25320]
+1761207768.9150460 [WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+1761207769.0220630 [INFO] [robot_state_publisher-1]: process has finished cleanly [pid 25318]
+1761207769.0588307 [WARNING] [launch]: user interrupted with ctrl-c (SIGINT) again, ignoring...
+1761207769.0628211 [ERROR] [joint_state_publisher-2]: process has died [pid 25319, exit code -2, cmd '/opt/ros/jazzy/lib/joint_state_publisher/joint_state_publisher --ros-args -r __node:=joint_state_publisher --params-file /tmp/launch_params_4stzp0sc --params-file /tmp/launch_params_pr0i60jz'].

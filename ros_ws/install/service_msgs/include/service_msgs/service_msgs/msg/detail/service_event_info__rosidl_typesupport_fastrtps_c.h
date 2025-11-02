@@ -1,0 +1,1 @@
+/root/ros_ws/build/service_msgs/rosidl_typesupport_fastrtps_c/service_msgs/msg/detail/service_event_info__rosidl_typesupport_fastrtps_c.h

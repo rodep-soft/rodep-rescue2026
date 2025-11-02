@@ -1,0 +1,1 @@
+/root/ros_ws/build/type_description_interfaces/ament_cmake_core/type_description_interfacesConfig-version.cmake

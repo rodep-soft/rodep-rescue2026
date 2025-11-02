@@ -1,0 +1,27 @@
+-- Found ament_cmake_core: 2.5.4 (/root/microros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Found ament_cmake_test: 2.5.4 (/root/microros_ws/firmware/dev_ws/install/ament_cmake_test/share/ament_cmake_test/cmake)
+-- Configuring done (0.6s)
+-- Generating done (0.0s)
+-- Build files have been written to: /root/microros_ws/firmware/dev_ws/build/ament_cmake_pytest
+-- Install configuration: ""
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_index/resource_index/package_run_dependencies/ament_cmake_pytest
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_index/resource_index/parent_prefix_path/ament_cmake_pytest
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_cmake_pytest/environment/ament_prefix_path.sh
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_cmake_pytest/environment/ament_prefix_path.dsv
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_cmake_pytest/environment/path.sh
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_cmake_pytest/environment/path.dsv
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_cmake_pytest/local_setup.bash
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_cmake_pytest/local_setup.sh
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_cmake_pytest/local_setup.zsh
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_cmake_pytest/local_setup.dsv
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_cmake_pytest/package.dsv
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_index/resource_index/packages/ament_cmake_pytest
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_cmake_pytest/cmake/ament_cmake_pytest-extras.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_cmake_pytest/cmake/ament_cmake_pytestConfig.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_cmake_pytest/cmake/ament_cmake_pytestConfig-version.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_cmake_pytest/package.xml
+-- Up-to-date: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_cmake_pytest/cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_cmake_pytest/cmake/ament_get_pytest_cov_version.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_cmake_pytest/cmake/ament_has_pytest.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_pytest/share/ament_cmake_pytest/cmake/ament_add_pytest_test.cmake

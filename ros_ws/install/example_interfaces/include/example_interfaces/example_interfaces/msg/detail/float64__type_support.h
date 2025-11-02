@@ -1,0 +1,1 @@
+/root/ros_ws/build/example_interfaces/rosidl_generator_c/example_interfaces/msg/detail/float64__type_support.h

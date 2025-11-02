@@ -1,0 +1,62 @@
+1761208843.2215977 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-23-08-40-43-220904-rodeppc-48834
+1761208843.2217183 [INFO] [launch]: Default logging verbosity is set to INFO
+1761208843.3032172 [INFO] [static_transform_publisher-1]: process started with pid [48837]
+1761208843.3033874 [INFO] [robot_state_publisher-2]: process started with pid [48838]
+1761208843.3034585 [INFO] [joint_state_publisher_gui-3]: process started with pid [48839]
+1761208843.3035476 [INFO] [move_group-4]: process started with pid [48840]
+1761208843.3036597 [INFO] [rviz2-5]: process started with pid [48841]
+1761208843.3209746 [static_transform_publisher-1] [WARN] [1761208843.320615472] []: Old-style arguments are deprecated; see --help for new-style arguments
+1761208843.3366890 [static_transform_publisher-1] [INFO] [1761208843.336392646] [static_transform_publisher]: Spinning until stopped - publishing transform
+1761208843.3368909 [static_transform_publisher-1] translation: ('0.000000', '0.000000', '0.000000')
+1761208843.3370187 [static_transform_publisher-1] rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+1761208843.3371460 [static_transform_publisher-1] from 'world' to 'base_link'
+1761208843.3409336 [robot_state_publisher-2] [INFO] [1761208843.340699617] [robot_state_publisher]: Robot initialized
+1761208843.3488083 [rviz2-5] QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
+1761208843.5506678 [ERROR] [move_group-4]: process has died [pid 48840, exit code -6, cmd '/opt/ros/jazzy/lib/moveit_ros_move_group/move_group --ros-args --params-file /tmp/launch_params_f9trd4dd --params-file /tmp/launch_params_xg6pfmgy --params-file /tmp/launch_params_vkt_3wer --params-file /tmp/launch_params_bxxxqlvi --params-file /tmp/launch_params_y8t1c2pu'].
+1761208844.0237765 [joint_state_publisher_gui-3] QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
+1761208844.0337682 [rviz2-5] [INFO] [1761208844.033569802] [rviz2]: Stereo is NOT SUPPORTED
+1761208844.0340898 [rviz2-5] [INFO] [1761208844.033760570] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
+1761208844.0664127 [rviz2-5] [INFO] [1761208844.066215362] [rviz2]: Stereo is NOT SUPPORTED
+1761208844.0782461 [joint_state_publisher_gui-3] [INFO] [1761208844.077955593] [joint_state_publisher_gui]: Waiting for robot_description to be published on the robot_description topic...
+1761208844.0896049 [joint_state_publisher_gui-3] [INFO] [1761208844.089415914] [joint_state_publisher_gui]: Centering
+1761208844.1654775 [rviz2-5] Warning: class_loader.impl: SEVERE WARNING!!! A namespace collision has occurred with plugin factory for class rviz_default_plugins::displays::InteractiveMarkerDisplay. New factory will OVERWRITE existing one. This situation occurs when libraries containing plugins are directly linked against an executable (the one running right now generating this message). Please separate plugins out into their own library or just don't link against the library and use either class_loader::ClassLoader/MultiLibraryClassLoader to open.
+1761208844.1663063 [rviz2-5]          at line 321 in /opt/ros/jazzy/include/class_loader/class_loader/class_loader_core.hpp
+1761208844.1665497 [rviz2-5] [WARN] [1761208844.166359038] [rcl.logging_rosout]: Publisher already registered for node name: 'rviz2'. If this is due to multiple nodes with the same name then all logs for the logger named 'rviz2' will go out over the existing publisher. As soon as any node with that name is destructed it will unregister the publisher, preventing any further logs for that name from being published on the rosout topic.
+1761208847.1099601 [joint_state_publisher_gui-3] [INFO] [1761208847.109705843] [joint_state_publisher_gui]: Centering
+1761208847.2206345 [rviz2-5] [ERROR] [1761208847.220441571] [rviz2.moveit.ros.motion_planning_frame]: Action server: /recognize_objects not available
+1761208847.2326601 [rviz2-5] [INFO] [1761208847.232435636] [rviz2.moveit.ros.motion_planning_frame]: MoveGroup namespace changed: / -> . Reloading params.
+1761208847.2420385 [rviz2-5] [WARN] [1761208847.241867416] [rcl.logging_rosout]: Publisher already registered for node name: 'rviz2'. If this is due to multiple nodes with the same name then all logs for the logger named 'rviz2' will go out over the existing publisher. As soon as any node with that name is destructed it will unregister the publisher, preventing any further logs for that name from being published on the rosout topic.
+1761208847.2783372 [rviz2-5] [INFO] [1761208847.278180547] [rviz2.moveit.ros.rdf_loader]: Loaded robot model in 0.00279856 seconds
+1761208847.2786419 [rviz2-5] [INFO] [1761208847.278270024] [rviz2.moveit.core.robot_model]: Loading robot model 'sekirei'...
+1761208847.2787452 [rviz2-5] [INFO] [1761208847.278296967] [rviz2.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+1761208847.2787910 [rviz2-5] [WARN] [1761208847.278355732] [rviz2.moveit.core.robot_model]: Link arm_base_link has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+1761208847.2788353 [rviz2-5] [WARN] [1761208847.278438256] [rviz2.moveit.core.robot_model]: Link arm1_link has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+1761208847.2788725 [rviz2-5] [WARN] [1761208847.278464381] [rviz2.moveit.core.robot_model]: Link arm2_link has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+1761208847.2789187 [rviz2-5] [WARN] [1761208847.278483161] [rviz2.moveit.core.robot_model]: Link arm3_link has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+1761208847.2790954 [rviz2-5] [WARN] [1761208847.278498800] [rviz2.moveit.core.robot_model]: Link arm4_link has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+1761208847.2791617 [rviz2-5] [WARN] [1761208847.278513986] [rviz2.moveit.core.robot_model]: Link arm5_link has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+1761208847.2792134 [rviz2-5] [WARN] [1761208847.278528829] [rviz2.moveit.core.robot_model]: Link arm6_link has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+1761208847.2792680 [rviz2-5] [WARN] [1761208847.278544066] [rviz2.moveit.core.robot_model]: Link gui_d435_link has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+1761208847.2794058 [rviz2-5] [WARN] [1761208847.278577013] [rviz2.moveit.core.robot_model]: Link gui_t265_link has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+1761208847.2794774 [rviz2-5] [WARN] [1761208847.278732340] [rviz2.moveit.core.robot_model]: No geometry is associated to any robot links
+1761208847.2795386 [rviz2-5] [WARN] [1761208847.278818760] [rviz2.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
+1761208847.2846651 [rviz2-5] [WARN] [1761208847.284508652] [rviz2.moveit.ros.robot_model_loader]: No kinematics plugins defined. Fill and load kinematics.yaml!
+1761208847.3124247 [rviz2-5] [INFO] [1761208847.312225320] [rviz2.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+1761208847.3132558 [rviz2-5] [INFO] [1761208847.313146986] [rviz2.moveit.ros.planning_scene_monitor]: Listening to '/monitored_planning_scene'
+1761208847.6524813 [rviz2-5] [INFO] [1761208847.652305635] [interactive_marker_display_97590308109168]: Connected on namespace: /rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic
+1761208847.6537266 [rviz2-5] [INFO] [1761208847.653656911] [rviz2.moveit.ros.robot_interaction]: No active joints or end effectors found for group 'sekirei_arm'. Make sure that kinematics.yaml is loaded in this node's namespace.
+1761208847.6985843 [rviz2-5] [INFO] [1761208847.698245225] [interactive_marker_display_97590308109168]: Sending request for interactive markers
+1761208847.7317193 [rviz2-5] [INFO] [1761208847.731509720] [interactive_marker_display_97590308109168]: Service response received for initialization
+1761208852.6561928 [rviz2-5] [INFO] [1761208852.655956020] [rviz2.moveit.ros.planning_scene_monitor]: Failed to call service get_planning_scene, have you launched move_group or called psm.providePlanningSceneService()?
+1761208852.6565757 [rviz2-5] [INFO] [1761208852.656073278] [rviz2.moveit.ros.motion_planning_frame]: group sekirei_arm
+1761208852.6566889 [rviz2-5] [INFO] [1761208852.656110234] [rviz2.moveit.ros.motion_planning_frame]: Constructing new MoveGroup connection for group 'sekirei_arm' in namespace ''
+1761208912.6684258 [rviz2-5] [INFO] [1761208912.668214012] [rviz2.moveit.ros.move_group_interface]: Ready to take commands for planning group sekirei_arm.
+1761209076.9224229 [rviz2-5] [ERROR] [1761209076.922217878] [rviz2.moveit.ros.background_processing]: Exception caught while processing action 'Frame::changePlanningGroup': std::future_error: Broken promise
+1761209076.9318924 [rviz2-5] [INFO] [1761209076.931709479] [rviz2.moveit.ros.planning_scene_monitor]: Stopping planning scene monitor
+1761209077.1014068 [INFO] [rviz2-5]: process has finished cleanly [pid 48841]
+1761209078.6799529 [INFO] [joint_state_publisher_gui-3]: process has finished cleanly [pid 48839]
+1761209080.2976651 [WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+1761209080.2987266 [robot_state_publisher-2] [INFO] [1761209080.297537134] [rclcpp]: signal_handler(signum=2)
+1761209080.2988675 [static_transform_publisher-1] [INFO] [1761209080.297569804] [rclcpp]: signal_handler(signum=2)
+1761209080.4044003 [INFO] [static_transform_publisher-1]: process has finished cleanly [pid 48837]
+1761209080.4047084 [INFO] [robot_state_publisher-2]: process has finished cleanly [pid 48838]

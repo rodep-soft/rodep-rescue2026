@@ -1,0 +1,4 @@
+1761647927.8543053 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-28-10-38-47-853594-rodeppc-43107
+1761647927.8544667 [INFO] [launch]: Default logging verbosity is set to INFO
+1761647928.0013402 [INFO] [rosbridge_websocket-1]: process started with pid [43110]
+1761647928.0014813 [INFO] [rosapi_node-2]: process started with pid [43111]

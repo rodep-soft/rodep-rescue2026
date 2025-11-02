@@ -1,0 +1,297 @@
+[WARN] [1761293164.098416476] [move_group]: Using default pipeline 'ompl'
+[INFO] [1761293164.100151558] [moveit.moveit.ros.rdf_loader]: Loaded robot model in 0.00148825 seconds
+[INFO] [1761293164.100190580] [moveit.moveit.core.robot_model]: Loading robot model 'sekirei'...
+[INFO] [1761293164.100201472] [moveit.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[WARN] [1761293164.100305998] [moveit.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
+[WARN] [1761293164.103624629] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[INFO] [1761293164.103686521] [moveit.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
+[INFO] [1761293164.124359469] [moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[INFO] [1761293164.124468364] [moveit.moveit.ros.moveit_cpp]: Listening to 'joint_states' for joint states
+[INFO] [1761293164.125161997] [moveit.moveit.ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[INFO] [1761293164.125542601] [moveit.moveit.ros.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
+[INFO] [1761293164.125558183] [moveit.moveit.ros.planning_scene_monitor]: Stopping existing planning scene publisher.
+[INFO] [1761293164.125630462] [moveit.moveit.ros.planning_scene_monitor]: Stopped publishing maintained planning scene.
+[INFO] [1761293164.125899543] [moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[INFO] [1761293164.125943605] [moveit.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+[INFO] [1761293164.126474795] [moveit.moveit.ros.planning_scene_monitor]: Listening to '/planning_scene'
+[INFO] [1761293164.126488843] [moveit.moveit.ros.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[INFO] [1761293164.126844933] [moveit.moveit.ros.planning_scene_monitor]: Listening to 'collision_object'
+[INFO] [1761293164.127257556] [moveit.moveit.ros.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[WARN] [1761293164.127716724] [moveit.moveit.ros.occupancy_map_monitor]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
+[ERROR] [1761293164.127735362] [moveit.moveit.ros.occupancy_map_monitor]: No 3D sensor plugin(s) defined for octomap updates
+[INFO] [1761293165.592179103] [moveit.moveit.ros.planning_pipeline]: Successfully loaded planner 'OMPL'
+[INFO] [1761293165.593870238] [move_group]: Try loading adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[INFO] [1761293165.609715879] [move_group]: Loaded adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[INFO] [1761293165.609798799] [move_group]: Try loading adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[INFO] [1761293165.610561282] [move_group]: Loaded adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[INFO] [1761293165.610626311] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[INFO] [1761293165.610765960] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[INFO] [1761293165.610800664] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[INFO] [1761293165.610847540] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[WARN] [1761293165.610866786] [moveit.moveit.ros.planning_pipeline]: No planning response adapter names specified.
+[ERROR] [1761293165.650261690] [moveit.moveit.plugins.simple_controller_manager]: No controller_names specified.
+[INFO] [1761293165.650475779] [moveit.moveit.plugins.simple_controller_manager]: Returned 0 controllers in list
+[INFO] [1761293165.650495036] [moveit.moveit.plugins.simple_controller_manager]: Returned 0 controllers in list
+[INFO] [1761293165.651417637] [moveit.moveit.ros.trajectory_execution_manager]: Trajectory execution is managing controllers
+[INFO] [1761293165.651440501] [move_group]: MoveGroup debug mode is ON
+[INFO] [1761293165.679267359] [moveit.moveit.ros.move_group.executable]: 
+
+********************************************************
+* MoveGroup using: 
+*     - apply_planning_scene_service
+*     - clear_octomap_service
+*     - get_group_urdf
+*     - load_geometry_from_file
+*     - CartesianPathService
+*     - execute_trajectory_action
+*     - get_planning_scene_service
+*     - kinematics_service
+*     - move_action
+*     - motion_plan_service
+*     - query_planners_service
+*     - state_validation_service
+*     - save_geometry_to_file
+********************************************************
+
+[INFO] [1761293165.679334250] [moveit.moveit.ros.move_group.context]: MoveGroup context using pipeline ompl
+[INFO] [1761293165.679345420] [moveit.moveit.ros.move_group.context]: MoveGroup context initialization complete
+[INFO] [1761293191.435154454] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293191.436233815] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293191.475537441] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761293191.475647143] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293191.476238884] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293191.476379914] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293191.476430403] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293191.476535001] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293191.477142290] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[ERROR] [1761293191.477246332] [moveit.moveit.ros.move_group.move_action]: Generating a plan with planning pipeline failed.
+[INFO] [1761293191.477447399] [moveit.moveit.ros.move_group.move_action]: FAILURE
+[INFO] [1761293192.383985914] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293192.384515509] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293192.475630633] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761293192.475794759] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293192.475991697] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293192.476074039] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293192.476158497] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293192.476229445] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293192.476481925] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[ERROR] [1761293192.476564847] [moveit.moveit.ros.move_group.move_action]: Generating a plan with planning pipeline failed.
+[INFO] [1761293192.476630518] [moveit.moveit.ros.move_group.move_action]: FAILURE
+[INFO] [1761293192.946512948] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293192.946862076] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293192.975490112] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761293192.975658891] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293192.975905641] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293192.975985551] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293192.976029639] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293192.976127349] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293192.976410868] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[ERROR] [1761293192.976525691] [moveit.moveit.ros.move_group.move_action]: Generating a plan with planning pipeline failed.
+[INFO] [1761293192.976608346] [moveit.moveit.ros.move_group.move_action]: FAILURE
+[INFO] [1761293193.694763223] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293193.695028057] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293193.775571807] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761293193.775741908] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293193.775986535] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293193.776116622] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293193.776174898] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293193.776246309] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293193.776530682] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[ERROR] [1761293193.776666761] [moveit.moveit.ros.move_group.move_action]: Generating a plan with planning pipeline failed.
+[INFO] [1761293193.776783063] [moveit.moveit.ros.move_group.move_action]: FAILURE
+[INFO] [1761293194.118657332] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293194.119067828] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293194.175474457] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761293194.175605182] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293194.175841645] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293194.175915155] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293194.175959000] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293194.176022360] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293194.176439144] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[ERROR] [1761293194.176539350] [moveit.moveit.ros.move_group.move_action]: Generating a plan with planning pipeline failed.
+[INFO] [1761293194.176616493] [moveit.moveit.ros.move_group.move_action]: FAILURE
+[INFO] [1761293194.438784784] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293194.439047732] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293194.476264123] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761293194.476472012] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293194.476746484] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293194.476867762] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293194.476937025] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293194.477038533] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293194.477646442] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[ERROR] [1761293194.477794210] [moveit.moveit.ros.move_group.move_action]: Generating a plan with planning pipeline failed.
+[INFO] [1761293194.477893416] [moveit.moveit.ros.move_group.move_action]: FAILURE
+[INFO] [1761293194.599719565] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293194.600160719] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293194.675563230] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761293194.675695515] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293194.675875325] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293194.675995278] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293194.676056330] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293194.676146942] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293194.676368946] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[ERROR] [1761293194.676466263] [moveit.moveit.ros.move_group.move_action]: Generating a plan with planning pipeline failed.
+[INFO] [1761293194.676539875] [moveit.moveit.ros.move_group.move_action]: FAILURE
+[INFO] [1761293194.760276754] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293194.760599150] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293194.775546049] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761293194.775715102] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293194.775940652] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293194.776041003] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293194.776122485] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293194.776197524] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293194.776435622] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[ERROR] [1761293194.776519979] [moveit.moveit.ros.move_group.move_action]: Generating a plan with planning pipeline failed.
+[INFO] [1761293194.776611094] [moveit.moveit.ros.move_group.move_action]: FAILURE
+[INFO] [1761293194.930504372] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293194.930902259] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293194.975943281] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761293194.976139577] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293194.976412069] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293194.976546199] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293194.976630954] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293194.976743205] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293194.977146132] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[ERROR] [1761293194.977320086] [moveit.moveit.ros.move_group.move_action]: Generating a plan with planning pipeline failed.
+[INFO] [1761293194.977429347] [moveit.moveit.ros.move_group.move_action]: FAILURE
+[INFO] [1761293198.255002855] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293198.255328851] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293198.275587222] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761293198.275660590] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293198.275739783] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293198.275767464] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293198.275783801] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293198.275812580] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293198.275913551] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[ERROR] [1761293198.275960047] [moveit.moveit.ros.move_group.move_action]: Generating a plan with planning pipeline failed.
+[INFO] [1761293198.275989044] [moveit.moveit.ros.move_group.move_action]: FAILURE
+[INFO] [1761293198.770140636] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293198.770677810] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293198.775663723] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761293198.775819671] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293198.776010538] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293198.776153417] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293198.776210536] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293198.776275599] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293198.776526238] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[ERROR] [1761293198.776633593] [moveit.moveit.ros.move_group.move_action]: Generating a plan with planning pipeline failed.
+[INFO] [1761293198.776710653] [moveit.moveit.ros.move_group.move_action]: FAILURE
+[INFO] [1761293199.346518061] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293199.346935468] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293199.375558862] [moveit.moveit.ros.move_group.move_action]: Combined planning and execution request received for MoveGroup action. Forwarding to planning and execution pipeline.
+[INFO] [1761293199.375736366] [moveit.moveit.ros.plan_execution]: Planning attempt 1 of at most 1
+[INFO] [1761293199.375854062] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293199.375957979] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293199.375976132] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293199.375990893] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293199.376009812] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293199.376164505] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[INFO] [1761293199.376231382] [moveit.moveit.ros.move_group.move_action]: START_STATE_IN_COLLISION
+[INFO] [1761293200.094851960] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293200.095019700] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293200.175031493] [moveit.moveit.ros.move_group.move_action]: Combined planning and execution request received for MoveGroup action. Forwarding to planning and execution pipeline.
+[INFO] [1761293200.175262961] [moveit.moveit.ros.plan_execution]: Planning attempt 1 of at most 1
+[INFO] [1761293200.175323424] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293200.175423266] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293200.175441980] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293200.175451343] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293200.175487549] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293200.175569709] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[INFO] [1761293200.175673245] [moveit.moveit.ros.move_group.move_action]: START_STATE_IN_COLLISION
+[INFO] [1761293200.271032531] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293200.271298400] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293200.274762499] [moveit.moveit.ros.move_group.move_action]: Combined planning and execution request received for MoveGroup action. Forwarding to planning and execution pipeline.
+[INFO] [1761293200.274849459] [moveit.moveit.ros.plan_execution]: Planning attempt 1 of at most 1
+[INFO] [1761293200.274895445] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293200.274950012] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293200.274966902] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293200.274976553] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293200.274989651] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293200.275053434] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[INFO] [1761293200.275113857] [moveit.moveit.ros.move_group.move_action]: START_STATE_IN_COLLISION
+[INFO] [1761293200.423311607] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293200.423438424] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293200.475635310] [moveit.moveit.ros.move_group.move_action]: Combined planning and execution request received for MoveGroup action. Forwarding to planning and execution pipeline.
+[INFO] [1761293200.475808049] [moveit.moveit.ros.plan_execution]: Planning attempt 1 of at most 1
+[INFO] [1761293200.475985579] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293200.476260939] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293200.476365044] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293200.476441201] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293200.476533513] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293200.477023073] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[INFO] [1761293200.477212705] [moveit.moveit.ros.move_group.move_action]: START_STATE_IN_COLLISION
+[INFO] [1761293200.584599609] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293200.584943101] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293200.674758276] [moveit.moveit.ros.move_group.move_action]: Combined planning and execution request received for MoveGroup action. Forwarding to planning and execution pipeline.
+[INFO] [1761293200.674817528] [moveit.moveit.ros.plan_execution]: Planning attempt 1 of at most 1
+[INFO] [1761293200.674862313] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293200.674922434] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293200.674935888] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293200.674945342] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293200.674957814] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293200.675020150] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[INFO] [1761293200.675051240] [moveit.moveit.ros.move_group.move_action]: START_STATE_IN_COLLISION
+[INFO] [1761293200.881780679] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293200.882415598] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293200.975577841] [moveit.moveit.ros.move_group.move_action]: Combined planning and execution request received for MoveGroup action. Forwarding to planning and execution pipeline.
+[INFO] [1761293200.975803819] [moveit.moveit.ros.plan_execution]: Planning attempt 1 of at most 1
+[INFO] [1761293200.975998582] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293200.976211561] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293200.976273806] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293200.976315007] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293200.976368299] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293200.976606096] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[INFO] [1761293200.976756952] [moveit.moveit.ros.move_group.move_action]: START_STATE_IN_COLLISION
+[INFO] [1761293201.170261246] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293201.170805897] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293201.175804743] [moveit.moveit.ros.move_group.move_action]: Combined planning and execution request received for MoveGroup action. Forwarding to planning and execution pipeline.
+[INFO] [1761293201.175975325] [moveit.moveit.ros.plan_execution]: Planning attempt 1 of at most 1
+[INFO] [1761293201.176054031] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293201.176273905] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293201.176314877] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293201.176349768] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293201.176397652] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293201.176615858] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[INFO] [1761293201.176657966] [moveit.moveit.ros.move_group.move_action]: START_STATE_IN_COLLISION
+[INFO] [1761293201.371184227] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293201.371471203] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293201.374777916] [moveit.moveit.ros.move_group.move_action]: Combined planning and execution request received for MoveGroup action. Forwarding to planning and execution pipeline.
+[INFO] [1761293201.374833990] [moveit.moveit.ros.plan_execution]: Planning attempt 1 of at most 1
+[INFO] [1761293201.374865082] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293201.374918339] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293201.374932591] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293201.374942114] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293201.374954876] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293201.375019623] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[INFO] [1761293201.375051733] [moveit.moveit.ros.move_group.move_action]: START_STATE_IN_COLLISION
+[INFO] [1761293209.754555823] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293209.755195593] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293209.775009322] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761293209.775167603] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293209.775304133] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293209.775351940] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293209.775363324] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293209.775406977] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293209.775488807] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[ERROR] [1761293209.775573960] [moveit.moveit.ros.move_group.move_action]: Generating a plan with planning pipeline failed.
+[INFO] [1761293209.775600622] [moveit.moveit.ros.move_group.move_action]: FAILURE
+[INFO] [1761293210.993887702] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761293210.994327938] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761293211.075781888] [moveit.moveit.ros.move_group.move_action]: Combined planning and execution request received for MoveGroup action. Forwarding to planning and execution pipeline.
+[INFO] [1761293211.075990135] [moveit.moveit.ros.plan_execution]: Planning attempt 1 of at most 1
+[INFO] [1761293211.076180931] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761293211.076429956] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761293211.076494824] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761293211.076539296] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761293211.076593353] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[ERROR] [1761293211.076881553] [move_group]: PlanningRequestAdapter 'CheckStartStateCollision' failed, because '6 contact(s) detected : arm2_link - arm_base_link, arm2_link - gui_d435_link, arm3_link - arm5_link, arm3_link - arm6_link, arm3_link - gui_d435_link, arm_base_link - gui_t265_link, '. Aborting planning pipeline.
+[INFO] [1761293211.077053332] [moveit.moveit.ros.move_group.move_action]: START_STATE_IN_COLLISION
+[INFO] [1761293216.444703924] [moveit.moveit.ros.move_group.cartesian_path_service_capability]: Received request to compute Cartesian path
+[INFO] [1761293216.445064121] [moveit.moveit.ros.move_group.cartesian_path_service_capability]: Attempting to follow 1 waypoints for link 'arm6_link' using a step of 0.010000 m and jump threshold 0.000000 (in global reference frame)
+[ERROR] [1761293216.500631240] [moveit.moveit.core.time_optimal_trajectory_generation]: No acceleration limit was defined for joint arm_joint1! You have to define acceleration limits in the URDF or joint_limits.yaml
+[INFO] [1761293216.500844360] [moveit.moveit.ros.move_group.cartesian_path_service_capability]: Computed Cartesian path with 1 points (followed 0.000000% of requested trajectory)
+[INFO] [1761293217.563590512] [moveit.moveit.ros.move_group.cartesian_path_service_capability]: Received request to compute Cartesian path
+[INFO] [1761293217.563775368] [moveit.moveit.ros.move_group.cartesian_path_service_capability]: Attempting to follow 1 waypoints for link 'arm6_link' using a step of 0.010000 m and jump threshold 0.000000 (in global reference frame)
+[ERROR] [1761293217.614241089] [moveit.moveit.core.time_optimal_trajectory_generation]: No acceleration limit was defined for joint arm_joint1! You have to define acceleration limits in the URDF or joint_limits.yaml
+[INFO] [1761293217.614312190] [moveit.moveit.ros.move_group.cartesian_path_service_capability]: Computed Cartesian path with 1 points (followed 0.000000% of requested trajectory)
+[INFO] [1761293226.718803619] [rclcpp]: signal_handler(signum=2)

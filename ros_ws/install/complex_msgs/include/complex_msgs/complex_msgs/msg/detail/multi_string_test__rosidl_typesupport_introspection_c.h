@@ -1,0 +1,1 @@
+/root/ros_ws/build/complex_msgs/rosidl_typesupport_introspection_c/complex_msgs/msg/detail/multi_string_test__rosidl_typesupport_introspection_c.h

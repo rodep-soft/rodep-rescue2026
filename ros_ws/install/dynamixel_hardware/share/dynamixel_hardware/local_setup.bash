@@ -1,0 +1,1 @@
+/root/ros_ws/build/dynamixel_hardware/ament_cmake_environment_hooks/local_setup.bash

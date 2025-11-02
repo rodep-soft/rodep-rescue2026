@@ -1,0 +1,13 @@
+1761819686.2347381 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-30-10-21-26-233945-rodeppc-64783
+1761819686.2348578 [INFO] [launch]: Default logging verbosity is set to INFO
+1761819686.3199067 [INFO] [robot_state_publisher-1]: process started with pid [64786]
+1761819686.3204267 [INFO] [joy_node-2]: process started with pid [64787]
+1761819686.3206680 [INFO] [joy_teleop.py-3]: process started with pid [64788]
+1761819688.3223884 [INFO] [launch.user]: Starting RViz with config: /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/rviz_simple.rviz
+1761819688.3274746 [INFO] [rviz2-4]: process started with pid [64834]
+1761820042.3764167 [WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+1761820042.4860039 [INFO] [robot_state_publisher-1]: process has finished cleanly [pid 64786]
+1761820042.5041118 [INFO] [joy_node-2]: process has finished cleanly [pid 64787]
+1761820042.5362966 [WARNING] [launch]: user interrupted with ctrl-c (SIGINT) again, ignoring...
+1761820042.5416896 [ERROR] [joy_teleop.py-3]: process has died [pid 64788, exit code -2, cmd '/root/ros_ws/install/sekirei_moveit_config/lib/sekirei_moveit_config/joy_teleop.py --ros-args -r __node:=joy_teleop --params-file /tmp/launch_params_va4qros6'].
+1761820042.5589738 [ERROR] [rviz2-4]: process has died [pid 64834, exit code -2, cmd '/opt/ros/jazzy/lib/rviz2/rviz2 -d /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/rviz_simple.rviz --ros-args -r __node:=rviz2'].

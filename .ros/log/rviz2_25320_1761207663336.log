@@ -1,0 +1,21 @@
+[INFO] [1761207664.017454097] [rviz2]: Stereo is NOT SUPPORTED
+[INFO] [1761207664.017676017] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
+[INFO] [1761207664.046130528] [rviz2]: Stereo is NOT SUPPORTED
+[ERROR] [1761207679.142919071] [rviz2]: Could not load resource [package://demo_arm/meshes/r_a_2019_2020_asm2.STL]: Unable to open file "package://demo_arm/meshes/r_a_2019_2020_asm2.STL".
+[ERROR] [1761207679.146556798] [rviz2]: Could not load resource [package://demo_arm/meshes/r_a_2019_2020_asm2.STL]: Unable to open file "package://demo_arm/meshes/r_a_2019_2020_asm2.STL".
+[ERROR] [1761207679.147353879] [rviz2]: Could not load resource [package://demo_arm/meshes/r_a_2019_2020_asm3.STL]: Unable to open file "package://demo_arm/meshes/r_a_2019_2020_asm3.STL".
+[ERROR] [1761207679.147520127] [rviz2]: Could not load resource [package://demo_arm/meshes/r_a_2019_2020_asm3.STL]: Unable to open file "package://demo_arm/meshes/r_a_2019_2020_asm3.STL".
+[ERROR] [1761207679.147767634] [rviz2]: Could not load resource [package://demo_arm/meshes/r_a_2019_2020_asm4.STL]: Unable to open file "package://demo_arm/meshes/r_a_2019_2020_asm4.STL".
+[ERROR] [1761207679.147922107] [rviz2]: Could not load resource [package://demo_arm/meshes/r_a_2019_2020_asm4.STL]: Unable to open file "package://demo_arm/meshes/r_a_2019_2020_asm4.STL".
+[ERROR] [1761207679.148153740] [rviz2]: Could not load resource [package://demo_arm/meshes/r_a_2019_2020_asm5.STL]: Unable to open file "package://demo_arm/meshes/r_a_2019_2020_asm5.STL".
+[ERROR] [1761207679.148364450] [rviz2]: Could not load resource [package://demo_arm/meshes/r_a_2019_2020_asm5.STL]: Unable to open file "package://demo_arm/meshes/r_a_2019_2020_asm5.STL".
+[ERROR] [1761207679.148561236] [rviz2]: Could not load resource [package://demo_arm/meshes/r_a_2019_l_asm6.STL]: Unable to open file "package://demo_arm/meshes/r_a_2019_l_asm6.STL".
+[ERROR] [1761207679.148786653] [rviz2]: Could not load resource [package://demo_arm/meshes/r_a_2019_l_asm6.STL]: Unable to open file "package://demo_arm/meshes/r_a_2019_l_asm6.STL".
+[ERROR] [1761207679.149012757] [rviz2]: Could not load resource [package://demo_arm/meshes/r_a_2019_l_asm7_ver2.STL]: Unable to open file "package://demo_arm/meshes/r_a_2019_l_asm7_ver2.STL".
+[ERROR] [1761207679.149209148] [rviz2]: Could not load resource [package://demo_arm/meshes/r_a_2019_l_asm7_ver2.STL]: Unable to open file "package://demo_arm/meshes/r_a_2019_l_asm7_ver2.STL".
+[ERROR] [1761207679.149401886] [rviz2]: Could not load resource [package://demo_arm/meshes/r_a_2019_2020_asm1.STL]: Unable to open file "package://demo_arm/meshes/r_a_2019_2020_asm1.STL".
+[ERROR] [1761207679.149563170] [rviz2]: Could not load resource [package://demo_arm/meshes/r_a_2019_2020_asm1.STL]: Unable to open file "package://demo_arm/meshes/r_a_2019_2020_asm1.STL".
+[ERROR] [1761207679.149791206] [rviz2]: Could not load resource [package://demo_arm/meshes/d435.STL]: Unable to open file "package://demo_arm/meshes/d435.STL".
+[ERROR] [1761207679.149968365] [rviz2]: Could not load resource [package://demo_arm/meshes/d435.STL]: Unable to open file "package://demo_arm/meshes/d435.STL".
+[ERROR] [1761207679.150221672] [rviz2]: Could not load resource [package://demo_arm/meshes/t265.STL]: Unable to open file "package://demo_arm/meshes/t265.STL".
+[ERROR] [1761207679.150598383] [rviz2]: Could not load resource [package://demo_arm/meshes/t265.STL]: Unable to open file "package://demo_arm/meshes/t265.STL".

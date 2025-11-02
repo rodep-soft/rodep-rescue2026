@@ -1,0 +1,1 @@
+/root/ros_ws/src/ros2/example_interfaces/msg/Empty.msg

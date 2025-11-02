@@ -1,0 +1,1 @@
+/root/ros_ws/build/diagnostic_msgs/rosidl_cmake/rosidl_cmake-extras.cmake

@@ -1,0 +1,1 @@
+/root/ros_ws/build/shape_msgs/rosidl_generator_cpp/shape_msgs/msg/detail/mesh__builder.hpp

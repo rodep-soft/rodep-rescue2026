@@ -1,0 +1,1 @@
+/root/ros_ws/build/urdf_test_node/ament_cmake_core/urdf_test_nodeConfig-version.cmake

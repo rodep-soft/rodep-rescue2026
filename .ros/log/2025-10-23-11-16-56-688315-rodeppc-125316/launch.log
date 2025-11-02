@@ -1,0 +1,72 @@
+1761218216.6889830 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-23-11-16-56-688315-rodeppc-125316
+1761218216.6891286 [INFO] [launch]: Default logging verbosity is set to INFO
+1761218216.7905905 [INFO] [static_transform_publisher-1]: process started with pid [125319]
+1761218216.7907331 [INFO] [robot_state_publisher-2]: process started with pid [125320]
+1761218216.7908053 [INFO] [joint_state_publisher_gui-3]: process started with pid [125321]
+1761218216.7908685 [INFO] [move_group-4]: process started with pid [125322]
+1761218216.7909355 [INFO] [rviz2-5]: process started with pid [125323]
+1761218216.8086421 [static_transform_publisher-1] [WARN] [1761218216.808308910] []: Old-style arguments are deprecated; see --help for new-style arguments
+1761218216.8293653 [static_transform_publisher-1] [INFO] [1761218216.829007738] [static_transform_publisher]: Spinning until stopped - publishing transform
+1761218216.8295493 [static_transform_publisher-1] translation: ('0.000000', '0.000000', '0.000000')
+1761218216.8296456 [static_transform_publisher-1] rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+1761218216.8297260 [static_transform_publisher-1] from 'world' to 'base_link'
+1761218216.8319094 [robot_state_publisher-2] [WARN] [1761218216.831735834] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+1761218216.8321521 [robot_state_publisher-2] [INFO] [1761218216.831891637] [robot_state_publisher]: Robot initialized
+1761218216.8483639 [rviz2-5] QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
+1761218217.0452807 [ERROR] [move_group-4]: process has died [pid 125322, exit code -6, cmd '/opt/ros/jazzy/lib/moveit_ros_move_group/move_group --ros-args --params-file /tmp/launch_params_a0f44lsz'].
+1761218217.5368032 [joint_state_publisher_gui-3] QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
+1761218217.5470636 [rviz2-5] [INFO] [1761218217.546927648] [rviz2]: Stereo is NOT SUPPORTED
+1761218217.5473952 [rviz2-5] [INFO] [1761218217.547043331] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
+1761218217.5837052 [rviz2-5] [INFO] [1761218217.583516966] [rviz2]: Stereo is NOT SUPPORTED
+1761218217.5926943 [joint_state_publisher_gui-3] [INFO] [1761218217.592332005] [joint_state_publisher_gui]: Waiting for robot_description to be published on the robot_description topic...
+1761218217.6056819 [joint_state_publisher_gui-3] [INFO] [1761218217.605485671] [joint_state_publisher_gui]: Centering
+1761218217.6857564 [rviz2-5] Warning: class_loader.impl: SEVERE WARNING!!! A namespace collision has occurred with plugin factory for class rviz_default_plugins::displays::InteractiveMarkerDisplay. New factory will OVERWRITE existing one. This situation occurs when libraries containing plugins are directly linked against an executable (the one running right now generating this message). Please separate plugins out into their own library or just don't link against the library and use either class_loader::ClassLoader/MultiLibraryClassLoader to open.
+1761218217.6861310 [rviz2-5]          at line 321 in /opt/ros/jazzy/include/class_loader/class_loader/class_loader_core.hpp
+1761218217.6868532 [rviz2-5] [WARN] [1761218217.686702174] [rcl.logging_rosout]: Publisher already registered for node name: 'rviz2'. If this is due to multiple nodes with the same name then all logs for the logger named 'rviz2' will go out over the existing publisher. As soon as any node with that name is destructed it will unregister the publisher, preventing any further logs for that name from being published on the rosout topic.
+1761218219.8438292 [joint_state_publisher_gui-3] [INFO] [1761218219.843680287] [joint_state_publisher_gui]: Centering
+1761218219.8465941 [joint_state_publisher_gui-3] [INFO] [1761218219.846496744] [joint_state_publisher_gui]: Centering
+1761218220.7273135 [rviz2-5] [ERROR] [1761218220.726929469] [rviz2.moveit.ros.motion_planning_frame]: Action server: /recognize_objects not available
+1761218220.7407279 [rviz2-5] [INFO] [1761218220.740443435] [rviz2.moveit.ros.motion_planning_frame]: MoveGroup namespace changed: / -> . Reloading params.
+1761218220.7512519 [rviz2-5] [WARN] [1761218220.750998379] [rcl.logging_rosout]: Publisher already registered for node name: 'rviz2'. If this is due to multiple nodes with the same name then all logs for the logger named 'rviz2' will go out over the existing publisher. As soon as any node with that name is destructed it will unregister the publisher, preventing any further logs for that name from being published on the rosout topic.
+1761218220.7853150 [rviz2-5] [INFO] [1761218220.785121581] [rviz2.moveit.ros.rdf_loader]: Loaded robot model in 0.00249326 seconds
+1761218220.7856216 [rviz2-5] [INFO] [1761218220.785198489] [rviz2.moveit.core.robot_model]: Loading robot model 'sekirei'...
+1761218220.7857308 [rviz2-5] [INFO] [1761218220.785216839] [rviz2.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+1761218220.7859399 [rviz2-5] [WARN] [1761218220.785445454] [rviz2.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
+1761218220.7914536 [rviz2-5] [WARN] [1761218220.791292251] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+1761218220.7916708 [rviz2-5] [INFO] [1761218220.791420978] [rviz2.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
+1761218220.8154879 [rviz2-5] [INFO] [1761218220.815314751] [rviz2.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+1761218220.8162310 [rviz2-5] [INFO] [1761218220.816141229] [rviz2.moveit.ros.planning_scene_monitor]: Listening to '/monitored_planning_scene'
+1761218221.2117960 [rviz2-5] [INFO] [1761218221.211632699] [interactive_marker_display_98325003102176]: Connected on namespace: /rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic
+1761218221.2137830 [rviz2-5] [WARN] [1761218221.213613827] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+1761218221.2640615 [rviz2-5] [INFO] [1761218221.263673153] [interactive_marker_display_98325003102176]: Sending request for interactive markers
+1761218221.2972610 [rviz2-5] [INFO] [1761218221.297053926] [interactive_marker_display_98325003102176]: Service response received for initialization
+1761218226.2175317 [rviz2-5] [INFO] [1761218226.217255320] [rviz2.moveit.ros.planning_scene_monitor]: Failed to call service get_planning_scene, have you launched move_group or called psm.providePlanningSceneService()?
+1761218226.2176824 [rviz2-5] [INFO] [1761218226.217351702] [rviz2.moveit.ros.motion_planning_frame]: group sekirei_arm
+1761218226.2177496 [rviz2-5] [INFO] [1761218226.217360001] [rviz2.moveit.ros.motion_planning_frame]: Constructing new MoveGroup connection for group 'sekirei_arm' in namespace ''
+1761218264.4645321 [joint_state_publisher_gui-3] [INFO] [1761218264.464340606] [joint_state_publisher_gui]: Randomizing
+1761218286.2298331 [rviz2-5] [INFO] [1761218286.229691105] [rviz2.moveit.ros.move_group_interface]: Ready to take commands for planning group sekirei_arm.
+1761218289.2006700 [WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+1761218289.2035015 [rviz2-5] [INFO] [1761218289.200231293] [rclcpp]: signal_handler(signum=2)
+1761218289.2037394 [rviz2-5] [WARN] [1761218289.200477968] [interactive_marker_display_98325003102176]: Server not available while running, resetting
+1761218289.2038648 [rviz2-5] 
+1761218289.2039557 [rviz2-5] >>> [rcutils|error_handling.c:108] rcutils_set_error_state()
+1761218289.2041390 [rviz2-5] This error state is being overwritten:
+1761218289.2042084 [rviz2-5] 
+1761218289.2042768 [rviz2-5]   'rcl node's context is invalid, at ./src/rcl/node.c:404'
+1761218289.2043345 [rviz2-5] 
+1761218289.2043982 [rviz2-5] with this new error message:
+1761218289.2044792 [rviz2-5] 
+1761218289.2045448 [rviz2-5]   'publisher's context is invalid, at ./src/rcl/publisher.c:423'
+1761218289.2046039 [rviz2-5] 
+1761218289.2046678 [rviz2-5] rcutils_reset_error() should be called after error handling to avoid this.
+1761218289.2047176 [rviz2-5] <<<
+1761218289.2047675 [rviz2-5] Failed to publish log message to rosout: publisher's context is invalid, at ./src/rcl/publisher.c:423
+1761218289.2051497 [static_transform_publisher-1] [INFO] [1761218289.200328119] [rclcpp]: signal_handler(signum=2)
+1761218289.2054851 [robot_state_publisher-2] [INFO] [1761218289.200329837] [rclcpp]: signal_handler(signum=2)
+1761218289.2109859 [ERROR] [joint_state_publisher_gui-3]: process has died [pid 125321, exit code -2, cmd '/opt/ros/jazzy/lib/joint_state_publisher_gui/joint_state_publisher_gui --ros-args -r __node:=joint_state_publisher_gui'].
+1761218289.2389755 [rviz2-5] [ERROR] [1761218289.238794710] [rviz2.moveit.ros.background_processing]: Exception caught while processing action 'Frame::changePlanningGroup': std::future_error: Broken promise
+1761218289.2632408 [rviz2-5] [INFO] [1761218289.262923332] [rviz2.moveit.ros.planning_scene_monitor]: Stopping planning scene monitor
+1761218289.3114965 [INFO] [static_transform_publisher-1]: process has finished cleanly [pid 125319]
+1761218289.3122325 [INFO] [robot_state_publisher-2]: process has finished cleanly [pid 125320]
+1761218289.4079468 [WARNING] [launch]: user interrupted with ctrl-c (SIGINT) again, ignoring...
+1761218289.4249539 [INFO] [rviz2-5]: process has finished cleanly [pid 125323]

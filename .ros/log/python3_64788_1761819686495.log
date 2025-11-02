@@ -1,0 +1,7 @@
+[INFO] [1761819686.552885916] [joy_teleop]: Joy teleop started! use_action=False
+[INFO] [1761819686.553232590] [joy_teleop]: Left stick X: Joint 1 (base rotation)
+[INFO] [1761819686.553680706] [joy_teleop]: Left stick Y: Joint 2 (shoulder)
+[INFO] [1761819686.554057144] [joy_teleop]: Right stick Y: Joint 3 (elbow)
+[INFO] [1761819686.554375431] [joy_teleop]: Right stick X: Joint 4 (wrist1)
+[INFO] [1761819686.554786184] [joy_teleop]: L1/R1: Joint 5 (wrist2)
+[INFO] [1761819686.555113053] [joy_teleop]: L2/R2: Joint 6 (wrist3)

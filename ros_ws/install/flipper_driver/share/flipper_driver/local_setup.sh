@@ -1,0 +1,1 @@
+/root/ros_ws/build/flipper_driver/ament_cmake_environment_hooks/local_setup.sh

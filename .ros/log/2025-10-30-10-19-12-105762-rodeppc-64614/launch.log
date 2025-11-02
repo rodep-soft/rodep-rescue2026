@@ -1,0 +1,12 @@
+1761819552.1065273 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-30-10-19-12-105762-rodeppc-64614
+1761819552.1066229 [INFO] [launch]: Default logging verbosity is set to INFO
+1761819552.1922874 [INFO] [robot_state_publisher-1]: process started with pid [64617]
+1761819552.1925285 [INFO] [joy_node-2]: process started with pid [64618]
+1761819552.1926320 [INFO] [joy_teleop.py-3]: process started with pid [64619]
+1761819554.1926596 [INFO] [launch.user]: Starting RViz with config: /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/rviz_simple.rviz
+1761819554.1943007 [INFO] [rviz2-4]: process started with pid [64665]
+1761819561.2659087 [INFO] [rviz2-4]: process has finished cleanly [pid 64665]
+1761819576.5664570 [WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+1761819576.6756654 [INFO] [robot_state_publisher-1]: process has finished cleanly [pid 64617]
+1761819576.7198405 [INFO] [joy_node-2]: process has finished cleanly [pid 64618]
+1761819576.7212222 [INFO] [joy_teleop.py-3]: process has finished cleanly [pid 64619]

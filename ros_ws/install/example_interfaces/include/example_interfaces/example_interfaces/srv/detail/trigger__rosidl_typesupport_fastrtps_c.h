@@ -1,0 +1,1 @@
+/root/ros_ws/build/example_interfaces/rosidl_typesupport_fastrtps_c/example_interfaces/srv/detail/trigger__rosidl_typesupport_fastrtps_c.h

@@ -1,0 +1,9 @@
+1761207417.3340490 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-23-08-16-57-333460-rodeppc-14128
+1761207417.3342533 [INFO] [launch]: Default logging verbosity is set to INFO
+1761207417.3836389 [INFO] [robot_state_publisher-1]: process started with pid [14131]
+1761207417.3837707 [INFO] [joint_state_publisher-2]: process started with pid [14132]
+1761207417.3838527 [INFO] [rviz2-3]: process started with pid [14133]
+1761207421.4447711 [ERROR] [rviz2-3]: process has died [pid 14133, exit code -6, cmd '/opt/ros/jazzy/lib/rviz2/rviz2 --ros-args -r __node:=rviz2'].
+1761207452.2351780 [WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+1761207452.3423622 [INFO] [robot_state_publisher-1]: process has finished cleanly [pid 14131]
+1761207452.4026556 [INFO] [joint_state_publisher-2]: process has finished cleanly [pid 14132]

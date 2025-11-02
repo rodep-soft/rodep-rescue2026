@@ -1,0 +1,1 @@
+/root/ros_ws/build/service_msgs/ament_cmake_core/service_msgsConfig-version.cmake

@@ -1,0 +1,112 @@
+[0.562s] Invoking command in '/root/microros_ws/firmware/dev_ws/ament/ament_lint/ament_copyright': AMENT_PREFIX_PATH=/root/microros_ws/firmware/dev_ws/install/ament_pep257:/root/microros_ws/firmware/dev_ws/install/ament_flake8:/root/microros_ws/firmware/dev_ws/install/ament_lint PATH=/root/microros_ws/firmware/dev_ws/install/ament_pep257/bin:/root/microros_ws/firmware/dev_ws/install/ament_flake8/bin:${PATH} PYTHONPATH=/root/microros_ws/firmware/dev_ws/build/ament_copyright/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages:/root/microros_ws/firmware/dev_ws/install/ament_pep257/lib/python3.12/site-packages:/root/microros_ws/firmware/dev_ws/install/ament_flake8/lib/python3.12/site-packages:/root/microros_ws/firmware/dev_ws/install/ament_lint/lib/python3.12/site-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/ament_copyright build --build-base /root/microros_ws/firmware/dev_ws/build/ament_copyright/build install --record /root/microros_ws/firmware/dev_ws/build/ament_copyright/install.log --single-version-externally-managed install_data
+[0.801s] running egg_info
+[0.801s] creating ../../../build/ament_copyright/ament_copyright.egg-info
+[0.811s] writing ../../../build/ament_copyright/ament_copyright.egg-info/PKG-INFO
+[0.812s] writing dependency_links to ../../../build/ament_copyright/ament_copyright.egg-info/dependency_links.txt
+[0.812s] writing entry points to ../../../build/ament_copyright/ament_copyright.egg-info/entry_points.txt
+[0.812s] writing requirements to ../../../build/ament_copyright/ament_copyright.egg-info/requires.txt
+[0.812s] writing top-level names to ../../../build/ament_copyright/ament_copyright.egg-info/top_level.txt
+[0.812s] writing manifest file '../../../build/ament_copyright/ament_copyright.egg-info/SOURCES.txt'
+[0.836s] reading manifest file '../../../build/ament_copyright/ament_copyright.egg-info/SOURCES.txt'
+[0.837s] writing manifest file '../../../build/ament_copyright/ament_copyright.egg-info/SOURCES.txt'
+[0.837s] running build
+[0.837s] running build_py
+[0.837s] creating /root/microros_ws/firmware/dev_ws/build/ament_copyright/build
+[0.837s] creating /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib
+[0.837s] creating /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright
+[0.837s] copying ament_copyright/licenses.py -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright
+[0.838s] copying ament_copyright/main.py -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright
+[0.838s] copying ament_copyright/crawler.py -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright
+[0.838s] copying ament_copyright/pytest_marker.py -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright
+[0.838s] copying ament_copyright/parser.py -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright
+[0.838s] copying ament_copyright/copyright_names.py -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright
+[0.838s] copying ament_copyright/__init__.py -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright
+[0.839s] creating /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.839s] copying ament_copyright/template/mit0_header.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.839s] copying ament_copyright/template/boost1_header.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.839s] copying ament_copyright/template/mit_contributing.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.839s] copying ament_copyright/template/bsd_2clause_license.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.839s] copying ament_copyright/template/gplv3_contributing.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.839s] copying ament_copyright/template/lgplv3_contributing.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.840s] copying ament_copyright/template/lgplv3_license.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.840s] copying ament_copyright/template/mit_header.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.840s] copying ament_copyright/template/mit_header_0.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.840s] copying ament_copyright/template/bsd2_license.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.841s] copying ament_copyright/template/gplv3_license.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.841s] copying ament_copyright/template/bsd_3clause_license.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.841s] copying ament_copyright/template/lgplv3_header.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.841s] copying ament_copyright/template/mit0_license.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.841s] copying ament_copyright/template/bsd2_contributing.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.841s] copying ament_copyright/template/bsd_2clause_header.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.841s] copying ament_copyright/template/bsd_3clause_contributing.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.841s] copying ament_copyright/template/mit0_contributing.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.842s] copying ament_copyright/template/boost1_contributing.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.842s] copying ament_copyright/template/bsd2_header.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.842s] copying ament_copyright/template/bsd_2clause_contributing.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.842s] copying ament_copyright/template/boost1_license.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.842s] copying ament_copyright/template/bsd_3clause_header_0.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.842s] copying ament_copyright/template/mit_license.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.843s] copying ament_copyright/template/apache2_contributing.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.843s] copying ament_copyright/template/gplv3_header.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.843s] copying ament_copyright/template/apache2_header.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.843s] copying ament_copyright/template/bsd_3clause_header.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.843s] copying ament_copyright/template/apache2_license.txt -> /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template
+[0.843s] running install
+[0.850s] running install_lib
+[0.865s] creating /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright
+[0.866s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/licenses.py -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright
+[0.866s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/main.py -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright
+[0.866s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/crawler.py -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright
+[0.866s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/pytest_marker.py -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright
+[0.866s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/parser.py -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright
+[0.866s] creating /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.866s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/mit0_header.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.866s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/boost1_header.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.867s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/mit_contributing.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.867s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/bsd_2clause_license.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.867s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/gplv3_contributing.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.867s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/lgplv3_contributing.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.867s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/lgplv3_license.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.867s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/mit_header.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.867s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/mit_header_0.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.868s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/bsd2_license.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.868s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/gplv3_license.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.868s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/bsd_3clause_license.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.869s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/lgplv3_header.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.869s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/mit0_license.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.869s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/bsd2_contributing.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.870s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/bsd_2clause_header.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.870s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/bsd_3clause_contributing.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.870s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/mit0_contributing.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.870s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/boost1_contributing.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.870s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/bsd2_header.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.871s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/bsd_2clause_contributing.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.871s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/boost1_license.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.872s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/bsd_3clause_header_0.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.872s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/mit_license.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.872s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/apache2_contributing.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.872s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/gplv3_header.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.872s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/apache2_header.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.872s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/bsd_3clause_header.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.872s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/template/apache2_license.txt -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/template
+[0.873s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/copyright_names.py -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright
+[0.874s] copying /root/microros_ws/firmware/dev_ws/build/ament_copyright/build/lib/ament_copyright/__init__.py -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright
+[0.874s] byte-compiling /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/licenses.py to licenses.cpython-312.pyc
+[0.874s] byte-compiling /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/main.py to main.cpython-312.pyc
+[0.877s] byte-compiling /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/crawler.py to crawler.cpython-312.pyc
+[0.878s] byte-compiling /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/pytest_marker.py to pytest_marker.cpython-312.pyc
+[0.878s] byte-compiling /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/parser.py to parser.cpython-312.pyc
+[0.881s] byte-compiling /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/copyright_names.py to copyright_names.cpython-312.pyc
+[0.881s] byte-compiling /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright/__init__.py to __init__.cpython-312.pyc
+[0.881s] running install_data
+[0.882s] copying package.xml -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/share/ament_copyright
+[0.882s] creating /root/microros_ws/firmware/dev_ws/install/ament_copyright/share/ament_index
+[0.882s] creating /root/microros_ws/firmware/dev_ws/install/ament_copyright/share/ament_index/resource_index
+[0.882s] creating /root/microros_ws/firmware/dev_ws/install/ament_copyright/share/ament_index/resource_index/packages
+[0.882s] copying resource/ament_copyright -> /root/microros_ws/firmware/dev_ws/install/ament_copyright/share/ament_index/resource_index/packages
+[0.882s] running install_egg_info
+[0.893s] Copying ../../../build/ament_copyright/ament_copyright.egg-info to /root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages/ament_copyright-0.17.3-py3.12.egg-info
+[0.895s] running install_scripts
+[0.980s] Installing ament_copyright script to /root/microros_ws/firmware/dev_ws/install/ament_copyright/bin
+[0.981s] writing list of installed files to '/root/microros_ws/firmware/dev_ws/build/ament_copyright/install.log'
+[1.012s] Invoked command in '/root/microros_ws/firmware/dev_ws/ament/ament_lint/ament_copyright' returned '0': AMENT_PREFIX_PATH=/root/microros_ws/firmware/dev_ws/install/ament_pep257:/root/microros_ws/firmware/dev_ws/install/ament_flake8:/root/microros_ws/firmware/dev_ws/install/ament_lint PATH=/root/microros_ws/firmware/dev_ws/install/ament_pep257/bin:/root/microros_ws/firmware/dev_ws/install/ament_flake8/bin:${PATH} PYTHONPATH=/root/microros_ws/firmware/dev_ws/build/ament_copyright/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages:/root/microros_ws/firmware/dev_ws/install/ament_pep257/lib/python3.12/site-packages:/root/microros_ws/firmware/dev_ws/install/ament_flake8/lib/python3.12/site-packages:/root/microros_ws/firmware/dev_ws/install/ament_lint/lib/python3.12/site-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/ament_copyright build --build-base /root/microros_ws/firmware/dev_ws/build/ament_copyright/build install --record /root/microros_ws/firmware/dev_ws/build/ament_copyright/install.log --single-version-externally-managed install_data

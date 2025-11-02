@@ -1,0 +1,32 @@
+1761290267.4551997 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-24-07-17-47-453580-rodeppc-60949
+1761290267.4554286 [INFO] [launch]: Default logging verbosity is set to INFO
+1761290267.6031191 [INFO] [static_transform_publisher-1]: process started with pid [60952]
+1761290267.6034930 [INFO] [robot_state_publisher-2]: process started with pid [60953]
+1761290267.6036451 [INFO] [joint_state_publisher_gui-3]: process started with pid [60954]
+1761290267.6037848 [INFO] [move_group-4]: process started with pid [60955]
+1761290267.6039455 [INFO] [rviz2-5]: process started with pid [60956]
+1761290267.6245139 [static_transform_publisher-1] [WARN] [1761290267.623992438] []: Old-style arguments are deprecated; see --help for new-style arguments
+1761290267.6469457 [static_transform_publisher-1] [INFO] [1761290267.646570774] [static_transform_publisher]: Spinning until stopped - publishing transform
+1761290267.6472955 [static_transform_publisher-1] translation: ('0.000000', '0.000000', '0.000000')
+1761290267.6473877 [static_transform_publisher-1] rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+1761290267.6474581 [static_transform_publisher-1] from 'world' to 'base_link'
+1761290267.6562834 [robot_state_publisher-2] [WARN] [1761290267.655818863] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+1761290267.6567168 [robot_state_publisher-2] [INFO] [1761290267.656141935] [robot_state_publisher]: Robot initialized
+1761290267.6712747 [rviz2-5] QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
+1761290268.4458253 [joint_state_publisher_gui-3] QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
+1761290268.4523473 [rviz2-5] [INFO] [1761290268.451970300] [rviz2]: Stereo is NOT SUPPORTED
+1761290268.4529545 [rviz2-5] [INFO] [1761290268.452313775] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
+1761290268.4886980 [rviz2-5] [INFO] [1761290268.488314604] [rviz2]: Stereo is NOT SUPPORTED
+1761290268.5154269 [joint_state_publisher_gui-3] [INFO] [1761290268.515201978] [joint_state_publisher_gui]: Waiting for robot_description to be published on the robot_description topic...
+1761290268.5305433 [joint_state_publisher_gui-3] [INFO] [1761290268.530307341] [joint_state_publisher_gui]: Centering
+1761290268.5736437 [rviz2-5] [ERROR] [1761290268.573431492] [rviz2]: PluginlibFactory: The plugin for class 'moveit_rviz_plugin/MotionPlanning' failed to load. Error: According to the loaded plugin descriptions the class moveit_rviz_plugin/MotionPlanning with base class type rviz_common::Display does not exist. Declared types are  rviz_default_plugins/AccelStamped rviz_default_plugins/Axes rviz_default_plugins/Camera rviz_default_plugins/CameraInfo rviz_default_plugins/DepthCloud rviz_default_plugins/Effort rviz_default_plugins/FluidPressure rviz_default_plugins/Grid rviz_default_plugins/GridCells rviz_default_plugins/Illuminance rviz_default_plugins/Image rviz_default_plugins/InteractiveMarkers rviz_default_plugins/LaserScan rviz_default_plugins/Map rviz_default_plugins/Marker rviz_default_plugins/MarkerArray rviz_default_plugins/Odometry rviz_default_plugins/Path rviz_default_plugins/PointCloud rviz_default_plugins/PointCloud2 rviz_default_plugins/PointStamped rviz_default_plugins/Polygon rviz_default_plugins/Pose rviz_default_plugins/PoseArray rviz_default_plugins/PoseWithCovariance rviz_default_plugins/Range rviz_default_plugins/RelativeHumidity rviz_default_plugins/RobotModel rviz_default_plugins/TF rviz_default_plugins/Temperature rviz_default_plugins/TwistStamped rviz_default_plugins/Wrench
+1761290268.5856736 [rviz2-5] [ERROR] [1761290268.585285351] [rviz2]: PluginlibFactory: The plugin for class 'rviz_visual_tools/RvizVisualToolsGui' failed to load. Error: According to the loaded plugin descriptions the class rviz_visual_tools/RvizVisualToolsGui with base class type rviz_common::Panel does not exist. Declared types are 
+1761290268.6538143 [joint_state_publisher_gui-3] [INFO] [1761290268.653550544] [joint_state_publisher_gui]: Centering
+1761290268.8926105 [ERROR] [move_group-4]: process has died [pid 60955, exit code -6, cmd '/opt/ros/jazzy/lib/moveit_ros_move_group/move_group --ros-args -r __ns:=/ --params-file /tmp/launch_params_urymser5'].
+1761290271.7993433 [INFO] [joint_state_publisher_gui-3]: process has finished cleanly [pid 60954]
+1761290272.5447633 [INFO] [rviz2-5]: process has finished cleanly [pid 60956]
+1761290368.9053242 [WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+1761290368.9090421 [robot_state_publisher-2] [INFO] [1761290368.904841678] [rclcpp]: signal_handler(signum=2)
+1761290368.9091938 [static_transform_publisher-1] [INFO] [1761290368.904869989] [rclcpp]: signal_handler(signum=2)
+1761290369.0142510 [INFO] [static_transform_publisher-1]: process has finished cleanly [pid 60952]
+1761290369.0144653 [INFO] [robot_state_publisher-2]: process has finished cleanly [pid 60953]

@@ -1,0 +1,5 @@
+[INFO] [1761213766.290818486] [rviz2]: Stereo is NOT SUPPORTED
+[INFO] [1761213766.290973336] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
+[INFO] [1761213766.327419708] [rviz2]: Stereo is NOT SUPPORTED
+[WARN] [1761213766.425377973] [rcl.logging_rosout]: Publisher already registered for node name: 'rviz2'. If this is due to multiple nodes with the same name then all logs for the logger named 'rviz2' will go out over the existing publisher. As soon as any node with that name is destructed it will unregister the publisher, preventing any further logs for that name from being published on the rosout topic.
+[ERROR] [1761213769.478894664] [rviz2.moveit.ros.motion_planning_frame]: Action server: /recognize_objects not available

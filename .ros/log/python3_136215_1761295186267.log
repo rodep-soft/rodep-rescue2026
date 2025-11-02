@@ -1,0 +1,3 @@
+[INFO] [1761295186.352608857] [ik_tester]: Waiting for IK service...
+[INFO] [1761295186.603421432] [ik_tester]: Computing IK for: x=0.29, y=0.05, z=0.26
+[ERROR] [1761295191.611545299] [ik_tester]: ✗ IK failed: UNKNOWN (-31)

@@ -1,0 +1,40 @@
+[1.998s] Invoking command in '/root/microros_ws/firmware/dev_ws/ament/ament_lint/ament_xmllint': AMENT_PREFIX_PATH=/root/microros_ws/firmware/dev_ws/install/ament_copyright:/root/microros_ws/firmware/dev_ws/install/ament_pep257:/root/microros_ws/firmware/dev_ws/install/ament_flake8:/root/microros_ws/firmware/dev_ws/install/ament_lint PATH=/root/microros_ws/firmware/dev_ws/install/ament_copyright/bin:/root/microros_ws/firmware/dev_ws/install/ament_pep257/bin:/root/microros_ws/firmware/dev_ws/install/ament_flake8/bin:${PATH} PYTHONPATH=/root/microros_ws/firmware/dev_ws/build/ament_xmllint/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/microros_ws/firmware/dev_ws/install/ament_xmllint/lib/python3.12/site-packages:/root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages:/root/microros_ws/firmware/dev_ws/install/ament_pep257/lib/python3.12/site-packages:/root/microros_ws/firmware/dev_ws/install/ament_flake8/lib/python3.12/site-packages:/root/microros_ws/firmware/dev_ws/install/ament_lint/lib/python3.12/site-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/ament_xmllint build --build-base /root/microros_ws/firmware/dev_ws/build/ament_xmllint/build install --record /root/microros_ws/firmware/dev_ws/build/ament_xmllint/install.log --single-version-externally-managed install_data
+[2.240s] running egg_info
+[2.240s] creating ../../../build/ament_xmllint/ament_xmllint.egg-info
+[2.252s] writing ../../../build/ament_xmllint/ament_xmllint.egg-info/PKG-INFO
+[2.252s] writing dependency_links to ../../../build/ament_xmllint/ament_xmllint.egg-info/dependency_links.txt
+[2.253s] writing entry points to ../../../build/ament_xmllint/ament_xmllint.egg-info/entry_points.txt
+[2.253s] writing requirements to ../../../build/ament_xmllint/ament_xmllint.egg-info/requires.txt
+[2.253s] writing top-level names to ../../../build/ament_xmllint/ament_xmllint.egg-info/top_level.txt
+[2.253s] writing manifest file '../../../build/ament_xmllint/ament_xmllint.egg-info/SOURCES.txt'
+[2.278s] reading manifest file '../../../build/ament_xmllint/ament_xmllint.egg-info/SOURCES.txt'
+[2.279s] writing manifest file '../../../build/ament_xmllint/ament_xmllint.egg-info/SOURCES.txt'
+[2.279s] running build
+[2.279s] running build_py
+[2.280s] creating /root/microros_ws/firmware/dev_ws/build/ament_xmllint/build
+[2.280s] creating /root/microros_ws/firmware/dev_ws/build/ament_xmllint/build/lib
+[2.280s] creating /root/microros_ws/firmware/dev_ws/build/ament_xmllint/build/lib/ament_xmllint
+[2.280s] copying ament_xmllint/main.py -> /root/microros_ws/firmware/dev_ws/build/ament_xmllint/build/lib/ament_xmllint
+[2.281s] copying ament_xmllint/pytest_marker.py -> /root/microros_ws/firmware/dev_ws/build/ament_xmllint/build/lib/ament_xmllint
+[2.281s] copying ament_xmllint/__init__.py -> /root/microros_ws/firmware/dev_ws/build/ament_xmllint/build/lib/ament_xmllint
+[2.281s] running install
+[2.289s] running install_lib
+[2.301s] creating /root/microros_ws/firmware/dev_ws/install/ament_xmllint/lib/python3.12/site-packages/ament_xmllint
+[2.302s] copying /root/microros_ws/firmware/dev_ws/build/ament_xmllint/build/lib/ament_xmllint/main.py -> /root/microros_ws/firmware/dev_ws/install/ament_xmllint/lib/python3.12/site-packages/ament_xmllint
+[2.302s] copying /root/microros_ws/firmware/dev_ws/build/ament_xmllint/build/lib/ament_xmllint/pytest_marker.py -> /root/microros_ws/firmware/dev_ws/install/ament_xmllint/lib/python3.12/site-packages/ament_xmllint
+[2.302s] copying /root/microros_ws/firmware/dev_ws/build/ament_xmllint/build/lib/ament_xmllint/__init__.py -> /root/microros_ws/firmware/dev_ws/install/ament_xmllint/lib/python3.12/site-packages/ament_xmllint
+[2.302s] byte-compiling /root/microros_ws/firmware/dev_ws/install/ament_xmllint/lib/python3.12/site-packages/ament_xmllint/main.py to main.cpython-312.pyc
+[2.305s] byte-compiling /root/microros_ws/firmware/dev_ws/install/ament_xmllint/lib/python3.12/site-packages/ament_xmllint/pytest_marker.py to pytest_marker.cpython-312.pyc
+[2.305s] byte-compiling /root/microros_ws/firmware/dev_ws/install/ament_xmllint/lib/python3.12/site-packages/ament_xmllint/__init__.py to __init__.cpython-312.pyc
+[2.305s] running install_data
+[2.306s] copying package.xml -> /root/microros_ws/firmware/dev_ws/install/ament_xmllint/share/ament_xmllint
+[2.306s] creating /root/microros_ws/firmware/dev_ws/install/ament_xmllint/share/ament_index
+[2.306s] creating /root/microros_ws/firmware/dev_ws/install/ament_xmllint/share/ament_index/resource_index
+[2.306s] creating /root/microros_ws/firmware/dev_ws/install/ament_xmllint/share/ament_index/resource_index/packages
+[2.307s] copying resource/ament_xmllint -> /root/microros_ws/firmware/dev_ws/install/ament_xmllint/share/ament_index/resource_index/packages
+[2.307s] running install_egg_info
+[2.320s] Copying ../../../build/ament_xmllint/ament_xmllint.egg-info to /root/microros_ws/firmware/dev_ws/install/ament_xmllint/lib/python3.12/site-packages/ament_xmllint-0.17.3-py3.12.egg-info
+[2.321s] running install_scripts
+[2.429s] Installing ament_xmllint script to /root/microros_ws/firmware/dev_ws/install/ament_xmllint/bin
+[2.430s] writing list of installed files to '/root/microros_ws/firmware/dev_ws/build/ament_xmllint/install.log'
+[2.473s] Invoked command in '/root/microros_ws/firmware/dev_ws/ament/ament_lint/ament_xmllint' returned '0': AMENT_PREFIX_PATH=/root/microros_ws/firmware/dev_ws/install/ament_copyright:/root/microros_ws/firmware/dev_ws/install/ament_pep257:/root/microros_ws/firmware/dev_ws/install/ament_flake8:/root/microros_ws/firmware/dev_ws/install/ament_lint PATH=/root/microros_ws/firmware/dev_ws/install/ament_copyright/bin:/root/microros_ws/firmware/dev_ws/install/ament_pep257/bin:/root/microros_ws/firmware/dev_ws/install/ament_flake8/bin:${PATH} PYTHONPATH=/root/microros_ws/firmware/dev_ws/build/ament_xmllint/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/microros_ws/firmware/dev_ws/install/ament_xmllint/lib/python3.12/site-packages:/root/microros_ws/firmware/dev_ws/install/ament_copyright/lib/python3.12/site-packages:/root/microros_ws/firmware/dev_ws/install/ament_pep257/lib/python3.12/site-packages:/root/microros_ws/firmware/dev_ws/install/ament_flake8/lib/python3.12/site-packages:/root/microros_ws/firmware/dev_ws/install/ament_lint/lib/python3.12/site-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/ament_xmllint build --build-base /root/microros_ws/firmware/dev_ws/build/ament_xmllint/build install --record /root/microros_ws/firmware/dev_ws/build/ament_xmllint/install.log --single-version-externally-managed install_data

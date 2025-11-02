@@ -1,0 +1,1 @@
+/root/ros_ws/src/sekirei_moveit_config/launch/dynamixel_hw.launch.py

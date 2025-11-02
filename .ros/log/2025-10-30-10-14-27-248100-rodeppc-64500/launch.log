@@ -1,0 +1,11 @@
+1761819267.2488601 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-30-10-14-27-248100-rodeppc-64500
+1761819267.2489560 [INFO] [launch]: Default logging verbosity is set to INFO
+1761819267.3307910 [INFO] [robot_state_publisher-1]: process started with pid [64503]
+1761819267.3310251 [INFO] [joy_node-2]: process started with pid [64504]
+1761819267.3311248 [INFO] [joy_teleop.py-3]: process started with pid [64505]
+1761819269.3340247 [INFO] [rviz2-4]: process started with pid [64551]
+1761819365.7962244 [WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+1761819365.9059703 [INFO] [robot_state_publisher-1]: process has finished cleanly [pid 64503]
+1761819365.9362330 [INFO] [joy_node-2]: process has finished cleanly [pid 64504]
+1761819365.9712319 [INFO] [joy_teleop.py-3]: process has finished cleanly [pid 64505]
+1761819365.9780242 [INFO] [rviz2-4]: process has finished cleanly [pid 64551]

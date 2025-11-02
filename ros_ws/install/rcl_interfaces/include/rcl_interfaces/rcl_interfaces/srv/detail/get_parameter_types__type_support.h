@@ -1,0 +1,1 @@
+/root/ros_ws/build/rcl_interfaces/rosidl_generator_c/rcl_interfaces/srv/detail/get_parameter_types__type_support.h

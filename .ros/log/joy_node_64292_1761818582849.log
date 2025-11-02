@@ -1,0 +1,4 @@
+[INFO] [1761818583.467736773] [joy_node]: No haptic (rumble) available, skipping initialization
+[INFO] [1761818583.468029498] [joy_node]: Opened joystick: PS4 Controller.  deadzone: 0.100000
+[INFO] [1761818583.468085513] [joy_node]: Unknown event type 1543
+[INFO] [1761818605.031488531] [rclcpp]: signal_handler(signum=2)

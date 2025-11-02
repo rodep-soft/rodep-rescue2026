@@ -1,0 +1,1 @@
+/root/ros_ws/build/rosidl_typesupport_microxrcedds_cpp/ament_cmake_export_dependencies/ament_cmake_export_dependencies-extras.cmake

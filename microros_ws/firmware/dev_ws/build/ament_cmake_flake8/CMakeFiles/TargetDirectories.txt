@@ -1,0 +1,8 @@
+/root/microros_ws/firmware/dev_ws/build/ament_cmake_flake8/CMakeFiles/uninstall.dir
+/root/microros_ws/firmware/dev_ws/build/ament_cmake_flake8/CMakeFiles/ament_cmake_flake8_uninstall.dir
+/root/microros_ws/firmware/dev_ws/build/ament_cmake_flake8/CMakeFiles/test.dir
+/root/microros_ws/firmware/dev_ws/build/ament_cmake_flake8/CMakeFiles/edit_cache.dir
+/root/microros_ws/firmware/dev_ws/build/ament_cmake_flake8/CMakeFiles/rebuild_cache.dir
+/root/microros_ws/firmware/dev_ws/build/ament_cmake_flake8/CMakeFiles/list_install_components.dir
+/root/microros_ws/firmware/dev_ws/build/ament_cmake_flake8/CMakeFiles/install.dir
+/root/microros_ws/firmware/dev_ws/build/ament_cmake_flake8/CMakeFiles/install/local.dir

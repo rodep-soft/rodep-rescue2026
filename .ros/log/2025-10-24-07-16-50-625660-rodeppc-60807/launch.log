@@ -1,0 +1,9 @@
+1761290210.6263559 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-24-07-16-50-625660-rodeppc-60807
+1761290210.6264513 [INFO] [launch]: Default logging verbosity is set to INFO
+1761290210.6934216 [INFO] [robot_state_publisher-1]: process started with pid [60810]
+1761290210.6936429 [INFO] [joint_state_publisher-2]: process started with pid [60811]
+1761290210.6937621 [INFO] [rviz2-3]: process started with pid [60814]
+1761290224.3327131 [INFO] [rviz2-3]: process has finished cleanly [pid 60814]
+1761290250.9413280 [WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+1761290251.0509048 [INFO] [robot_state_publisher-1]: process has finished cleanly [pid 60810]
+1761290251.0831995 [INFO] [joint_state_publisher-2]: process has finished cleanly [pid 60811]

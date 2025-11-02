@@ -1,0 +1,21 @@
+[WARN] [1761290461.854921977] [move_group]: Using default pipeline 'ompl'
+[INFO] [1761290461.857462483] [moveit.moveit.ros.rdf_loader]: Loaded robot model in 0.00221277 seconds
+[INFO] [1761290461.857527763] [moveit.moveit.core.robot_model]: Loading robot model 'sekirei'...
+[INFO] [1761290461.857541051] [moveit.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[WARN] [1761290461.857652817] [moveit.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
+[WARN] [1761290461.864419818] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[INFO] [1761290461.864663797] [moveit.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
+[INFO] [1761290461.893039657] [moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[INFO] [1761290461.893219061] [moveit.moveit.ros.moveit_cpp]: Listening to 'joint_states' for joint states
+[INFO] [1761290461.894960446] [moveit.moveit.ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[INFO] [1761290461.897056120] [moveit.moveit.ros.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
+[INFO] [1761290461.897191378] [moveit.moveit.ros.planning_scene_monitor]: Stopping existing planning scene publisher.
+[INFO] [1761290461.897494225] [moveit.moveit.ros.planning_scene_monitor]: Stopped publishing maintained planning scene.
+[INFO] [1761290461.898199459] [moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[INFO] [1761290461.898316619] [moveit.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+[INFO] [1761290461.899168338] [moveit.moveit.ros.planning_scene_monitor]: Listening to '/planning_scene'
+[INFO] [1761290461.899206782] [moveit.moveit.ros.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[INFO] [1761290461.899816618] [moveit.moveit.ros.planning_scene_monitor]: Listening to 'collision_object'
+[INFO] [1761290461.900886325] [moveit.moveit.ros.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[WARN] [1761290461.901774971] [moveit.moveit.ros.occupancy_map_monitor]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
+[ERROR] [1761290461.901827204] [moveit.moveit.ros.occupancy_map_monitor]: No 3D sensor plugin(s) defined for octomap updates

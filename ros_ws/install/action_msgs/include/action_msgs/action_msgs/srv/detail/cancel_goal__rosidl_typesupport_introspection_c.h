@@ -1,0 +1,1 @@
+/root/ros_ws/build/action_msgs/rosidl_typesupport_introspection_c/action_msgs/srv/detail/cancel_goal__rosidl_typesupport_introspection_c.h

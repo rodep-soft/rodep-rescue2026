@@ -34,6 +34,33 @@ fake_arm_controller:
       stopped_velocity_tolerance: 0.01
       goal_time: 0.0
 
+# Real hardware joint_trajectory_controller (for dynamixel_hardware)
+joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - arm_joint1
+      - arm_joint2
+      - arm_joint3
+      - arm_joint4
+      - arm_joint5
+      - arm_joint6
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+      - velocity
+
+    action_monitor_rate: 20.0
+
+    allow_partial_joints_goal: false
+    open_loop_control: false
+    allow_integration_in_goal_trajectories: true
+    constraints:
+      stopped_velocity_tolerance: 0.01
+      goal_time: 0.0
+
 joint_state_broadcaster:
   ros__parameters:
     {}

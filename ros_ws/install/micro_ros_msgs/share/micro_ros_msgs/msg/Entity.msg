@@ -1,0 +1,1 @@
+/root/ros_ws/src/uros/micro_ros_msgs/msg/Entity.msg

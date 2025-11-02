@@ -1,0 +1,5 @@
+1761816419.2920072 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-30-09-26-59-291323-rodeppc-40685
+1761816419.2921283 [INFO] [launch]: Default logging verbosity is set to INFO
+1761816419.3567727 [INFO] [robot_state_publisher-1]: process started with pid [40688]
+1761816489.5832818 [WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+1761816489.6905372 [INFO] [robot_state_publisher-1]: process has finished cleanly [pid 40688]

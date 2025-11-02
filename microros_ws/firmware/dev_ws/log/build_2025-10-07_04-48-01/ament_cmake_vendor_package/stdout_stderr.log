@@ -1,0 +1,159 @@
+-- Found ament_cmake_core: 2.5.4 (/root/microros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Found ament_cmake_export_dependencies: 2.5.4 (/root/microros_ws/firmware/dev_ws/install/ament_cmake_export_dependencies/share/ament_cmake_export_dependencies/cmake)
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/lib/ccache/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/lib/ccache/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake_test: 2.5.4 (/root/microros_ws/firmware/dev_ws/install/ament_cmake_test/share/ament_cmake_test/cmake)
+-- Configuring done (0.7s)
+-- Generating done (0.0s)
+-- Build files have been written to: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package
+[  4%] [34m[1mCreating directories for 'exlib_bad'[0m
+[  8%] [34m[1mCreating directories for 'exlib_good'[0m
+[ 16%] [34m[1mNo download step for 'exlib_good'[0m
+[ 16%] [34m[1mNo download step for 'exlib_bad'[0m
+[ 25%] [34m[1mNo update_disconnected step for 'exlib_good'[0m
+[ 25%] [34m[1mNo update_disconnected step for 'exlib_bad'[0m
+[ 33%] [34m[1mNo patch_disconnected step for 'exlib_bad'[0m
+[ 33%] [34m[1mNo patch_disconnected step for 'exlib_good'[0m
+[ 41%] [34m[1mPerforming configure step for 'exlib_good'[0m
+[ 41%] [34m[1mPerforming configure step for 'exlib_bad'[0m
+loading initial cache file /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_good-config.cmake
+loading initial cache file /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-config.cmake
+-- The C compiler identification is GNU 13.3.0
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/lib/ccache/cc - skipped
+-- Check for working C compiler: /usr/lib/ccache/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/lib/ccache/c++ - skipped
+-- Check for working CXX compiler: /usr/lib/ccache/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting CXX compile features - done
+-- Configuring done (0.3s)
+-- Configuring done (0.3s)
+-- Generating done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/src/exlib_bad-build
+-- Build files have been written to: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_good-prefix/src/exlib_good-build
+[ 50%] [34m[1mPerforming build step for 'exlib_good'[0m
+[ 50%] [34m[1mPerforming build step for 'exlib_bad'[0m
+[ 50%] [32mBuilding C object CMakeFiles/exlib.dir/src/exlib.c.o[0m
+[ 50%] [32mBuilding C object CMakeFiles/exlib.dir/src/exlib.c.o[0m
+[100%] [32m[1mLinking C shared library libexlib.so[0m
+[100%] [32m[1mLinking C shared library libexlib.so[0m
+[100%] Built target exlib
+[100%] Built target exlib
+[ 58%] [34m[1mPerforming install step for 'exlib_bad'[0m
+[ 58%] [34m[1mPerforming install step for 'exlib_good'[0m
+[100%] Built target exlib
+[100%] Built target exlib
+[36mInstall the project...[0m
+[36mInstall the project...[0m
+-- Install configuration: ""
+-- Install configuration: ""
+-- Installing: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/install/lib/libexlib.so
+-- Installing: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_good-prefix/install/lib/libexlib.so
+-- Installing: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/install/include
+-- Installing: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_good-prefix/install/include
+-- Installing: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/install/include/exlib
+-- Installing: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/install/include/exlib/visibility_control.h
+-- Installing: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_good-prefix/install/include/exlib
+-- Installing: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/install/include/exlib/exlib.h
+-- Installing: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_good-prefix/install/include/exlib/visibility_control.h
+-- Installing: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_good-prefix/install/include/exlib/exlib.h
+-- Installing: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/install/lib/cmake/exlib/exlibTargets.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/install/lib/cmake/exlib/exlibTargets-noconfig.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/install/lib/cmake/exlib/exlibConfig.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_good-prefix/install/lib/cmake/exlib/exlibTargets.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_good-prefix/install/lib/cmake/exlib/exlibTargets-noconfig.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_good-prefix/install/lib/cmake/exlib/exlibConfig.cmake
+[ 66%] [34m[1mCompleted 'exlib_bad'[0m
+[ 66%] [34m[1mCompleted 'exlib_good'[0m
+[ 66%] Built target exlib_bad
+[ 66%] Built target exlib_good
+[ 70%] [34m[1mCreating directories for 'depender'[0m
+[ 75%] [34m[1mNo download step for 'depender'[0m
+[ 79%] [34m[1mNo update_disconnected step for 'depender'[0m
+[ 83%] [34m[1mNo patch_disconnected step for 'depender'[0m
+[ 87%] [34m[1mPerforming configure step for 'depender'[0m
+loading initial cache file /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/depender-config.cmake
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/lib/ccache/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/lib/ccache/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/depender-prefix/src/depender-build
+[ 91%] [34m[1mPerforming build step for 'depender'[0m
+[ 50%] [32mBuilding C object CMakeFiles/depender.dir/src/depender.c.o[0m
+[100%] [32m[1mLinking C executable depender[0m
+[100%] Built target depender
+[ 95%] [34m[1mPerforming install step for 'depender'[0m
+[100%] Built target depender
+[36mInstall the project...[0m
+-- Install configuration: ""
+-- Installing: /root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/depender-prefix/install/bin/depender
+-- Set non-toolchain portion of runtime path of "/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/depender-prefix/install/bin/depender" to ""
+[100%] [34m[1mCompleted 'depender'[0m
+[100%] Built target depender
+-- Install configuration: ""
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_index/resource_index/package_run_dependencies/ament_cmake_vendor_package
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_index/resource_index/parent_prefix_path/ament_cmake_vendor_package
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/environment/ament_prefix_path.sh
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/environment/ament_prefix_path.dsv
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/environment/path.sh
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/environment/path.dsv
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/local_setup.bash
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/local_setup.sh
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/local_setup.zsh
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/local_setup.dsv
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/package.dsv
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_index/resource_index/packages/ament_cmake_vendor_package
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/cmake/ament_cmake_vendor_package-extras.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/cmake/ament_cmake_vendor_packageConfig.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/cmake/ament_cmake_vendor_packageConfig-version.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/package.xml
+-- Up-to-date: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/cmake/ament_vendor.cmake
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/cmake/templates
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/cmake/templates/target.repos.in
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/cmake/templates/vendor_package_cmake_prefix.bat.in
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/cmake/templates/vendor_package_cmake_prefix.cmake.in
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/cmake/templates/vendor_package.dsv.in
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/cmake/templates/vendor_package.sh.in
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/cmake/templates/vendor_package_cmake_prefix.dsv.in
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/cmake/templates/vendor_package.bat.in
+-- Installing: /root/microros_ws/firmware/dev_ws/install/ament_cmake_vendor_package/share/ament_cmake_vendor_package/cmake/templates/vendor_package_cmake_prefix.sh.in

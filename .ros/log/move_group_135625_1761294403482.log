@@ -1,0 +1,190 @@
+[WARN] [1761294403.515244270] [move_group]: Using default pipeline 'ompl'
+[INFO] [1761294403.517795207] [moveit.moveit.ros.rdf_loader]: Loaded robot model in 0.00213001 seconds
+[INFO] [1761294403.517841795] [moveit.moveit.core.robot_model]: Loading robot model 'sekirei'...
+[INFO] [1761294403.517853423] [moveit.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[WARN] [1761294403.517961182] [moveit.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
+[WARN] [1761294403.522265657] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[INFO] [1761294403.522381724] [moveit.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
+[INFO] [1761294403.552399565] [moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[INFO] [1761294403.552588567] [moveit.moveit.ros.moveit_cpp]: Listening to 'joint_states' for joint states
+[INFO] [1761294403.553790390] [moveit.moveit.ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[INFO] [1761294403.554643697] [moveit.moveit.ros.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
+[INFO] [1761294403.554682125] [moveit.moveit.ros.planning_scene_monitor]: Stopping existing planning scene publisher.
+[INFO] [1761294403.554877972] [moveit.moveit.ros.planning_scene_monitor]: Stopped publishing maintained planning scene.
+[INFO] [1761294403.555544757] [moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[INFO] [1761294403.555691897] [moveit.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+[INFO] [1761294403.556947258] [moveit.moveit.ros.planning_scene_monitor]: Listening to '/planning_scene'
+[INFO] [1761294403.556998994] [moveit.moveit.ros.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[INFO] [1761294403.558294371] [moveit.moveit.ros.planning_scene_monitor]: Listening to 'collision_object'
+[INFO] [1761294403.559215365] [moveit.moveit.ros.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[WARN] [1761294403.559875666] [moveit.moveit.ros.occupancy_map_monitor]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
+[ERROR] [1761294403.559914365] [moveit.moveit.ros.occupancy_map_monitor]: No 3D sensor plugin(s) defined for octomap updates
+[INFO] [1761294403.833779311] [moveit.moveit.ros.planning_pipeline]: Successfully loaded planner 'OMPL'
+[INFO] [1761294403.835502610] [move_group]: Try loading adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[INFO] [1761294403.836399387] [move_group]: Loaded adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[INFO] [1761294403.836411411] [move_group]: Try loading adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[INFO] [1761294403.836576496] [move_group]: Loaded adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[INFO] [1761294403.836585043] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[INFO] [1761294403.836625777] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[INFO] [1761294403.836632853] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[INFO] [1761294403.836644644] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[WARN] [1761294403.836648536] [moveit.moveit.ros.planning_pipeline]: No planning response adapter names specified.
+[ERROR] [1761294403.848361224] [moveit.moveit.plugins.simple_controller_manager]: No controller_names specified.
+[INFO] [1761294403.848493744] [moveit.moveit.plugins.simple_controller_manager]: Returned 0 controllers in list
+[INFO] [1761294403.848509584] [moveit.moveit.plugins.simple_controller_manager]: Returned 0 controllers in list
+[INFO] [1761294403.849000381] [moveit.moveit.ros.trajectory_execution_manager]: Trajectory execution is managing controllers
+[INFO] [1761294403.849016853] [move_group]: MoveGroup debug mode is ON
+[INFO] [1761294403.863718260] [moveit.moveit.ros.move_group.executable]: 
+
+********************************************************
+* MoveGroup using: 
+*     - apply_planning_scene_service
+*     - clear_octomap_service
+*     - get_group_urdf
+*     - load_geometry_from_file
+*     - CartesianPathService
+*     - execute_trajectory_action
+*     - get_planning_scene_service
+*     - kinematics_service
+*     - move_action
+*     - motion_plan_service
+*     - query_planners_service
+*     - state_validation_service
+*     - save_geometry_to_file
+********************************************************
+
+[INFO] [1761294403.863761405] [moveit.moveit.ros.move_group.context]: MoveGroup context using pipeline ompl
+[INFO] [1761294403.863771357] [moveit.moveit.ros.move_group.context]: MoveGroup context initialization complete
+[INFO] [1761294419.510742284] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761294419.511139972] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761294419.520336628] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761294419.520402367] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761294419.520869395] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761294419.520991241] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761294419.521028716] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761294419.521105505] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1761294419.522506873] [moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1761294419.522756709] [move_group]: Calling Planner 'OMPL'
+[WARN] [1761294419.536802238] [moveit.moveit.ros.planning_pipeline]: The planner plugin did not fill out the 'planner_id' field of the MotionPlanResponse. Setting it to the planner ID name of the MotionPlanRequest assuming that the planner plugin does warn you if it does not use the requested planner.
+[INFO] [1761294419.536876620] [moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[INFO] [1761294484.480037017] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761294484.480410970] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761294484.519909131] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761294484.520003978] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761294484.520097664] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761294484.520143261] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761294484.520155481] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761294484.520175846] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1761294484.520500655] [moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1761294484.520563219] [move_group]: Calling Planner 'OMPL'
+[WARN] [1761294484.539246341] [moveit.moveit.ros.planning_pipeline]: The planner plugin did not fill out the 'planner_id' field of the MotionPlanResponse. Setting it to the planner ID name of the MotionPlanRequest assuming that the planner plugin does warn you if it does not use the requested planner.
+[INFO] [1761294484.539357574] [moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[INFO] [1761294484.892820248] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761294484.893016856] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761294484.920428558] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761294484.920530372] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761294484.920705768] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761294484.920755027] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761294484.920771257] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761294484.920816708] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1761294484.921400690] [moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1761294484.921503689] [move_group]: Calling Planner 'OMPL'
+[WARN] [1761294484.937954148] [moveit.moveit.ros.planning_pipeline]: The planner plugin did not fill out the 'planner_id' field of the MotionPlanResponse. Setting it to the planner ID name of the MotionPlanRequest assuming that the planner plugin does warn you if it does not use the requested planner.
+[INFO] [1761294484.938028439] [moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[INFO] [1761294485.046014329] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761294485.046402528] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761294485.120607585] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761294485.120705804] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761294485.120796871] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761294485.120825182] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761294485.120837869] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761294485.120876645] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1761294485.121416306] [moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1761294485.121678199] [move_group]: Calling Planner 'OMPL'
+[WARN] [1761294485.136897045] [moveit.moveit.ros.planning_pipeline]: The planner plugin did not fill out the 'planner_id' field of the MotionPlanResponse. Setting it to the planner ID name of the MotionPlanRequest assuming that the planner plugin does warn you if it does not use the requested planner.
+[INFO] [1761294485.136975763] [moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[INFO] [1761294485.204789392] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761294485.205065808] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761294485.220359999] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761294485.220465555] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761294485.220598243] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761294485.220622180] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761294485.220634315] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761294485.220657179] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1761294485.220995903] [moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1761294485.221066552] [move_group]: Calling Planner 'OMPL'
+[WARN] [1761294485.247233229] [moveit.moveit.ros.planning_pipeline]: The planner plugin did not fill out the 'planner_id' field of the MotionPlanResponse. Setting it to the planner ID name of the MotionPlanRequest assuming that the planner plugin does warn you if it does not use the requested planner.
+[INFO] [1761294485.247287221] [moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[INFO] [1761294485.348434014] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761294485.348747014] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761294485.419908095] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761294485.419966589] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761294485.420036573] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761294485.420056257] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761294485.420067301] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761294485.420094266] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1761294485.420318206] [moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1761294485.420368754] [move_group]: Calling Planner 'OMPL'
+[WARN] [1761294485.426984404] [moveit.moveit.ros.planning_pipeline]: The planner plugin did not fill out the 'planner_id' field of the MotionPlanResponse. Setting it to the planner ID name of the MotionPlanRequest assuming that the planner plugin does warn you if it does not use the requested planner.
+[INFO] [1761294485.427091652] [moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[INFO] [1761294485.493684826] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761294485.493925742] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761294485.520210117] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761294485.520438569] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761294485.520637650] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761294485.520677283] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761294485.520690854] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761294485.520726693] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1761294485.521021723] [moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1761294485.521095532] [move_group]: Calling Planner 'OMPL'
+[WARN] [1761294485.538600879] [moveit.moveit.ros.planning_pipeline]: The planner plugin did not fill out the 'planner_id' field of the MotionPlanResponse. Setting it to the planner ID name of the MotionPlanRequest assuming that the planner plugin does warn you if it does not use the requested planner.
+[INFO] [1761294485.538743190] [moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[INFO] [1761294485.649328099] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761294485.649726677] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761294485.719959958] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761294485.720026768] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761294485.720119288] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761294485.720141274] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761294485.720152928] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761294485.720188298] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1761294485.720380158] [moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1761294485.720491917] [move_group]: Calling Planner 'OMPL'
+[WARN] [1761294485.726823019] [moveit.moveit.ros.planning_pipeline]: The planner plugin did not fill out the 'planner_id' field of the MotionPlanResponse. Setting it to the planner ID name of the MotionPlanRequest assuming that the planner plugin does warn you if it does not use the requested planner.
+[INFO] [1761294485.727007344] [moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[INFO] [1761294485.799072530] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761294485.799566431] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761294485.820252783] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761294485.820440823] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761294485.820694247] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761294485.820733131] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761294485.820756838] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761294485.820802648] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1761294485.821433794] [moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1761294485.821523269] [move_group]: Calling Planner 'OMPL'
+[WARN] [1761294485.839619510] [moveit.moveit.ros.planning_pipeline]: The planner plugin did not fill out the 'planner_id' field of the MotionPlanResponse. Setting it to the planner ID name of the MotionPlanRequest assuming that the planner plugin does warn you if it does not use the requested planner.
+[INFO] [1761294485.839761040] [moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[INFO] [1761294485.948626632] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761294485.948862178] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761294486.020061815] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761294486.020163079] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761294486.020240817] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761294486.020263444] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761294486.020276005] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761294486.020297308] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1761294486.020527617] [moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1761294486.020612618] [move_group]: Calling Planner 'OMPL'
+[WARN] [1761294486.037537035] [moveit.moveit.ros.planning_pipeline]: The planner plugin did not fill out the 'planner_id' field of the MotionPlanResponse. Setting it to the planner ID name of the MotionPlanRequest assuming that the planner plugin does warn you if it does not use the requested planner.
+[INFO] [1761294486.037599357] [moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[INFO] [1761294486.109220129] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[INFO] [1761294486.109509546] [moveit.moveit.ros.move_group.move_action]: executing..
+[INFO] [1761294486.120067999] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[INFO] [1761294486.120198007] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[INFO] [1761294486.120295679] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[INFO] [1761294486.120335704] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[INFO] [1761294486.120347213] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[INFO] [1761294486.120367445] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[INFO] [1761294486.120647185] [moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[INFO] [1761294486.120734307] [move_group]: Calling Planner 'OMPL'
+[WARN] [1761294486.137207921] [moveit.moveit.ros.planning_pipeline]: The planner plugin did not fill out the 'planner_id' field of the MotionPlanResponse. Setting it to the planner ID name of the MotionPlanRequest assuming that the planner plugin does warn you if it does not use the requested planner.
+[INFO] [1761294486.137321069] [moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[INFO] [1761294518.767735287] [rclcpp]: signal_handler(signum=2)

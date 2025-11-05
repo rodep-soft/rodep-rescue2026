@@ -29,6 +29,7 @@ def launch_setup(context, *args, **kwargs):
 
     # Load SRDF
     srdf_file = os.path.join(moveit_config_pkg, 'config', 'sekirei.srdf')
+    print(">>> SRDF path:", srdf_file)
     with open(srdf_file, 'r') as f:
         robot_description_semantic = f.read()
 

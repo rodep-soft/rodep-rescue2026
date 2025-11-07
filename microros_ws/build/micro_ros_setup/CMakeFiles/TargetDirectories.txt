@@ -1,9 +1,0 @@
-/root/microros_ws/build/micro_ros_setup/CMakeFiles/uninstall.dir
-/root/microros_ws/build/micro_ros_setup/CMakeFiles/micro_ros_setup_uninstall.dir
-/root/microros_ws/build/micro_ros_setup/CMakeFiles/test.dir
-/root/microros_ws/build/micro_ros_setup/CMakeFiles/edit_cache.dir
-/root/microros_ws/build/micro_ros_setup/CMakeFiles/rebuild_cache.dir
-/root/microros_ws/build/micro_ros_setup/CMakeFiles/list_install_components.dir
-/root/microros_ws/build/micro_ros_setup/CMakeFiles/install.dir
-/root/microros_ws/build/micro_ros_setup/CMakeFiles/install/local.dir
-/root/microros_ws/build/micro_ros_setup/CMakeFiles/install/strip.dir

@@ -1,6 +1,0 @@
-/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/install/lib/libexlib.so
-/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/install/include/exlib/visibility_control.h
-/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/install/include/exlib/exlib.h
-/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/install/lib/cmake/exlib/exlibTargets.cmake
-/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/install/lib/cmake/exlib/exlibTargets-noconfig.cmake
-/root/microros_ws/firmware/dev_ws/build/ament_cmake_vendor_package/test/exlib_bad-prefix/install/lib/cmake/exlib/exlibConfig.cmake

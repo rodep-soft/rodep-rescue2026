@@ -1,5 +1,0 @@
-/root/microros_ws/firmware/dev_ws/build/gmock_vendor/CMakeFiles/edit_cache.dir
-/root/microros_ws/firmware/dev_ws/build/gmock_vendor/CMakeFiles/rebuild_cache.dir
-/root/microros_ws/firmware/dev_ws/build/gmock_vendor/CMakeFiles/list_install_components.dir
-/root/microros_ws/firmware/dev_ws/build/gmock_vendor/CMakeFiles/install.dir
-/root/microros_ws/firmware/dev_ws/build/gmock_vendor/CMakeFiles/install/local.dir

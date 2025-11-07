@@ -1,8 +1,0 @@
-/root/microros_ws/firmware/dev_ws/build/ament_cmake_pclint/CMakeFiles/uninstall.dir
-/root/microros_ws/firmware/dev_ws/build/ament_cmake_pclint/CMakeFiles/ament_cmake_pclint_uninstall.dir
-/root/microros_ws/firmware/dev_ws/build/ament_cmake_pclint/CMakeFiles/test.dir
-/root/microros_ws/firmware/dev_ws/build/ament_cmake_pclint/CMakeFiles/edit_cache.dir
-/root/microros_ws/firmware/dev_ws/build/ament_cmake_pclint/CMakeFiles/rebuild_cache.dir
-/root/microros_ws/firmware/dev_ws/build/ament_cmake_pclint/CMakeFiles/list_install_components.dir
-/root/microros_ws/firmware/dev_ws/build/ament_cmake_pclint/CMakeFiles/install.dir
-/root/microros_ws/firmware/dev_ws/build/ament_cmake_pclint/CMakeFiles/install/local.dir

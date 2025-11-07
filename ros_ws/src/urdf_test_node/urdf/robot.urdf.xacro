@@ -25,7 +25,7 @@
   <joint name="odom_joint" type="fixed">
     <parent link="odom"/>
     <child link="base_link"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/> 
+    <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
 
   <link name="imu_link">
@@ -41,7 +41,7 @@
   <joint name="imu_joint" type="fixed">
     <parent link="base_link"/>
     <child link="imu_link"/>
-    <origin xyz="0 0 ${BASE_HEIGHT + 0.05}" rpy="0 0 0"/> 
+    <origin xyz="0 0 ${BASE_HEIGHT + 0.05}" rpy="0 0 0"/>
   </joint>
 
   <link name="lidar_link">
@@ -57,14 +57,14 @@
   <joint name="lidar_joint" type="fixed">
     <parent link="base_link"/>
     <child link="lidar_link"/>
-    <origin xyz="${BASE_LENGTH/4} 0 ${BASE_HEIGHT + 0.15}" rpy="0 0 0"/> 
+    <origin xyz="${BASE_LENGTH/4} 0 ${BASE_HEIGHT + 0.15}" rpy="0 0 0"/>
   </joint>
 
   <link name="right_track_link">
     <visual>
-      <origin xyz="0 0 0" rpy="0 ${M_PI/2} 0"/> 
+      <origin xyz="0 0 0" rpy="0 ${M_PI/2} 0"/>
       <geometry>
-        <cylinder radius="${TRACK_RADIUS}" length="${BASE_LENGTH}"/> 
+        <cylinder radius="${TRACK_RADIUS}" length="${BASE_LENGTH}"/>
       </geometry>
       <material name="Black"/>
     </visual>
@@ -73,7 +73,7 @@
   <joint name="right_track_joint" type="continuous">
     <parent link="base_link"/>
     <child link="right_track_link"/>
-    <origin xyz="0 ${-(BASE_WIDTH/2)} 0" rpy="0 0 0"/> 
+    <origin xyz="0 ${-(BASE_WIDTH/2)} 0" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
   </joint>
 

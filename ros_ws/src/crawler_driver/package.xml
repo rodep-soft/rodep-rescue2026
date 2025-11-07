@@ -4,17 +4,20 @@
   <name>crawler_driver</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="xingdianshantian97@gmail.com">yama</maintainer>
-  <license>Apache-2.0</license>
+  <maintainer email="root@todo.todo">root</maintainer>
+  <license>MIT</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <depend>rclcpp</depend>
-  <depend>dynamixel_sdk</depend>
-  <depend>sensor_msgs</depend>
-
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
+  <test_depend>ament_cmake_gtest</test_depend>
+
+
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>custom_interfaces</depend>
 
   <export>
     <build_type>ament_cmake</build_type>

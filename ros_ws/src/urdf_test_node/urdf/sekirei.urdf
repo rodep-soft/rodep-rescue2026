@@ -1,0 +1,161 @@
+<robot name="sekirei">
+    <link name="base_link"/>
+    <link name="arm_base_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://urdf_test_node/meshes/r_a_2019_2020_asm1.STL"/>
+            </geometry>
+            <origin xyz="-0.08 -0.081 0" rpy="1.57 0 0"/>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+    </link>
+    <joint name="arm_base_link_joint" type="fixed">
+        <origin xyz="0.2 0 0.1" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="arm_base_link"/>
+    </joint>
+    <link name="arm1_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://urdf_test_node/meshes/r_a_2019_2020_asm2.STL"/>
+            </geometry>
+            <origin xyz="0 0 0.004" rpy="1.57 0 0"/>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+    </link>
+    <joint name="arm_joint1" type="revolute">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <parent link="arm_base_link"/>
+        <child link="arm1_link"/>
+        <limit effort="5" lower="-3.14" upper="3.14" velocity="1.571"/>
+    </joint>
+    <link name="arm2_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://urdf_test_node/meshes/r_a_2019_2020_asm3.STL"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+    </link>
+    <joint name="arm_joint2" type="revolute">
+        <origin xyz="0 -0.048 0.078" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <parent link="arm1_link"/>
+        <child link="arm2_link"/>
+        <limit effort="5" lower="-3.14" upper="0" velocity="1.571"/>
+    </joint>
+    <link name="arm3_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://urdf_test_node/meshes/r_a_2019_2020_asm4.STL"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+    </link>
+    <joint name="arm_joint3" type="revolute">
+        <origin xyz="0.45 0.007 0.084" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <parent link="arm2_link"/>
+        <child link="arm3_link"/>
+        <limit effort="5" lower="0" upper="3.14" velocity="1.571"/>
+    </joint>
+    <link name="arm4_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://urdf_test_node/meshes/r_a_2019_2020_asm5.STL"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 3.14 0"/>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+    </link>
+    <joint name="arm_joint4" type="revolute">
+        <origin xyz="-0.5 0.012 0" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <parent link="arm3_link"/>
+        <child link="arm4_link"/>
+        <limit effort="5" lower="-4.71" upper="0" velocity="1.571"/>
+    </joint>
+    <link name="arm5_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://urdf_test_node/meshes/r_a_2019_l_asm6.STL"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 3.14 0"/>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+    </link>
+    <joint name="arm_joint5" type="revolute">
+        <origin xyz="0.06525 0.028 0.029647" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <parent link="arm4_link"/>
+        <child link="arm5_link"/>
+        <limit effort="5" lower="-1.57" upper="1.57" velocity="1.571"/>
+    </joint>
+    <link name="arm6_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://urdf_test_node/meshes/r_a_2019_l_asm7_ver2.STL"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 3.14 0"/>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+    </link>
+    <joint name="arm_joint6" type="revolute">
+        <origin xyz="0.07425 0 -0.03" rpy="0 0 0"/>
+        <axis xyz="1 0 0"/>
+        <parent link="arm5_link"/>
+        <child link="arm6_link"/>
+        <limit effort="5" lower="-3.14" upper="3.14" velocity="1.571"/>
+    </joint>
+    <link name="gui_d435_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://urdf_test_node/meshes/d435.STL"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 0 -1.57"/>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+    </link>
+    <joint name="gui_d435_joint" type="fixed">
+        <origin xyz="0.066 -0.03105 0" rpy="1.57 0 0"/>
+        <parent link="arm6_link"/>
+        <child link="gui_d435_link"/>
+    </joint>
+    <link name="gui_t265_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://urdf_test_node/meshes/t265.STL"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 3.14 1.57"/>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+    </link>
+    <joint name="gui_t265_joint" type="fixed">
+        <origin xyz="-0.05945 0.02 0.073" rpy="3.14 3.14 0"/>
+        <!--        <parent link="arm_base_link"/>-->
+        <parent link="arm1_link"/>
+        <child link="gui_t265_link"/>
+    </joint>
+
+</robot>

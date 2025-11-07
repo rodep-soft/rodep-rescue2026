@@ -13,5 +13,3 @@ exec:
 
 status:
 	systemctl status docker
-
-

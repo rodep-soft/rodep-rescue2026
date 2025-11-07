@@ -8,7 +8,7 @@
             <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
         </inertial>
     </link>
-    
+
     <!-- Arm Base Link -->
     <link name="arm_base_link">
         <visual>
@@ -32,13 +32,13 @@
             <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
         </inertial>
     </link>
-    
+
     <joint name="arm_base_link_joint" type="fixed">
         <origin xyz="0.2 0 0.1" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="arm_base_link"/>
     </joint>
-    
+
     <!-- Arm Link 1 -->
     <link name="arm1_link">
         <visual>
@@ -62,7 +62,7 @@
             <inertia ixx="0.0008" ixy="0.0" ixz="0.0" iyy="0.0008" iyz="0.0" izz="0.0002"/>
         </inertial>
     </link>
-    
+
     <joint name="arm_joint1" type="revolute">
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <axis xyz="0 0 1"/>
@@ -70,7 +70,7 @@
         <child link="arm1_link"/>
         <limit effort="5" lower="-3.14" upper="3.14" velocity="1.571"/>
     </joint>
-    
+
     <!-- Arm Link 2 -->
     <link name="arm2_link">
         <visual>
@@ -94,7 +94,7 @@
             <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.010" iyz="0.0" izz="0.010"/>
         </inertial>
     </link>
-    
+
     <joint name="arm_joint2" type="revolute">
         <origin xyz="0 -0.048 0.078" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
@@ -102,7 +102,7 @@
         <child link="arm2_link"/>
         <limit effort="5" lower="-3.14" upper="0" velocity="1.571"/>
     </joint>
-    
+
     <!-- Arm Link 3 -->
     <link name="arm3_link">
         <visual>
@@ -126,7 +126,7 @@
             <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.010" iyz="0.0" izz="0.010"/>
         </inertial>
     </link>
-    
+
     <joint name="arm_joint3" type="revolute">
         <origin xyz="0.45 0.007 0.084" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
@@ -134,7 +134,7 @@
         <child link="arm3_link"/>
         <limit effort="5" lower="0" upper="3.14" velocity="1.571"/>
     </joint>
-    
+
     <!-- Arm Link 4 -->
     <link name="arm4_link">
         <visual>
@@ -158,7 +158,7 @@
             <inertia ixx="0.0005" ixy="0.0" ixz="0.0" iyy="0.0005" iyz="0.0" izz="0.0001"/>
         </inertial>
     </link>
-    
+
     <joint name="arm_joint4" type="revolute">
         <origin xyz="-0.5 0.012 0" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
@@ -166,7 +166,7 @@
         <child link="arm4_link"/>
         <limit effort="5" lower="-4.71" upper="0" velocity="1.571"/>
     </joint>
-    
+
     <!-- Arm Link 5 -->
     <link name="arm5_link">
         <visual>
@@ -190,7 +190,7 @@
             <inertia ixx="0.0002" ixy="0.0" ixz="0.0" iyy="0.0002" iyz="0.0" izz="0.0001"/>
         </inertial>
     </link>
-    
+
     <joint name="arm_joint5" type="revolute">
         <origin xyz="0.06525 0.028 0.029647" rpy="0 0 0"/>
         <axis xyz="0 0 1"/>
@@ -198,7 +198,7 @@
         <child link="arm5_link"/>
         <limit effort="5" lower="-1.57" upper="1.57" velocity="1.571"/>
     </joint>
-    
+
     <!-- Arm Link 6 -->
     <link name="arm6_link">
         <visual>
@@ -222,7 +222,7 @@
             <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
         </inertial>
     </link>
-    
+
     <joint name="arm_joint6" type="revolute">
         <origin xyz="0.07425 0 -0.03" rpy="0 0 0"/>
         <axis xyz="1 0 0"/>
@@ -230,7 +230,7 @@
         <child link="arm6_link"/>
         <limit effort="5" lower="-3.14" upper="3.14" velocity="1.571"/>
     </joint>
-    
+
     <!-- Camera Links (simplified) -->
     <link name="gui_d435_link">
         <visual>
@@ -254,13 +254,13 @@
             <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
         </inertial>
     </link>
-    
+
     <joint name="gui_d435_joint" type="fixed">
         <origin xyz="0.066 -0.03105 0" rpy="1.57 0 0"/>
         <parent link="arm6_link"/>
         <child link="gui_d435_link"/>
     </joint>
-    
+
     <link name="gui_t265_link">
         <visual>
             <geometry>
@@ -283,11 +283,121 @@
             <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
         </inertial>
     </link>
-    
+
     <joint name="gui_t265_joint" type="fixed">
         <origin xyz="-0.05945 0.02 0.073" rpy="3.14 3.14 0"/>
         <parent link="arm1_link"/>
         <child link="gui_t265_link"/>
     </joint>
 
+<<<<<<< HEAD
+    <!-- transmissions for ros2_control / dynamixel_hardware -->
+    <!-- SimpleTransmission used to map actuator to joint -->
+    <transmission name="arm_joint1_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="arm_joint1_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="arm_joint1">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <transmission name="arm_joint2_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="arm_joint2_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="arm_joint2">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <transmission name="arm_joint3_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="arm_joint3_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="arm_joint3">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <transmission name="arm_joint4_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="arm_joint4_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="arm_joint4">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <transmission name="arm_joint5_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="arm_joint5_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="arm_joint5">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <transmission name="arm_joint6_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="arm_joint6_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="arm_joint6">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <!-- ros2_control configuration for dynamixel_hardware -->
+    <ros2_control name="sekirei_dynamixel_hw" type="system">
+        <hardware>
+            <!-- plugin provided by dynamixel_hardware package -->
+            <plugin>dynamixel_hardware/DynamixelHardware</plugin>
+            <!-- Assumptions: XM540-W270 on /dev/ttyUSB0 at 1Mbps. Edit as needed. -->
+            <param name="usb_port">/dev/ttyUSB0</param>
+            <param name="baud_rate">1000000</param>
+            <!-- set use_dummy to true if testing without real motors -->
+            <param name="use_dummy">true</param>
+        </hardware>
+
+        <joint name="arm_joint1">
+            <param name="id">1</param>
+            <param name="Profile_Velocity">100</param>
+        </joint>
+        <joint name="arm_joint2">
+            <param name="id">2</param>
+            <param name="Profile_Velocity">100</param>
+        </joint>
+        <joint name="arm_joint3">
+            <param name="id">3</param>
+            <param name="Profile_Velocity">100</param>
+        </joint>
+        <joint name="arm_joint4">
+            <param name="id">4</param>
+            <param name="Profile_Velocity">100</param>
+        </joint>
+        <joint name="arm_joint5">
+            <param name="id">5</param>
+            <param name="Profile_Velocity">100</param>
+        </joint>
+        <joint name="arm_joint6">
+            <param name="id">6</param>
+            <param name="Profile_Velocity">100</param>
+        </joint>
+
+    </ros2_control>
+
+=======
+>>>>>>> f499368714c2dfc6a13d5618a4b690fefd245a3c
 </robot>

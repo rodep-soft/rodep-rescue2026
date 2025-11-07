@@ -1,0 +1,38 @@
+dynamixel_hardware:
+  ros__parameters:
+    usb_port: "/dev/ttyUSB0"
+    baud_rate: 1000000
+    # use_dummy: true
+    # If using multiple ids, list them with joint names in the URDF <ros2_control> block
+    # Example joint entries (IDs are placeholders, replace with actual IDs):
+    motors:
+      - joint_name: arm_joint1
+        id: 1
+        model: XM540-W270
+        direction: 1
+        offset: 0.0
+      - joint_name: arm_joint2
+        id: 2
+        model: XM540-W270
+        direction: 1
+        offset: 0.0
+      - joint_name: arm_joint3
+        id: 3
+        model: XM540-W270
+        direction: 1
+        offset: 0.0
+      - joint_name: arm_joint4
+        id: 4
+        model: XM540-W270
+        direction: 1
+        offset: 0.0
+      - joint_name: arm_joint5
+        id: 5
+        model: XM540-W270
+        direction: 1
+        offset: 0.0
+      - joint_name: arm_joint6
+        id: 6
+        model: XM540-W270
+        direction: 1
+        offset: 0.0

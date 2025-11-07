@@ -17,7 +17,7 @@ def generate_launch_description():
             )
         ])
     )
-    
+
     # Joy node
     joy_node = Node(
         package='joy',
@@ -30,7 +30,7 @@ def generate_launch_description():
             'autorepeat_rate': 20.0,
         }]
     )
-    
+
     # Joy teleop (directly controls joints)
     joy_teleop_node = Node(
         package='sekirei_moveit_config',
@@ -38,7 +38,7 @@ def generate_launch_description():
         name='joy_teleop',
         output='screen',
     )
-    
+
     return LaunchDescription([
         demo_launch,
         joy_node,

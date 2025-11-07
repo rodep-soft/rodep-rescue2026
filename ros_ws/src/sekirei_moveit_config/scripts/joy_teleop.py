@@ -40,7 +40,7 @@ class JoyTeleop(Node):
         self.joint_state_pub = self.create_publisher(JointState, '/joint_states', 10)
 
 =======
-        
+
         # Subscribe to joy
         self.joy_sub = self.create_subscription(
             Joy,
@@ -48,14 +48,14 @@ class JoyTeleop(Node):
             self.joy_callback,
             10
         )
-        
+
         # Publish joint commands to /joint_commands (will be read by fake_controller or other nodes)
         self.joint_pub = self.create_publisher(
             JointState,
             '/joint_commands',
             10
         )
-        
+
 >>>>>>> f499368714c2dfc6a13d5618a4b690fefd245a3c
         # Current joint positions
         self.joint_positions = [0.0] * 6
@@ -88,14 +88,14 @@ class JoyTeleop(Node):
 
         self.get_logger().info('Joy teleop started! use_action=%s' % str(self.use_action))
 =======
-        
+
         # Control parameters
         self.speed = 0.02  # radians per update
         self.deadzone = 0.1
-        
+
         # Timer for publishing joint states
         self.timer = self.create_timer(0.05, self.publish_joint_states)
-        
+
         self.get_logger().info('Joy teleop started!')
 >>>>>>> f499368714c2dfc6a13d5618a4b690fefd245a3c
         self.get_logger().info('Left stick X: Joint 1 (base rotation)')
@@ -107,7 +107,7 @@ class JoyTeleop(Node):
 <<<<<<< HEAD
 
 =======
-    
+
 >>>>>>> f499368714c2dfc6a13d5618a4b690fefd245a3c
     def apply_deadzone(self, value):
         """Apply deadzone to joystick value"""
@@ -117,7 +117,7 @@ class JoyTeleop(Node):
 <<<<<<< HEAD
 
 =======
-    
+
 >>>>>>> f499368714c2dfc6a13d5618a4b690fefd245a3c
     def publish_joint_states(self):
         """Publish current joint states"""
@@ -183,20 +183,20 @@ class JoyTeleop(Node):
 
 =======
         self.joint_pub.publish(msg)
-    
+
     def joy_callback(self, msg):
         """Update joint positions based on joystick input"""
         if not msg.axes or len(msg.axes) < 4:
             return
-        
+
         # Left stick X: Joint 1 (base rotation)
         delta1 = self.apply_deadzone(msg.axes[0]) * self.speed
         self.joint_positions[0] += delta1
-        
+
         # Left stick Y: Joint 2 (shoulder)
         delta2 = self.apply_deadzone(msg.axes[1]) * self.speed
         self.joint_positions[1] += delta2
-        
+
 >>>>>>> f499368714c2dfc6a13d5618a4b690fefd245a3c
         # Right stick Y: Joint 3 (elbow)
         if len(msg.axes) > 4:
@@ -205,7 +205,7 @@ class JoyTeleop(Node):
 <<<<<<< HEAD
 
 =======
-        
+
 >>>>>>> f499368714c2dfc6a13d5618a4b690fefd245a3c
         # Right stick X: Joint 4 (wrist1)
         if len(msg.axes) > 3:
@@ -214,7 +214,7 @@ class JoyTeleop(Node):
 <<<<<<< HEAD
 
 =======
-        
+
 >>>>>>> f499368714c2dfc6a13d5618a4b690fefd245a3c
         # Buttons: L1/R1 for Joint 5 (wrist2)
         if len(msg.buttons) > 5:
@@ -225,7 +225,7 @@ class JoyTeleop(Node):
 <<<<<<< HEAD
 
 =======
-        
+
 >>>>>>> f499368714c2dfc6a13d5618a4b690fefd245a3c
         # L2/R2 for Joint 6 (wrist3)
         if len(msg.buttons) > 7:
@@ -236,7 +236,7 @@ class JoyTeleop(Node):
 <<<<<<< HEAD
 
 =======
-        
+
 >>>>>>> f499368714c2dfc6a13d5618a4b690fefd245a3c
         # Clamp positions to reasonable limits
         for i in range(6):
@@ -250,9 +250,9 @@ def main(args=None):
     joy_teleop = JoyTeleop()
 
 =======
-    
+
     joy_teleop = JoyTeleop()
-    
+
 >>>>>>> f499368714c2dfc6a13d5618a4b690fefd245a3c
     try:
         rclpy.spin(joy_teleop)
@@ -267,7 +267,7 @@ def main(args=None):
         # rclpy may already be shutdown if a SIGINT was handled elsewhere; ignore
         pass
 =======
-    
+
     joy_teleop.destroy_node()
     rclpy.shutdown()
 >>>>>>> f499368714c2dfc6a13d5618a4b690fefd245a3c

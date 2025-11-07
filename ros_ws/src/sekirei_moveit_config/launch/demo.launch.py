@@ -38,7 +38,7 @@ def launch_setup(context, *args, **kwargs):
 
     # Planning config
     ompl_planning_yaml = load_yaml('sekirei_moveit_config', 'config/ompl_planning.yaml')
-    
+
     # MoveIt Cpp config (planning pipelines)
     moveit_cpp_yaml = load_yaml('sekirei_moveit_config', 'config/moveit_cpp.yaml')
 
@@ -74,7 +74,7 @@ def launch_setup(context, *args, **kwargs):
         'robot_description_kinematics': kinematics_yaml,
         'use_sim_time': False,
     }
-    
+
     # Add MoveIt Cpp configuration (planning pipelines)
     if moveit_cpp_yaml:
         # Convert pipeline_names list to ParameterValue
@@ -82,13 +82,13 @@ def launch_setup(context, *args, **kwargs):
             pp = moveit_cpp_yaml['planning_pipelines']
             if 'pipeline_names' in pp and isinstance(pp['pipeline_names'], list):
                 pp['pipeline_names'] = ParameterValue(pp['pipeline_names'])
-        
+
         # Convert ompl.planning_plugins list to ParameterValue
         if 'ompl' in moveit_cpp_yaml and isinstance(moveit_cpp_yaml['ompl'], dict):
             ompl_config = moveit_cpp_yaml['ompl']
             if 'planning_plugins' in ompl_config and isinstance(ompl_config['planning_plugins'], list):
                 ompl_config['planning_plugins'] = ParameterValue(ompl_config['planning_plugins'])
-        
+
         move_group_params.update(moveit_cpp_yaml)
 
     # Add OMPL planning configuration
@@ -96,11 +96,11 @@ def launch_setup(context, *args, **kwargs):
         # Convert planning_plugins list to ParameterValue
         if 'planning_plugins' in ompl_planning_yaml and isinstance(ompl_planning_yaml['planning_plugins'], list):
             ompl_planning_yaml['planning_plugins'] = ParameterValue(ompl_planning_yaml['planning_plugins'])
-        
+
         # Convert request_adapters list to ParameterValue
         if 'request_adapters' in ompl_planning_yaml and isinstance(ompl_planning_yaml['request_adapters'], list):
             ompl_planning_yaml['request_adapters'] = ParameterValue(ompl_planning_yaml['request_adapters'])
-        
+
         # Convert planner_configs lists in group-specific config
         if 'sekirei_arm' in ompl_planning_yaml and isinstance(ompl_planning_yaml['sekirei_arm'], dict):
             if 'planner_configs' in ompl_planning_yaml['sekirei_arm']:
@@ -108,7 +108,7 @@ def launch_setup(context, *args, **kwargs):
                     ompl_planning_yaml['sekirei_arm']['planner_configs'] = ParameterValue(
                         ompl_planning_yaml['sekirei_arm']['planner_configs']
                     )
-        
+
         # Add with 'ompl.' prefix to match expected namespace
         for key, value in ompl_planning_yaml.items():
             move_group_params[f'ompl.{key}'] = value
@@ -126,7 +126,7 @@ def launch_setup(context, *args, **kwargs):
             if 'controller_names' in scm and isinstance(scm['controller_names'], list):
                 scm['controller_names'] = ParameterValue(scm['controller_names'])
         move_group_params.update(moveit_controllers)
-    
+
     # Fake controller - Python action server that publishes joint states
     fake_controller_node = Node(
         package='sekirei_moveit_config',
@@ -134,7 +134,7 @@ def launch_setup(context, *args, **kwargs):
         output='screen',
         name='fake_controller',
     )
-    
+
     # Start the actual move_group node/action server
     move_group_node = Node(
         package='moveit_ros_move_group',

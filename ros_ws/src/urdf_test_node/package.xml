@@ -13,8 +13,8 @@
   <depend>geometry_msgs</depend>
   <depend>moveit_ros_planning_interface</depend>
   <depend>sensor_msgs</depend>
-  
-  
+
+
 >>>>>>> f499368714c2dfc6a13d5618a4b690fefd245a3c
   <buildtool_depend>ament_cmake</buildtool_depend>
 

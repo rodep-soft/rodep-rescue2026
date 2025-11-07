@@ -290,6 +290,7 @@
         <child link="gui_t265_link"/>
     </joint>
 
+<<<<<<< HEAD
     <!-- transmissions for ros2_control / dynamixel_hardware -->
     <!-- SimpleTransmission used to map actuator to joint -->
     <transmission name="arm_joint1_trans">
@@ -397,4 +398,6 @@
 
     </ros2_control>
 
+=======
+>>>>>>> f499368714c2dfc6a13d5618a4b690fefd245a3c
 </robot>

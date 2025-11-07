@@ -5,10 +5,13 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+<<<<<<< HEAD
 # Require C++20 for this package (uses std::span and std::bit_cast)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+=======
+>>>>>>> f499368714c2dfc6a13d5618a4b690fefd245a3c
 # find dependencies
 find_package(ament_cmake REQUIRED)
 # uncomment the following section in order to fill in

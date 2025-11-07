@@ -1,1 +1,1 @@
-/root/ros_ws/build/operator/ament_cmake_core/operatorConfig.cmake
+/home/rodep/working/rodep-rescue2026/ros_ws/build/operator/ament_cmake_core/operatorConfig.cmake

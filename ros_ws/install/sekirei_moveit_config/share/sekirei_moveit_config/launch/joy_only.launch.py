@@ -1,1 +1,1 @@
-/root/ros_ws/src/sekirei_moveit_config/launch/joy_only.launch.py
+/home/rodep/working/rodep-rescue2026/ros_ws/src/sekirei_moveit_config/launch/joy_only.launch.py

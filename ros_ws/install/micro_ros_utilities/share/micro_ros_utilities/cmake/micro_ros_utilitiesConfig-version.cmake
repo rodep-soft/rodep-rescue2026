@@ -1,1 +1,0 @@
-/root/ros_ws/build/micro_ros_utilities/ament_cmake_core/micro_ros_utilitiesConfig-version.cmake

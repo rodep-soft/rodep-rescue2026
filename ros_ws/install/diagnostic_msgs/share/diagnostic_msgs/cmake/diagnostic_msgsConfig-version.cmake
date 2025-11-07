@@ -1,1 +1,1 @@
-/root/ros_ws/build/diagnostic_msgs/ament_cmake_core/diagnostic_msgsConfig-version.cmake
+/home/rodep/working/rodep-rescue2026/ros_ws/build/diagnostic_msgs/ament_cmake_core/diagnostic_msgsConfig-version.cmake

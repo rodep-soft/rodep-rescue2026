@@ -1,1 +1,0 @@
-/root/ros_ws/src/uros/rosidl_typesupport_microxrcedds/test/msg/msg/Primitive.msg

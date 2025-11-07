@@ -1,1 +1,1 @@
-/root/ros_ws/build/sensor_msgs/rosidl_generator_c/sensor_msgs/msg/detail/camera_info__struct.h
+/home/rodep/working/rodep-rescue2026/ros_ws/build/sensor_msgs/rosidl_generator_c/sensor_msgs/msg/detail/camera_info__struct.h

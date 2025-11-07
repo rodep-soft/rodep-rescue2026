@@ -1,1 +1,0 @@
-/root/ros_ws/src/uros/rosidl_typesupport_microxrcedds/rosidl_typesupport_microxrcedds_cpp/resource/idl__type_support_cpp.cpp.em

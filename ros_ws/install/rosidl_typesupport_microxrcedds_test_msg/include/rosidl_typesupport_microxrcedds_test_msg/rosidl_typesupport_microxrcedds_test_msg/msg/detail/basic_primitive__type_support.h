@@ -1,1 +1,0 @@
-/root/ros_ws/build/rosidl_typesupport_microxrcedds_test_msg/rosidl_generator_c/rosidl_typesupport_microxrcedds_test_msg/msg/detail/basic_primitive__type_support.h

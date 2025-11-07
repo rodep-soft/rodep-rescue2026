@@ -1,1 +1,1 @@
-/root/ros_ws/build/urdf_test_node/ament_cmake_environment_hooks/local_setup.bash
+/home/rodep/working/rodep-rescue2026/ros_ws/build/urdf_test_node/ament_cmake_environment_hooks/local_setup.bash

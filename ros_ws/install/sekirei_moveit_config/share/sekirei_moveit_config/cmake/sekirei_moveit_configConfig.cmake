@@ -1,1 +1,1 @@
-/root/ros_ws/build/sekirei_moveit_config/ament_cmake_core/sekirei_moveit_configConfig.cmake
+/home/rodep/working/rodep-rescue2026/ros_ws/build/sekirei_moveit_config/ament_cmake_core/sekirei_moveit_configConfig.cmake

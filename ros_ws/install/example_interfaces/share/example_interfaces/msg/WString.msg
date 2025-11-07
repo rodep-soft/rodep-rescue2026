@@ -1,1 +1,1 @@
-/root/ros_ws/src/ros2/example_interfaces/msg/WString.msg
+/home/rodep/working/rodep-rescue2026/ros_ws/src/ros2/example_interfaces/msg/WString.msg

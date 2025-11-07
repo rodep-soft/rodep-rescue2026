@@ -10,15 +10,12 @@ find_package(ament_cmake REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
-<<<<<<< HEAD
-=======
 find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 find_package(sensor_msgs REQUIRED)
 
 
->>>>>>> f499368714c2dfc6a13d5618a4b690fefd245a3c
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -32,8 +29,6 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-<<<<<<< HEAD
-=======
 
 
 add_executable(joy_teleop src/joy_teleop.cpp)
@@ -51,7 +46,6 @@ install(TARGETS
 )
 
 
->>>>>>> f499368714c2dfc6a13d5618a4b690fefd245a3c
 # CMakeLists.txt に以下を追加または確認してください
 # Launchファイル群をインストール
 install(DIRECTORY launch
@@ -59,10 +53,7 @@ install(DIRECTORY launch
   PATTERN "*.py"
 )
 
-<<<<<<< HEAD
-=======
 
->>>>>>> f499368714c2dfc6a13d5618a4b690fefd245a3c
 # 👇 これが最重要：urdfディレクトリ全体を、share/<package>/urdf にコピー
 install(DIRECTORY urdf
   DESTINATION share/${PROJECT_NAME}

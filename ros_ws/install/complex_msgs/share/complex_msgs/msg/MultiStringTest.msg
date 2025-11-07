@@ -1,1 +1,0 @@
-/root/ros_ws/src/uros/micro-ROS-demos/messages/complex_msg/msg/MultiStringTest.msg

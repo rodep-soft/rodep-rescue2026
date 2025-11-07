@@ -1,1 +1,1 @@
-/root/ros_ws/build/nav_msgs/ament_cmake_environment_hooks/local_setup.sh
+/home/rodep/working/rodep-rescue2026/ros_ws/build/nav_msgs/ament_cmake_environment_hooks/local_setup.sh

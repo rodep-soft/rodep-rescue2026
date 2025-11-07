@@ -1,1 +1,0 @@
-/root/ros_ws/build/rosidl_typesupport_microxrcedds_test_msg/rosidl_typesupport_introspection_c/rosidl_typesupport_microxrcedds_test_msg/msg/detail/regression11__rosidl_typesupport_introspection_c.h

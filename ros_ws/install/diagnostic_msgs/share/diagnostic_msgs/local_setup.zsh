@@ -1,1 +1,1 @@
-/root/ros_ws/build/diagnostic_msgs/ament_cmake_environment_hooks/local_setup.zsh
+/home/rodep/working/rodep-rescue2026/ros_ws/build/diagnostic_msgs/ament_cmake_environment_hooks/local_setup.zsh

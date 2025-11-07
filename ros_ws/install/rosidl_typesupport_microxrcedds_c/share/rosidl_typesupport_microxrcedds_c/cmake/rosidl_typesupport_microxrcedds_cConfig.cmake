@@ -1,1 +1,0 @@
-/root/ros_ws/build/rosidl_typesupport_microxrcedds_c/ament_cmake_core/rosidl_typesupport_microxrcedds_cConfig.cmake

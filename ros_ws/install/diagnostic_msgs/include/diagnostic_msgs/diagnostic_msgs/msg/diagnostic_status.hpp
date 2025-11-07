@@ -1,1 +1,1 @@
-/root/ros_ws/build/diagnostic_msgs/rosidl_generator_cpp/diagnostic_msgs/msg/diagnostic_status.hpp
+/home/rodep/working/rodep-rescue2026/ros_ws/build/diagnostic_msgs/rosidl_generator_cpp/diagnostic_msgs/msg/diagnostic_status.hpp

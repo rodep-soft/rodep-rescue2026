@@ -1,1 +1,0 @@
-/root/ros_ws/build/micro_ros_msgs/rosidl_generator_cpp/micro_ros_msgs/msg/detail/node__type_support.hpp

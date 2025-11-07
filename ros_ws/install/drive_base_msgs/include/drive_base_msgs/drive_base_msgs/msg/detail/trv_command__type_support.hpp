@@ -1,1 +1,0 @@
-/root/ros_ws/build/drive_base_msgs/rosidl_generator_cpp/drive_base_msgs/msg/detail/trv_command__type_support.hpp

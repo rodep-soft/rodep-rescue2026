@@ -1,6 +1,0 @@
-[WARN] [1761209218.695533102] [move_group]: Falling back to using the the move_group node namespace (deprecated behavior).
-[ERROR] [1761209228.701534865] [move_group]: Could not find parameter robot_description and did not receive robot_description via std_msgs::msg::String subscription within 10.000000 seconds.
-[INFO] [1761209228.703235618] [move_group.moveit.moveit.ros.rdf_loader]: Unable to parse URDF
-[ERROR] [1761209228.710397076] [move_group.moveit.moveit.ros.planning_scene_monitor]: Robot model not loaded
-[ERROR] [1761209228.710915642] [move_group.moveit.moveit.ros.moveit_cpp]: Planning scene not configured
-[FATAL] [1761209228.710942113] [move_group.moveit.moveit.ros.moveit_cpp]: Unable to configure planning scene monitor

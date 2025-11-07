@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/example_interfaces/rosidl_generator_cpp/example_interfaces/msg/detail/u_int16__traits.hpp

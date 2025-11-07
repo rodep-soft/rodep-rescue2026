@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/stereo_msgs/rosidl_generator_c/stereo_msgs/msg/disparity_image.h

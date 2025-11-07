@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/geometry_msgs/ament_cmake_core/geometry_msgsConfig.cmake

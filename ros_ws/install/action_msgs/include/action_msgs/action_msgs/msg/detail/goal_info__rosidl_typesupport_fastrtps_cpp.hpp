@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/action_msgs/rosidl_typesupport_fastrtps_cpp/action_msgs/msg/detail/goal_info__rosidl_typesupport_fastrtps_cpp.hpp

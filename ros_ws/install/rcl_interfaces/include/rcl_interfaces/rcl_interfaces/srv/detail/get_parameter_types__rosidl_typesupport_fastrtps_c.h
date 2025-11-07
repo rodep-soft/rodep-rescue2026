@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/rcl_interfaces/rosidl_typesupport_fastrtps_c/rcl_interfaces/srv/detail/get_parameter_types__rosidl_typesupport_fastrtps_c.h

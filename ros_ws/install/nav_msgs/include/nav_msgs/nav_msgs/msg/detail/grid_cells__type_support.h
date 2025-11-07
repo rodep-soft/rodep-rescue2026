@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/nav_msgs/rosidl_generator_c/nav_msgs/msg/detail/grid_cells__type_support.h

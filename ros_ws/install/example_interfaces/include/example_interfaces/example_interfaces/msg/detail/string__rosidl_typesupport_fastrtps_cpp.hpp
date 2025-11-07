@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/example_interfaces/rosidl_typesupport_fastrtps_cpp/example_interfaces/msg/detail/string__rosidl_typesupport_fastrtps_cpp.hpp

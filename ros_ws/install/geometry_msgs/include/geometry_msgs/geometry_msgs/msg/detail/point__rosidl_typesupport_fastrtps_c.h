@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/geometry_msgs/rosidl_typesupport_fastrtps_c/geometry_msgs/msg/detail/point__rosidl_typesupport_fastrtps_c.h

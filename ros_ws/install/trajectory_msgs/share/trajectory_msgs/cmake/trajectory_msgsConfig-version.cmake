@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/trajectory_msgs/ament_cmake_core/trajectory_msgsConfig-version.cmake

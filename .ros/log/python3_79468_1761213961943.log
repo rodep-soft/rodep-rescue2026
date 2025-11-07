@@ -1,6 +1,0 @@
-[INFO] [1761213962.153329995] [simple_ik_client]: Waiting for IK service...
-[INFO] [1761213972.162608907] [simple_ik_client]: IK service ready!
-[INFO] [1761214029.091180129] [simple_ik_client]: Computing IK for position: (0.300, 0.200, 0.500)
-[ERROR] [1761214034.103914330] [simple_ik_client]: ✗ IK service call failed
-[INFO] [1761214042.614286311] [simple_ik_client]: Computing IK for position: (0.300, 0.000, 0.500)
-[ERROR] [1761214047.615152830] [simple_ik_client]: ✗ IK service call failed

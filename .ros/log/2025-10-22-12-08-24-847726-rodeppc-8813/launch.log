@@ -1,5 +1,0 @@
-1761134904.8483069 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-22-12-08-24-847726-rodeppc-8813
-1761134904.8484178 [INFO] [launch]: Default logging verbosity is set to INFO
-1761134904.8503113 [ERROR] [launch]: Caught exception in launch (see debug for traceback): Caught multiple exceptions when trying to load file of format [py]:
- - InvalidPythonLaunchFileError: launch file at 'test_launch.py' does not contain the required function 'generate_launch_description()'
- - InvalidFrontendLaunchFileError: The launch file may have a syntax error, or its format is unknown

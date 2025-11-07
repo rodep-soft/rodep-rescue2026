@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/src/dynamixel_hardware/dynamixel_hardware/include/dynamixel_hardware/dynamixel_hardware.hpp

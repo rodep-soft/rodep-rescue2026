@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/std_srvs/rosidl_generator_c/std_srvs/srv/detail/empty__type_support.h

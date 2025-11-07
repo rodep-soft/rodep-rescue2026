@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/sekirei_moveit_config/ament_cmake_environment_hooks/local_setup.bash

@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/sensor_msgs/rosidl_generator_cpp/sensor_msgs/srv/detail/set_camera_info__traits.hpp

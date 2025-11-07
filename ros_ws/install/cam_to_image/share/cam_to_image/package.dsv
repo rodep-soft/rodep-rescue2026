@@ -1,8 +1,0 @@
-source;share/cam_to_image/hook/cmake_prefix_path.ps1
-source;share/cam_to_image/hook/cmake_prefix_path.dsv
-source;share/cam_to_image/hook/cmake_prefix_path.sh
-source;share/cam_to_image/local_setup.bash
-source;share/cam_to_image/local_setup.dsv
-source;share/cam_to_image/local_setup.ps1
-source;share/cam_to_image/local_setup.sh
-source;share/cam_to_image/local_setup.zsh

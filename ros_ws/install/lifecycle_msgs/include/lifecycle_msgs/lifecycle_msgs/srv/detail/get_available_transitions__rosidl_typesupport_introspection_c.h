@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/lifecycle_msgs/rosidl_typesupport_introspection_c/lifecycle_msgs/srv/detail/get_available_transitions__rosidl_typesupport_introspection_c.h

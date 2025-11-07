@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/install/test_interface_files/share/test_interface_files/msg/Nested.msg

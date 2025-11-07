@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/type_description_interfaces/rosidl_typesupport_introspection_c/type_description_interfaces/msg/detail/individual_type_description__rosidl_typesupport_introspection_c.h

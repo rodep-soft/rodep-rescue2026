@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/sensor_msgs/rosidl_typesupport_fastrtps_c/sensor_msgs/srv/detail/set_camera_info__rosidl_typesupport_fastrtps_c.h

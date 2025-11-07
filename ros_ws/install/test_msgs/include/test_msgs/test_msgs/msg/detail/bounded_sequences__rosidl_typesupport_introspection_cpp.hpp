@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/test_msgs/rosidl_typesupport_introspection_cpp/test_msgs/msg/detail/bounded_sequences__rosidl_typesupport_introspection_cpp.hpp

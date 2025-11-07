@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/statistics_msgs/rosidl_generator_c/statistics_msgs/msg/detail/metrics_message__type_support.h

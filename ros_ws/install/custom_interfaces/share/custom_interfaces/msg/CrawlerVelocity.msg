@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/src/custom_interfaces/msg/CrawlerVelocity.msg

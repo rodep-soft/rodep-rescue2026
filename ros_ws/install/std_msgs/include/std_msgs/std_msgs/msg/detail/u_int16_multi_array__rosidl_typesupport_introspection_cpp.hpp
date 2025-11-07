@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/std_msgs/rosidl_typesupport_introspection_cpp/std_msgs/msg/detail/u_int16_multi_array__rosidl_typesupport_introspection_cpp.hpp

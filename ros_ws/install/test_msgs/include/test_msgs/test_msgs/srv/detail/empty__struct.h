@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/test_msgs/rosidl_generator_c/test_msgs/srv/detail/empty__struct.h

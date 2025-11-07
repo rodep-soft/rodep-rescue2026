@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/flipper_driver/ament_cmake_core/flipper_driverConfig-version.cmake

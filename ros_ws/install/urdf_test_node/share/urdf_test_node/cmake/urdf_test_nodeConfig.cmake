@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/urdf_test_node/ament_cmake_core/urdf_test_nodeConfig.cmake

@@ -1,9 +1,0 @@
-1761815922.3213370 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-30-09-18-42-308635-rodeppc-34598
-1761815922.3216209 [INFO] [launch]: Default logging verbosity is set to INFO
-1761815922.3704040 [INFO] [robot_state_publisher-1]: process started with pid [34601]
-1761815922.3706338 [INFO] [joy_node-2]: process started with pid [34602]
-1761815922.3708279 [INFO] [joy_teleop.py-3]: process started with pid [34603]
-1761815928.8929427 [ERROR] [robot_state_publisher-1]: process has died [pid 34601, exit code -6, cmd '/opt/ros/jazzy/lib/robot_state_publisher/robot_state_publisher --ros-args -r __node:=robot_state_publisher --params-file /tmp/launch_params_u5qsxwhs'].
-1761815952.7033887 [WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
-1761815952.8615756 [INFO] [joy_node-2]: process has finished cleanly [pid 34602]
-1761815952.8733883 [ERROR] [joy_teleop.py-3]: process has died [pid 34603, exit code 1, cmd '/root/ros_ws/install/sekirei_moveit_config/lib/sekirei_moveit_config/joy_teleop.py --ros-args -r __node:=joy_teleop --params-file /tmp/launch_params_4ig_bayz'].

@@ -1,9 +1,0 @@
-1761816005.4134510 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-30-09-20-05-412810-rodeppc-40351
-1761816005.4135458 [INFO] [launch]: Default logging verbosity is set to INFO
-1761816005.4975574 [INFO] [robot_state_publisher-1]: process started with pid [40354]
-1761816005.4977171 [INFO] [joy_node-2]: process started with pid [40355]
-1761816005.4978671 [INFO] [joy_teleop.py-3]: process started with pid [40356]
-1761816253.0876827 [WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
-1761816253.1956441 [INFO] [robot_state_publisher-1]: process has finished cleanly [pid 40354]
-1761816253.2262011 [INFO] [joy_node-2]: process has finished cleanly [pid 40355]
-1761816253.2419691 [ERROR] [joy_teleop.py-3]: process has died [pid 40356, exit code 1, cmd '/root/ros_ws/install/sekirei_moveit_config/lib/sekirei_moveit_config/joy_teleop.py --ros-args -r __node:=joy_teleop --params-file /tmp/launch_params_iwwkqqkk'].

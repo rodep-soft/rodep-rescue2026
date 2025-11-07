@@ -1,4 +1,0 @@
-1761648029.3351238 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-28-10-40-29-334458-rodeppc-43174
-1761648029.3352752 [INFO] [launch]: Default logging verbosity is set to INFO
-1761648029.3737957 [INFO] [usb_cam_node_exe-1]: process started with pid [43177]
-1761651089.0266509 [ERROR] [usb_cam_node_exe-1]: process has died [pid 43177, exit code -9, cmd '/opt/ros/jazzy/lib/usb_cam/usb_cam_node_exe --ros-args -r __node:=usb_cam_node --params-file /tmp/launch_params_vhrhj67z --params-file /tmp/launch_params_7lk9ic6r'].

@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/shape_msgs/rosidl_generator_cpp/shape_msgs/msg/detail/solid_primitive__builder.hpp

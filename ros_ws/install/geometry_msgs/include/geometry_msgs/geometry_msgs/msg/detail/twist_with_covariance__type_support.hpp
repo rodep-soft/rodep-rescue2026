@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/geometry_msgs/rosidl_generator_cpp/geometry_msgs/msg/detail/twist_with_covariance__type_support.hpp

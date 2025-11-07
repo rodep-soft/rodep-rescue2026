@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/lifecycle_msgs/rosidl_generator_cpp/lifecycle_msgs/srv/detail/get_state__traits.hpp

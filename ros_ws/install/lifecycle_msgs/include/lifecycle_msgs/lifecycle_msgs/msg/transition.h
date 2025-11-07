@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/lifecycle_msgs/rosidl_generator_c/lifecycle_msgs/msg/transition.h

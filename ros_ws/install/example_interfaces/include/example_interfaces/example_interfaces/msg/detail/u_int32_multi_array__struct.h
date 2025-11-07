@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/example_interfaces/rosidl_generator_c/example_interfaces/msg/detail/u_int32_multi_array__struct.h

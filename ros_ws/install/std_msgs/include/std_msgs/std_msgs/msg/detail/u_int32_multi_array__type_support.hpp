@@ -1,1 +1,0 @@
-/home/rodep/working/rodep-rescue2026/ros_ws/build/std_msgs/rosidl_generator_cpp/std_msgs/msg/detail/u_int32_multi_array__type_support.hpp

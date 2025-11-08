@@ -98,6 +98,7 @@ package-lock.json
 .zshrc.swp
 .fish_history
 .lesshst
+.config/
 .python_history
 .node_repl_history
 .mysql_history

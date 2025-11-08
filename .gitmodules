@@ -2,3 +2,15 @@
 	path = microros_ws/src/micro_ros_setup
 	url = https://github.com/rodep-soft/micro_ros_setup_forked.git
 	branch = jazzy
+[submodule "ros_ws/src/DynamixelSDK"]
+	path = ros_ws/src/DynamixelSDK
+	url = https://github.com/ROBOTIS-GIT/DynamixelSDK.git
+	branch = jazzy
+[submodule "ros_ws/src/dynamixel_hardware_interface"]
+	path = ros_ws/src/dynamixel_hardware_interface
+	url = https://github.com/ROBOTIS-GIT/dynamixel_hardware_interface.git
+	branch = jazzy
+[submodule "ros_ws/src/dynamixel_interfaces"]
+	path = ros_ws/src/dynamixel_interfaces
+	url = https://github.com/ROBOTIS-GIT/dynamixel_interfaces.git
+	branch = jazzy

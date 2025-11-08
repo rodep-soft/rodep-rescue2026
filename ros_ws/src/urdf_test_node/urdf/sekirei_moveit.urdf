@@ -358,42 +358,127 @@
         </joint>
     </transmission>
 
-    <!-- ros2_control configuration for dynamixel_hardware -->
+    <!-- ros2_control configuration for dynamixel_hardware_interface -->
     <ros2_control name="sekirei_dynamixel_hw" type="system">
         <hardware>
-            <!-- plugin provided by dynamixel_hardware package -->
-            <plugin>dynamixel_hardware/DynamixelHardware</plugin>
+            <!-- plugin provided by dynamixel_hardware_interface package -->
+            <plugin>dynamixel_hardware_interface/DynamixelHardware</plugin>
             <!-- Assumptions: XM540-W270 on /dev/ttyUSB0 at 1Mbps. Edit as needed. -->
-            <param name="usb_port">/dev/ttyUSB0</param>
+            <param name="port_name">/dev/ttyUSB0</param>
             <param name="baud_rate">1000000</param>
-            <!-- set use_dummy to true if testing without real motors -->
-            <param name="use_dummy">true</param>
+            <param name="error_timeout_ms">1000</param>
+            <param name="number_of_joints">6</param>
+            <param name="number_of_transmissions">6</param>
+            <!-- 1:1 mapping: arm_joint1<->dxl1, arm_joint2<->dxl2, ... -->
+            <param name="joint_to_transmission_matrix">1,0,0,0,0,0, 0,1,0,0,0,0, 0,0,1,0,0,0, 0,0,0,1,0,0, 0,0,0,0,1,0, 0,0,0,0,0,1</param>
+            <param name="transmission_to_joint_matrix">1,0,0,0,0,0, 0,1,0,0,0,0, 0,0,1,0,0,0, 0,0,0,1,0,0, 0,0,0,0,1,0, 0,0,0,0,0,1</param>
         </hardware>
 
+        <!-- Joint configurations -->
         <joint name="arm_joint1">
-            <param name="id">1</param>
-            <param name="Profile_Velocity">100</param>
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
         </joint>
         <joint name="arm_joint2">
-            <param name="id">2</param>
-            <param name="Profile_Velocity">100</param>
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
         </joint>
         <joint name="arm_joint3">
-            <param name="id">3</param>
-            <param name="Profile_Velocity">100</param>
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
         </joint>
         <joint name="arm_joint4">
-            <param name="id">4</param>
-            <param name="Profile_Velocity">100</param>
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
         </joint>
         <joint name="arm_joint5">
-            <param name="id">5</param>
-            <param name="Profile_Velocity">100</param>
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
         </joint>
         <joint name="arm_joint6">
-            <param name="id">6</param>
-            <param name="Profile_Velocity">100</param>
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
         </joint>
+
+        <!-- GPIO configurations for Dynamixel XM540-W270 motors -->
+        <gpio name="dxl1">
+            <param name="type">dxl</param>
+            <param name="ID">1</param>
+            <command_interface name="Goal Position"/>
+            <state_interface name="Present Position"/>
+            <state_interface name="Present Velocity"/>
+            <state_interface name="Present Current"/>
+            <param name="Position P Gain">800</param>
+            <param name="Position I Gain">0</param>
+            <param name="Position D Gain">4000</param>
+            <param name="Drive Mode">0</param>
+        </gpio>
+        <gpio name="dxl2">
+            <param name="type">dxl</param>
+            <param name="ID">2</param>
+            <command_interface name="Goal Position"/>
+            <state_interface name="Present Position"/>
+            <state_interface name="Present Velocity"/>
+            <state_interface name="Present Current"/>
+            <param name="Position P Gain">800</param>
+            <param name="Position I Gain">0</param>
+            <param name="Position D Gain">4000</param>
+            <param name="Drive Mode">0</param>
+        </gpio>
+        <gpio name="dxl3">
+            <param name="type">dxl</param>
+            <param name="ID">3</param>
+            <command_interface name="Goal Position"/>
+            <state_interface name="Present Position"/>
+            <state_interface name="Present Velocity"/>
+            <state_interface name="Present Current"/>
+            <param name="Position P Gain">800</param>
+            <param name="Position I Gain">0</param>
+            <param name="Position D Gain">4000</param>
+            <param name="Drive Mode">0</param>
+        </gpio>
+        <gpio name="dxl4">
+            <param name="type">dxl</param>
+            <param name="ID">4</param>
+            <command_interface name="Goal Position"/>
+            <state_interface name="Present Position"/>
+            <state_interface name="Present Velocity"/>
+            <state_interface name="Present Current"/>
+            <param name="Position P Gain">800</param>
+            <param name="Position I Gain">0</param>
+            <param name="Position D Gain">4000</param>
+            <param name="Drive Mode">0</param>
+        </gpio>
+        <gpio name="dxl5">
+            <param name="type">dxl</param>
+            <param name="ID">5</param>
+            <command_interface name="Goal Position"/>
+            <state_interface name="Present Position"/>
+            <state_interface name="Present Velocity"/>
+            <state_interface name="Present Current"/>
+            <param name="Position P Gain">800</param>
+            <param name="Position I Gain">0</param>
+            <param name="Position D Gain">4000</param>
+            <param name="Drive Mode">0</param>
+        </gpio>
+        <gpio name="dxl6">
+            <param name="type">dxl</param>
+            <param name="ID">6</param>
+            <command_interface name="Goal Position"/>
+            <state_interface name="Present Position"/>
+            <state_interface name="Present Velocity"/>
+            <state_interface name="Present Current"/>
+            <param name="Position P Gain">800</param>
+            <param name="Position I Gain">0</param>
+            <param name="Position D Gain">4000</param>
+            <param name="Drive Mode">0</param>
+        </gpio>
 
     </ros2_control>
 

@@ -45,8 +45,8 @@ help:
 # === Initial Setup ===
 setup: check-submodules build setup-microros
 	@echo "✅ Setup complete! You can now:"
-	@echo "  - Edit micro-ROS setup: microros_ws/src/micro_ros_setup/"
-	@echo "  - Edit FreeRTOS apps: microros_ws/src/micro_ros_setup/freertos_apps/apps/"
+	@echo "  - Edit FreeRTOS apps: microros_ws/firmware/freertos_apps/apps/"
+	@echo "  - Modify micro-ROS setup (if needed): microros_ws/src/micro_ros_setup/"
 	@echo "  - Start containers: make up"
 	@echo "  - Access micro-ROS container: make shell-microros"
 

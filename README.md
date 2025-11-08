@@ -3,14 +3,11 @@
 ## Quick Start (初回セットアップ)
 
 ```bash
-# 1. リポジトリをclone（submoduleも含めて）
-git clone --recurse-submodules https://github.com/rodep-soft/rodep-rescue2026.git
+# 1. リポジトリをclone
+git clone https://github.com/rodep-soft/rodep-rescue2026.git
 cd rodep-rescue2026
 
-# もしsubmoduleなしでcloneした場合
-# git submodule update --init --recursive
-
-# 2. 初回セットアップ（全コンテナをビルド + micro-ROS firmwareを展開）
+# 2. 初回セットアップ（submodule取得 + 全コンテナをビルド + micro-ROS firmwareを展開）
 make setup
 
 # 3. コンテナ起動

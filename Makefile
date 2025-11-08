@@ -51,13 +51,9 @@ setup: check-submodules build setup-microros
 	@echo "  - Access micro-ROS container: make shell-microros"
 
 check-submodules:
-	@echo "Checking submodules..."
-	@if [ ! -f microros_ws/src/micro_ros_setup/.git ] && [ ! -d microros_ws/src/micro_ros_setup/.git ]; then \
-		echo "⚠️  Submodule not initialized. Running: git submodule update --init --recursive"; \
-		git submodule update --init --recursive; \
-	else \
-		echo "✅ Submodules OK"; \
-	fi
+	@echo "Initializing/updating submodules..."
+	@git submodule update --init --recursive
+	@echo "✅ Submodules initialized"
 
 setup-microros:
 	@echo "Extracting micro-ROS firmware from container to host..."

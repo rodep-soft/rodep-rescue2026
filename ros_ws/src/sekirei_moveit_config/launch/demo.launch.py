@@ -23,14 +23,14 @@ def launch_setup(context, *args, **kwargs):
     urdf_pkg = get_package_share_directory('urdf_test_node')
 
     # Load URDF (use MoveIt-compatible version with collision and inertial)
-    # Check if dynamixel_hardware package is available
+    # Check if dynamixel_hardware_interface package is available
     try:
-        _ = get_package_share_directory('dynamixel_hardware')
+        _ = get_package_share_directory('dynamixel_hardware_interface')
         urdf_file = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit.urdf')
-        print("[demo.launch.py] Using sekirei_moveit.urdf with dynamixel_hardware plugin")
+        print("[demo.launch.py] Using sekirei_moveit.urdf with dynamixel_hardware_interface plugin")
     except PackageNotFoundError:
         urdf_file = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit_dummy.urdf')
-        print("[demo.launch.py] dynamixel_hardware not found; using sekirei_moveit_dummy.urdf with mock_components")
+        print("[demo.launch.py] dynamixel_hardware_interface not found; using sekirei_moveit_dummy.urdf with mock_components")
 
     with open(urdf_file, 'r') as f:
         robot_description = f.read()

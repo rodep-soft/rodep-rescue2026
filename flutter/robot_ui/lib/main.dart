@@ -174,6 +174,8 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
         _subscribeToTopic('/chatter', 'std_msgs/String');
         // Subscribe to compressed image topic
         _subscribeToTopic('/image_raw/compressed', 'sensor_msgs/CompressedImage');
+        // Subscribe to arm status from moveit_bridge
+        _subscribeToTopic('/arm_status', 'std_msgs/String');
       });
 
       // Listen to incoming messages
@@ -357,6 +359,40 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
       '/test_topic',
       'std_msgs/String',
       {'data': 'Hello from Flutter!'},
+    );
+  }
+
+  // Move to named pose
+  void _moveToNamedPose(String poseName) {
+    if (!_isConnected) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Not connected to ROS')),
+      );
+      return;
+    }
+
+    _publishToTopic(
+      '/move_to_pose',
+      'std_msgs/String',
+      {'data': poseName},
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Moving to pose: $poseName')),
+    );
+  }
+
+  // Widget for pose button
+  Widget _poseButton(String label, String poseName, IconData icon) {
+    return ElevatedButton.icon(
+      onPressed: _isConnected ? () => _moveToNamedPose(poseName) : null,
+      icon: Icon(icon),
+      label: Text(label),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.blue.shade100,
+        foregroundColor: Colors.blue.shade900,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      ),
     );
   }
 
@@ -654,6 +690,53 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
                   ))),
               const SizedBox(height: 20),
             ],
+
+            // MoveIt Control - Named Poses
+            Card(
+              color: Colors.blue.shade50,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.precision_manufacturing, color: Colors.blue.shade700),
+                        const SizedBox(width: 8),
+                        const Text(
+                          'MoveIt Control - Named Poses',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    const Text(
+                      'Click a button to move the arm to a preset position:',
+                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                    ),
+                    const SizedBox(height: 12),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        _poseButton('Home', 'home', Icons.home),
+                        _poseButton('Ready', 'ready', Icons.front_hand),
+                        _poseButton('Up', 'up', Icons.arrow_upward),
+                        _poseButton('Forward', 'forward', Icons.arrow_forward),
+                        _poseButton('Compact', 'compact', Icons.compress),
+                        _poseButton('Left', 'left', Icons.arrow_back),
+                        _poseButton('Right', 'right', Icons.arrow_forward),
+                        _poseButton('Back', 'back', Icons.arrow_downward),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
 
             // Action Buttons
             Wrap(

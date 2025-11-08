@@ -1,8 +1,11 @@
 import os
 from launch import LaunchDescription
-from launch.actions import OpaqueFunction
+from launch.actions import OpaqueFunction, DeclareLaunchArgument, IncludeLaunchDescription
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
+from launch_ros.substitutions import FindPackageShare
 from ament_index_python.packages import get_package_share_directory, PackageNotFoundError
 import yaml
 
@@ -249,8 +252,30 @@ def launch_setup(context, *args, **kwargs):
         rviz_node,
     ]
 
+    # Add rosbridge_server for Flutter UI communication
+    use_rosbridge = LaunchConfiguration('use_rosbridge')
+    if use_rosbridge.perform(context) == 'true':
+        rosbridge_node = Node(
+            package='rosbridge_server',
+            executable='rosbridge_websocket',
+            name='rosbridge_websocket',
+            parameters=[{
+                'port': 9090,
+                'address': '0.0.0.0',  # Allow connections from any IP
+            }],
+            output='screen',
+        )
+        nodes_to_start.append(rosbridge_node)
+
     return nodes_to_start
 
 
 def generate_launch_description():
-    return LaunchDescription([OpaqueFunction(function=launch_setup)])
+    return LaunchDescription([
+        DeclareLaunchArgument(
+            'use_rosbridge',
+            default_value='true',
+            description='Launch rosbridge_server for web/Flutter UI connection'
+        ),
+        OpaqueFunction(function=launch_setup)
+    ])

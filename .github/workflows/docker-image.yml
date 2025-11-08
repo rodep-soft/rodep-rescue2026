@@ -78,8 +78,14 @@ jobs:
           file: ./microros_ws/Dockerfile
           push: false
           tags: microros-agent:latest
+          load: true
           cache-from: type=local,src=/tmp/.buildx-cache-microros
           cache-to: type=local,dest=/tmp/.buildx-cache-microros-new,mode=max
+
+      - name: Verify micro-ROS build
+        run: |
+          docker run --rm microros-agent:latest \
+            /bin/bash -c "test -d /root/microros_ws/install && echo '✅ micro-ROS build verified'"
 
       # Move cache
       - name: Move cache

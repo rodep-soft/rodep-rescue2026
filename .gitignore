@@ -4,6 +4,16 @@
 **/log/
 .vscode/
 
+# === micro-ROS ===
+# Ignore everything in src except micro_ros_setup submodule
+microros_ws/src/*
+!microros_ws/src/micro_ros_setup
+microros_ws/build/
+microros_ws/install/
+microros_ws/log/
+# Firmware directory contains build artifacts - will be extracted from Docker
+microros_ws/firmware/
+
 # === Python ===
 __pycache__/
 *.py[cod]

@@ -1,16 +1,35 @@
-.PHONY: help build up down exec status logs clean prune restart rebuild shell-flutter
+.PHONY: help setup setup-microros build build-ros2 build-flutter build-microros up down exec status logs clean prune restart rebuild rebuild-ros2 rebuild-flutter rebuild-microros shell-flutter shell-microros
 
 # Default target - show help
 help:
 	@echo "Available targets:"
-	@echo "  build         - Build Docker images"
-	@echo "  up            - Start containers in background"
-	@echo "  down          - Stop and remove containers"
-	@echo "  restart       - Restart containers"
-	@echo "  rebuild       - Rebuild and restart containers"
-	@echo "  exec          - Execute bash in ros2_container"
-	@echo "  shell-flutter - Execute bash in flutter container"
-	@echo "  logs          - Show container logs (use 'make logs SERVICE=ros2_container' for specific)"
+	@echo ""
+	@echo "=== Initial Setup ==="
+	@echo "  setup            - First-time setup (build all + extract micro-ROS firmware)"
+	@echo "  setup-microros   - Extract micro-ROS firmware from container to host"
+	@echo ""
+	@echo "=== Docker Build ==="
+	@echo "  build            - Build all Docker images"
+	@echo "  build-ros2       - Build only ros2_container"
+	@echo "  build-flutter    - Build only flutter"
+	@echo "  build-microros   - Build only microros_agent"
+	@echo ""
+	@echo "=== Docker Run ==="
+	@echo "  up               - Start containers in background"
+	@echo "  down             - Stop and remove containers"
+	@echo "  restart          - Restart containers"
+	@echo "  rebuild          - Rebuild and restart all containers"
+	@echo "  rebuild-ros2     - Rebuild and restart ros2_container"
+	@echo "  rebuild-flutter  - Rebuild and restart flutter"
+	@echo "  rebuild-microros - Rebuild and restart microros_agent"
+	@echo ""
+	@echo "=== Shell Access ==="
+	@echo "  exec             - Execute bash in ros2_container"
+	@echo "  shell-flutter    - Execute bash in flutter container"
+	@echo "  shell-microros   - Execute bash in microros_agent container"
+	@echo ""
+	@echo "=== Logs & Status ==="
+	@echo "  logs             - Show container logs (use 'make logs SERVICE=ros2_container' for specific)"
 	@echo "  logs-f        - Follow container logs"
 	@echo "  status        - Check Docker daemon status"
 	@echo "  ps            - Show running containers"
@@ -23,9 +42,42 @@ help:
 	@echo "  tidy          - Run clang-tidy static analysis"
 	@echo "  tidy-fix      - Run clang-tidy with auto-fix"
 
+# === Initial Setup ===
+setup: check-submodules build setup-microros
+	@echo "✅ Setup complete! You can now:"
+	@echo "  - Edit micro-ROS setup: microros_ws/src/micro_ros_setup/"
+	@echo "  - Edit FreeRTOS apps: microros_ws/src/micro_ros_setup/freertos_apps/apps/"
+	@echo "  - Start containers: make up"
+	@echo "  - Access micro-ROS container: make shell-microros"
+
+check-submodules:
+	@echo "Checking submodules..."
+	@if [ ! -f microros_ws/src/micro_ros_setup/.git ] && [ ! -d microros_ws/src/micro_ros_setup/.git ]; then \
+		echo "⚠️  Submodule not initialized. Running: git submodule update --init --recursive"; \
+		git submodule update --init --recursive; \
+	else \
+		echo "✅ Submodules OK"; \
+	fi
+
+setup-microros:
+	@echo "Extracting micro-ROS firmware from container to host..."
+	@mkdir -p microros_ws/firmware
+	@docker run --rm -v $(PWD)/microros_ws/firmware:/host_firmware rodep-rescue2026-microros_agent bash -c "cp -r /root/microros_ws/firmware/* /host_firmware/" 2>/dev/null || true
+	@echo "✅ Firmware extracted to microros_ws/firmware/"
+
 # === Docker Build & Run ===
 build:
 	docker compose build
+
+# Build specific services
+build-ros2:
+	docker compose build ros2_container
+
+build-flutter:
+	docker compose build flutter
+
+build-microros:
+	docker compose build microros_agent
 
 up:
 	docker compose up -d
@@ -41,12 +93,31 @@ rebuild:
 	docker compose build --no-cache
 	docker compose up -d
 
+# Rebuild specific services
+rebuild-ros2:
+	docker compose stop ros2_container
+	docker compose build --no-cache ros2_container
+	docker compose up -d ros2_container
+
+rebuild-flutter:
+	docker compose stop flutter
+	docker compose build --no-cache flutter
+	docker compose up -d flutter
+
+rebuild-microros:
+	docker compose stop microros_agent
+	docker compose build --no-cache microros_agent
+	docker compose up -d microros_agent
+
 # === Docker Shell Access ===
 exec:
 	docker compose exec ros2_container bash
 
 shell-flutter:
 	docker compose exec flutter bash
+
+shell-microros:
+	docker compose exec microros_agent bash
 
 # === Docker Logs ===
 logs:

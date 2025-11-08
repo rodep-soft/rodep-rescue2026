@@ -21,11 +21,28 @@ services:
       - ~/.ssh:/root/.ssh:ro # <--- REPLACE with your actual host username
       - ~/.bashrc:/root/.bashrc
       - ~/.config/fish/config.fish:/root/.config/fish/config.fish
-      - ~/.bashrc:/root/.bashrc
+      - ~/.bashrc:/root/.bashrc      docker compose ps
       # Mount your ROS workspace
       - ./:/root/ # <--- REPLACE with your actual host username
       - ~/.ccache:/root/.ccache
       - /tmp/.X11-unix:/tmp/.X11-unix:rw # <-- Shares the X server socket
+
+  microros_agent:
+    build:
+      context: .
+      dockerfile: ./microros_ws/Dockerfile
+    container_name: microros_agent_container
+    tty: true
+    privileged: true
+    network_mode: host
+    working_dir: /root/microros_ws
+    environment:
+      - ROS_DOMAIN_ID=0
+    volumes:
+      # Mount FreeRTOS app source for editing from host
+      - ./microros_ws/firmware:/root/microros_ws/firmware
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0  # STM32 Nucleo F446RE (ST-Link virtual COM port)
 
   flutter:
     build:

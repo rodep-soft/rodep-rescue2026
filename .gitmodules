@@ -1,0 +1,4 @@
+[submodule "microros_ws/src/micro_ros_setup"]
+	path = microros_ws/src/micro_ros_setup
+	url = https://github.com/rodep-soft/micro_ros_setup_forked.git
+	branch = jazzy

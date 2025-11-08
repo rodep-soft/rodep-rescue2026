@@ -1,8 +1,8 @@
 import os
 from launch import LaunchDescription
 from launch.actions import OpaqueFunction, DeclareLaunchArgument, IncludeLaunchDescription
+from launch.launch_description_sources import AnyLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
-from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
@@ -26,14 +26,25 @@ def launch_setup(context, *args, **kwargs):
     urdf_pkg = get_package_share_directory('urdf_test_node')
 
     # Load URDF (use MoveIt-compatible version with collision and inertial)
-    # Check if dynamixel_hardware_interface package is available
-    try:
-        _ = get_package_share_directory('dynamixel_hardware_interface')
-        urdf_file = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit.urdf')
-        print("[demo.launch.py] Using sekirei_moveit.urdf with dynamixel_hardware_interface plugin")
-    except PackageNotFoundError:
+    # Check if Dynamixel hardware is connected by looking for USB device
+    import glob
+    dynamixel_connected = False
+    usb_devices = glob.glob('/dev/ttyUSB*')
+    if usb_devices:
+        print(f"[demo.launch.py] Found USB devices: {usb_devices}")
+        # Check if dynamixel_hardware_interface package is available
+        try:
+            _ = get_package_share_directory('dynamixel_hardware_interface')
+            dynamixel_connected = True
+            print("[demo.launch.py] Dynamixel hardware detected - using sekirei_moveit.urdf with dynamixel_hardware_interface")
+        except PackageNotFoundError:
+            print("[demo.launch.py] USB device found but dynamixel_hardware_interface not installed")
+
+    if dynamixel_connected:
+        urdf_file = os.path.join(moveit_config_pkg, 'urdf', 'sekirei_moveit.urdf')
+    else:
         urdf_file = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit_dummy.urdf')
-        print("[demo.launch.py] dynamixel_hardware_interface not found; using sekirei_moveit_dummy.urdf with mock_components")
+        print("[demo.launch.py] No Dynamixel hardware detected - using sekirei_moveit_dummy.urdf with mock_components")
 
     with open(urdf_file, 'r') as f:
         robot_description = f.read()
@@ -261,7 +272,7 @@ def launch_setup(context, *args, **kwargs):
             name='rosbridge_websocket',
             parameters=[{
                 'port': 9090,
-                'address': '0.0.0.0',  # Allow connections from any IP
+                'address': '127.0.0.1',  # Bind to localhost only
             }],
             output='screen',
         )

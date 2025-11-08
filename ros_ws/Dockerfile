@@ -14,6 +14,8 @@ RUN apt-get update && apt-get upgrade -y && \
     ros-jazzy-controller-manager \
     ros-jazzy-ros2-control \
     ros-jazzy-ros2-controllers \
+    ros-jazzy-ros2-control-test-assets \
+    ros-jazzy-joint-state-broadcaster \
     ros-jazzy-osrf-testing-tools-cpp \
     ros-jazzy-ffmpeg-image-transport \
     python3-rosdep \

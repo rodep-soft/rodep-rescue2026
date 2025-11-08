@@ -46,6 +46,121 @@ ros2 launch sekirei_moveit_config demo.launch.py
 4. "Plan & Execute" ボタンをクリック
 5. アームが動作すれば成功！
 
+#### プリセットポーズ（Named Targets）の使用
+
+8つのプリセットポーズが定義されています：
+
+| ポーズ名 | 説明 | 用途 |
+|---------|------|------|
+| `home` | 初期姿勢（全関節0度） | 起動時の安全な姿勢 |
+| `ready` | 作業待機姿勢 | 作業開始前の準備姿勢 |
+| `up` | 上方向に伸ばした姿勢 | 高所作業 |
+| `forward` | 前方に伸ばした姿勢 | 物を取る・置く |
+| `compact` | 折りたたみ姿勢 | 収納・移動時 |
+| `left` | 左90度回転 | 左側の作業 |
+| `right` | 右90度回転 | 右側の作業 |
+| `back` | 後方180度回転 | 後方の作業 |
+
+**RViz2での使い方：**
+1. Motion Planning パネルの "Select Goal State" で "< named target >" を選択
+2. ドロップダウンからポーズを選択（例：`home`, `ready`, `up`）
+3. "Plan & Execute" をクリック
+
+**コマンドラインでの使い方：**
+```bash
+# 別ターミナルで（demo.launch.pyが起動中）
+source install/setup.bash
+
+# Homeポーズに移動
+ros2 run sekirei_moveit_config move_to_named_pose.py home
+
+# Readyポーズに移動
+ros2 run sekirei_moveit_config move_to_named_pose.py ready
+
+# Upポーズに移動
+ros2 run sekirei_moveit_config move_to_named_pose.py up
+
+# 利用可能なポーズ一覧
+ros2 run sekirei_moveit_config move_to_named_pose.py
+# → home, ready, up, forward, compact, left, right, back
+```
+
+**簡単な動作シーケンス例：**
+```bash
+# Home → Ready → Up → Forward → Home
+ros2 run sekirei_moveit_config move_to_named_pose.py home
+sleep 2
+ros2 run sekirei_moveit_config move_to_named_pose.py ready
+sleep 2
+ros2 run sekirei_moveit_config move_to_named_pose.py up
+sleep 2
+ros2 run sekirei_moveit_config move_to_named_pose.py forward
+sleep 2
+ros2 run sekirei_moveit_config move_to_named_pose.py home
+```
+
+### 2. Flutter UI による制御
+
+Flutter UIから直接アームを制御できます。rosbridge経由でWebSocket通信を行います。
+
+**起動方法：**
+
+```bash
+# ROS2側: flutter_control.launch.pyを起動（rosbridgeも自動起動）
+cd /root/ros_ws
+source install/setup.bash
+ros2 launch sekirei_moveit_config flutter_control.launch.py
+
+# または既存のdemo.launch.pyでもOK（use_rosbridge:=trueはデフォルト）
+ros2 launch sekirei_moveit_config demo.launch.py
+```
+
+**Flutter UI側：**
+
+```bash
+# Flutter UIを起動
+cd flutter/robot_ui
+flutter run
+```
+
+**機能：**
+- **Named Posesボタン**: 8つのプリセットポーズに即座に移動
+  - Home, Ready, Up, Forward, Compact, Left, Right, Back
+- **リアルタイムステータス**: `/arm_status` トピックで動作状態を監視
+- **WebSocket接続**: `localhost:9090` (デフォルト) でrosbridge接続
+
+**トピックAPI：**
+
+Flutter UIやカスタムアプリから以下のトピックで制御できます：
+
+```bash
+# Named Poseへ移動コマンド送信
+ros2 topic pub --once /move_to_pose std_msgs/msg/String "{data: home}"
+ros2 topic pub --once /move_to_pose std_msgs/msg/String "{data: ready}"
+
+# ステータス監視
+ros2 topic echo /arm_status
+
+# 例:
+# - "moving to home" - 移動中
+# - "success: reached home" - 移動完了
+# - "error: failed with code 99999" - エラー
+```
+
+**moveit_bridgeノード：**
+
+このノードがFlutter UIとMoveItの橋渡しをします：
+- `/move_to_pose` トピックを購読 (std_msgs/String)
+- Named Poseを受け取り、MoveGroupアクションで実行
+- `/arm_status` トピックにステータスを配信 (std_msgs/String)
+
+**テスト済みポーズ：**
+- ✅ home - 成功
+- ✅ ready - 成功
+- ✅ forward - 成功
+- ⚠️ up - プランニング難（姿勢が厳しい）
+- ℹ️ compact, left, right, back - 未テスト
+
 ### 2. 実機（Dynamixel Hardware）で動かす
 
 実機を使用する場合は、`dynamixel_hardware` パッケージが必要です。

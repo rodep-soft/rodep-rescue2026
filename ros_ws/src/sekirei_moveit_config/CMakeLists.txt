@@ -22,6 +22,8 @@ install(DIRECTORY config
 install(PROGRAMS
   scripts/fake_controller.py
   scripts/joy_teleop.py
+  scripts/move_to_named_pose.py
+  scripts/moveit_bridge.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

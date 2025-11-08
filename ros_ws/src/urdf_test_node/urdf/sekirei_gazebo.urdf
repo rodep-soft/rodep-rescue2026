@@ -1,0 +1,331 @@
+<?xml version="1.0"?>
+<robot name="sekirei" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <!-- Base Link -->
+    <link name="world"/>
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <cylinder radius="0.1" length="0.05"/>
+            </geometry>
+            <material name="white">
+                <color rgba="1.0 1.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.1" length="0.05"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.5"/>
+            <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+        </inertial>
+    </link>
+
+    <joint name="world_to_base" type="fixed">
+        <parent link="world"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0.025" rpy="0 0 0"/>
+    </joint>
+
+    <!-- Link 1 -->
+    <link name="link1">
+        <visual>
+            <geometry>
+                <cylinder radius="0.05" length="0.2"/>
+            </geometry>
+            <origin xyz="0 0 0.1" rpy="0 0 0"/>
+            <material name="blue">
+                <color rgba="0.0 0.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.05" length="0.2"/>
+            </geometry>
+            <origin xyz="0 0 0.1" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0.1" rpy="0 0 0"/>
+            <mass value="0.3"/>
+            <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.0005"/>
+        </inertial>
+    </link>
+
+    <joint name="arm_joint1" type="revolute">
+        <parent link="base_link"/>
+        <child link="link1"/>
+        <origin xyz="0 0 0.05" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-3.14159" upper="3.14159" effort="10.0" velocity="3.14159"/>
+        <dynamics damping="0.7" friction="0.1"/>
+    </joint>
+
+    <!-- Link 2 -->
+    <link name="link2">
+        <visual>
+            <geometry>
+                <box size="0.08 0.06 0.25"/>
+            </geometry>
+            <origin xyz="0 0 0.125" rpy="0 0 0"/>
+            <material name="green">
+                <color rgba="0.0 1.0 0.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.08 0.06 0.25"/>
+            </geometry>
+            <origin xyz="0 0 0.125" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0.125" rpy="0 0 0"/>
+            <mass value="0.4"/>
+            <inertia ixx="0.002" ixy="0.0" ixz="0.0" iyy="0.002" iyz="0.0" izz="0.0005"/>
+        </inertial>
+    </link>
+
+    <joint name="arm_joint2" type="revolute">
+        <parent link="link1"/>
+        <child link="link2"/>
+        <origin xyz="0 0 0.2" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <limit lower="-2.61799" upper="2.61799" effort="10.0" velocity="3.14159"/>
+        <dynamics damping="0.7" friction="0.1"/>
+    </joint>
+
+    <!-- Link 3 -->
+    <link name="link3">
+        <visual>
+            <geometry>
+                <box size="0.06 0.05 0.22"/>
+            </geometry>
+            <origin xyz="0 0 0.11" rpy="0 0 0"/>
+            <material name="red">
+                <color rgba="1.0 0.0 0.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.06 0.05 0.22"/>
+            </geometry>
+            <origin xyz="0 0 0.11" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0.11" rpy="0 0 0"/>
+            <mass value="0.35"/>
+            <inertia ixx="0.0015" ixy="0.0" ixz="0.0" iyy="0.0015" iyz="0.0" izz="0.0004"/>
+        </inertial>
+    </link>
+
+    <joint name="arm_joint3" type="revolute">
+        <parent link="link2"/>
+        <child link="link3"/>
+        <origin xyz="0 0 0.25" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <limit lower="-2.61799" upper="2.61799" effort="10.0" velocity="3.14159"/>
+        <dynamics damping="0.7" friction="0.1"/>
+    </joint>
+
+    <!-- Link 4 -->
+    <link name="link4">
+        <visual>
+            <geometry>
+                <cylinder radius="0.03" length="0.18"/>
+            </geometry>
+            <origin xyz="0 0 0.09" rpy="0 0 0"/>
+            <material name="yellow">
+                <color rgba="1.0 1.0 0.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.03" length="0.18"/>
+            </geometry>
+            <origin xyz="0 0 0.09" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0.09" rpy="0 0 0"/>
+            <mass value="0.25"/>
+            <inertia ixx="0.0008" ixy="0.0" ixz="0.0" iyy="0.0008" iyz="0.0" izz="0.0002"/>
+        </inertial>
+    </link>
+
+    <joint name="arm_joint4" type="revolute">
+        <parent link="link3"/>
+        <child link="link4"/>
+        <origin xyz="0 0 0.22" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-3.14159" upper="3.14159" effort="5.0" velocity="3.14159"/>
+        <dynamics damping="0.5" friction="0.05"/>
+    </joint>
+
+    <!-- Link 5 -->
+    <link name="link5">
+        <visual>
+            <geometry>
+                <cylinder radius="0.025" length="0.12"/>
+            </geometry>
+            <origin xyz="0 0 0.06" rpy="0 0 0"/>
+            <material name="cyan">
+                <color rgba="0.0 1.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.025" length="0.12"/>
+            </geometry>
+            <origin xyz="0 0 0.06" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0.06" rpy="0 0 0"/>
+            <mass value="0.2"/>
+            <inertia ixx="0.0004" ixy="0.0" ixz="0.0" iyy="0.0004" iyz="0.0" izz="0.0001"/>
+        </inertial>
+    </link>
+
+    <joint name="arm_joint5" type="revolute">
+        <parent link="link4"/>
+        <child link="link5"/>
+        <origin xyz="0 0 0.18" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <limit lower="-2.61799" upper="2.61799" effort="5.0" velocity="3.14159"/>
+        <dynamics damping="0.5" friction="0.05"/>
+    </joint>
+
+    <!-- Link 6 (End Effector) -->
+    <link name="link6">
+        <visual>
+            <geometry>
+                <cylinder radius="0.02" length="0.08"/>
+            </geometry>
+            <origin xyz="0 0 0.04" rpy="0 0 0"/>
+            <material name="magenta">
+                <color rgba="1.0 0.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.02" length="0.08"/>
+            </geometry>
+            <origin xyz="0 0 0.04" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0.04" rpy="0 0 0"/>
+            <mass value="0.15"/>
+            <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.00005"/>
+        </inertial>
+    </link>
+
+    <joint name="arm_joint6" type="revolute">
+        <parent link="link5"/>
+        <child link="link6"/>
+        <origin xyz="0 0 0.12" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-3.14159" upper="3.14159" effort="5.0" velocity="3.14159"/>
+        <dynamics damping="0.5" friction="0.05"/>
+    </joint>
+
+    <!-- End Effector Frame -->
+    <link name="end_effector"/>
+
+    <joint name="end_effector_joint" type="fixed">
+        <parent link="link6"/>
+        <child link="end_effector"/>
+        <origin xyz="0 0 0.08" rpy="0 0 0"/>
+    </joint>
+
+    <!-- Gazebo ros2_control plugin -->
+    <gazebo>
+        <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+            <parameters>/root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/ros2_controllers.yaml</parameters>
+        </plugin>
+    </gazebo>
+
+    <!-- ros2_control configuration for Gazebo -->
+    <ros2_control name="GazeboSystem" type="system">
+        <hardware>
+            <plugin>gz_ros2_control/GazeboSystem</plugin>
+        </hardware>
+
+        <joint name="arm_joint1">
+            <command_interface name="position"/>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
+        </joint>
+
+        <joint name="arm_joint2">
+            <command_interface name="position"/>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
+        </joint>
+
+        <joint name="arm_joint3">
+            <command_interface name="position"/>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
+        </joint>
+
+        <joint name="arm_joint4">
+            <command_interface name="position"/>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
+        </joint>
+
+        <joint name="arm_joint5">
+            <command_interface name="position"/>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
+        </joint>
+
+        <joint name="arm_joint6">
+            <command_interface name="position"/>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
+        </joint>
+    </ros2_control>
+
+    <!-- Gazebo-specific properties -->
+    <gazebo reference="base_link">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <gazebo reference="link1">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+    <gazebo reference="link2">
+        <material>Gazebo/Green</material>
+    </gazebo>
+
+    <gazebo reference="link3">
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+    <gazebo reference="link4">
+        <material>Gazebo/Yellow</material>
+    </gazebo>
+
+    <gazebo reference="link5">
+        <material>Gazebo/SkyBlue</material>
+    </gazebo>
+
+    <gazebo reference="link6">
+        <material>Gazebo/Purple</material>
+    </gazebo>
+
+</robot>

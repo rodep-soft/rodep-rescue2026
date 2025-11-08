@@ -1,0 +1,5 @@
+# ST-Link/V2-1
+# Udev rule For STM32 nucleo f446re board
+# lsusb -vで確認
+
+SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="374b", MODE="0666"

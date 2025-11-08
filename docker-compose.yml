@@ -21,6 +21,7 @@ services:
       - ~/.ssh:/root/.ssh:ro # <--- REPLACE with your actual host username
       - ~/.bashrc:/root/.bashrc
       - ~/.config/fish/config.fish:/root/.config/fish/config.fish
+      - ~/.bashrc:/root/.bashrc
       # Mount your ROS workspace
       - ./:/root/ # <--- REPLACE with your actual host username
       - ~/.ccache:/root/.ccache

@@ -20,6 +20,8 @@ help:
 	@echo "  git-graph     - Show git log graph"
 	@echo "  format-cpp    - Format ROS2 C++ files with clang-format"
 	@echo "  check-format  - Check C++ formatting without modifying files"
+	@echo "  tidy          - Run clang-tidy static analysis"
+	@echo "  tidy-fix      - Run clang-tidy with auto-fix"
 
 # === Docker Build & Run ===
 build:
@@ -101,3 +103,30 @@ check-format:
 	@find ros_ws/src -type f \( -name '*.cpp' -o -name '*.hpp' -o -name '*.h' \) \
 		! -path '*/eProsima/*' ! -path '*/ros2/*' ! -path '*/micro_ros_setup/*' \
 		-exec clang-format --dry-run --Werror {} +
+
+# === Code Analysis ===
+tidy:
+	@echo "Running clang-tidy on ROS2 C++ files..."
+	@if [ ! -f ros_ws/build/compile_commands.json ]; then \
+		echo "Error: compile_commands.json not found!"; \
+		echo "Please build your ROS2 workspace first:"; \
+		echo "  cd ros_ws && colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"; \
+		exit 1; \
+	fi
+	@find ros_ws/src -type f \( -name '*.cpp' -o -name '*.hpp' -o -name '*.h' \) \
+		! -path '*/eProsima/*' ! -path '*/ros2/*' ! -path '*/micro_ros_setup/*' \
+		! -path '*/build/*' ! -path '*/install/*' ! -path '*/log/*' \
+		-exec clang-tidy -p ros_ws/build --config-file=ros_ws/src/.clang-tidy {} + 2>&1 | grep -v "^[0-9]* warnings generated"
+
+tidy-fix:
+	@echo "Running clang-tidy with auto-fix on ROS2 C++ files..."
+	@if [ ! -f ros_ws/build/compile_commands.json ]; then \
+		echo "Error: compile_commands.json not found!"; \
+		echo "Please build your ROS2 workspace first:"; \
+		echo "  cd ros_ws && colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"; \
+		exit 1; \
+	fi
+	@find ros_ws/src -type f \( -name '*.cpp' -o -name '*.hpp' -o -name '*.h' \) \
+		! -path '*/eProsima/*' ! -path '*/ros2/*' ! -path '*/micro_ros_setup/*' \
+		! -path '*/build/*' ! -path '*/install/*' ! -path '*/log/*' \
+		-exec clang-tidy -p ros_ws/build --config-file=ros_ws/src/.clang-tidy --fix {} + 2>&1 | grep -v "^[0-9]* warnings generated"

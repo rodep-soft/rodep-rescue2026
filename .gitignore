@@ -74,6 +74,8 @@ package-lock.json
 
 # === System ===
 .ccache/
+.cache/
+.local/
 *.autosave
 
 # === Shell history & config ===

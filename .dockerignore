@@ -1,0 +1,56 @@
+# === Git ===
+.git
+.gitignore
+.gitattributes
+
+# === Documentation ===
+*.md
+docs/
+review/
+
+# === IDE ===
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# === ROS 2 build artifacts (avoid copying to build context) ===
+**/build/
+**/install/
+**/log/
+*.bag
+*.db3
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+
+# === Flutter ===
+flutter/.pub-cache/
+flutter/.pub/
+flutter/.dart_tool/
+flutter/**/build/
+flutter/**/.flutter-plugins
+flutter/**/.flutter-plugins-dependencies
+
+# === Build artifacts ===
+*.deb
+*.snap
+*.tar.gz
+*.zip
+
+# === Docker ===
+docker-compose.override.yml
+# NOTE: Dockerfile is needed for multi-stage builds, keep it
+# NOTE: .dockerignore itself doesn't need to be in the build context
+
+# === Cache ===
+.ccache/
+
+# === Other ===
+.DS_Store
+*.log
+*~

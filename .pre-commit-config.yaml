@@ -16,10 +16,19 @@ repos:
     rev: v21.1.2
     hooks:
     -   id: clang-format
+        # ROS2 C++ files only (in ros_ws/src/)
+        files: ^ros_ws/src/.*\.(cpp|hpp|h|cc|cxx)$
         exclude: |
-          ^microros_ws/firmware/toolchain/
-          ^\.local/
-          ^\.cache/
-          ^\.venv/
-          ^env/
-          ^build/
+          (?x)^(
+              ros_ws/src/eProsima/.*|
+              ros_ws/src/ros2/.*|
+              ros_ws/src/micro_ros_setup/.*|
+              microros_ws/firmware/toolchain/.*|
+              \.local/.*|
+              \.cache/.*|
+              \.venv/.*|
+              env/.*|
+              .*/build/.*|
+              .*/install/.*|
+              .*/log/.*
+          )$

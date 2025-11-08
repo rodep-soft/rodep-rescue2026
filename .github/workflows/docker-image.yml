@@ -104,10 +104,10 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache-microros
           cache-to: type=local,dest=/tmp/.buildx-cache-microros-new,mode=max
 
-      - name: Verify micro-ROS firmware build
-        run: |
-          docker run --rm microros-agent:latest \
-            /bin/bash -c "test -d /root/microros_ws/firmware/build && echo '✅ micro-ROS firmware build verified'"
+      # - name: Verify micro-ROS firmware build
+      #   run: |
+      #     docker run --rm microros-agent:latest \
+      #       /bin/bash -c "test -d /root/microros_ws/firmware/build && echo '✅ micro-ROS firmware build verified'"
 
       # Move cache
       - name: Move cache

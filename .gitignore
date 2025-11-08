@@ -1,10 +1,147 @@
+# === ROS 2 ===
 **/build/
 **/install/
 **/log/
 .vscode/
+
+# === micro-ROS ===
+# Ignore everything in src except micro_ros_setup submodule
+microros_ws/src/*
+!microros_ws/src/micro_ros_setup
+microros_ws/build/
+microros_ws/install/
+microros_ws/log/
+# Firmware directory contains build artifacts - will be extracted from Docker
+microros_ws/firmware/
+
+# === Python ===
 __pycache__/
 *.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
 **/dist/
+.pytest_cache/
+.coverage
+*.cover
+
+# === C/C++ ===
 **/bin/
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+*.out
+*.app
 **/toolchain/
 
+# === CMake ===
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+*.cmake
+
+# === Flutter/Dart ===
+flutter/.pub-cache/
+flutter/.pub/
+flutter/.dart_tool/
+flutter/build/
+flutter/**/.flutter-plugins
+flutter/**/.flutter-plugins-dependencies
+flutter/**/.packages
+
+# === Docker ===
+*.log
+docker-compose.override.yml
+
+# === Git ===
+*.orig
+*.rej
+
+# === IDE ===
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# === Build artifacts ===
+*.deb
+*.snap
+*.tar.gz
+*.zip
+
+# === ROS specific ===
+COLCON_IGNORE
+*.bag
+*.db3
+
+# === Node/npm (for web interfaces) ===
+node_modules/
+package-lock.json
+
+# === System ===
+.ccache/
+.cache/
+.local/
+*.autosave
+
+# === Shell history & config ===
+.bash_history
+.bashrc
+.bashrc.swp
+.bash_logout
+.zsh_history
+.zshrc
+.zshrc.swp
+.fish_history
+.lesshst
+.python_history
+.node_repl_history
+.mysql_history
+.psql_history
+.sqlite_history
+.rediscli_history
+
+# === Editor temporary files ===
+*.tmp
+*.temp
+*.bak
+*.backup
+*~
+\#*\#
+.\#*
+
+# === OS specific ===
+Thumbs.db
+Desktop.ini
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+
+# === SSH & Keys ===
+*.pem
+*.key
+*.ppk
+id_rsa
+id_dsa
+*.pub
+
+# === Environment & Secrets ===
+.env
+.env.local
+.env.*.local
+*.secret
+secrets.yaml
+credentials.json
+
+# === Logs ===
+*.log
+*.log.*
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

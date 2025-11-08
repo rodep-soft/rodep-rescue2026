@@ -1,0 +1,126 @@
+# ROS 2 C++ Coding Style
+# Based on ROS 2 Developer Guide: https://docs.ros.org/en/rolling/The-ROS2-Project/Contributing/Code-Style-Language-Versions.html
+
+---
+Language: Cpp
+BasedOnStyle: Google
+
+# Indentation
+IndentWidth: 2
+TabWidth: 2
+UseTab: Never
+ContinuationIndentWidth: 4
+
+# Line length
+ColumnLimit: 100
+
+# Braces
+BreakBeforeBraces: Attach
+BraceWrapping:
+  AfterClass: false
+  AfterControlStatement: Never
+  AfterEnum: false
+  AfterFunction: false
+  AfterNamespace: false
+  AfterStruct: false
+  AfterUnion: false
+  BeforeCatch: false
+  BeforeElse: false
+
+# Pointers and references
+DerivePointerAlignment: false
+PointerAlignment: Left
+
+# Includes
+SortIncludes: CaseInsensitive
+IncludeBlocks: Regroup
+IncludeCategories:
+  # ROS 2 headers
+  - Regex: '^<rclcpp/'
+    Priority: 1
+  - Regex: '^<rclcpp_action/'
+    Priority: 1
+  - Regex: '^<rclcpp_components/'
+    Priority: 1
+  - Regex: '^<rcl/'
+    Priority: 1
+  # ROS 2 messages
+  - Regex: '^<std_msgs/'
+    Priority: 2
+  - Regex: '^<sensor_msgs/'
+    Priority: 2
+  - Regex: '^<geometry_msgs/'
+    Priority: 2
+  - Regex: '^<.*_msgs/'
+    Priority: 2
+  # Other ROS 2 packages
+  - Regex: '^<tf2/'
+    Priority: 3
+  - Regex: '^<ros2_'
+    Priority: 3
+  # Standard library
+  - Regex: '^<[a-z_]+>'
+    Priority: 4
+  # Project headers
+  - Regex: '^"'
+    Priority: 5
+
+# Spacing
+SpaceAfterCStyleCast: false
+SpaceAfterTemplateKeyword: true
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCpp11BracedList: false
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: false
+SpacesInAngles: false
+SpacesInCStyleCastParentheses: false
+SpacesInContainerLiterals: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+
+# Alignment
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignEscapedNewlines: Left
+AlignOperands: true
+AlignTrailingComments: true
+
+# Breaking
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortBlocksOnASingleLine: Empty
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: false
+AlwaysBreakTemplateDeclarations: Yes
+BinPackArguments: true
+BinPackParameters: true
+BreakBeforeBinaryOperators: None
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializers: BeforeColon
+BreakInheritanceList: BeforeColon
+BreakStringLiterals: true
+
+# Constructors
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+ConstructorInitializerIndentWidth: 2
+
+# Namespaces
+CompactNamespaces: false
+FixNamespaceComments: true
+NamespaceIndentation: None
+
+# Comments
+ReflowComments: true
+SpacesBeforeTrailingComments: 2
+
+# Other
+AccessModifierOffset: -2
+DeriveLineEnding: true
+KeepEmptyLinesAtTheStartOfBlocks: false
+MaxEmptyLinesToKeep: 1
+Standard: c++17
+...

@@ -127,7 +127,7 @@ jobs:
 
       - name: Run Flutter Linux build check
         run: |
-          docker run --rm --workdir /app flutter-ui:latest \
+          docker run --rm flutter-ui:latest \
             /bin/bash -c "cd robot_ui && flutter build linux --release"
 
       # Move cache

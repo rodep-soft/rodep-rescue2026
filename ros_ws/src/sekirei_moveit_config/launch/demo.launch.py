@@ -3,7 +3,7 @@ from launch import LaunchDescription
 from launch.actions import OpaqueFunction
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
-from ament_index_python.packages import get_package_share_directory
+from ament_index_python.packages import get_package_share_directory, PackageNotFoundError
 import yaml
 
 
@@ -44,21 +44,20 @@ def launch_setup(context, *args, **kwargs):
 
 
 
-    # Load moveit_controllers.yaml for fake execution
+    # Load moveit_controllers.yaml for ros2_control execution
     moveit_controllers = load_yaml('sekirei_moveit_config', 'config/moveit_controllers.yaml')
 
     # Trajectory execution and moveit_controller_manager parameters
     trajectory_execution = {
-        'moveit_manage_controllers': True,
+        'moveit_manage_controllers': False,  # Let controller_manager handle this
         'trajectory_execution.allowed_execution_duration_scaling': 1.2,
         'trajectory_execution.allowed_goal_duration_margin': 0.5,
         'trajectory_execution.allowed_start_tolerance': 0.01,
     }
 
-    # Fake execution type - how to animate trajectory execution
-    fake_execution_params = {
-        'moveit_fake_controller_manager.fake_execution_type': 'interpolate',  # or 'via_points' or 'last_point'
-    }
+    # ros2_control parameters (instead of fake execution)
+    ros2_controllers_path = os.path.join(moveit_config_pkg, 'config', 'ros2_controllers.yaml')
+    ros2_control_params = load_yaml('sekirei_moveit_config', 'config/ros2_controllers.yaml')
 
     planning_scene_monitor_parameters = {
         'publish_planning_scene': True,
@@ -115,7 +114,6 @@ def launch_setup(context, *args, **kwargs):
 
     # Add trajectory execution parameters
     move_group_params.update(trajectory_execution)
-    move_group_params.update(fake_execution_params)
     move_group_params.update(planning_scene_monitor_parameters)
 
     # Add controller configurations from moveit_controllers.yaml
@@ -127,13 +125,43 @@ def launch_setup(context, *args, **kwargs):
                 scm['controller_names'] = ParameterValue(scm['controller_names'])
         move_group_params.update(moveit_controllers)
 
-    # Fake controller - Python action server that publishes joint states
-    fake_controller_node = Node(
-        package='sekirei_moveit_config',
-        executable='fake_controller.py',
-        output='screen',
-        name='fake_controller',
-    )
+    # ros2_control node (controller_manager) with dummy hardware — only launch if available
+    ros2_nodes = []
+    try:
+        # Will raise PackageNotFoundError if controller_manager isn't installed in the environment
+        _ = get_package_share_directory('controller_manager')
+        ros2_nodes.append(
+            Node(
+                package='controller_manager',
+                executable='ros2_control_node',
+                parameters=[
+                    {'robot_description': robot_description},
+                    ros2_control_params,
+                ],
+                output='screen',
+            )
+        )
+
+        # Spawners for controllers
+        ros2_nodes.append(
+            Node(
+                package='controller_manager',
+                executable='spawner',
+                arguments=['joint_state_broadcaster', '--controller-manager', '/controller_manager'],
+                output='screen',
+            )
+        )
+
+        ros2_nodes.append(
+            Node(
+                package='controller_manager',
+                executable='spawner',
+                arguments=['sekirei_arm_controller', '--controller-manager', '/controller_manager'],
+                output='screen',
+            )
+        )
+    except PackageNotFoundError:
+        print("[launch warning] controller_manager package not found; skipping ros2_control_node and spawners. Falling back to MoveIt simple controller manager (fake controllers). Install ros2_control/ros2_controllers to enable hardware controllers.")
 
     # Start the actual move_group node/action server
     move_group_node = Node(
@@ -181,13 +209,18 @@ def launch_setup(context, *args, **kwargs):
         ],
     )
 
-    # Don't use joint_state_publisher - fake controller will publish joint states
-    # The fake controller action server will publish to /joint_states directly
+    # Don't use joint_state_publisher - controller_manager will handle joint states via ros2_control
 
     nodes_to_start = [
         static_tf_node,
         robot_state_publisher,
-        fake_controller_node,
+    ]
+
+    # add ros2_control nodes if available
+    nodes_to_start += ros2_nodes
+
+    # move_group and rviz are added after controller-related nodes
+    nodes_to_start += [
         move_group_node,
         rviz_node,
     ]

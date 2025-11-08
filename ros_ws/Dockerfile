@@ -11,6 +11,7 @@ RUN apt-get update && apt-get upgrade -y && \
     ros-jazzy-usb-cam \
     ros-jazzy-dynamixel-sdk \
     ros-jazzy-rosbridge-server \
+    ros-jazzy-controller-manager \
     ros-jazzy-osrf-testing-tools-cpp \
     ros-jazzy-ffmpeg-image-transport \
     python3-rosdep \

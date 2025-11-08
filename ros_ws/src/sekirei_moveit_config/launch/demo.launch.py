@@ -31,7 +31,7 @@ def launch_setup(context, *args, **kwargs):
     except PackageNotFoundError:
         urdf_file = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit_dummy.urdf')
         print("[demo.launch.py] dynamixel_hardware not found; using sekirei_moveit_dummy.urdf with mock_components")
-    
+
     with open(urdf_file, 'r') as f:
         robot_description = f.read()
 
@@ -149,20 +149,20 @@ def launch_setup(context, *args, **kwargs):
     try:
         # Will raise PackageNotFoundError if controller_manager isn't installed in the environment
         _ = get_package_share_directory('controller_manager')
-        
+
         from launch.actions import TimerAction
-        
+
         # Load controller parameters from YAML
         controller_manager_params = ros2_control_params.get('controller_manager', {})
         controller_manager_params['robot_description'] = robot_description
-        
+
         ros2_control_node = Node(
             package='controller_manager',
             executable='ros2_control_node',
             parameters=[controller_manager_params, ros2_controllers_path],
             output='screen',
         )
-        
+
         # Spawners for controllers (delayed to wait for controller_manager)
         joint_state_broadcaster_spawner = Node(
             package='controller_manager',
@@ -170,14 +170,14 @@ def launch_setup(context, *args, **kwargs):
             arguments=['joint_state_broadcaster', '--controller-manager', '/controller_manager'],
             output='screen',
         )
-        
+
         sekirei_arm_controller_spawner = Node(
             package='controller_manager',
             executable='spawner',
             arguments=['sekirei_arm_controller', '--controller-manager', '/controller_manager'],
             output='screen',
         )
-        
+
         ros2_nodes.append(ros2_control_node)
         # Increase delays to ensure controller_manager fully initializes and loads controller type definitions
         ros2_nodes.append(TimerAction(period=4.0, actions=[joint_state_broadcaster_spawner]))

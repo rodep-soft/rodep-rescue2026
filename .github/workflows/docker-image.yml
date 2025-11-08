@@ -1,32 +1,45 @@
-name: Docker and Colcon Build Check
+name: Build Check (ROS2 + micro-ROS + Flutter)
 
-# ワークフローが実行されるタイミングを定義
 on:
-  # mainブランチへのpush時に実行
   push:
     branches: [ "main" ]
-  # mainブランチに対するpull request時に実行
   pull_request:
     branches: [ "main" ]
 
 jobs:
-  build_and_test:
-    # 実行環境として最新のUbuntuを使用
+  build_ros2:
+    name: Build ROS 2 Container
     runs-on: ubuntu-latest
 
     steps:
-      # 1. リポジトリのソースコードをチェックアウト
-      # これにより、ros_ws/src も含めてファイルが利用可能
+      - name: Free Disk Space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
+
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
-      # 2. Dockerのビルド環境をセットアップ (Buildx)
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      # 3. Dockerイメージをビルド
-      # 上記で変更したDockerfileを使い、ソースコードを含んだイメージが作成される
-      - name: Build Docker image
+      - name: Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-ros2-${{ hashFiles('ros_ws/Dockerfile', 'ros_ws/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-ros2-
+
+      - name: Build ROS 2 Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -34,9 +47,124 @@ jobs:
           push: false
           tags: ros2-working-image:latest
           load: true
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
 
-      # 4. 【追加】作成したイメージ内で colcon build を実行
-      # このステップで、ROS 2パッケージのビルドが成功するかをテスト
       - name: Run colcon build check
         run: |
-          docker run --rm --workdir /root/ros_ws ros2-working-image:latest /bin/bash -c "source /opt/ros/jazzy/setup.bash && colcon build"
+          docker run --rm --workdir /root/ros_ws ros2-working-image:latest \
+            /bin/bash -c "source /opt/ros/jazzy/setup.bash && colcon build --symlink-install"
+
+      # Move cache (to avoid growing cache size)
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+
+  build_microros:
+    name: Build micro-ROS Container
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Free Disk Space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache-microros
+          key: ${{ runner.os }}-buildx-microros-${{ hashFiles('microros_ws/Dockerfile') }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-microros-
+
+      - name: Build micro-ROS Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./microros_ws/Dockerfile
+          push: false
+          tags: microros-agent:latest
+          load: true
+          cache-from: type=local,src=/tmp/.buildx-cache-microros
+          cache-to: type=local,dest=/tmp/.buildx-cache-microros-new,mode=max
+
+      # - name: Verify micro-ROS firmware build
+      #   run: |
+      #     docker run --rm microros-agent:latest \
+      #       /bin/bash -c "test -d /root/microros_ws/firmware/build && echo '✅ micro-ROS firmware build verified'"
+
+      # Move cache
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache-microros
+          mv /tmp/.buildx-cache-microros-new /tmp/.buildx-cache-microros
+
+  build_flutter:
+    name: Build Flutter Linux Desktop
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Free Disk Space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache-flutter
+          key: ${{ runner.os }}-buildx-flutter-${{ hashFiles('flutter/Dockerfile', 'flutter/robot_ui/pubspec.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-flutter-
+
+      - name: Build Flutter Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./flutter/Dockerfile
+          push: false
+          tags: flutter-ui:latest
+          load: true
+          cache-from: type=local,src=/tmp/.buildx-cache-flutter
+          cache-to: type=local,dest=/tmp/.buildx-cache-flutter-new,mode=max
+
+      - name: Run Flutter Linux build check
+        run: |
+          docker run --rm flutter-ui:latest \
+            /bin/bash -c "cd robot_ui && flutter build linux --release"
+
+      # Move cache
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache-flutter
+          mv /tmp/.buildx-cache-flutter-new /tmp/.buildx-cache-flutter

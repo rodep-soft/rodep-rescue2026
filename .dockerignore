@@ -50,6 +50,11 @@ docker-compose.override.yml
 # === Cache ===
 .ccache/
 
+# === Local user files ===
+.local/
+.cache/
+.config/
+
 # === Other ===
 .DS_Store
 *.log

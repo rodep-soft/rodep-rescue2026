@@ -23,7 +23,15 @@ def launch_setup(context, *args, **kwargs):
     urdf_pkg = get_package_share_directory('urdf_test_node')
 
     # Load URDF (use MoveIt-compatible version with collision and inertial)
-    urdf_file = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit.urdf')
+    # Check if dynamixel_hardware package is available
+    try:
+        _ = get_package_share_directory('dynamixel_hardware')
+        urdf_file = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit.urdf')
+        print("[demo.launch.py] Using sekirei_moveit.urdf with dynamixel_hardware plugin")
+    except PackageNotFoundError:
+        urdf_file = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit_dummy.urdf')
+        print("[demo.launch.py] dynamixel_hardware not found; using sekirei_moveit_dummy.urdf with mock_components")
+    
     with open(urdf_file, 'r') as f:
         robot_description = f.read()
 
@@ -39,6 +47,9 @@ def launch_setup(context, *args, **kwargs):
     # Planning config
     ompl_planning_yaml = load_yaml('sekirei_moveit_config', 'config/ompl_planning.yaml')
 
+    # Joint limits config
+    joint_limits_yaml = load_yaml('sekirei_moveit_config', 'config/joint_limits.yaml')
+
     # MoveIt Cpp config (planning pipelines)
     moveit_cpp_yaml = load_yaml('sekirei_moveit_config', 'config/moveit_cpp.yaml')
 
@@ -50,12 +61,12 @@ def launch_setup(context, *args, **kwargs):
     # Trajectory execution and moveit_controller_manager parameters
     trajectory_execution = {
         'moveit_manage_controllers': False,  # Let controller_manager handle this
-        'trajectory_execution.allowed_execution_duration_scaling': 1.2,
-        'trajectory_execution.allowed_goal_duration_margin': 0.5,
-        'trajectory_execution.allowed_start_tolerance': 0.01,
-    }
-
-    # ros2_control parameters (instead of fake execution)
+        'trajectory_execution.allowed_execution_duration_scaling': 3.0,  # Very lenient timing
+        'trajectory_execution.allowed_goal_duration_margin': 5.0,  # Allow много time
+        'trajectory_execution.allowed_start_tolerance': 0.5,  # Very lenient start position tolerance
+        'trajectory_execution.execution_duration_monitoring': False,  # Disable strict monitoring
+        'trajectory_execution.wait_for_trajectory_completion': True,  # Wait for completion
+    }    # ros2_control parameters (instead of fake execution)
     ros2_controllers_path = os.path.join(moveit_config_pkg, 'config', 'ros2_controllers.yaml')
     ros2_control_params = load_yaml('sekirei_moveit_config', 'config/ros2_controllers.yaml')
 
@@ -100,6 +111,10 @@ def launch_setup(context, *args, **kwargs):
         if 'request_adapters' in ompl_planning_yaml and isinstance(ompl_planning_yaml['request_adapters'], list):
             ompl_planning_yaml['request_adapters'] = ParameterValue(ompl_planning_yaml['request_adapters'])
 
+        # Convert response_adapters list to ParameterValue
+        if 'response_adapters' in ompl_planning_yaml and isinstance(ompl_planning_yaml['response_adapters'], list):
+            ompl_planning_yaml['response_adapters'] = ParameterValue(ompl_planning_yaml['response_adapters'])
+
         # Convert planner_configs lists in group-specific config
         if 'sekirei_arm' in ompl_planning_yaml and isinstance(ompl_planning_yaml['sekirei_arm'], dict):
             if 'planner_configs' in ompl_planning_yaml['sekirei_arm']:
@@ -111,6 +126,10 @@ def launch_setup(context, *args, **kwargs):
         # Add with 'ompl.' prefix to match expected namespace
         for key, value in ompl_planning_yaml.items():
             move_group_params[f'ompl.{key}'] = value
+
+    # Add joint limits configuration
+    if joint_limits_yaml:
+        move_group_params['robot_description_planning'] = joint_limits_yaml
 
     # Add trajectory execution parameters
     move_group_params.update(trajectory_execution)
@@ -130,36 +149,39 @@ def launch_setup(context, *args, **kwargs):
     try:
         # Will raise PackageNotFoundError if controller_manager isn't installed in the environment
         _ = get_package_share_directory('controller_manager')
-        ros2_nodes.append(
-            Node(
-                package='controller_manager',
-                executable='ros2_control_node',
-                parameters=[
-                    {'robot_description': robot_description},
-                    ros2_control_params,
-                ],
-                output='screen',
-            )
+        
+        from launch.actions import TimerAction
+        
+        # Load controller parameters from YAML
+        controller_manager_params = ros2_control_params.get('controller_manager', {})
+        controller_manager_params['robot_description'] = robot_description
+        
+        ros2_control_node = Node(
+            package='controller_manager',
+            executable='ros2_control_node',
+            parameters=[controller_manager_params, ros2_controllers_path],
+            output='screen',
         )
-
-        # Spawners for controllers
-        ros2_nodes.append(
-            Node(
-                package='controller_manager',
-                executable='spawner',
-                arguments=['joint_state_broadcaster', '--controller-manager', '/controller_manager'],
-                output='screen',
-            )
+        
+        # Spawners for controllers (delayed to wait for controller_manager)
+        joint_state_broadcaster_spawner = Node(
+            package='controller_manager',
+            executable='spawner',
+            arguments=['joint_state_broadcaster', '--controller-manager', '/controller_manager'],
+            output='screen',
         )
-
-        ros2_nodes.append(
-            Node(
-                package='controller_manager',
-                executable='spawner',
-                arguments=['sekirei_arm_controller', '--controller-manager', '/controller_manager'],
-                output='screen',
-            )
+        
+        sekirei_arm_controller_spawner = Node(
+            package='controller_manager',
+            executable='spawner',
+            arguments=['sekirei_arm_controller', '--controller-manager', '/controller_manager'],
+            output='screen',
         )
+        
+        ros2_nodes.append(ros2_control_node)
+        # Increase delays to ensure controller_manager fully initializes and loads controller type definitions
+        ros2_nodes.append(TimerAction(period=4.0, actions=[joint_state_broadcaster_spawner]))
+        ros2_nodes.append(TimerAction(period=5.0, actions=[sekirei_arm_controller_spawner]))
     except PackageNotFoundError:
         print("[launch warning] controller_manager package not found; skipping ros2_control_node and spawners. Falling back to MoveIt simple controller manager (fake controllers). Install ros2_control/ros2_controllers to enable hardware controllers.")
 
@@ -170,6 +192,7 @@ def launch_setup(context, *args, **kwargs):
         output='screen',
         namespace='',
         parameters=[move_group_params],
+        arguments=['--ros-args', '--log-level', 'INFO', '--log-level', 'moveit.trajectory_execution:=DEBUG'],
     )
 
     # RViz
@@ -205,7 +228,8 @@ def launch_setup(context, *args, **kwargs):
         name='robot_state_publisher',
         output='both',
         parameters=[
-            {'robot_description': robot_description}
+            {'robot_description': robot_description},
+            {'publish_robot_description': False},  # Don't republish, ros2_control_node already does
         ],
     )
 

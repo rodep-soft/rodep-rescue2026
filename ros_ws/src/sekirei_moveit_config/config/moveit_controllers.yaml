@@ -1,13 +1,14 @@
 # MoveIt uses this configuration for controllers
 moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
 
-# Fake execution - connects to our Python fake controller action server
+# Real ros2_control execution
 moveit_simple_controller_manager:
   controller_names:
-    - fake_arm_controller
+    - sekirei_arm_controller
 
-  fake_arm_controller:
+  sekirei_arm_controller:
     type: FollowJointTrajectory
+    # ros2_control publishes actions at /controller_name/follow_joint_trajectory
     action_ns: follow_joint_trajectory
     default: true
     joints:

@@ -46,6 +46,59 @@ ros2 launch sekirei_moveit_config demo.launch.py
 4. "Plan & Execute" ボタンをクリック
 5. アームが動作すれば成功！
 
+#### プリセットポーズ（Named Targets）の使用
+
+8つのプリセットポーズが定義されています：
+
+| ポーズ名 | 説明 | 用途 |
+|---------|------|------|
+| `home` | 初期姿勢（全関節0度） | 起動時の安全な姿勢 |
+| `ready` | 作業待機姿勢 | 作業開始前の準備姿勢 |
+| `up` | 上方向に伸ばした姿勢 | 高所作業 |
+| `forward` | 前方に伸ばした姿勢 | 物を取る・置く |
+| `compact` | 折りたたみ姿勢 | 収納・移動時 |
+| `left` | 左90度回転 | 左側の作業 |
+| `right` | 右90度回転 | 右側の作業 |
+| `back` | 後方180度回転 | 後方の作業 |
+
+**RViz2での使い方：**
+1. Motion Planning パネルの "Select Goal State" で "< named target >" を選択
+2. ドロップダウンからポーズを選択（例：`home`, `ready`, `up`）
+3. "Plan & Execute" をクリック
+
+**コマンドラインでの使い方：**
+```bash
+# 別ターミナルで（demo.launch.pyが起動中）
+source install/setup.bash
+
+# Homeポーズに移動
+ros2 run sekirei_moveit_config move_to_named_pose.py home
+
+# Readyポーズに移動
+ros2 run sekirei_moveit_config move_to_named_pose.py ready
+
+# Upポーズに移動
+ros2 run sekirei_moveit_config move_to_named_pose.py up
+
+# 利用可能なポーズ一覧
+ros2 run sekirei_moveit_config move_to_named_pose.py
+# → home, ready, up, forward, compact, left, right, back
+```
+
+**簡単な動作シーケンス例：**
+```bash
+# Home → Ready → Up → Forward → Home
+ros2 run sekirei_moveit_config move_to_named_pose.py home
+sleep 2
+ros2 run sekirei_moveit_config move_to_named_pose.py ready
+sleep 2
+ros2 run sekirei_moveit_config move_to_named_pose.py up
+sleep 2
+ros2 run sekirei_moveit_config move_to_named_pose.py forward
+sleep 2
+ros2 run sekirei_moveit_config move_to_named_pose.py home
+```
+
 ### 2. 実機（Dynamixel Hardware）で動かす
 
 実機を使用する場合は、`dynamixel_hardware` パッケージが必要です。

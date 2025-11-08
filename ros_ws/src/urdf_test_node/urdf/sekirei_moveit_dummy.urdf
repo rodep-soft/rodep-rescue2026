@@ -358,41 +358,75 @@
         </joint>
     </transmission>
 
-    <!-- ros2_control configuration for dynamixel_hardware -->
+    <!-- ros2_control configuration for dummy/mock hardware -->
     <ros2_control name="sekirei_dynamixel_hw" type="system">
         <hardware>
-            <!-- plugin provided by dynamixel_hardware package -->
-            <plugin>dynamixel_hardware/DynamixelHardware</plugin>
-            <!-- Assumptions: XM540-W270 on /dev/ttyUSB0 at 1Mbps. Edit as needed. -->
-            <param name="usb_port">/dev/ttyUSB0</param>
-            <param name="baud_rate">1000000</param>
-            <!-- set use_dummy to true if testing without real motors -->
-            <param name="use_dummy">true</param>
+            <!-- Using the mock_components GenericSystem for demo (no real Dynamixel) -->
+            <plugin>mock_components/GenericSystem</plugin>
+            <!-- mock_components parameters -->
+            <param name="mock_sensor_commands">false</param>
+            <param name="state_following_offset">0.0</param>
         </hardware>
 
         <joint name="arm_joint1">
-            <param name="id">1</param>
-            <param name="Profile_Velocity">100</param>
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
         </joint>
         <joint name="arm_joint2">
-            <param name="id">2</param>
-            <param name="Profile_Velocity">100</param>
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">0</param>
+            </command_interface>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
         </joint>
         <joint name="arm_joint3">
-            <param name="id">3</param>
-            <param name="Profile_Velocity">100</param>
+            <command_interface name="position">
+                <param name="min">0</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
         </joint>
         <joint name="arm_joint4">
-            <param name="id">4</param>
-            <param name="Profile_Velocity">100</param>
+            <command_interface name="position">
+                <param name="min">-4.71</param>
+                <param name="max">0</param>
+            </command_interface>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
         </joint>
         <joint name="arm_joint5">
-            <param name="id">5</param>
-            <param name="Profile_Velocity">100</param>
+            <command_interface name="position">
+                <param name="min">-1.57</param>
+                <param name="max">1.57</param>
+            </command_interface>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
         </joint>
         <joint name="arm_joint6">
-            <param name="id">6</param>
-            <param name="Profile_Velocity">100</param>
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
         </joint>
 
     </ros2_control>

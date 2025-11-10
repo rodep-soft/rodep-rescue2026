@@ -46,15 +46,36 @@ class CameraImageWidget extends StatefulWidget {
 class _CameraImageWidgetState extends State<CameraImageWidget> {
   Uint8List? _currentImage;
   String _imageStatus = 'No image received';
+  DateTime? _lastUpdateTime;
+  int _frameSkipCounter = 0;
+  static const int _frameSkip = 2; // Process every 3rd frame (skip 2)
 
   @override
   void initState() {
     super.initState();
     widget.imageStream.listen((imageData) {
-      if (mounted && imageData != null) {
+      if (!mounted || imageData == null) return;
+      
+      // Frame skipping to reduce CPU load (skip 3 out of 4 frames)
+      _frameSkipCounter++;
+      if (_frameSkipCounter < 3) {
+        return; // Skip this frame
+      }
+      _frameSkipCounter = 0;
+
+      // Throttle updates (max 8 FPS on display, 125ms interval)
+      final now = DateTime.now();
+      if (_lastUpdateTime != null && 
+          now.difference(_lastUpdateTime!).inMilliseconds < 125) {
+        return; // Skip if less than 125ms since last update
+      }
+      _lastUpdateTime = now;
+
+      // Async setState to avoid blocking
+      if (mounted) {
         setState(() {
           _currentImage = imageData;
-          _imageStatus = 'Image received (${imageData.length} bytes)';
+          _imageStatus = 'Image: ${(imageData.length / 1024).toStringAsFixed(1)} KB';
         });
       }
     });
@@ -96,13 +117,20 @@ class _CameraImageWidgetState extends State<CameraImageWidget> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Center(
-                child: Image.memory(
-                  _currentImage!,
-                  fit: BoxFit.contain,
-                  gaplessPlayback: true, // Prevents flickering during updates
-                  errorBuilder: (context, error, stackTrace) {
-                    return Text('Error displaying image: $error');
-                  },
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxWidth: 640, // Limit display size to reduce rendering load
+                    maxHeight: 480,
+                  ),
+                  child: Image.memory(
+                    _currentImage!,
+                    fit: BoxFit.contain,
+                    gaplessPlayback: true, // Prevents flickering during updates
+                    cacheWidth: 640, // Decode at lower resolution
+                    errorBuilder: (context, error, stackTrace) {
+                      return Text('Error displaying image: $error');
+                    },
+                  ),
                 ),
               ),
             )

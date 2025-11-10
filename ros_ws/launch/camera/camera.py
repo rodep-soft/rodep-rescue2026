@@ -38,6 +38,13 @@ def generate_launch_description():
                     "in:=/image",  # 入力トピック remap
                     "--remap",
                     "out/compressed:=/image/compressed",  # 出力トピック remap
+                    "--param",
+                    "jpeg_quality:=50",  # Lower quality to reduce bandwidth/CPU (default 80)
+                ],
+                parameters=[
+                    {
+                        "jpeg_quality": 50,  # Compression quality: 1-100 (lower = smaller/faster)
+                    }
                 ],
                 output="screen",
             ),

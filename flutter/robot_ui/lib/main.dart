@@ -164,7 +164,7 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
   final List<String> _subscribedTopics = [];
 
   // WebSocket address configuration
-  String _wsAddress = 'localhost';
+  String _wsAddress = 'ws://100.110.229.126:9090';
   String _wsPort = '9090';
 
   // Controllers for custom topic subscription

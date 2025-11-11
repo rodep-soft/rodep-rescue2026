@@ -15,7 +15,7 @@ def generate_launch_description():
                 'image_height': 480,
                 'pixel_format': 'yuyv',  # YUVフォーマット
                 'camera_frame_id': 'camera_frame',
-                'framerate': 15.0,  # 15fps
+                'framerate': 30.0,  # 15fps
             },
         ],
     )

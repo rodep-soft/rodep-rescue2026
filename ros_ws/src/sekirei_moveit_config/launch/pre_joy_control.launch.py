@@ -6,6 +6,7 @@ from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 from ament_index_python.packages import get_package_share_directory
 
+    #ファイル読み込み関数
 def _load_text(package: str, relative: str) -> str:
     path = os.path.join(get_package_share_directory(package), relative)
     with open(path, 'r') as f:
@@ -17,7 +18,7 @@ def _load_yaml(package: str, relative: str):
         return yaml.safe_load(f)
 
 def _setup(context, *args, **kwargs):
-    # === 1) 必要ファイルの読み込み（ここで必ず変数に格納） ===
+    # 必要ファイルの読み込み
     urdf_text  = _load_text('urdf_test_node', 'urdf/sekirei_moveit.urdf')
     srdf_text  = _load_text('sekirei_moveit_config', 'config/sekirei.srdf')
     kin_yaml   = _load_yaml('sekirei_moveit_config', 'config/kinematics.yaml')
@@ -25,7 +26,7 @@ def _setup(context, *args, **kwargs):
     cpp_yaml   = _load_yaml('sekirei_moveit_config', 'config/moveit_cpp.yaml')
     ctrl_yaml  = _load_yaml('sekirei_moveit_config', 'config/moveit_controllers.yaml')
 
-    # === 2) MoveGroup用のパラメータを構築 ===
+    # MoveGroup用のパラメータを構築
     move_group_params = {
         'robot_description': urdf_text,
         'robot_description_semantic': srdf_text,
@@ -45,7 +46,7 @@ def _setup(context, *args, **kwargs):
         'moveit_fake_controller_manager.fake_execution_type': 'interpolate',
     }
 
-    # moveit_cpp.yaml の list は ParameterValue へ
+    # MoveIt Cpp 設定
     if cpp_yaml:
         if 'planning_pipelines' in cpp_yaml and isinstance(cpp_yaml['planning_pipelines'].get('pipeline_names'), list):
             cpp_yaml['planning_pipelines']['pipeline_names'] = ParameterValue(
@@ -54,7 +55,7 @@ def _setup(context, *args, **kwargs):
             cpp_yaml['ompl']['planning_plugins'] = ParameterValue(cpp_yaml['ompl']['planning_plugins'])
         move_group_params.update(cpp_yaml)
 
-    # OMPL 設定（必要な key は ompl.<key> 名前空間に）
+    # OMPL 設定
     if ompl_yaml:
         if isinstance(ompl_yaml.get('planning_plugins'), list):
             ompl_yaml['planning_plugins'] = ParameterValue(ompl_yaml['planning_plugins'])
@@ -69,21 +70,6 @@ def _setup(context, *args, **kwargs):
         if isinstance(scm.get('controller_names'), list):
             scm['controller_names'] = ParameterValue(scm['controller_names'])
         move_group_params.update(ctrl_yaml)
-
-    # === 3) ノード定義 ===
-    # グローバルに robot_description を公開（これがあると MGI が確実に拾える）
-    # global_params = Node(
-    #     package='demo_nodes_cpp',  # 存在する任意パッケージ名でOK（例: "demo_nodes_cpp" 等、手元の環境に合わせて）
-    #     executable='talker',                  # 実体は動いてなくてOK。parameters を載せる目的
-    #     name='global_params_publisher',
-    #     namespace='/',                        # ★ グローバル
-    #     output='screen',
-    #     parameters=[{
-    #         'robot_description': urdf_text,
-    #         'robot_description_semantic': srdf_text,
-    #         'robot_description_kinematics': kin_yaml,
-    #     }]
-    # )
 
     # TF, RSP
     static_tf = Node(
@@ -110,7 +96,7 @@ def _setup(context, *args, **kwargs):
         parameters=[move_group_params],
     )
 
-    # RViz（任意）
+    # RViz
     rviz_cfg = os.path.join(get_package_share_directory('sekirei_moveit_config'), 'config', 'moveit.rviz')
     rviz = Node(
         package='rviz2',
@@ -124,6 +110,7 @@ def _setup(context, *args, **kwargs):
             'robot_description_kinematics': kin_yaml,
         }]
     )
+    #  Joyノード
     joy_node= Node(
         package='joy',
         executable='joy_node',
@@ -131,7 +118,7 @@ def _setup(context, *args, **kwargs):
         output='screen',
     )
 
-    
+    #  アームコントローラノード
     arm_controller = Node(
         package='urdf_test_node',
         executable='joy_teleop',
@@ -144,7 +131,7 @@ def _setup(context, *args, **kwargs):
         }]
     )
 
-    # （必要なら）フェイクコントローラ
+    # フェイクコントローラ
     fake_ctrl = Node(
         package='sekirei_moveit_config',
         executable='fake_controller.py',
@@ -152,7 +139,7 @@ def _setup(context, *args, **kwargs):
         output='screen',
     )
 
-    return [static_tf, rsp, joy_node,move_group, rviz, fake_ctrl, arm_controller]
+    return [static_tf, rsp, joy_node,move_group ,rviz, fake_ctrl, arm_controller]
 
 def generate_launch_description():
     return LaunchDescription([OpaqueFunction(function=_setup)])

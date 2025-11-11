@@ -272,7 +272,7 @@ def launch_setup(context, *args, **kwargs):
             name='rosbridge_websocket',
             parameters=[{
                 'port': 9090,
-                'address': '127.0.0.1',  # Bind to localhost only
+                'address': '0.0.0.0',  # Bind to all network interfaces (allow external access)
             }],
             output='screen',
         )

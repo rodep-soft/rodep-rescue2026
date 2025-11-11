@@ -65,7 +65,7 @@
 
     <joint name="arm_joint1" type="revolute">
         <origin xyz="0 0 0" rpy="0 0 0"/>
-        <axis xyz="0 0 -1"/>
+        <axis xyz="0 0 1"/>
         <parent link="arm_base_link"/>
         <child link="arm1_link"/>
         <limit effort="5" lower="-3.14" upper="3.14" velocity="1.571"/>
@@ -129,7 +129,7 @@
 
     <joint name="arm_joint3" type="revolute">
         <origin xyz="0.45 0.007 0.084" rpy="0 0 0"/>
-        <axis xyz="0 -1 0"/>
+        <axis xyz="0 1 0"/>
         <parent link="arm2_link"/>
         <child link="arm3_link"/>
         <limit effort="5" lower="-3.14" upper="3.14" velocity="1.571"/>
@@ -422,7 +422,7 @@
             <param name="Position P Gain">800</param>
             <param name="Position I Gain">0</param>
             <param name="Position D Gain">4000</param>
-            <param name="Drive Mode">0</param>
+            <param name="Drive Mode">1</param>
         </gpio>
         <gpio name="dxl2">
             <param name="type">dxl</param>
@@ -446,7 +446,7 @@
             <param name="Position P Gain">800</param>
             <param name="Position I Gain">0</param>
             <param name="Position D Gain">4000</param>
-            <param name="Drive Mode">0</param>
+            <param name="Drive Mode">1</param>
         </gpio>
         <gpio name="dxl4">
             <param name="type">dxl</param>

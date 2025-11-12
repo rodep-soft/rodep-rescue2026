@@ -55,7 +55,7 @@ class _CameraImageWidgetState extends State<CameraImageWidget> {
     super.initState();
     widget.imageStream.listen((imageData) {
       if (!mounted || imageData == null) return;
-      
+
       // Frame skipping to reduce CPU load (skip 3 out of 4 frames)
       _frameSkipCounter++;
       if (_frameSkipCounter < 3) {
@@ -65,7 +65,7 @@ class _CameraImageWidgetState extends State<CameraImageWidget> {
 
       // Throttle updates (max 8 FPS on display, 125ms interval)
       final now = DateTime.now();
-      if (_lastUpdateTime != null && 
+      if (_lastUpdateTime != null &&
           now.difference(_lastUpdateTime!).inMilliseconds < 125) {
         return; // Skip if less than 125ms since last update
       }

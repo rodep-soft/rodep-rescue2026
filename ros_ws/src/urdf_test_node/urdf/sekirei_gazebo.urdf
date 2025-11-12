@@ -1,4 +1,7 @@
 <?xml version="1.0"?>
+
+<!-- Gazebo integration用だけど、今のところ使わない -->
+
 <robot name="sekirei" xmlns:xacro="http://ros.org/wiki/xacro">
 
     <!-- Base Link -->

@@ -1,10 +1,15 @@
 <?xml version="1.0"?>
+
+<!-- 実機制御用のURDF -->
+
 <robot name="sekirei">
     <!-- Base link with inertial -->
+    <!-- Inertia, mass等はあくまで推定値!! -->
     <link name="base_link">
         <inertial>
             <mass value="1.0"/>
             <origin xyz="0 0 0"/>
+            <!-- 慣性テンソル -->
             <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
         </inertial>
     </link>
@@ -370,6 +375,7 @@
             <param name="number_of_joints">6</param>
             <param name="number_of_transmissions">6</param>
             <!-- 1:1 mapping: arm_joint1<->dxl1, arm_joint2<->dxl2, ... -->
+            <!-- このへんあやしい -->
             <param name="joint_to_transmission_matrix">1,0,0,0,0,0, 0,1,0,0,0,0, 0,0,1,0,0,0, 0,0,0,1,0,0, 0,0,0,0,1,0, 0,0,0,0,0,1</param>
             <param name="transmission_to_joint_matrix">1,0,0,0,0,0, 0,1,0,0,0,0, 0,0,1,0,0,0, 0,0,0,1,0,0, 0,0,0,0,1,0, 0,0,0,0,0,1</param>
         </hardware>

@@ -17,22 +17,6 @@ make up
 make exec
 ```
 
-## 🤖 MoveIt2 & RViz2
-
-```bash
-# MoveIt2 + RViz2でシミュレーション
-make moveit
-
-# 実機制御（Dynamixelハードウェア）
-make moveit-hw
-
-# ジョイスティック制御
-make moveit-joy
-
-# RViz2のみ起動
-make rviz
-```
-
 ### micro-ROS開発の場合
 - **micro_ros_setup の編集**: `microros_ws/src/micro_ros_setup/` (submodule)
 - **FreeRTOSアプリ編集**: `microros_ws/src/micro_ros_setup/freertos_apps/apps/`

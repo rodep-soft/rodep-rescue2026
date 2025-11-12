@@ -1,6 +1,6 @@
 controller_manager:
   ros__parameters:
-    update_rate: 100  # Hz
+    update_rate: 50  # Hz (reduced from 100 to improve communication stability with 6 servos at 1Mbps)
 
     fake_arm_controller:
       type: joint_trajectory_controller/JointTrajectoryController
@@ -84,7 +84,7 @@ sekirei_arm_controller:
     action_monitor_rate: 20.0
 
     allow_partial_joints_goal: false
-    open_loop_control: true
+    open_loop_control: false  # MUST be false for real hardware!
     allow_integration_in_goal_trajectories: false  # Don't modify trajectory
     allow_nonzero_velocity_at_trajectory_end: true
     start_with_holding: false  # Don't add holding point

@@ -1,10 +1,15 @@
 <?xml version="1.0"?>
+
+<!-- 実機制御用のURDF -->
+
 <robot name="sekirei">
     <!-- Base link with inertial -->
+    <!-- Inertia, mass等はあくまで推定値!! -->
     <link name="base_link">
         <inertial>
             <mass value="1.0"/>
             <origin xyz="0 0 0"/>
+            <!-- 慣性テンソル -->
             <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
         </inertial>
     </link>
@@ -369,11 +374,16 @@
             <param name="error_timeout_ms">1000</param>
             <param name="number_of_joints">6</param>
             <param name="number_of_transmissions">6</param>
+<<<<<<< HEAD
             <param name="dynamixel_model_folder">/param/dxl_model</param>
             <param name="disable_torque_at_init">true</param>
             <param name="ignore_hardware_error">true</param>
             <param name="ping_retry_count">3</param>
             <!-- 1:1 mapping: arm_joint1<->dxl21, arm_joint2<->dxl22, ... arm_joint6<->dxl26 (IDs: 21-28, only using 21-26 for 6 joints) -->
+=======
+            <!-- 1:1 mapping: arm_joint1<->dxl1, arm_joint2<->dxl2, ... -->
+            <!-- このへんあやしい -->
+>>>>>>> 02bf1ed9a2c11820756a263024186e57acecb0fb
             <param name="joint_to_transmission_matrix">1,0,0,0,0,0, 0,1,0,0,0,0, 0,0,1,0,0,0, 0,0,0,1,0,0, 0,0,0,0,1,0, 0,0,0,0,0,1</param>
             <param name="transmission_to_joint_matrix">1,0,0,0,0,0, 0,1,0,0,0,0, 0,0,1,0,0,0, 0,0,0,1,0,0, 0,0,0,0,1,0, 0,0,0,0,0,1</param>
         </hardware>

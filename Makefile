@@ -197,28 +197,3 @@ tidy-fix:
 		! -path '*/eProsima/*' ! -path '*/ros2/*' ! -path '*/micro_ros_setup/*' \
 		! -path '*/build/*' ! -path '*/install/*' ! -path '*/log/*' \
 		-exec clang-tidy -p ros_ws/build --config-file=ros_ws/src/.clang-tidy --fix {} + 2>&1 | grep -v "^[0-9]* warnings generated"
-
-# === MoveIt & RViz2 ===
-moveit:
-	@echo "🤖 Launching MoveIt2 with RViz2..."
-	docker compose exec ros2_container bash -c "source /opt/ros/jazzy/setup.bash && \
-		source /root/ros_ws/install/setup.bash && \
-		ros2 launch sekirei_moveit_config demo.launch.py"
-
-moveit-hw:
-	@echo "🤖 Launching MoveIt2 with Dynamixel hardware..."
-	docker compose exec ros2_container bash -c "source /opt/ros/jazzy/setup.bash && \
-		source /root/ros_ws/install/setup.bash && \
-		ros2 launch sekirei_moveit_config dynamixel_hw.launch.py"
-
-moveit-joy:
-	@echo "🎮 Launching MoveIt2 with joystick control..."
-	docker compose exec ros2_container bash -c "source /opt/ros/jazzy/setup.bash && \
-		source /root/ros_ws/install/setup.bash && \
-		ros2 launch sekirei_moveit_config joy_control.launch.py"
-
-rviz:
-	@echo "📊 Launching RViz2..."
-	docker compose exec ros2_container bash -c "source /opt/ros/jazzy/setup.bash && \
-		source /root/ros_ws/install/setup.bash && \
-		rviz2"

@@ -1,4 +1,7 @@
 <?xml version="1.0"?>
+
+<!-- テスト用。robocupのロボット用ではない -->
+
 <robot name="crawler_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:property name="M_PI" value="3.14159265359"/>

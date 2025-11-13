@@ -11,11 +11,11 @@ def generate_launch_description():
         parameters=[
             {
                 'video_device': '/dev/video0',
-                'image_width': 640,  # バランス: 640x480
+                'image_width': 640,  # 軽量化: 480x360
                 'image_height': 480,
                 'pixel_format': 'yuyv',  # YUVフォーマット
                 'camera_frame_id': 'camera_frame',
-                'framerate': 30.0,  # 15fps
+                'framerate': 30.0,  # 30fps
             },
         ],
     )

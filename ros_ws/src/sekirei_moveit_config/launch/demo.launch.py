@@ -41,7 +41,7 @@ def launch_setup(context, *args, **kwargs):
             print("[demo.launch.py] USB device found but dynamixel_hardware_interface not installed")
 
     if dynamixel_connected:
-        urdf_file = os.path.join(moveit_config_pkg, 'urdf', 'sekirei_moveit.urdf')
+        urdf_file = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit.urdf')
     else:
         urdf_file = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit_dummy.urdf')
         print("[demo.launch.py] No Dynamixel hardware detected - using sekirei_moveit_dummy.urdf with mock_components")

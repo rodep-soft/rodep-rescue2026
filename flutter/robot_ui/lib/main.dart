@@ -56,18 +56,14 @@ class _CameraImageWidgetState extends State<CameraImageWidget> {
     widget.imageStream.listen((imageData) {
       if (!mounted || imageData == null) return;
       
-      // Frame skipping to reduce CPU load (skip 3 out of 4 frames)
-      _frameSkipCounter++;
-      if (_frameSkipCounter < 3) {
-        return; // Skip this frame
-      }
-      _frameSkipCounter = 0;
-
-      // Throttle updates (max 8 FPS on display, 125ms interval)
+      // Minimal frame skipping for 30fps target (skip 0 frames = process all)
+      // Note: Actual FPS depends on network, CPU, and image size
+      
+      // Throttle updates to max 30 FPS (33ms interval)
       final now = DateTime.now();
       if (_lastUpdateTime != null && 
-          now.difference(_lastUpdateTime!).inMilliseconds < 125) {
-        return; // Skip if less than 125ms since last update
+          now.difference(_lastUpdateTime!).inMilliseconds < 33) {
+        return; // Skip if less than 33ms since last update
       }
       _lastUpdateTime = now;
 
@@ -119,14 +115,14 @@ class _CameraImageWidgetState extends State<CameraImageWidget> {
               child: Center(
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(
-                    maxWidth: 640, // Limit display size to reduce rendering load
-                    maxHeight: 480,
+                    maxWidth: 480, // Smaller display for performance
+                    maxHeight: 360,
                   ),
                   child: Image.memory(
                     _currentImage!,
                     fit: BoxFit.contain,
                     gaplessPlayback: true, // Prevents flickering during updates
-                    cacheWidth: 640, // Decode at lower resolution
+                    cacheWidth: 480, // Decode at lower resolution for speed
                     errorBuilder: (context, error, stackTrace) {
                       return Text('Error displaying image: $error');
                     },

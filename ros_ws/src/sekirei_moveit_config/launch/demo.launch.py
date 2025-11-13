@@ -269,11 +269,18 @@ def launch_setup(context, *args, **kwargs):
             # moveit_config.robot_description_kinematics, # here is where kinematics plugin parameters are passed
         ],
     )
+
+    joy_node = Node(
+        package='joy',
+        executable='joy_node',
+        name='joy_node',
+    )
     
 
     # Don't use joint_state_publisher - controller_manager will handle joint states via ros2_control
 
     nodes_to_start = [
+        joy_node,
         static_tf_node,
         robot_state_publisher,
         servo_node,

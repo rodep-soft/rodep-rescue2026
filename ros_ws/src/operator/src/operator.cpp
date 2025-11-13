@@ -25,6 +25,7 @@ public:
         this->create_publisher<custom_interfaces::msg::CrawlerVelocity>("/crawler_driver", 10);
     flipper_publisher_ =
         this->create_publisher<custom_interfaces::msg::FlipperVelocity>("/flipper_driver", 10);
+    // moveit用のpublisherも随時追加
 
   }  // Constructor
 

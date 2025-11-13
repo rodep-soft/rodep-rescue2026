@@ -2,40 +2,13 @@ controller_manager:
   ros__parameters:
     update_rate: 50  # Hz (reduced from 100 to improve communication stability with 6 servos at 1Mbps)
 
-    fake_arm_controller:
-      type: joint_trajectory_controller/JointTrajectoryController
-
     sekirei_arm_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
-fake_arm_controller:
-  ros__parameters:
-    joints:
-      - arm_joint1
-      - arm_joint2
-      - arm_joint3
-      - arm_joint4
-      - arm_joint5
-      - arm_joint6
 
-    command_interfaces:
-      - position
-
-    state_interfaces:
-      - position
-      - velocity
-
-    action_monitor_rate: 20.0
-
-    allow_partial_joints_goal: false
-    open_loop_control: true
-    allow_integration_in_goal_trajectories: true
-    constraints:
-      stopped_velocity_tolerance: 0.01
-      goal_time: 0.0
 
 # Real hardware joint_trajectory_controller (for dynamixel_hardware)
 joint_trajectory_controller:
@@ -84,7 +57,12 @@ sekirei_arm_controller:
     action_monitor_rate: 20.0
 
     allow_partial_joints_goal: false
+<<<<<<< HEAD
     open_loop_control: false  # MUST be false for real hardware!
+=======
+    # Change: closed loopにする
+    open_loop_control: false
+>>>>>>> 02bf1ed9a2c11820756a263024186e57acecb0fb
     allow_integration_in_goal_trajectories: false  # Don't modify trajectory
     allow_nonzero_velocity_at_trajectory_end: true
     start_with_holding: false  # Don't add holding point

@@ -55,15 +55,19 @@ class _CameraImageWidgetState extends State<CameraImageWidget> {
     super.initState();
     widget.imageStream.listen((imageData) {
       if (!mounted || imageData == null) return;
-      
-      // Minimal frame skipping for 30fps target (skip 0 frames = process all)
-      // Note: Actual FPS depends on network, CPU, and image size
-      
-      // Throttle updates to max 30 FPS (33ms interval)
+
+      // Frame skipping to reduce CPU load (skip 3 out of 4 frames)
+      _frameSkipCounter++;
+      if (_frameSkipCounter < 3) {
+        return; // Skip this frame
+      }
+      _frameSkipCounter = 0;
+
+      // Throttle updates (max 8 FPS on display, 125ms interval)
       final now = DateTime.now();
-      if (_lastUpdateTime != null && 
-          now.difference(_lastUpdateTime!).inMilliseconds < 33) {
-        return; // Skip if less than 33ms since last update
+      if (_lastUpdateTime != null &&
+          now.difference(_lastUpdateTime!).inMilliseconds < 125) {
+        return; // Skip if less than 125ms since last update
       }
       _lastUpdateTime = now;
 

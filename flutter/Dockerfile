@@ -5,11 +5,13 @@ RUN pacman -Syu --noconfirm \
     git \
     unzip \
     xz \
+    fish \
     zip \
     glu \
     fzf \
     zoxide \
     which \
+    vim \
     xorg-server \
     xorg-xauth \
     xorg-xhost \

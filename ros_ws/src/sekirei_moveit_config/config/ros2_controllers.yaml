@@ -57,12 +57,8 @@ sekirei_arm_controller:
     action_monitor_rate: 20.0
 
     allow_partial_joints_goal: false
-<<<<<<< HEAD
-    open_loop_control: false  # MUST be false for real hardware!
-=======
     # Change: closed loopにする
     open_loop_control: false
->>>>>>> 02bf1ed9a2c11820756a263024186e57acecb0fb
     allow_integration_in_goal_trajectories: false  # Don't modify trajectory
     allow_nonzero_velocity_at_trajectory_end: true
     start_with_holding: false  # Don't add holding point

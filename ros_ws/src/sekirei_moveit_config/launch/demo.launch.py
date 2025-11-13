@@ -263,12 +263,13 @@ def launch_setup(context, *args, **kwargs):
         name='servo_node',
         parameters=[
             os.path.join(moveit_config_pkg, 'config', 'moveit_servo.yaml'),
-            # # {'low_pass_filter_coeff': 0.2},
-            # moveit_config.robot_description,
-            # moveit_config.robot_description_semantic,
-            # moveit_config.robot_description_kinematics, # here is where kinematics plugin parameters are passed
+            moveit_config.robot_description,
+            moveit_config.robot_description_semantic,
+            moveit_config.robot_description_kinematics,
         ],
+        output='screen'
     )
+
 
     joy_node = Node(
         package='joy',

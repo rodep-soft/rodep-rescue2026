@@ -9,6 +9,7 @@ RUN apt-get update && apt-get upgrade -y && \
     ros-jazzy-xacro \
     ros-jazzy-moveit \
     ros-jazzy-usb-cam \
+    ros-jazzy-moveit-servo \
     ros-jazzy-dynamixel-sdk \
     ros-jazzy-rosbridge-server \
     ros-jazzy-controller-manager \

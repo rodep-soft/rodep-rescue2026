@@ -7,6 +7,7 @@ from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
 from ament_index_python.packages import get_package_share_directory, PackageNotFoundError
+from moveit_configs_utils import MoveItConfigsBuilder
 import yaml
 
 
@@ -247,12 +248,36 @@ def launch_setup(context, *args, **kwargs):
         ],
     )
 
+    # Moveit Servoテスト
+    moveit_config = (
+        MoveItConfigsBuilder("sekirei")
+        .robot_description(file_path=os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit.urdf'))
+        .robot_description_semantic(file_path=os.path.join(moveit_config_pkg, 'config', 'sekirei.srdf'))
+        .robot_description_kinematics(file_path=os.path.join(moveit_config_pkg, 'config', 'kinematics.yaml'))
+        .to_moveit_configs()
+    )
+
+    servo_node = Node(
+        package='moveit_servo',
+        executable='servo_node',
+        parameters=[
+            os.path.join(moveit_config_pkg, 'config', 'moveit_servo.yaml'),
+            # # {'low_pass_filter_coeff': 0.2},
+            # moveit_config.robot_description,
+            # moveit_config.robot_description_semantic,
+            # moveit_config.robot_description_kinematics, # here is where kinematics plugin parameters are passed
+        ],
+    )
+    
+
     # Don't use joint_state_publisher - controller_manager will handle joint states via ros2_control
 
     nodes_to_start = [
         static_tf_node,
         robot_state_publisher,
+        servo_node,
     ]
+    # servo_nodeはテスト
 
     # add ros2_control nodes if available
     nodes_to_start += ros2_nodes

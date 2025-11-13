@@ -260,6 +260,7 @@ def launch_setup(context, *args, **kwargs):
     servo_node = Node(
         package='moveit_servo',
         executable='servo_node',
+        name='servo_node',
         parameters=[
             os.path.join(moveit_config_pkg, 'config', 'moveit_servo.yaml'),
             # # {'low_pass_filter_coeff': 0.2},

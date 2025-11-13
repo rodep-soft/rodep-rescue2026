@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """
+これでmoveit, rviz, rosbridge, moveit_bridgeをまとめて起動することができる
+
+
 Complete Launch for Flutter UI Control
 
 This launches:

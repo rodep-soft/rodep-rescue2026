@@ -263,17 +263,36 @@ def launch_setup(context, *args, **kwargs):
         name='servo_node',
         parameters=[
             os.path.join(moveit_config_pkg, 'config', 'moveit_servo.yaml'),
-            # # {'low_pass_filter_coeff': 0.2},
-            # moveit_config.robot_description,
-            # moveit_config.robot_description_semantic,
-            # moveit_config.robot_description_kinematics, # here is where kinematics plugin parameters are passed
+            moveit_config.robot_description,
+            moveit_config.robot_description_semantic,
+            moveit_config.robot_description_kinematics,
         ],
+        output='screen'
+    )
+
+
+    joy_node = Node(
+        package='joy',
+        executable='joy_node',
+        name='joy_node',
     )
     
 
     # Don't use joint_state_publisher - controller_manager will handle joint states via ros2_control
 
+    joy_to_jointjog_node = Node(
+        package='sekirei_moveit_config',
+        executable='joy_to_jointjog.py',
+        name='joy_to_jointjog',
+        output='screen',
+        parameters=[],
+        arguments=[],
+        prefix='python3 '
+    )
+
     nodes_to_start = [
+        joy_node,
+        joy_to_jointjog_node,
         static_tf_node,
         robot_state_publisher,
         servo_node,

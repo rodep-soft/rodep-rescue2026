@@ -23,6 +23,7 @@ install(PROGRAMS
   scripts/joy_teleop.py
   scripts/move_to_named_pose.py
   scripts/moveit_bridge.py
+  scripts/joy_to_jointjog.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

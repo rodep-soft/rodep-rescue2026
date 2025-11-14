@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(cam_to_image)
+project(slam_toolbox)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -11,18 +11,9 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-find_package(rclcpp REQUIRED)
-find_package(sensor_msgs REQUIRED)
-find_package(cv_bridge REQUIRED)
-find_package(OpenCV REQUIRED)
-
-add_executable(cam_to_image src/cam_to_image.cpp)
-
-ament_target_dependencies(
-  cam_to_image rclcpp sensor_msgs cv_bridge OpenCV
+install(DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME}/
 )
-
-install(TARGETS cam_to_image DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

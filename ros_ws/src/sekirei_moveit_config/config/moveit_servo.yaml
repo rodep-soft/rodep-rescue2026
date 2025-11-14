@@ -1,6 +1,7 @@
 servo_node:
   ros__parameters:
     moveit_servo.command_in_type: "speed_units"
+    # moveit_servo.command_in_type: "unitless"
     moveit_servo.move_group_name: "sekirei_arm"
     moveit_servo.joint_topic: "/joint_states"
     moveit_servo.command_out_topic: "/sekirei_arm_controller/joint_trajectory"
@@ -9,3 +10,6 @@ servo_node:
     moveit_servo.publish_period: 0.033
     moveit_servo.low_pass_filter_coeff: 0.2
     moveit_servo.max_command_latency: 0.1  # 必要なら明示的に指定
+    moveit_servo.base_frame: base_link
+    moveit_servo.ee_frame: arm6_link
+

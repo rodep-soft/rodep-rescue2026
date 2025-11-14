@@ -18,7 +18,7 @@
     <link name="arm_base_link">
         <visual>
             <geometry>
-                <mesh filename="package://urdf_test_node/meshes/r_a_2019_2020_asm1.STL"/>
+                <mesh filename="package://robot_model/meshes/r_a_2019_2020_asm1.STL"/>
             </geometry>
             <origin xyz="-0.08 -0.081 0" rpy="1.57 0 0"/>
             <material name="white">
@@ -48,7 +48,7 @@
     <link name="arm1_link">
         <visual>
             <geometry>
-                <mesh filename="package://urdf_test_node/meshes/r_a_2019_2020_asm2.STL"/>
+                <mesh filename="package://robot_model/meshes/r_a_2019_2020_asm2.STL"/>
             </geometry>
             <origin xyz="0 0 0.004" rpy="1.57 0 0"/>
             <material name="white">
@@ -80,7 +80,7 @@
     <link name="arm2_link">
         <visual>
             <geometry>
-                <mesh filename="package://urdf_test_node/meshes/r_a_2019_2020_asm3.STL"/>
+                <mesh filename="package://robot_model/meshes/r_a_2019_2020_asm3.STL"/>
             </geometry>
             <origin xyz="0 0 0" rpy="1.57 0 0"/>
             <material name="white">
@@ -105,14 +105,14 @@
         <axis xyz="0 1 0"/>
         <parent link="arm1_link"/>
         <child link="arm2_link"/>
-        <limit effort="5" lower="-3.14" upper="0" velocity="1.571"/>
+        <limit effort="5" lower="-3.14" upper="3.14" velocity="1.571"/>
     </joint>
 
     <!-- Arm Link 3 -->
     <link name="arm3_link">
         <visual>
             <geometry>
-                <mesh filename="package://urdf_test_node/meshes/r_a_2019_2020_asm4.STL"/>
+                <mesh filename="package://robot_model/meshes/r_a_2019_2020_asm4.STL"/>
             </geometry>
             <origin xyz="0 0 0" rpy="1.57 0 0"/>
             <material name="white">
@@ -137,14 +137,14 @@
         <axis xyz="0 1 0"/>
         <parent link="arm2_link"/>
         <child link="arm3_link"/>
-        <limit effort="5" lower="-3.14" upper="3.14" velocity="1.571"/>
+        <limit effort="5" lower="0" upper="3.14" velocity="1.571"/>
     </joint>
 
     <!-- Arm Link 4 -->
     <link name="arm4_link">
         <visual>
             <geometry>
-                <mesh filename="package://urdf_test_node/meshes/r_a_2019_2020_asm5.STL"/>
+                <mesh filename="package://robot_model/meshes/r_a_2019_2020_asm5.STL"/>
             </geometry>
             <origin xyz="0 0 0" rpy="1.57 3.14 0"/>
             <material name="white">
@@ -176,7 +176,7 @@
     <link name="arm5_link">
         <visual>
             <geometry>
-                <mesh filename="package://urdf_test_node/meshes/r_a_2019_l_asm6.STL"/>
+                <mesh filename="package://robot_model/meshes/r_a_2019_l_asm6.STL"/>
             </geometry>
             <origin xyz="0 0 0" rpy="1.57 3.14 0"/>
             <material name="white">
@@ -208,7 +208,7 @@
     <link name="arm6_link">
         <visual>
             <geometry>
-                <mesh filename="package://urdf_test_node/meshes/r_a_2019_l_asm7_ver2.STL"/>
+                <mesh filename="package://robot_model/meshes/r_a_2019_l_asm7_ver2.STL"/>
             </geometry>
             <origin xyz="0 0 0" rpy="0 3.14 0"/>
             <material name="white">
@@ -240,7 +240,7 @@
     <link name="gui_d435_link">
         <visual>
             <geometry>
-                <mesh filename="package://urdf_test_node/meshes/d435.STL"/>
+                <mesh filename="package://robot_model/meshes/d435.STL"/>
             </geometry>
             <origin xyz="0 0 0" rpy="1.57 0 -1.57"/>
             <material name="white">
@@ -269,7 +269,7 @@
     <link name="gui_t265_link">
         <visual>
             <geometry>
-                <mesh filename="package://urdf_test_node/meshes/t265.STL"/>
+                <mesh filename="package://robot_model/meshes/t265.STL"/>
             </geometry>
             <origin xyz="0 0 0" rpy="1.57 3.14 1.57"/>
             <material name="white">
@@ -364,7 +364,7 @@
     </transmission>
 
     <!-- ros2_control configuration for dynamixel_hardware_interface -->
-    <xacro:property name="use_real_hw" value="true"/>
+    <xacro:property name="use_real_hw" value="false"/>
 
     <xacro:if value="${use_real_hw}">
     <ros2_control name="sekirei_dynamixel_hw" type="system">

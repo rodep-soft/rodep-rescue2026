@@ -5,7 +5,7 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    pkg_name = "urdf_test_node"
+    pkg_name = "robot_model"
 
     pkg_share_dir = get_package_share_directory(pkg_name)
 

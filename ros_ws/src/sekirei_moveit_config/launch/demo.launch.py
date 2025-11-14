@@ -1,3 +1,5 @@
+# メインのアーム実機制御、シミュレーション用ファイル
+
 import os
 from launch import LaunchDescription
 from launch.actions import OpaqueFunction, DeclareLaunchArgument, IncludeLaunchDescription
@@ -7,7 +9,7 @@ from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
 from ament_index_python.packages import get_package_share_directory, PackageNotFoundError
-from moveit_configs_utils import MoveItConfigsBuilder
+from launch.substitutions import Command
 import yaml
 
 
@@ -24,7 +26,7 @@ def load_yaml(package_name, file_path):
 def launch_setup(context, *args, **kwargs):
     # Get package directories
     moveit_config_pkg = get_package_share_directory('sekirei_moveit_config')
-    urdf_pkg = get_package_share_directory('urdf_test_node')
+    urdf_pkg = get_package_share_directory('robot_model')
 
     # Load URDF (use MoveIt-compatible version with collision and inertial)
     # Check if Dynamixel hardware is connected by looking for USB device
@@ -41,14 +43,18 @@ def launch_setup(context, *args, **kwargs):
         except PackageNotFoundError:
             print("[demo.launch.py] USB device found but dynamixel_hardware_interface not installed")
 
-    if dynamixel_connected:
-        urdf_file = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit.urdf')
-    else:
-        urdf_file = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit_dummy.urdf')
-        print("[demo.launch.py] No Dynamixel hardware detected - using sekirei_moveit_dummy.urdf with mock_components")
+    # if dynamixel_connected:
+    #     urdf_file = os.path.join(moveit_config_pkg, 'urdf', 'sekirei_moveit.urdf')
+    # else:
+    #     urdf_file = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit_dummy.urdf')
+    #     print("[demo.launch.py] No Dynamixel hardware detected - using sekirei_moveit_dummy.urdf with mock_components")
 
-    with open(urdf_file, 'r') as f:
-        robot_description = f.read()
+    urdf_xacro_path = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit.xacro')
+    robot_description = Command([
+        'xacro ', 
+        urdf_xacro_path,
+        ' use_real_hw:=', LaunchConfiguration('use_real_hw')
+    ])
 
     # Load SRDF
     srdf_file = os.path.join(moveit_config_pkg, 'config', 'sekirei.srdf')
@@ -248,56 +254,12 @@ def launch_setup(context, *args, **kwargs):
         ],
     )
 
-    # Moveit Servoテスト
-    moveit_config = (
-        MoveItConfigsBuilder("sekirei")
-        .robot_description(file_path=os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit.urdf'))
-        .robot_description_semantic(file_path=os.path.join(moveit_config_pkg, 'config', 'sekirei.srdf'))
-        .robot_description_kinematics(file_path=os.path.join(moveit_config_pkg, 'config', 'kinematics.yaml'))
-        .to_moveit_configs()
-    )
-
-    servo_node = Node(
-        package='moveit_servo',
-        executable='servo_node',
-        name='servo_node',
-        parameters=[
-            os.path.join(moveit_config_pkg, 'config', 'moveit_servo.yaml'),
-            moveit_config.robot_description,
-            moveit_config.robot_description_semantic,
-            moveit_config.robot_description_kinematics,
-        ],
-        output='screen'
-    )
-
-
-    joy_node = Node(
-        package='joy',
-        executable='joy_node',
-        name='joy_node',
-    )
-    
-
     # Don't use joint_state_publisher - controller_manager will handle joint states via ros2_control
 
-    joy_to_jointjog_node = Node(
-        package='sekirei_moveit_config',
-        executable='joy_to_jointjog.py',
-        name='joy_to_jointjog',
-        output='screen',
-        parameters=[],
-        arguments=[],
-        prefix='python3 '
-    )
-
     nodes_to_start = [
-        joy_node,
-        joy_to_jointjog_node,
         static_tf_node,
         robot_state_publisher,
-        servo_node,
     ]
-    # servo_nodeはテスト
 
     # add ros2_control nodes if available
     nodes_to_start += ros2_nodes
@@ -332,6 +294,11 @@ def generate_launch_description():
             'use_rosbridge',
             default_value='true',
             description='Launch rosbridge_server for web/Flutter UI connection'
+        ),
+        DeclareLaunchArgument(
+            'use_real_hw',
+            default_value='false', # デフォルトではシミュレーション
+            description='Use real hardware if connected'
         ),
         OpaqueFunction(function=launch_setup)
     ])

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(urdf_test_node)
+project(robot_model)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -39,7 +39,6 @@ ament_target_dependencies(joy_teleop
   sensor_msgs
   geometry_msgs
   moveit_ros_planning_interface
-  tf2
   tf2_geometry_msgs
 )
 

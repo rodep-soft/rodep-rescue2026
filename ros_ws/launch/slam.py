@@ -93,7 +93,7 @@ def generate_launch_description():
             'odom_frame': 'odom', # 空だからodomなし
             'map_frame': 'map',
             'base_frame': 'base_link',
-            'provide_odom_frame': 'false',  # ← odom 無しでも動く
+            'provide_odom_frame': 'true',  # ← odom 無しでも動く
             'use_scan_matching': 'true'
         }.items()
     )

@@ -280,8 +280,19 @@ def launch_setup(context, *args, **kwargs):
 
     # Don't use joint_state_publisher - controller_manager will handle joint states via ros2_control
 
+    joy_to_jointjog_node = Node(
+        package='sekirei_moveit_config',
+        executable='joy_to_jointjog.py',
+        name='joy_to_jointjog',
+        output='screen',
+        parameters=[],
+        arguments=[],
+        prefix='python3 '
+    )
+
     nodes_to_start = [
         joy_node,
+        joy_to_jointjog_node,
         static_tf_node,
         robot_state_publisher,
         servo_node,

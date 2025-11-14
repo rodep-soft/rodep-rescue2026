@@ -292,7 +292,7 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument(
             'use_rosbridge',
-            default_value='true',
+            default_value='false',
             description='Launch rosbridge_server for web/Flutter UI connection'
         ),
         DeclareLaunchArgument(

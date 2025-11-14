@@ -2,7 +2,7 @@
 
 import os
 from launch import LaunchDescription
-from launch.actions import OpaqueFunction, DeclareLaunchArgument, IncludeLaunchDescription
+from launch.actions import OpaqueFunction, DeclareLaunchArgument, IncludeLaunchDescription, TimerAction
 from launch.launch_description_sources import AnyLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
@@ -10,6 +10,11 @@ from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
 from ament_index_python.packages import get_package_share_directory, PackageNotFoundError
 from launch.substitutions import Command
+# MoveItConfigsBuilder is optional (may not be installed in minimal environments)
+try:
+    from moveit_configs_utils import MoveItConfigsBuilder
+except Exception:
+    MoveItConfigsBuilder = None
 import yaml
 
 
@@ -254,8 +259,27 @@ def launch_setup(context, *args, **kwargs):
         ],
     )
 
+    # Moveit Servo: don't rely on MoveItConfigsBuilder being present. We'll provide
+    # the necessary parameters (robot_description and robot_description_semantic)
+    # directly to the node and start it after move_group is launched so it can
+    # find the semantic description without timing out.
+    servo_node = Node(
+        package='moveit_servo',
+        executable='servo_node',
+        name='servo_node',
+        parameters=[
+            os.path.join(moveit_config_pkg, 'config', 'moveit_servo.yaml'),
+            # Ensure servo_node sees SRDF/URDF/kinematics on startup
+            {'robot_description': robot_description},
+            {'robot_description_semantic': robot_description_semantic},
+            {'robot_description_kinematics': kinematics_yaml},
+        ],
+    )
+
     # Don't use joint_state_publisher - controller_manager will handle joint states via ros2_control
 
+    # Do not start servo_node immediately: move_group should be up and the
+    # robot description semantic should be available first. Start core nodes now.
     nodes_to_start = [
         static_tf_node,
         robot_state_publisher,
@@ -269,6 +293,11 @@ def launch_setup(context, *args, **kwargs):
         move_group_node,
         rviz_node,
     ]
+
+    # Start servo_node after move_group/rviz so it can obtain SRDF/robot_description
+    # (avoids the 10s semantic description timeout seen previously).
+    # Use a short TimerAction delay to ensure move_group has initialized.
+    nodes_to_start.append(TimerAction(period=3.0, actions=[servo_node]))
 
     # Add rosbridge_server for Flutter UI communication
     use_rosbridge = LaunchConfiguration('use_rosbridge')

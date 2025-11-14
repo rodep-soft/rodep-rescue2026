@@ -1,6 +1,7 @@
-Last Config Dir: /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config
+Last Config Dir: /opt/ros/jazzy/share/slam_toolbox/rviz
 Last Image Dir: ""
 Recent Configs:
-  - /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/moveit.rviz
+  - /opt/ros/jazzy/share/slam_toolbox/rviz/slam_toolbox.rviz
   - /root/.rviz2/default.rviz
+  - /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/moveit.rviz
   - /root/ros_ws/install/urdf_test_node/share/urdf_test_node/rviz/config.rviz

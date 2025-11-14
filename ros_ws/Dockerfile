@@ -9,6 +9,8 @@ RUN apt-get update && apt-get upgrade -y && \
     ros-jazzy-xacro \
     ros-jazzy-moveit \
     ros-jazzy-usb-cam \
+    ros-jazzy-velodyne \
+    ros-jazzy-nav2-map-server \
     ros-jazzy-moveit-servo \
     ros-jazzy-dynamixel-sdk \
     ros-jazzy-rosbridge-server \
@@ -19,6 +21,8 @@ RUN apt-get update && apt-get upgrade -y && \
     ros-jazzy-joint-state-broadcaster \
     ros-jazzy-osrf-testing-tools-cpp \
     ros-jazzy-ffmpeg-image-transport \
+    ros-jazzy-pointcloud-to-laserscan \
+    ros-jazzy-slam-toolbox \
     python3-rosdep \
     ccache && \
     rm -rf /var/lib/apt/lists/*

@@ -1,15 +1,33 @@
 servo_node:
   ros__parameters:
+    # Provide both prefixed (moveit_servo.*) and plain parameter names so the
+    # node picks up the settings regardless of how parameters are read by the
+    # launch system or the node implementation.
     moveit_servo.command_in_type: "speed_units"
-    # moveit_servo.command_in_type: "unitless"
+    command_in_type: "speed_units"
     moveit_servo.move_group_name: "sekirei_arm"
+    move_group_name: "sekirei_arm"
     moveit_servo.joint_topic: "/joint_states"
+    joint_topic: "/joint_states"
     moveit_servo.command_out_topic: "/sekirei_arm_controller/joint_trajectory"
+    command_out_topic: "/sekirei_arm_controller/joint_trajectory"
     moveit_servo.linear_scale: 0.4     # スティック入力 x/y/z の倍率
+    moveit_servo.scale.linear: 0.4
+    scale.linear: 0.4
     moveit_servo.rotational_scale: 0.8 # スティック入力 roll/pitch/yaw の倍率
+    moveit_servo.scale.rotational: 0.8
+    scale.rotational: 0.8
     moveit_servo.publish_period: 0.033
-    moveit_servo.low_pass_filter_coeff: 0.2
+    publish_period: 0.033
+    # Disable smoothing plugin for now to avoid parameter validation issues
+    # (the Butterworth smoothing plugin enforces a specific valid range and
+    # can abort the node if parameters don't match). If you want smoothing,
+    # re-enable and tune the plugin parameters to match the plugin's descriptor.
+    use_smoothing: false
     moveit_servo.max_command_latency: 0.1  # 必要なら明示的に指定
+    max_expected_latency: 0.1
     moveit_servo.base_frame: base_link
+    base_frame: base_link
     moveit_servo.ee_frame: arm6_link
+    ee_frame: arm6_link
 

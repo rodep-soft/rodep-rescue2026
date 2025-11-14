@@ -2,7 +2,8 @@
 
 import os
 from launch import LaunchDescription
-from launch.actions import OpaqueFunction, DeclareLaunchArgument, IncludeLaunchDescription, TimerAction
+from launch.actions import OpaqueFunction, DeclareLaunchArgument, IncludeLaunchDescription, TimerAction, RegisterEventHandler
+from launch.event_handlers.on_process_start import OnProcessStart
 from launch.launch_description_sources import AnyLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
@@ -268,7 +269,11 @@ def launch_setup(context, *args, **kwargs):
         executable='servo_node',
         name='servo_node',
         parameters=[
+            # Load YAML and also explicitly set the command type under both
+            # the moveit_servo.* prefixed name and the plain name so the
+            # node definitely sees the setting at startup.
             os.path.join(moveit_config_pkg, 'config', 'moveit_servo.yaml'),
+            {'moveit_servo.command_in_type': 'speed_units', 'command_in_type': 'speed_units'},
             # Ensure servo_node sees SRDF/URDF/kinematics on startup
             {'robot_description': robot_description},
             {'robot_description_semantic': robot_description_semantic},
@@ -294,10 +299,22 @@ def launch_setup(context, *args, **kwargs):
         rviz_node,
     ]
 
-    # Start servo_node after move_group/rviz so it can obtain SRDF/robot_description
-    # (avoids the 10s semantic description timeout seen previously).
-    # Use a short TimerAction delay to ensure move_group has initialized.
-    nodes_to_start.append(TimerAction(period=3.0, actions=[servo_node]))
+    # Start servo_node after move_group process starts so it can obtain
+    # SRDF/robot_description and avoid startup races (semantic description timeout).
+    # Register an event handler to launch the servo only after move_group is up.
+    # Start servo shortly after move_group starts. Wrap servo_node in a
+    # TimerAction to give move_group a small grace period for internal
+    # initialization (planning scene, parameter callbacks, etc.). This is a
+    # pragmatic workaround for intermittent race conditions where servo sees
+    # parameters/topics but still reports "Command type has not been set".
+    from launch.actions import TimerAction as _TimerAction
+    start_servo_event = RegisterEventHandler(
+        OnProcessStart(
+            target_action=move_group_node,
+            on_start=[_TimerAction(period=1.0, actions=[servo_node])],
+        )
+    )
+    nodes_to_start.append(start_servo_event)
 
     # Add rosbridge_server for Flutter UI communication
     use_rosbridge = LaunchConfiguration('use_rosbridge')

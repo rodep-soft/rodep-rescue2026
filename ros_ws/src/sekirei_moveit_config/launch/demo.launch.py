@@ -51,7 +51,7 @@ def launch_setup(context, *args, **kwargs):
 
     urdf_xacro_path = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit.xacro')
     robot_description = Command([
-        'xacro ', 
+        'xacro ',
         urdf_xacro_path,
         ' use_real_hw:=', LaunchConfiguration('use_real_hw')
     ])

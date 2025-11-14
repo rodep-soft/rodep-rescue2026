@@ -2,10 +2,11 @@
 
 #include <geometry_msgs/msg/pose_stamped.hpp>
 #include <sensor_msgs/msg/joy.hpp>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
+
+#include <tf2/LinearMath/Quaternion.h>
 
 #include <moveit/move_group_interface/move_group_interface.h>
-#include <tf2/LinearMath/Quaternion.h>
-#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 
 using std::placeholders::_1;
 
@@ -72,7 +73,6 @@ private:
       RCLCPP_INFO(this->get_logger(), "Pose updated via joystick");
     } else {
       RCLCPP_WARN(this->get_logger(), "Planning failed");
-
     }
   }
 
@@ -89,7 +89,6 @@ private:
     return atan2(2.0 * (q.w * q.z + q.x * q.y), 1.0 - 2.0 * (q.y * q.y + q.z * q.z));
   }
 
-
   rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr joy_sub_;
   rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr pose_pub_;
   std::shared_ptr<moveit::planning_interface::MoveGroupInterface> move_group_;
@@ -99,7 +98,6 @@ private:
 };
 
 int main(int argc, char** argv) {
-
   rclcpp::init(argc, argv);
   auto node = std::make_shared<JoyMoveItTeleop>();
   node->initMoveGroup();

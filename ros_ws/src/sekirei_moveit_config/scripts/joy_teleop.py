@@ -30,7 +30,6 @@ class JoyTeleop(Node):
             'arm_joint1', 'arm_joint2', 'arm_joint3',
             'arm_joint4', 'arm_joint5', 'arm_joint6'
         ]
-
         # Control parameters
         self.speed = 0.02  # radians per update
         self.deadzone = 0.1

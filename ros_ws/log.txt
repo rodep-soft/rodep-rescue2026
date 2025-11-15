@@ -764,3 +764,12 @@
 [servo_node-8] [INFO] [1763227471.615257482] [servo_node]: Waiting to receive robot state update.
 [servo_node-8] [INFO] [1763227472.615311506] [servo_node]: Waiting to receive robot state update.
 [servo_node-8] [INFO] [1763227473.615420099] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763227474.615458413] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763227475.615498026] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763227476.615537832] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763227477.615581340] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763227478.615616389] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763227479.615653667] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763227480.615701521] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763227481.615746562] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763227482.615780357] [servo_node]: Waiting to receive robot state update.

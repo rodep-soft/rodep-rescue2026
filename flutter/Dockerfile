@@ -1,7 +1,7 @@
 FROM archlinux:latest
 
 # ---- Set Japanese mirrors and update ----
-RUN pacman -Syu --noconfirm pacman-contrib \
+RUN pacman -Sy --noconfirm pacman-contrib \
  && sed -i '1iServer = https://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch' /etc/pacman.d/mirrorlist \
  && for i in 1 2 3 4 5; do pacman -Syu --noconfirm \
     curl git unzip xz fish zip glu fzf zoxide which vim \

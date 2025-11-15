@@ -77,3 +77,10 @@ sekirei_arm_controller:
 joint_state_broadcaster:
   ros__parameters:
     {}
+      #   joints:
+      # - arm_joint1
+      # - arm_joint2
+      # - arm_joint3
+      # - arm_joint4
+      # - arm_joint5
+      # - arm_joint6

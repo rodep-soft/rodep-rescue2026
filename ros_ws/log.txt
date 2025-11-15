@@ -306,3 +306,4 @@
 [move_group-4] [INFO] [1763194889.616368779] [moveit.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
 [move_group-4] [INFO] [1763194889.616474400] [moveit.moveit.ros.move_group.clear_octomap_service]: Execution completed: SUCCEEDED
 [rviz2-5] [INFO] [1763194889.616703419] [rviz2.moveit.ros.move_group_interface]: Execute request success!
+[ERROR] [servo_node-8]: process has died [pid 19703, exit code -9, cmd '/opt/ros/jazzy/lib/moveit_servo/servo_node --ros-args -r __node:=servo_node -r __ns:=/ --params-file /tmp/launch_params_1kd3uzx6 --params-file /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/moveit_servo.yaml --params-file /tmp/launch_params_423303uo --params-file /tmp/launch_params_jrqdc_mo --params-file /tmp/launch_params__folhhz4'].

@@ -110,7 +110,7 @@ def launch_setup(context, *args, **kwargs):
         'robot_description': robot_description,
         'robot_description_semantic': robot_description_semantic,
         'robot_description_kinematics': kinematics_yaml,
-        'use_sim_time': False,
+        'use_sim_time': True,
     }
 
     # Add MoveIt Cpp configuration (planning pipelines)

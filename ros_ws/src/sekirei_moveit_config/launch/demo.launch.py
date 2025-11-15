@@ -2,7 +2,7 @@
 
 import os
 from launch import LaunchDescription
-from launch.actions import OpaqueFunction, DeclareLaunchArgument, IncludeLaunchDescription, TimerAction, RegisterEventHandler
+from launch.actions import OpaqueFunction, DeclareLaunchArgument, IncludeLaunchDescription, RegisterEventHandler
 from launch.event_handlers.on_process_start import OnProcessStart
 from launch.launch_description_sources import AnyLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
@@ -55,6 +55,7 @@ def launch_setup(context, *args, **kwargs):
     #     urdf_file = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit_dummy.urdf')
     #     print("[demo.launch.py] No Dynamixel hardware detected - using sekirei_moveit_dummy.urdf with mock_components")
 
+    # スペースは必要な為絶対に消さないこと。消すとうごかない
     urdf_xacro_path = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit.xacro')
     robot_description = Command([
         'xacro ',
@@ -177,7 +178,9 @@ def launch_setup(context, *args, **kwargs):
         # Will raise PackageNotFoundError if controller_manager isn't installed in the environment
         _ = get_package_share_directory('controller_manager')
 
-        from launch.actions import TimerAction
+    # We'll avoid TimerAction (it's flaky). Use OpaqueFunction-based
+    # event handlers below that wait for controller_manager services
+    # before starting spawners.
 
         # Load controller parameters from YAML
         controller_manager_params = ros2_control_params.get('controller_manager', {})
@@ -205,10 +208,38 @@ def launch_setup(context, *args, **kwargs):
             output='screen',
         )
 
+        # joint_state_publisher_node = Node(
+        #     package='joint_state_publisher',
+        #     executable='joint_state_publisher',
+        #     name='joint_state_publisher',
+        #     output='screen',
+        # )
+
+
         ros2_nodes.append(ros2_control_node)
-        # Increase delays to ensure controller_manager fully initializes and loads controller type definitions
-        ros2_nodes.append(TimerAction(period=4.0, actions=[joint_state_broadcaster_spawner]))
-        ros2_nodes.append(TimerAction(period=5.0, actions=[sekirei_arm_controller_spawner]))
+        # Instead of TimerAction-based delays, register an event handler that
+        # waits for controller_manager services and then launches the
+        # spawners. This avoids the TimerAction bug and is more deterministic.
+        def _start_spawners_when_ready(context, *a, **k):
+            import time, os
+            deadline = time.time() + 20.0
+            required = ['/controller_manager/list_controllers']
+            while time.time() < deadline:
+                try:
+                    services = os.popen('ros2 service list').read().splitlines()
+                except Exception:
+                    services = []
+                if all(s in services for s in required):
+                    # Return actions to start the spawners
+                    return [joint_state_broadcaster_spawner, sekirei_arm_controller_spawner]
+                time.sleep(0.5)
+            # Timeout -> still start spawners to avoid deadlock in constrained envs
+            print('[demo.launch] Warning: controller_manager services not visible; starting spawners anyway')
+            return [joint_state_broadcaster_spawner, sekirei_arm_controller_spawner]
+
+        ros2_nodes.append(RegisterEventHandler(
+            OnProcessStart(target_action=ros2_control_node, on_start=[OpaqueFunction(function=_start_spawners_when_ready)])
+        ))
     except PackageNotFoundError:
         print("[launch warning] controller_manager package not found; skipping ros2_control_node and spawners. Falling back to MoveIt simple controller manager (fake controllers). Install ros2_control/ros2_controllers to enable hardware controllers.")
 
@@ -229,6 +260,7 @@ def launch_setup(context, *args, **kwargs):
         executable='rviz2',
         name='rviz2',
         output='log',
+        namespace='', # バグるからかえない
         arguments=['-d', rviz_config_file] if os.path.exists(rviz_config_file) else [],
         parameters=[
             {
@@ -268,12 +300,19 @@ def launch_setup(context, *args, **kwargs):
         package='moveit_servo',
         executable='servo_node',
         name='servo_node',
+        namespace='', # バグるからかえない
         parameters=[
             # Load YAML and also explicitly set the command type under both
             # the moveit_servo.* prefixed name and the plain name so the
             # node definitely sees the setting at startup.
+            {'moveit_servo.command_in_type': 'unitless', 'command_in_type': 'unitless'},
+            # {'command_in_type': 'unitless'},
             os.path.join(moveit_config_pkg, 'config', 'moveit_servo.yaml'),
-            {'moveit_servo.command_in_type': 'speed_units', 'command_in_type': 'speed_units'},
+            # Ensure the servo starts in a command mode the installed
+            # moveit_servo supports. The binary on this system accepts
+            # 'unitless' or 'speed_units' — use 'unitless' for pose-like
+            # external pose target commands.
+            # {'moveit_servo.command_in_type': 'unitless', 'command_in_type': 'unitless'},
             # Ensure servo_node sees SRDF/URDF/kinematics on startup
             {'robot_description': robot_description},
             {'robot_description_semantic': robot_description_semantic},
@@ -307,12 +346,26 @@ def launch_setup(context, *args, **kwargs):
     # initialization (planning scene, parameter callbacks, etc.). This is a
     # pragmatic workaround for intermittent race conditions where servo sees
     # parameters/topics but still reports "Command type has not been set".
-    from launch.actions import TimerAction as _TimerAction
+
+    # TimerAction は使わない（バグるので） -> OnProcessStart + OpaqueFunction
+    # を使って move_group のサービス可視性を確認してから servo を起動する。
+    def _start_servo_when_ready(context, *a, **k):
+        import time, os
+        deadline = time.time() + 20.0
+        required = ['/move_group/get_planning_scene']
+        while time.time() < deadline:
+            try:
+                services = os.popen('ros2 service list').read().splitlines()
+            except Exception:
+                services = []
+            if all(s in services for s in required):
+                return [servo_node]
+            time.sleep(0.5)
+        print('[demo.launch] Warning: move_group services not visible after timeout; starting servo anyway')
+        return [servo_node]
+
     start_servo_event = RegisterEventHandler(
-        OnProcessStart(
-            target_action=move_group_node,
-            on_start=[_TimerAction(period=1.0, actions=[servo_node])],
-        )
+        OnProcessStart(target_action=move_group_node, on_start=[OpaqueFunction(function=_start_servo_when_ready)])
     )
     nodes_to_start.append(start_servo_event)
 

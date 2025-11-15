@@ -1,0 +1,308 @@
+[INFO] [launch]: All log files can be found below /root/.ros/log/2025-11-15-08-19-41-250981-tatsv-19401
+[INFO] [launch]: Default logging verbosity is set to INFO
+>>> SRDF path: /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/sekirei.srdf
+[INFO] [static_transform_publisher-1]: process started with pid [19408]
+[INFO] [robot_state_publisher-2]: process started with pid [19409]
+[INFO] [ros2_control_node-3]: process started with pid [19410]
+[INFO] [move_group-4]: process started with pid [19411]
+[INFO] [rviz2-5]: process started with pid [19412]
+[demo.launch] Warning: move_group services not visible after timeout; starting servo anyway
+[INFO] [spawner-6]: process started with pid [19524]
+[INFO] [spawner-6]: process has finished cleanly [pid 19524]
+[INFO] [spawner-7]: process started with pid [19525]
+[INFO] [spawner-7]: process has finished cleanly [pid 19525]
+[static_transform_publisher-1] [WARN] [1763194781.601882386] []: Old-style arguments are deprecated; see --help for new-style arguments
+[static_transform_publisher-1] [INFO] [1763194781.612192523] [static_transform_publisher]: Spinning until stopped - publishing transform
+[static_transform_publisher-1] translation: ('0.000000', '0.000000', '0.000000')
+[static_transform_publisher-1] rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+[static_transform_publisher-1] from 'world' to 'base_link'
+[INFO] [servo_node-8]: process started with pid [19703]
+[robot_state_publisher-2] [WARN] [1763194781.613900660] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[robot_state_publisher-2] [INFO] [1763194781.613969526] [robot_state_publisher]: Robot initialized
+[rviz2-5] QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
+[rviz2-5] [INFO] [1763194781.729104637] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-5] [INFO] [1763194781.729197963] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
+[rviz2-5] [INFO] [1763194781.746172495] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-5] Warning: class_loader.impl: SEVERE WARNING!!! A namespace collision has occurred with plugin factory for class rviz_default_plugins::displays::InteractiveMarkerDisplay. New factory will OVERWRITE existing one. This situation occurs when libraries containing plugins are directly linked against an executable (the one running right now generating this message). Please separate plugins out into their own library or just don't link against the library and use either class_loader::ClassLoader/MultiLibraryClassLoader to open.
+[rviz2-5]          at line 321 in /opt/ros/jazzy/include/class_loader/class_loader/class_loader_core.hpp
+[rviz2-5] [WARN] [1763194781.822247391] [rcl.logging_rosout]: Publisher already registered for node name: 'rviz2'. If this is due to multiple nodes with the same name then all logs for the logger named 'rviz2' will go out over the existing publisher. As soon as any node with that name is destructed it will unregister the publisher, preventing any further logs for that name from being published on the rosout topic.
+[ros2_control_node-3] [INFO] [1763194781.630241580] [controller_manager]: Using Steady (Monotonic) clock for triggering controller manager cycles.
+[ros2_control_node-3] [INFO] [1763194781.634031472] [controller_manager]: Subscribing to '/robot_description' topic for robot description.
+[ros2_control_node-3] [INFO] [1763194781.655811487] [controller_manager]: update rate is 50 Hz
+[ros2_control_node-3] [INFO] [1763194781.655853769] [controller_manager]: Overruns handling is : enabled
+[ros2_control_node-3] [INFO] [1763194781.655858454] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
+[ros2_control_node-3] [INFO] [1763194781.655919782] [controller_manager]: Successful set up FIFO RT scheduling policy with priority 50.
+[ros2_control_node-3] [INFO] [1763194781.799645381] [controller_manager]: Received robot description from topic.
+[ros2_control_node-3] [INFO] [1763194781.802091672] [controller_manager]: Loading hardware 'sekirei_dynamixel_hw' 
+[ros2_control_node-3] [INFO] [1763194781.802490215] [controller_manager]: Loaded hardware 'sekirei_dynamixel_hw' from plugin 'mock_components/GenericSystem'
+[ros2_control_node-3] [INFO] [1763194781.802530426] [controller_manager]: Initialize hardware 'sekirei_dynamixel_hw' 
+[ros2_control_node-3] [INFO] [1763194781.806406683] [controller_manager]: Successful initialization of hardware 'sekirei_dynamixel_hw'
+[ros2_control_node-3] [INFO] [1763194781.806564634] [resource_manager]: 'configure' hardware 'sekirei_dynamixel_hw' 
+[ros2_control_node-3] [INFO] [1763194781.806569138] [resource_manager]: Successful 'configure' of hardware 'sekirei_dynamixel_hw'
+[ros2_control_node-3] [INFO] [1763194781.806573722] [resource_manager]: 'activate' hardware 'sekirei_dynamixel_hw' 
+[ros2_control_node-3] [INFO] [1763194781.806577046] [resource_manager]: Successful 'activate' of hardware 'sekirei_dynamixel_hw'
+[ros2_control_node-3] [INFO] [1763194781.806614788] [controller_manager]: Registering statistics for : sekirei_dynamixel_hw
+[ros2_control_node-3] [INFO] [1763194781.806659883] [controller_manager]: Resource Manager has been successfully initialized. Starting Controller Manager services...
+[move_group-4] [WARN] [1763194781.638826325] [move_group]: Using default pipeline 'ompl'
+[move_group-4] [INFO] [1763194781.640602938] [moveit.moveit.ros.rdf_loader]: Loaded robot model in 0.00163611 seconds
+[move_group-4] [INFO] [1763194781.640635962] [moveit.moveit.core.robot_model]: Loading robot model 'sekirei'...
+[move_group-4] [INFO] [1763194781.640647493] [moveit.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[move_group-4] [WARN] [1763194781.640732310] [moveit.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
+[move_group-4] [WARN] [1763194781.642152345] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[move_group-4] [INFO] [1763194781.642200660] [moveit.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
+[move_group-4] [INFO] [1763194781.656114391] [moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[move_group-4] [INFO] [1763194781.656213354] [moveit.moveit.ros.moveit_cpp]: Listening to 'joint_states' for joint states
+[move_group-4] [INFO] [1763194781.656785374] [moveit.moveit.ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[move_group-4] [INFO] [1763194781.657111078] [moveit.moveit.ros.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
+[move_group-4] [INFO] [1763194781.657123559] [moveit.moveit.ros.planning_scene_monitor]: Stopping existing planning scene publisher.
+[move_group-4] [INFO] [1763194781.657190102] [moveit.moveit.ros.planning_scene_monitor]: Stopped publishing maintained planning scene.
+[move_group-4] [INFO] [1763194781.657400756] [moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[move_group-4] [INFO] [1763194781.657453541] [moveit.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+[move_group-4] [INFO] [1763194781.657887379] [moveit.moveit.ros.planning_scene_monitor]: Listening to '/planning_scene'
+[move_group-4] [INFO] [1763194781.657899890] [moveit.moveit.ros.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[move_group-4] [INFO] [1763194781.658120873] [moveit.moveit.ros.planning_scene_monitor]: Listening to 'collision_object'
+[move_group-4] [INFO] [1763194781.658342668] [moveit.moveit.ros.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[move_group-4] [WARN] [1763194781.658463093] [moveit.moveit.ros.occupancy_map_monitor]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
+[move_group-4] [ERROR] [1763194781.658473584] [moveit.moveit.ros.occupancy_map_monitor]: No 3D sensor plugin(s) defined for octomap updates
+[ros2_control_node-3] [INFO] [1763194782.504712971] [controller_manager]: Loading controller : 'sekirei_arm_controller' of type 'joint_trajectory_controller/JointTrajectoryController'
+[ros2_control_node-3] [INFO] [1763194782.504742342] [controller_manager]: Loading controller 'sekirei_arm_controller'
+[ros2_control_node-3] [INFO] [1763194782.507265818] [controller_manager]: Controller 'sekirei_arm_controller' node arguments: --ros-args --params-file /tmp/launch_params_ljfl802o --params-file /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/ros2_controllers.yaml 
+[ros2_control_node-3] [INFO] [1763194782.517923485] [controller_manager]: Configuring controller: 'sekirei_arm_controller'
+[ros2_control_node-3] [INFO] [1763194782.518169587] [sekirei_arm_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+[ros2_control_node-3] [INFO] [1763194782.518196221] [sekirei_arm_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+[ros2_control_node-3] [INFO] [1763194782.518217630] [sekirei_arm_controller]: Using 'splines' interpolation method.
+[ros2_control_node-3] [INFO] [1763194782.521811657] [sekirei_arm_controller]: Action status changes will be monitored at 20.00 Hz.
+[ros2_control_node-3] [INFO] [1763194782.537305486] [controller_manager]: Activating controllers: [ sekirei_arm_controller ]
+[ros2_control_node-3] [INFO] [1763194782.556194241] [controller_manager]: Successfully switched controllers!
+[ros2_control_node-3] [INFO] [1763194783.903889574] [controller_manager]: Loading controller : 'joint_state_broadcaster' of type 'joint_state_broadcaster/JointStateBroadcaster'
+[ros2_control_node-3] [INFO] [1763194783.903915976] [controller_manager]: Loading controller 'joint_state_broadcaster'
+[ros2_control_node-3] [INFO] [1763194783.904862100] [controller_manager]: Controller 'joint_state_broadcaster' node arguments: --ros-args --params-file /tmp/launch_params_ljfl802o --params-file /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/ros2_controllers.yaml 
+[ros2_control_node-3] [INFO] [1763194783.917657876] [controller_manager]: Configuring controller: 'joint_state_broadcaster'
+[ros2_control_node-3] [INFO] [1763194783.917714063] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
+[ros2_control_node-3] [INFO] [1763194783.937271655] [controller_manager]: Activating controllers: [ joint_state_broadcaster ]
+[ros2_control_node-3] [INFO] [1763194783.956135923] [controller_manager]: Successfully switched controllers!
+[move_group-4] [INFO] [1763194783.986826862] [moveit.moveit.ros.planning_pipeline]: Successfully loaded planner 'OMPL'
+[move_group-4] [INFO] [1763194783.987533693] [move_group]: Try loading adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[move_group-4] [INFO] [1763194783.988301605] [move_group]: Loaded adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[move_group-4] [INFO] [1763194783.988315207] [move_group]: Try loading adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[move_group-4] [INFO] [1763194783.988505176] [move_group]: Loaded adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[move_group-4] [INFO] [1763194783.988514478] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[move_group-4] [INFO] [1763194783.988538454] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[move_group-4] [INFO] [1763194783.988542842] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-4] [INFO] [1763194783.988552645] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-4] [INFO] [1763194783.989153712] [move_group]: Try loading adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
+[move_group-4] [INFO] [1763194783.990618771] [move_group]: Loaded adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
+[move_group-4] [INFO] [1763194783.990632817] [move_group]: Try loading adapter 'default_planning_response_adapters/ValidateSolution'
+[move_group-4] [INFO] [1763194783.992085106] [move_group]: Loaded adapter 'default_planning_response_adapters/ValidateSolution'
+[move_group-4] [INFO] [1763194783.992102243] [move_group]: Try loading adapter 'default_planning_response_adapters/DisplayMotionPath'
+[move_group-4] [INFO] [1763194783.992548305] [move_group]: Loaded adapter 'default_planning_response_adapters/DisplayMotionPath'
+[move_group-4] [INFO] [1763194784.011646375] [moveit.moveit.plugins.simple_controller_manager]: Added FollowJointTrajectory controller for sekirei_arm_controller
+[move_group-4] [INFO] [1763194784.011807160] [moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-4] [INFO] [1763194784.011834745] [moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-4] [INFO] [1763194784.012248394] [moveit.moveit.ros.trajectory_execution_manager]: Trajectory execution is not managing controllers
+[move_group-4] [INFO] [1763194784.012263385] [move_group]: MoveGroup debug mode is ON
+[move_group-4] [INFO] [1763194784.025456349] [moveit.moveit.ros.move_group.executable]: 
+[move_group-4] 
+[move_group-4] ********************************************************
+[move_group-4] * MoveGroup using: 
+[move_group-4] *     - apply_planning_scene_service
+[move_group-4] *     - clear_octomap_service
+[move_group-4] *     - get_group_urdf
+[move_group-4] *     - load_geometry_from_file
+[move_group-4] *     - CartesianPathService
+[move_group-4] *     - execute_trajectory_action
+[move_group-4] *     - get_planning_scene_service
+[move_group-4] *     - kinematics_service
+[move_group-4] *     - move_action
+[move_group-4] *     - motion_plan_service
+[move_group-4] *     - query_planners_service
+[move_group-4] *     - state_validation_service
+[move_group-4] *     - save_geometry_to_file
+[move_group-4] ********************************************************
+[move_group-4] 
+[move_group-4] [INFO] [1763194784.025517965] [moveit.moveit.ros.move_group.context]: MoveGroup context using pipeline ompl
+[move_group-4] [INFO] [1763194784.025528937] [moveit.moveit.ros.move_group.context]: MoveGroup context initialization complete
+[move_group-4] [96mLoading 'move_group/ApplyPlanningSceneService'...[0m
+[move_group-4] [96mLoading 'move_group/ClearOctomapService'...[0m
+[move_group-4] [96mLoading 'move_group/GetUrdfService'...[0m
+[move_group-4] [96mLoading 'move_group/LoadGeometryFromFileService'...[0m
+[move_group-4] [96mLoading 'move_group/MoveGroupCartesianPathService'...[0m
+[move_group-4] [96mLoading 'move_group/MoveGroupExecuteTrajectoryAction'...[0m
+[move_group-4] [96mLoading 'move_group/MoveGroupGetPlanningSceneService'...[0m
+[move_group-4] [96mLoading 'move_group/MoveGroupKinematicsService'...[0m
+[move_group-4] [96mLoading 'move_group/MoveGroupMoveAction'...[0m
+[move_group-4] [96mLoading 'move_group/MoveGroupPlanService'...[0m
+[move_group-4] [96mLoading 'move_group/MoveGroupQueryPlannersService'...[0m
+[move_group-4] [96mLoading 'move_group/MoveGroupStateValidationService'...[0m
+[move_group-4] [96mLoading 'move_group/SaveGeometryToFileService'...[0m
+[move_group-4] 
+[move_group-4] [92mYou can start planning now![0m
+[move_group-4] 
+[rviz2-5] [ERROR] [1763194784.845049608] [rviz2.moveit.ros.motion_planning_frame]: Action server: /recognize_objects not available
+[rviz2-5] [INFO] [1763194784.856501309] [rviz2.moveit.ros.motion_planning_frame]: MoveGroup namespace changed: / -> . Reloading params.
+[rviz2-5] [ERROR] [1763194784.862962372] [rviz2]: PluginlibFactory: The plugin for class 'moveit_rviz_plugin/MotionPlanning' failed to load. Error: According to the loaded plugin descriptions the class moveit_rviz_plugin/MotionPlanning with base class type rviz_common::Panel does not exist. Declared types are  slam_toolbox::SlamToolboxPlugin
+[rviz2-5] [INFO] [1763194784.913378181] [rviz2.moveit.ros.rdf_loader]: Loaded robot model in 0.00331679 seconds
+[rviz2-5] [INFO] [1763194784.913453408] [rviz2.moveit.core.robot_model]: Loading robot model 'sekirei'...
+[rviz2-5] [INFO] [1763194784.913469198] [rviz2.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[rviz2-5] [WARN] [1763194784.913633853] [rviz2.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
+[rviz2-5] [WARN] [1763194784.917279603] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[rviz2-5] [INFO] [1763194784.917442587] [rviz2.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
+[rviz2-5] [INFO] [1763194784.957235311] [rviz2.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+[rviz2-5] [INFO] [1763194784.957786750] [rviz2.moveit.ros.planning_scene_monitor]: Listening to '/monitored_planning_scene'
+[rviz2-5] [INFO] [1763194785.257862799] [interactive_marker_display_94483731680736]: Connected on namespace: /rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic
+[rviz2-5] [WARN] [1763194785.259171023] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[rviz2-5] [INFO] [1763194785.263428873] [rviz2.moveit.ros.motion_planning_frame]: group sekirei_arm
+[rviz2-5] [INFO] [1763194785.263467926] [rviz2.moveit.ros.motion_planning_frame]: Constructing new MoveGroup connection for group 'sekirei_arm' in namespace ''
+[rviz2-5] [INFO] [1763194785.276635882] [rviz2.moveit.ros.move_group_interface]: Ready to take commands for planning group sekirei_arm.
+[rviz2-5] [INFO] [1763194785.295613885] [interactive_marker_display_94483731680736]: Sending request for interactive markers
+[rviz2-5] [INFO] [1763194785.337650530] [interactive_marker_display_94483731680736]: Service response received for initialization
+[spawner-6] [INFO] [1763194782.651843123] [spawner_joint_state_broadcaster]: waiting for service /controller_manager/list_controllers to become available...
+[spawner-6] [INFO] [1763194783.916921718] [spawner_joint_state_broadcaster]: [94mLoaded [1mjoint_state_broadcaster[0m
+[spawner-6] [INFO] [1763194783.976906036] [spawner_joint_state_broadcaster]: [92mConfigured and activated [1mjoint_state_broadcaster[0m
+[spawner-7] [INFO] [1763194782.003173508] [spawner_sekirei_arm_controller]: waiting for service /controller_manager/list_controllers to become available...
+[spawner-7] [INFO] [1763194782.517179443] [spawner_sekirei_arm_controller]: [94mLoaded [1msekirei_arm_controller[0m
+[spawner-7] [INFO] [1763194782.576917194] [spawner_sekirei_arm_controller]: [92mConfigured and activated [1msekirei_arm_controller[0m
+[servo_node-8] [WARN] [1763194802.625307959] [rcl.logging_rosout]: Publisher already registered for node name: 'servo_node'. If this is due to multiple nodes with the same name then all logs for the logger named 'servo_node' will go out over the existing publisher. As soon as any node with that name is destructed it will unregister the publisher, preventing any further logs for that name from being published on the rosout topic.
+[servo_node-8] [WARN] [1763194802.628837568] [rcl.logging_rosout]: Publisher already registered for node name: 'servo_node'. If this is due to multiple nodes with the same name then all logs for the logger named 'servo_node' will go out over the existing publisher. As soon as any node with that name is destructed it will unregister the publisher, preventing any further logs for that name from being published on the rosout topic.
+[servo_node-8] [INFO] [1763194802.631489257] [servo_node]: Enabled SCHED_FIFO and higher thread priority.
+[servo_node-8] [WARN] [1763194802.631556343] [servo_node]: Realtime kernel is recommended for better performance.
+[servo_node-8] [INFO] [1763194802.633452947] [servo_node.moveit.ros.rdf_loader]: Loaded robot model in 0.0014785 seconds
+[servo_node-8] [INFO] [1763194802.633484953] [servo_node.moveit.core.robot_model]: Loading robot model 'sekirei'...
+[servo_node-8] [INFO] [1763194802.633493981] [servo_node.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[servo_node-8] [WARN] [1763194802.633588355] [servo_node.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
+[servo_node-8] [WARN] [1763194802.635262041] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[servo_node-8] [INFO] [1763194802.635305285] [servo_node.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
+[servo_node-8] [INFO] [1763194802.642807733] [servo_node.moveit.ros.current_state_monitor]: Listening to joint states on topic '/joint_states'
+[servo_node-8] [INFO] [1763194802.647320136] [servo_node.moveit.ros.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
+[servo_node-8] [INFO] [1763194802.647368692] [servo_node.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+[servo_node-8] [INFO] [1763194802.648366477] [servo_node.moveit.ros.planning_scene_monitor]: Listening to '/planning_scene'
+[servo_node-8] [INFO] [1763194802.648386390] [servo_node.moveit.ros.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[servo_node-8] [INFO] [1763194802.648680711] [servo_node.moveit.ros.planning_scene_monitor]: Listening to 'collision_object'
+[servo_node-8] [INFO] [1763194802.648888429] [servo_node.moveit.ros.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[servo_node-8] [INFO] [1763194802.649537038] [servo_node.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on '/servo_node/publish_planning_scene'
+[servo_node-8] [INFO] [1763194803.200054044] [servo_node.moveit.ros.move_group.collision_monitor]: Collision monitor started
+[servo_node-8] [WARN] [1763194803.200089819] [servo_node.moveit.ros.servo]: No smoothing plugin loaded
+[servo_node-8] [INFO] [1763194803.200097483] [servo_node.moveit.ros.servo]: Servo initialized successfully
+[servo_node-8] [INFO] [1763194803.203973567] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194804.204007518] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194805.204061963] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194806.204144287] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194807.204213250] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194808.204266766] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194809.204333810] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194810.204414817] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194811.204494803] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194812.204607010] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194813.204661184] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194814.204714254] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194815.204761821] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194816.204798588] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194817.204842889] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194818.204900403] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194819.204989227] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194820.205063303] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194821.205133482] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194822.205182600] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194823.205235699] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194824.205304113] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194825.205356110] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194826.205406572] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194827.205453145] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194828.205499532] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194829.205547320] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194830.205596885] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194831.205644260] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194832.205685069] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194833.205745820] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194834.205858788] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194835.205903465] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194836.205959250] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194837.206001262] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194838.206051385] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194839.206107891] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194840.206149493] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194841.206190682] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194842.206244173] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194843.206378179] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194844.206423138] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194845.206465805] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194846.206515959] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194847.206573112] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194848.206655403] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194849.206700912] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194850.206753956] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194851.206811643] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194852.206862078] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194853.206917642] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194854.206969997] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194855.207056843] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194856.207100192] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194857.207156964] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194858.207219377] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194859.207272683] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194860.207328968] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194861.207386723] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194862.207440206] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194863.207495410] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194864.207552272] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194865.207614322] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194866.207676642] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194867.207726583] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194868.207775537] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194869.207824454] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194870.207907455] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194871.208054463] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194872.208158243] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194873.208205376] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194874.208267551] [servo_node]: Waiting to receive robot state update.
+[move_group-4] [INFO] [1763194875.005745665] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[rviz2-5] [INFO] [1763194875.005938059] [rviz2.moveit.ros.move_group_interface]: Plan and Execute request accepted
+[move_group-4] [INFO] [1763194875.006004284] [moveit.moveit.ros.move_group.move_action]: executing..
+[move_group-4] [INFO] [1763194875.016217417] [moveit.moveit.ros.move_group.move_action]: Combined planning and execution request received for MoveGroup action. Forwarding to planning and execution pipeline.
+[move_group-4] [INFO] [1763194875.016299881] [moveit.moveit.ros.move_group.move_action]: Goal constraints are already satisfied. No need to plan or execute any motions
+[move_group-4] [INFO] [1763194875.016357395] [moveit.moveit.ros.move_group.move_action]: Requested path and goal constraints are already met.
+[rviz2-5] [INFO] [1763194875.016634357] [rviz2.moveit.ros.move_group_interface]: Plan and Execute request complete!
+[servo_node-8] [INFO] [1763194875.208317810] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194876.208369470] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194877.208455845] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194878.208507598] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194879.208587520] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194880.208630299] [servo_node]: Waiting to receive robot state update.
+[servo_node-8] [INFO] [1763194881.208691190] [servo_node]: Waiting to receive robot state update.
+[rviz2-5] [INFO] [1763194881.252884154] [rviz2.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+[move_group-4] [INFO] [1763194881.253218170] [moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[move_group-4] [INFO] [1763194881.253428657] [moveit.moveit.ros.move_group.move_action]: executing..
+[rviz2-5] [INFO] [1763194881.253453300] [rviz2.moveit.ros.move_group_interface]: Planning request accepted
+[move_group-4] [INFO] [1763194881.256518787] [moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-4] [INFO] [1763194881.256612157] [moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[move_group-4] [INFO] [1763194881.256906053] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[move_group-4] [INFO] [1763194881.256953792] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[move_group-4] [INFO] [1763194881.256963508] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[move_group-4] [INFO] [1763194881.257016031] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[move_group-4] [INFO] [1763194881.257810542] [moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[move_group-4] [INFO] [1763194881.257976195] [move_group]: Calling Planner 'OMPL'
+[move_group-4] [INFO] [1763194881.274298508] [move_group]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[move_group-4] [INFO] [1763194881.284944920] [move_group]: Calling PlanningResponseAdapter 'ValidateSolution'
+[move_group-4] [INFO] [1763194881.285531798] [move_group]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[move_group-4] [WARN] [1763194881.285719788] [moveit.moveit.ros.planning_pipeline]: The planner plugin did not fill out the 'planner_id' field of the MotionPlanResponse. Setting it to the planner ID name of the MotionPlanRequest assuming that the planner plugin does warn you if it does not use the requested planner.
+[move_group-4] [INFO] [1763194881.285785082] [moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[rviz2-5] [INFO] [1763194881.286005630] [rviz2.moveit.ros.move_group_interface]: Planning request complete!
+[rviz2-5] [INFO] [1763194881.286804137] [rviz2.moveit.ros.move_group_interface]: time taken to generate plan: 0.0158685 seconds
+[move_group-4] [INFO] [1763194882.013212457] [moveit.moveit.ros.move_group.clear_octomap_service]: Execution request received
+[move_group-4] [INFO] [1763194882.013265827] [moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-4] [INFO] [1763194882.013280707] [moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[rviz2-5] [INFO] [1763194882.013279633] [rviz2.moveit.ros.move_group_interface]: Execute request accepted
+[move_group-4] [INFO] [1763194882.013391124] [moveit.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.5
+[move_group-4] [INFO] [1763194882.016213889] [moveit.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[move_group-4] [INFO] [1763194882.016249261] [moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-4] [INFO] [1763194882.016262529] [moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-4] [INFO] [1763194882.016384231] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to sekirei_arm_controller
+[ros2_control_node-3] [INFO] [1763194882.016674343] [sekirei_arm_controller]: Received new action goal
+[ros2_control_node-3] [INFO] [1763194882.016706621] [sekirei_arm_controller]: Accepted new action goal
+[move_group-4] [INFO] [1763194882.016805127] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sekirei_arm_controller started execution
+[move_group-4] [INFO] [1763194882.016815852] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[ros2_control_node-3] [INFO] [1763194889.536027234] [sekirei_arm_controller]: Goal reached, success!
+[move_group-4] [INFO] [1763194889.567311740] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'sekirei_arm_controller' successfully finished
+[move_group-4] [INFO] [1763194889.616368779] [moveit.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[move_group-4] [INFO] [1763194889.616474400] [moveit.moveit.ros.move_group.clear_octomap_service]: Execution completed: SUCCEEDED
+[rviz2-5] [INFO] [1763194889.616703419] [rviz2.moveit.ros.move_group_interface]: Execute request success!

@@ -3,8 +3,9 @@ Panels:
     Name: Displays
   - Class: rviz_common/Views
     Name: Views
-  - Class: moveit_rviz_plugin/MotionPlanning
-    Name: MotionPlanningPanel
+  # バグるからいらん
+  # - Class: moveit_rviz_plugin/MotionPlanning
+  #   Name: MotionPlanningPanel
 Visualization Manager:
   Displays:
     - Class: rviz_default_plugins/Grid

@@ -248,7 +248,7 @@ def launch_setup(context, *args, **kwargs):
         package='moveit_ros_move_group',
         executable='move_group',
         output='screen',
-        namespace='',
+        # namespace='',
         parameters=[move_group_params],
         arguments=['--ros-args', '--log-level', 'INFO', '--log-level', 'moveit.trajectory_execution:=DEBUG'],
     )
@@ -258,9 +258,9 @@ def launch_setup(context, *args, **kwargs):
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
-        name='rviz2',
+        # name='',
         output='log',
-        namespace='', # バグるからかえない
+        # namespace='', # バグるからかえない
         arguments=['-d', rviz_config_file] if os.path.exists(rviz_config_file) else [],
         parameters=[
             {
@@ -299,8 +299,8 @@ def launch_setup(context, *args, **kwargs):
     servo_node = Node(
         package='moveit_servo',
         executable='servo_node',
-        name='servo_node',
-        namespace='', # バグるからかえない
+        # name='servo_node',
+        # namespace='', # バグるからかえない
         parameters=[
             # Load YAML and also explicitly set the command type under both
             # the moveit_servo.* prefixed name and the plain name so the
@@ -349,7 +349,22 @@ def launch_setup(context, *args, **kwargs):
 
     # TimerAction は使わない（バグるので） -> OnProcessStart + OpaqueFunction
     # を使って move_group のサービス可視性を確認してから servo を起動する。
+    # Guard to ensure we only attempt to start the servo once even if the
+    # OnProcessStart event fires multiple times (or move_group restarts).
+    _servo_start_guard = {'started': False}
+
     def _start_servo_when_ready(context, *a, **k):
+        # Prevent race where multiple concurrent invocations both observe
+        # started==False and both proceed to start the servo. Mark as
+        # started immediately on entry so only the first caller will proceed
+        # to return the node.
+        if _servo_start_guard['started']:
+            return []
+
+        # Mark started immediately to avoid duplicate starts from concurrent
+        # event-handler invocations.
+        _servo_start_guard['started'] = True
+
         import time, os
         deadline = time.time() + 20.0
         required = ['/move_group/get_planning_scene']
@@ -361,6 +376,9 @@ def launch_setup(context, *args, **kwargs):
             if all(s in services for s in required):
                 return [servo_node]
             time.sleep(0.5)
+
+        # Timeout -> start anyway (we already set started True above so
+        # subsequent invocations will be no-ops).
         print('[demo.launch] Warning: move_group services not visible after timeout; starting servo anyway')
         return [servo_node]
 

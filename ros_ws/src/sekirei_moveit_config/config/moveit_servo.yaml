@@ -14,6 +14,13 @@ servo_node:
     # moveit_servo.command_out_topic: "/sekirei_arm_controller/joint_trajectory"
     moveit_servo.command_out_topic: "/sekirei_arm_controller/joint_trajectory_controller/commands"
     moveit_servo.command_out_type: "trajectory_msgs/JointTrajectory"
+
+    moveit_servo.use_output_qos: true
+    moveit_servo.output_qos_override:
+      reliability: best_effort
+      durability: volatile
+
+
     moveit_servo.status_topic: "~/status"
     moveit_servo.controller_name: "sekirei_arm_controller" 
 
@@ -57,3 +64,5 @@ servo_node:
     moveit_servo.halt_all_joints_in_cartesian_mode: true
     moveit_servo.joint_limit_margins: [0.1]
     moveit_servo.override_velocity_scaling_factor: 0.5
+
+    moveit_servo.joint_topic: "/joint_states"

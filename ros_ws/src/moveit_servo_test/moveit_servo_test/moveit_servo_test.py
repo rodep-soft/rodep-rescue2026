@@ -22,11 +22,21 @@ class ServoUnitlessTest(Node):
 
         self.timer = self.create_timer(0.1, self.timer_callback)
 
+        # ジョイント名を固定（自分のロボットに合わせる）
+        self.joint_names = [
+            'arm_joint1',
+            'arm_joint2',
+            'arm_joint3',
+            'arm_joint4',
+            'arm_joint5',
+            'arm_joint6'
+        ]
+
     def timer_callback(self):
         msg = JointJog()
         msg.header.stamp = self.get_clock().now().to_msg()
-        # positions は空で unitless モードでは velocity だけ使う
-        msg.velocities = [0.1] * 6  # 6軸ロボットなら全部同じ速度で
+        msg.joint_names = self.joint_names
+        msg.velocities = [0.1] * len(self.joint_names)  # 6軸全部に同じ速度
         msg.duration = 0.1  # 0.1秒だけ進める
         self.publisher_.publish(msg)
         self.get_logger().info('Sent unitless servo command')

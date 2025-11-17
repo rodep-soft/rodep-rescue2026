@@ -132,6 +132,7 @@
         </inertial>
     </link>
 
+    <!-- は？？？ -->
     <joint name="arm_joint3" type="revolute">
         <origin xyz="0.45 0.007 0.084" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
@@ -300,6 +301,7 @@
     <transmission name="arm_joint1_trans">
         <type>transmission_interface/SimpleTransmission</type>
         <actuator name="arm_joint1_motor">
+        <!-- 減速比しらべて書く -->
             <mechanicalReduction>1</mechanicalReduction>
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </actuator>
@@ -364,7 +366,9 @@
     </transmission>
 
     <!-- ros2_control configuration for dynamixel_hardware_interface -->
-    <xacro:property name="use_real_hw" value="false"/>
+
+    <!-- Launchファイルから実機制御するかを指定する -->
+    <xacro:property name="use_real_hw" value="$(arg use_real_hw)" />
 
     <xacro:if value="${use_real_hw}">
     <ros2_control name="sekirei_dynamixel_hw" type="system">
@@ -383,8 +387,10 @@
             <param name="ping_retry_count">3</param>
             <!-- 1:1 mapping: arm_joint1<->dxl21, arm_joint2<->dxl22, ... arm_joint6<->dxl26 (IDs: 21-28, only using 21-26 for 6 joints) -->
             <!-- このへんあやしい -->
-            <param name="joint_to_transmission_matrix">1,0,0,0,0,0, 0,1,0,0,0,0, 0,0,1,0,0,0, 0,0,0,1,0,0, 0,0,0,0,1,0, 0,0,0,0,0,1</param>
-            <param name="transmission_to_joint_matrix">1,0,0,0,0,0, 0,1,0,0,0,0, 0,0,1,0,0,0, 0,0,0,1,0,0, 0,0,0,0,1,0, 0,0,0,0,0,1</param>
+          <!-- Real-hardware mapping: invert joint3 sign so hardware commands/states match URDF orientation
+              Simulation (use_real_hw=false) will keep the identity mapping in its branch. -->
+          <param name="joint_to_transmission_matrix">1,0,0,0,0,0, 0,1,0,0,0,0, 0,0,-1,0,0,0, 0,0,0,1,0,0, 0,0,0,0,1,0, 0,0,0,0,0,1</param>
+          <param name="transmission_to_joint_matrix">1,0,0,0,0,0, 0,1,0,0,0,0, 0,0,-1,0,0,0, 0,0,0,1,0,0, 0,0,0,0,1,0, 0,0,0,0,0,1</param>
         </hardware>
 
         <!-- Joint configurations -->
@@ -456,6 +462,9 @@
             <param name="Position I Gain">0</param>
             <param name="Position D Gain">4000</param>
             <param name="Drive Mode">1</param>
+            <!-- ここ反転の可能性大きい -->
+            <!-- やっぱちがうかも -->
+            <!-- 向きは1でそろう -->
         </gpio>
         <gpio name="dxl4">
             <param name="type">dxl</param>

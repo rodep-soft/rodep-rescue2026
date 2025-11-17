@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [INFO] [launch]: All log files can be found below /root/.ros/log/2025-11-15-18-49-53-264941-tatsv-20588
 [INFO] [launch]: Default logging verbosity is set to INFO
 >>> SRDF path: /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/sekirei.srdf
@@ -84,6 +85,285 @@
 [move_group-4] [INFO] [1763232593.698265905] [move_group.moveit.moveit.ros.trajectory_execution_manager]: Trajectory execution is not managing controllers
 [move_group-4] [INFO] [1763232593.698278260] [move_group]: MoveGroup debug mode is ON
 [move_group-4] [INFO] [1763232593.708423044] [move_group.moveit.moveit.ros.move_group.executable]: 
+=======
+[INFO] [launch]: All log files can be found below /root/.ros/log/2025-11-17-12-56-39-177323-rodeppc-39468
+[INFO] [launch]: Default logging verbosity is set to INFO
+[demo.launch.py] Found USB devices: ['/dev/ttyUSB0']
+[demo.launch.py] Dynamixel hardware detected - using sekirei_moveit.urdf with dynamixel_hardware_interface
+>>> SRDF path: /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/sekirei.srdf
+[INFO] [static_transform_publisher-1]: process started with pid [39472]
+[INFO] [robot_state_publisher-2]: process started with pid [39473]
+[INFO] [ros2_control_node-3]: process started with pid [39474]
+[INFO] [move_group-4]: process started with pid [39475]
+[INFO] [rviz2-5]: process started with pid [39476]
+[static_transform_publisher-1] [WARN] [1763384199.373087003] []: Old-style arguments are deprecated; see --help for new-style arguments
+[static_transform_publisher-1] [INFO] [1763384199.389842522] [static_transform_publisher]: Spinning until stopped - publishing transform
+[static_transform_publisher-1] translation: ('0.000000', '0.000000', '0.000000')
+[static_transform_publisher-1] rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+[static_transform_publisher-1] from 'world' to 'base_link'
+[robot_state_publisher-2] [WARN] [1763384199.394470034] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[robot_state_publisher-2] [INFO] [1763384199.394553527] [robot_state_publisher]: Robot initialized
+[rviz2-5] QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
+[ros2_control_node-3] [INFO] [1763384199.403249869] [controller_manager]: Using Steady (Monotonic) clock for triggering controller manager cycles.
+[ros2_control_node-3] [INFO] [1763384199.406157293] [controller_manager]: Subscribing to '/robot_description' topic for robot description.
+[move_group-4] [WARN] [1763384199.427590290] [move_group]: Using default pipeline 'ompl'
+[ros2_control_node-3] [INFO] [1763384199.427872785] [controller_manager]: update rate is 50 Hz
+[ros2_control_node-3] [INFO] [1763384199.427898289] [controller_manager]: Overruns handling is : enabled
+[ros2_control_node-3] [INFO] [1763384199.427907474] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
+[ros2_control_node-3] [INFO] [1763384199.427985947] [controller_manager]: Successful set up FIFO RT scheduling policy with priority 50.
+[move_group-4] [INFO] [1763384199.430343748] [moveit.moveit.ros.rdf_loader]: Loaded robot model in 0.00253376 seconds
+[move_group-4] [INFO] [1763384199.430394560] [moveit.moveit.core.robot_model]: Loading robot model 'sekirei'...
+[move_group-4] [INFO] [1763384199.430415440] [moveit.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[move_group-4] [WARN] [1763384199.430576590] [moveit.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
+[move_group-4] [WARN] [1763384199.433060342] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[move_group-4] [INFO] [1763384199.433144733] [moveit.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
+[move_group-4] [INFO] [1763384199.450734786] [moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[move_group-4] [INFO] [1763384199.450846079] [moveit.moveit.ros.moveit_cpp]: Listening to 'joint_states' for joint states
+[move_group-4] [INFO] [1763384199.451541773] [moveit.moveit.ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[move_group-4] [INFO] [1763384199.451909217] [moveit.moveit.ros.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
+[move_group-4] [INFO] [1763384199.451924360] [moveit.moveit.ros.planning_scene_monitor]: Stopping existing planning scene publisher.
+[move_group-4] [INFO] [1763384199.452002853] [moveit.moveit.ros.planning_scene_monitor]: Stopped publishing maintained planning scene.
+[move_group-4] [INFO] [1763384199.452275978] [moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[move_group-4] [INFO] [1763384199.452325318] [moveit.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+[move_group-4] [INFO] [1763384199.452839869] [moveit.moveit.ros.planning_scene_monitor]: Listening to '/planning_scene'
+[move_group-4] [INFO] [1763384199.452854373] [moveit.moveit.ros.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[move_group-4] [INFO] [1763384199.453174053] [moveit.moveit.ros.planning_scene_monitor]: Listening to 'collision_object'
+[move_group-4] [INFO] [1763384199.453491882] [moveit.moveit.ros.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[move_group-4] [WARN] [1763384199.453750386] [moveit.moveit.ros.occupancy_map_monitor]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
+[move_group-4] [ERROR] [1763384199.453770883] [moveit.moveit.ros.occupancy_map_monitor]: No 3D sensor plugin(s) defined for octomap updates
+[ros2_control_node-3] [INFO] [1763384199.579765111] [controller_manager]: Received robot description from topic.
+[ros2_control_node-3] [INFO] [1763384199.582088114] [controller_manager]: Loading hardware 'sekirei_dynamixel_hw' 
+[ros2_control_node-3] [INFO] [1763384199.588419918] [controller_manager]: Loaded hardware 'sekirei_dynamixel_hw' from plugin 'dynamixel_hardware_interface/DynamixelHardware'
+[ros2_control_node-3] [INFO] [1763384199.588491987] [controller_manager]: Initialize hardware 'sekirei_dynamixel_hw' 
+[ros2_control_node-3] transmission_to_joint_matrix_ 
+[ros2_control_node-3] [0][0] 1.000000, [0][1] 0.000000, [0][2] 0.000000, [0][3] 0.000000, [0][4] 0.000000, [0][5] 0.000000, 
+[ros2_control_node-3] [1][0] 0.000000, [1][1] 1.000000, [1][2] 0.000000, [1][3] 0.000000, [1][4] 0.000000, [1][5] 0.000000, 
+[ros2_control_node-3] [2][0] 0.000000, [2][1] 0.000000, [2][2] -1.000000, [2][3] 0.000000, [2][4] 0.000000, [2][5] 0.000000, 
+[ros2_control_node-3] [3][0] 0.000000, [3][1] 0.000000, [3][2] 0.000000, [3][3] 1.000000, [3][4] 0.000000, [3][5] 0.000000, 
+[ros2_control_node-3] [4][0] 0.000000, [4][1] 0.000000, [4][2] 0.000000, [4][3] 0.000000, [4][4] 1.000000, [4][5] 0.000000, 
+[ros2_control_node-3] [5][0] 0.000000, [5][1] 0.000000, [5][2] 0.000000, [5][3] 0.000000, [5][4] 0.000000, [5][5] 1.000000, 
+[ros2_control_node-3] joint_to_transmission_matrix_ 
+[ros2_control_node-3] [0][0] 1.000000, [0][1] 0.000000, [0][2] 0.000000, [0][3] 0.000000, [0][4] 0.000000, [0][5] 0.000000, 
+[ros2_control_node-3] [1][0] 0.000000, [1][1] 1.000000, [1][2] 0.000000, [1][3] 0.000000, [1][4] 0.000000, [1][5] 0.000000, 
+[ros2_control_node-3] [2][0] 0.000000, [2][1] 0.000000, [2][2] -1.000000, [2][3] 0.000000, [2][4] 0.000000, [2][5] 0.000000, 
+[ros2_control_node-3] [3][0] 0.000000, [3][1] 0.000000, [3][2] 0.000000, [3][3] 1.000000, [3][4] 0.000000, [3][5] 0.000000, 
+[ros2_control_node-3] [4][0] 0.000000, [4][1] 0.000000, [4][2] 0.000000, [4][3] 0.000000, [4][4] 1.000000, [4][5] 0.000000, 
+[ros2_control_node-3] [5][0] 0.000000, [5][1] 0.000000, [5][2] 0.000000, [5][3] 0.000000, [5][4] 0.000000, [5][5] 1.000000, 
+[ros2_control_node-3] [INFO] [1763384199.593407801] [dynamixel_hardware_interface]: Torque will be disabled during initialization if it is enabled at initialization.
+[ros2_control_node-3] [INFO] [1763384199.593427005] [dynamixel_hardware_interface]: port_name /dev/ttyUSB0 / baudrate 1000000
+[ros2_control_node-3] Dynamixel Information File List.
+[ros2_control_node-3] num: 30, name: mx_28.model
+[ros2_control_node-3] num: 220, name: omy_hat.model
+[ros2_control_node-3] num: 230, name: omy_end.model
+[ros2_control_node-3] num: 231, name: omy_end_rh_p12_rn.model
+[ros2_control_node-3] num: 311, name: mx_64.model
+[ros2_control_node-3] num: 321, name: mx_106.model
+[ros2_control_node-3] num: 350, name: xl320.model
+[ros2_control_node-3] num: 536, name: sensorxel_joy.model
+[ros2_control_node-3] num: 537, name: ffw_g40_imu.model
+[ros2_control_node-3] num: 600, name: sensorxel_joy.model
+[ros2_control_node-3] num: 601, name: ffw_g10_led.model
+[ros2_control_node-3] num: 602, name: ffw_g10_rcu.model
+[ros2_control_node-3] num: 620, name: ffw_sg2_steer_1.model
+[ros2_control_node-3] num: 621, name: ffw_sg2_steer_2.model
+[ros2_control_node-3] num: 622, name: ffw_sg2_steer_3.model
+[ros2_control_node-3] num: 623, name: ffw_sg2_drive_1.model
+[ros2_control_node-3] num: 624, name: ffw_sg2_drive_2.model
+[ros2_control_node-3] num: 625, name: ffw_sg2_drive_3.model
+[ros2_control_node-3] num: 1000, name: xh430_w350.model
+[ros2_control_node-3] num: 1001, name: xd430_t350.model
+[ros2_control_node-3] num: 1010, name: xh430_w210.model
+[ros2_control_node-3] num: 1011, name: xd430_t210.model
+[ros2_control_node-3] num: 1020, name: xm430_w350.model
+[ros2_control_node-3] num: 1030, name: xm430_w210.model
+[ros2_control_node-3] num: 1040, name: xh430_v350.model
+[ros2_control_node-3] num: 1050, name: xh430_v210.model
+[ros2_control_node-3] num: 1060, name: xl430_w250.model
+[ros2_control_node-3] num: 1070, name: xc430_w150.model
+[ros2_control_node-3] num: 1070, name: xc430_w150.model
+[ros2_control_node-3] num: 1080, name: xc430_w240.model
+[ros2_control_node-3] num: 1080, name: xc430_w240.model
+[ros2_control_node-3] num: 1090, name: 2xl430_w250.model
+[ros2_control_node-3] num: 1100, name: xh540_w270.model
+[ros2_control_node-3] num: 1101, name: xd540_t270.model
+[ros2_control_node-3] num: 1110, name: xh540_w150.model
+[ros2_control_node-3] num: 1111, name: xd540_t150.model
+[ros2_control_node-3] num: 1120, name: xm540_w270.model
+[ros2_control_node-3] num: 1130, name: xm540_w150.model
+[ros2_control_node-3] num: 1140, name: xh540_v270.model
+[ros2_control_node-3] num: 1150, name: xh540_v150.model
+[ros2_control_node-3] num: 1160, name: 2xc430_w250.model
+[ros2_control_node-3] num: 1170, name: xw540_t260.model
+[ros2_control_node-3] num: 1180, name: xw540_t140.model
+[ros2_control_node-3] num: 1190, name: xl330_m077.model
+[ros2_control_node-3] num: 1200, name: xl330_m288.model
+[ros2_control_node-3] num: 1210, name: xc330_t181.model
+[ros2_control_node-3] num: 1220, name: xc330_t288.model
+[ros2_control_node-3] num: 1230, name: xc330_m181.model
+[ros2_control_node-3] num: 1240, name: xc330_m288.model
+[ros2_control_node-3] num: 1270, name: xw430_t333.model
+[ros2_control_node-3] num: 1310, name: xw540_h260.model
+[ros2_control_node-3] num: 2000, name: ph42_020_s300.model
+[ros2_control_node-3] num: 2010, name: ph54_100_s500.model
+[ros2_control_node-3] num: 2020, name: ph54_200_s500.model
+[ros2_control_node-3] num: 2100, name: pm42_010_s260.model
+[ros2_control_node-3] num: 2110, name: pm54_040_s250.model
+[ros2_control_node-3] num: 2120, name: pm54_060_s250.model
+[ros2_control_node-3] num: 4000, name: ym070_210_m001.model
+[ros2_control_node-3] num: 4010, name: ym070_210_b001.model
+[ros2_control_node-3] num: 4020, name: ym070_210_r051.model
+[ros2_control_node-3] num: 4030, name: ym070_210_r099.model
+[ros2_control_node-3] num: 4040, name: ym070_210_a051.model
+[ros2_control_node-3] num: 4050, name: ym070_210_a099.model
+[ros2_control_node-3] num: 4120, name: ym080_230_m001.model
+[ros2_control_node-3] num: 4130, name: ym080_230_b001.model
+[ros2_control_node-3] num: 4140, name: ym080_230_r051.model
+[ros2_control_node-3] num: 4150, name: ym080_230_r099.model
+[ros2_control_node-3] num: 4160, name: ym080_230_a051.model
+[ros2_control_node-3] num: 4170, name: ym080_230_a099.model
+[ros2_control_node-3] num: 35074, name: rh_p12_rn.model
+[ros2_control_node-3] num: 43289, name: m42_10_s260_ra.model
+[ros2_control_node-3] num: 46097, name: m54_40_s250_ra.model
+[ros2_control_node-3] num: 46353, name: m54_60_s250_ra.model
+[ros2_control_node-3] num: 51201, name: h42_20_s300_ra.model
+[ros2_control_node-3] num: 53769, name: h54_100_s500_ra.model
+[ros2_control_node-3] num: 54025, name: h54_200_s500_ra.model
+[ros2_control_node-3] [INFO] [1763384199.593854322] [dynamixel_hardware_interface]: $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+[ros2_control_node-3] [INFO] [1763384199.593865143] [dynamixel_hardware_interface]: $$$$$ Init Dxl Comm Port
+[ros2_control_node-3] [INFO] [1763384199.594010566] [dynamixel_hardware_interface]: $$$$$ Init Items for type: controller
+[ros2_control_node-3] [INFO] [1763384199.594021350] [dynamixel_hardware_interface]: $$$$$ Init Items for type: virtual_dxl
+[ros2_control_node-3] Succeeded to open the port!
+[ros2_control_node-3] Succeeded to change the [1000000] baudrate!
+[ros2_control_node-3] [ID:021] Request ping	 - Ping succeeded. Dynamixel model number : 1120 (xm540_w270.model)
+[ros2_control_node-3] [ID:022] Request ping	 - Ping succeeded. Dynamixel model number : 1120 (xm540_w270.model)
+[ros2_control_node-3] [ID:023] Request ping	 - Ping succeeded. Dynamixel model number : 1120 (xm540_w270.model)
+[ros2_control_node-3] [ID:024] Request ping	 - Ping succeeded. Dynamixel model number : 1120 (xm540_w270.model)
+[ros2_control_node-3] [ID:025] Request ping	 - Ping succeeded. Dynamixel model number : 1120 (xm540_w270.model)
+[ros2_control_node-3] [ID:026] Request ping	 - Ping succeeded. Dynamixel model number : 1020 (xm430_w350.model)
+[ros2_control_node-3] [INFO] [1763384199.785720685] [dynamixel_hardware_interface]: Trying to connect to the communication port...
+[ros2_control_node-3] [InitTorqueStates][ID:021] Current torque state: OFF
+[ros2_control_node-3] [InitTorqueStates][ID:022] Current torque state: OFF
+[ros2_control_node-3] [InitTorqueStates][ID:023] Current torque state: OFF
+[ros2_control_node-3] [InitTorqueStates][ID:024] Current torque state: OFF
+[ros2_control_node-3] [InitTorqueStates][ID:025] Current torque state: OFF
+[ros2_control_node-3] [InitTorqueStates][ID:026] Current torque state: OFF
+[ros2_control_node-3] [INFO] [1763384199.881367668] [dynamixel_hardware_interface]: $$$$$ Init Items for type: dxl
+[ros2_control_node-3] [INFO] [1763384199.881420285] [dynamixel_hardware_interface]: [ID:21] item_name:Drive Mode	data:1
+[ros2_control_node-3] [INFO] [1763384199.897373066] [dynamixel_hardware_interface]: [ID:21] item_name:Position D Gain	data:4000
+[ros2_control_node-3] [INFO] [1763384199.913370466] [dynamixel_hardware_interface]: [ID:21] item_name:Position I Gain	data:0
+[ros2_control_node-3] [INFO] [1763384199.929326222] [dynamixel_hardware_interface]: [ID:21] item_name:Position P Gain	data:800
+[ros2_control_node-3] [INFO] [1763384199.945327218] [dynamixel_hardware_interface]: [ID:22] item_name:Drive Mode	data:0
+[ros2_control_node-3] [INFO] [1763384199.961286138] [dynamixel_hardware_interface]: [ID:22] item_name:Position D Gain	data:4000
+[ros2_control_node-3] [INFO] [1763384199.977323090] [dynamixel_hardware_interface]: [ID:22] item_name:Position I Gain	data:0
+[ros2_control_node-3] [INFO] [1763384199.993320254] [dynamixel_hardware_interface]: [ID:22] item_name:Position P Gain	data:800
+[ros2_control_node-3] [INFO] [1763384200.009330697] [dynamixel_hardware_interface]: [ID:23] item_name:Drive Mode	data:1
+[ros2_control_node-3] [INFO] [1763384200.025327775] [dynamixel_hardware_interface]: [ID:23] item_name:Position D Gain	data:4000
+[ros2_control_node-3] [INFO] [1763384200.041296188] [dynamixel_hardware_interface]: [ID:23] item_name:Position I Gain	data:0
+[rviz2-5] [INFO] [1763384200.048322051] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-5] [INFO] [1763384200.048435600] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
+[ros2_control_node-3] [INFO] [1763384200.057318554] [dynamixel_hardware_interface]: [ID:23] item_name:Position P Gain	data:800
+[rviz2-5] [INFO] [1763384200.063240824] [rviz2]: Stereo is NOT SUPPORTED
+[ros2_control_node-3] [INFO] [1763384200.073346171] [dynamixel_hardware_interface]: [ID:24] item_name:Drive Mode	data:0
+[ros2_control_node-3] [INFO] [1763384200.089296559] [dynamixel_hardware_interface]: [ID:24] item_name:Position D Gain	data:4000
+[ros2_control_node-3] [INFO] [1763384200.105341991] [dynamixel_hardware_interface]: [ID:24] item_name:Position I Gain	data:0
+[ros2_control_node-3] [INFO] [1763384200.121297951] [dynamixel_hardware_interface]: [ID:24] item_name:Position P Gain	data:800
+[ros2_control_node-3] [INFO] [1763384200.137306855] [dynamixel_hardware_interface]: [ID:25] item_name:Drive Mode	data:0
+[rviz2-5] Warning: class_loader.impl: SEVERE WARNING!!! A namespace collision has occurred with plugin factory for class rviz_default_plugins::displays::InteractiveMarkerDisplay. New factory will OVERWRITE existing one. This situation occurs when libraries containing plugins are directly linked against an executable (the one running right now generating this message). Please separate plugins out into their own library or just don't link against the library and use either class_loader::ClassLoader/MultiLibraryClassLoader to open.
+[rviz2-5]          at line 321 in /opt/ros/jazzy/include/class_loader/class_loader/class_loader_core.hpp
+[rviz2-5] [WARN] [1763384200.147570679] [rcl.logging_rosout]: Publisher already registered for node name: 'rviz2'. If this is due to multiple nodes with the same name then all logs for the logger named 'rviz2' will go out over the existing publisher. As soon as any node with that name is destructed it will unregister the publisher, preventing any further logs for that name from being published on the rosout topic.
+[ros2_control_node-3] [INFO] [1763384200.153303385] [dynamixel_hardware_interface]: [ID:25] item_name:Position D Gain	data:4000
+[ros2_control_node-3] [INFO] [1763384200.169310266] [dynamixel_hardware_interface]: [ID:25] item_name:Position I Gain	data:0
+[ros2_control_node-3] [INFO] [1763384200.185295910] [dynamixel_hardware_interface]: [ID:25] item_name:Position P Gain	data:800
+[ros2_control_node-3] [INFO] [1763384200.201297243] [dynamixel_hardware_interface]: [ID:26] item_name:Drive Mode	data:0
+[ros2_control_node-3] [INFO] [1763384200.217288363] [dynamixel_hardware_interface]: [ID:26] item_name:Position D Gain	data:4000
+[ros2_control_node-3] [INFO] [1763384200.233340446] [dynamixel_hardware_interface]: [ID:26] item_name:Position I Gain	data:0
+[ros2_control_node-3] [INFO] [1763384200.249287066] [dynamixel_hardware_interface]: [ID:26] item_name:Position P Gain	data:800
+[ros2_control_node-3] [INFO] [1763384200.265339817] [dynamixel_hardware_interface]: $$$$$ Init Items for type: sensor
+[ros2_control_node-3] [INFO] [1763384200.265362896] [dynamixel_hardware_interface]: $$$$$ Init Dxl Read Items
+[ros2_control_node-3] Dynamixel Read Type : sync read
+[ros2_control_node-3] ID : 21, 22, 23, 24, 25, 26, 
+[ros2_control_node-3] Read items : 	Present Position	Present Velocity	Present Current
+[ros2_control_node-3] set fast sync read (indirect addr) : addr 634, size 10
+[ros2_control_node-3] FastSyncRead handler set up successfully.
+[ros2_control_node-3] Success to set SyncRead handler using indirect address
+[ros2_control_node-3] [INFO] [1763384201.225431403] [dynamixel_hardware_interface]: $$$$$ Init Dxl Write Items
+[ros2_control_node-3] Dynamixel Write Type : sync write
+[ros2_control_node-3] ID : 21, 22, 23, 24, 25, 26, 
+[ros2_control_node-3] Write items : 	Goal Position
+[ros2_control_node-3] set sync write (indirect addr) : addr 224, size 4
+[ros2_control_node-3] Success to set SyncWrite handler using indirect address
+[ros2_control_node-3] [INFO] [1763384201.614420476] [controller_manager]: Successful initialization of hardware 'sekirei_dynamixel_hw'
+[ros2_control_node-3] [INFO] [1763384201.614929660] [resource_manager]: 'configure' hardware 'sekirei_dynamixel_hw' 
+[ros2_control_node-3] [INFO] [1763384201.614936631] [resource_manager]: Successful 'configure' of hardware 'sekirei_dynamixel_hw'
+[ros2_control_node-3] [INFO] [1763384201.614943106] [resource_manager]: 'activate' hardware 'sekirei_dynamixel_hw' 
+[ros2_control_node-3] [INFO] [1763384201.625283028] [dynamixel_hardware_interface]: Sync joint state to command (joint: arm_joint1, position, 0.0874796 <- position, 0.0874796
+[ros2_control_node-3] [INFO] [1763384201.625298435] [dynamixel_hardware_interface]: Sync joint state to command (joint: arm_joint2, position, 0.639982 <- position, 0.639982
+[ros2_control_node-3] [INFO] [1763384201.625304591] [dynamixel_hardware_interface]: Sync joint state to command (joint: arm_joint3, position, -1.34135 <- position, -1.34135
+[ros2_control_node-3] [INFO] [1763384201.625310002] [dynamixel_hardware_interface]: Sync joint state to command (joint: arm_joint4, position, 0.0521808 <- position, 0.0521808
+[ros2_control_node-3] [INFO] [1763384201.625315550] [dynamixel_hardware_interface]: Sync joint state to command (joint: arm_joint5, position, -0.0966408 <- position, -0.0966408
+[ros2_control_node-3] [INFO] [1763384201.625320922] [dynamixel_hardware_interface]: Sync joint state to command (joint: arm_joint6, position, 2.90371 <- position, 2.90371
+[ros2_control_node-3] [INFO] [1763384201.625406156] [dynamixel_hardware_interface]: Enabling torque for Dynamixels
+[ros2_control_node-3] [ID:021] Torque ON
+[ros2_control_node-3] [ID:022] Torque ON
+[ros2_control_node-3] [ID:023] Torque ON
+[ros2_control_node-3] [ID:024] Torque ON
+[ros2_control_node-3] [ID:025] Torque ON
+[ros2_control_node-3] [ID:026] Torque ON
+[ros2_control_node-3] [INFO] [1763384201.721131160] [dynamixel_hardware_interface]: Dynamixel Hardware Start!
+[ros2_control_node-3] [INFO] [1763384201.721146248] [resource_manager]: Successful 'activate' of hardware 'sekirei_dynamixel_hw'
+[ros2_control_node-3] [INFO] [1763384201.721185303] [controller_manager]: Registering statistics for : sekirei_dynamixel_hw
+[ros2_control_node-3] [INFO] [1763384201.721232791] [controller_manager]: Resource Manager has been successfully initialized. Starting Controller Manager services...
+[rviz2-5] [ERROR] [1763384203.174264352] [rviz2.moveit.ros.motion_planning_frame]: Action server: /recognize_objects not available
+[rviz2-5] [INFO] [1763384203.184767614] [rviz2.moveit.ros.motion_planning_frame]: MoveGroup namespace changed: / -> . Reloading params.
+[rviz2-5] [ERROR] [1763384203.192442948] [rviz2]: PluginlibFactory: The plugin for class 'moveit_rviz_plugin/MotionPlanning' failed to load. Error: According to the loaded plugin descriptions the class moveit_rviz_plugin/MotionPlanning with base class type rviz_common::Panel does not exist. Declared types are 
+[rviz2-5] [INFO] [1763384203.265477723] [rviz2.moveit.ros.rdf_loader]: Loaded robot model in 0.00375856 seconds
+[rviz2-5] [INFO] [1763384203.265613781] [rviz2.moveit.core.robot_model]: Loading robot model 'sekirei'...
+[rviz2-5] [INFO] [1763384203.265644312] [rviz2.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[rviz2-5] [WARN] [1763384203.265934216] [rviz2.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
+[rviz2-5] [WARN] [1763384203.270560132] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[rviz2-5] [INFO] [1763384203.270728054] [rviz2.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
+[rviz2-5] [INFO] [1763384203.292841079] [rviz2.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+[rviz2-5] [INFO] [1763384203.293932800] [rviz2.moveit.ros.planning_scene_monitor]: Listening to '/monitored_planning_scene'
+[INFO] [spawner-6]: process started with pid [39592]
+[spawner-6] [INFO] [1763384203.572056263] [spawner_joint_state_broadcaster]: waiting for service /controller_manager/list_controllers to become available...
+[rviz2-5] [INFO] [1763384203.617822936] [interactive_marker_display_96325805701776]: Connected on namespace: /rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic
+[rviz2-5] [WARN] [1763384203.619576480] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[rviz2-5] [INFO] [1763384203.626725622] [interactive_marker_display_96325805701776]: Sending request for interactive markers
+[rviz2-5] [INFO] [1763384203.661454553] [interactive_marker_display_96325805701776]: Service response received for initialization
+[ros2_control_node-3] [INFO] [1763384204.324082355] [controller_manager]: Loading controller : 'joint_state_broadcaster' of type 'joint_state_broadcaster/JointStateBroadcaster'
+[ros2_control_node-3] [INFO] [1763384204.324106608] [controller_manager]: Loading controller 'joint_state_broadcaster'
+[ros2_control_node-3] [INFO] [1763384204.326414268] [controller_manager]: Controller 'joint_state_broadcaster' node arguments: --ros-args --params-file /tmp/launch_params_yna1n6zo --params-file /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/ros2_controllers.yaml 
+[spawner-6] [INFO] [1763384204.346386783] [spawner_joint_state_broadcaster]: [94mLoaded [1mjoint_state_broadcaster[0m
+[ros2_control_node-3] [INFO] [1763384204.347352452] [controller_manager]: Configuring controller: 'joint_state_broadcaster'
+[ros2_control_node-3] [INFO] [1763384204.347449871] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
+[INFO] [spawner-7]: process started with pid [39610]
+[ros2_control_node-3] [INFO] [1763384204.362491359] [controller_manager]: Activating controllers: [ joint_state_broadcaster ]
+[ros2_control_node-3] [INFO] [1763384204.377506325] [controller_manager]: Successfully switched controllers!
+[spawner-6] [INFO] [1763384204.394381628] [spawner_joint_state_broadcaster]: [92mConfigured and activated [1mjoint_state_broadcaster[0m
+[move_group-4] [INFO] [1763384204.411182576] [moveit.moveit.ros.planning_pipeline]: Successfully loaded planner 'OMPL'
+[move_group-4] [INFO] [1763384204.412460661] [move_group]: Try loading adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[move_group-4] [INFO] [1763384204.413378241] [move_group]: Loaded adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[move_group-4] [INFO] [1763384204.413392826] [move_group]: Try loading adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[move_group-4] [INFO] [1763384204.413818490] [move_group]: Loaded adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[move_group-4] [INFO] [1763384204.413832791] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[move_group-4] [INFO] [1763384204.413856995] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[move_group-4] [INFO] [1763384204.413881057] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-4] [INFO] [1763384204.413892823] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-4] [INFO] [1763384204.415077266] [move_group]: Try loading adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
+[move_group-4] [INFO] [1763384204.417093702] [move_group]: Loaded adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
+[move_group-4] [INFO] [1763384204.417111485] [move_group]: Try loading adapter 'default_planning_response_adapters/ValidateSolution'
+[move_group-4] [INFO] [1763384204.419536396] [move_group]: Loaded adapter 'default_planning_response_adapters/ValidateSolution'
+[move_group-4] [INFO] [1763384204.419562435] [move_group]: Try loading adapter 'default_planning_response_adapters/DisplayMotionPath'
+[move_group-4] [INFO] [1763384204.420079949] [move_group]: Loaded adapter 'default_planning_response_adapters/DisplayMotionPath'
+[move_group-4] [INFO] [1763384204.448244599] [moveit.moveit.plugins.simple_controller_manager]: Added FollowJointTrajectory controller for sekirei_arm_controller
+[move_group-4] [INFO] [1763384204.448378573] [moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-4] [INFO] [1763384204.448401416] [moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-4] [INFO] [1763384204.448849318] [moveit.moveit.ros.trajectory_execution_manager]: Trajectory execution is not managing controllers
+[move_group-4] [INFO] [1763384204.448870590] [move_group]: MoveGroup debug mode is ON
+[rviz2-5] [INFO] [1763384204.465264879] [rviz2.moveit.ros.motion_planning_frame]: group sekirei_arm
+[rviz2-5] [INFO] [1763384204.465314974] [rviz2.moveit.ros.motion_planning_frame]: Constructing new MoveGroup connection for group 'sekirei_arm' in namespace ''
+[move_group-4] [INFO] [1763384204.480113224] [moveit.moveit.ros.move_group.executable]: 
+>>>>>>> ecf084d7b09d296ed8b981fc314e3d8fb4add832
 [move_group-4] 
 [move_group-4] ********************************************************
 [move_group-4] * MoveGroup using: 
@@ -102,8 +382,13 @@
 [move_group-4] *     - save_geometry_to_file
 [move_group-4] ********************************************************
 [move_group-4] 
+<<<<<<< HEAD
 [move_group-4] [INFO] [1763232593.708459908] [move_group.moveit.moveit.ros.move_group.context]: MoveGroup context using pipeline ompl
 [move_group-4] [INFO] [1763232593.708467404] [move_group.moveit.moveit.ros.move_group.context]: MoveGroup context initialization complete
+=======
+[move_group-4] [INFO] [1763384204.480277410] [moveit.moveit.ros.move_group.context]: MoveGroup context using pipeline ompl
+[move_group-4] [INFO] [1763384204.480319335] [moveit.moveit.ros.move_group.context]: MoveGroup context initialization complete
+>>>>>>> ecf084d7b09d296ed8b981fc314e3d8fb4add832
 [move_group-4] [96mLoading 'move_group/ApplyPlanningSceneService'...[0m
 [move_group-4] [96mLoading 'move_group/ClearOctomapService'...[0m
 [move_group-4] [96mLoading 'move_group/GetUrdfService'...[0m
@@ -120,6 +405,7 @@
 [move_group-4] 
 [move_group-4] [92mYou can start planning now![0m
 [move_group-4] 
+<<<<<<< HEAD
 [ros2_control_node-3] [INFO] [1763232594.267271484] [controller_manager]: Loading controller : 'joint_state_broadcaster' of type 'joint_state_broadcaster/JointStateBroadcaster'
 [ros2_control_node-3] [INFO] [1763232594.267300100] [controller_manager]: Loading controller 'joint_state_broadcaster'
 [ros2_control_node-3] [INFO] [1763232594.269018871] [controller_manager]: Controller 'joint_state_broadcaster' node arguments: --ros-args --params-file /tmp/launch_params_46mbjdjf --params-file /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/ros2_controllers.yaml 
@@ -1025,3 +1311,21 @@
 [servo_node-8] [INFO] [1763233414.298004381] [servo_node]: Waiting to receive robot state update.
 [servo_node-8] [INFO] [1763233415.298042895] [servo_node]: Waiting to receive robot state update.
 [servo_node-8] [INFO] [1763233416.298084913] [servo_node]: Waiting to receive robot state update.
+=======
+[rviz2-5] [INFO] [1763384204.487388605] [rviz2.moveit.ros.move_group_interface]: Ready to take commands for planning group sekirei_arm.
+[INFO] [spawner-6]: process has finished cleanly [pid 39592]
+[spawner-7] [INFO] [1763384204.618944966] [spawner_sekirei_arm_controller]: waiting for service /controller_manager/list_controllers to become available...
+[ros2_control_node-3] [INFO] [1763384205.120924276] [controller_manager]: Loading controller : 'sekirei_arm_controller' of type 'joint_trajectory_controller/JointTrajectoryController'
+[ros2_control_node-3] [INFO] [1763384205.120978272] [controller_manager]: Loading controller 'sekirei_arm_controller'
+[ros2_control_node-3] [INFO] [1763384205.122789159] [controller_manager]: Controller 'sekirei_arm_controller' node arguments: --ros-args --params-file /tmp/launch_params_yna1n6zo --params-file /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/ros2_controllers.yaml 
+[spawner-7] [INFO] [1763384205.146317735] [spawner_sekirei_arm_controller]: [94mLoaded [1msekirei_arm_controller[0m
+[ros2_control_node-3] [INFO] [1763384205.147234765] [controller_manager]: Configuring controller: 'sekirei_arm_controller'
+[ros2_control_node-3] [INFO] [1763384205.147393142] [sekirei_arm_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+[ros2_control_node-3] [INFO] [1763384205.147416832] [sekirei_arm_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+[ros2_control_node-3] [INFO] [1763384205.147438538] [sekirei_arm_controller]: Using 'splines' interpolation method.
+[ros2_control_node-3] [INFO] [1763384205.149247756] [sekirei_arm_controller]: Action status changes will be monitored at 20.00 Hz.
+[ros2_control_node-3] [INFO] [1763384205.162352258] [controller_manager]: Activating controllers: [ sekirei_arm_controller ]
+[ros2_control_node-3] [INFO] [1763384205.177330406] [controller_manager]: Successfully switched controllers!
+[spawner-7] [INFO] [1763384205.194050036] [spawner_sekirei_arm_controller]: [92mConfigured and activated [1msekirei_arm_controller[0m
+[INFO] [spawner-7]: process has finished cleanly [pid 39610]
+>>>>>>> ecf084d7b09d296ed8b981fc314e3d8fb4add832

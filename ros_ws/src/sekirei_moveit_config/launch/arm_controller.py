@@ -57,11 +57,15 @@ def launch_setup(context, *args, **kwargs):
 
     # スペースは必要な為絶対に消さないこと。消すとうごかない
     urdf_xacro_path = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit.xacro')
-    robot_description = Command([
-        'xacro ',
-        urdf_xacro_path,
-        ' use_real_hw:=', LaunchConfiguration('use_real_hw')
-    ])
+
+    robot_description = ParameterValue(
+        Command([
+            'xacro ',
+            urdf_xacro_path,
+            ' use_real_hw:=', LaunchConfiguration('use_real_hw')
+        ]),
+        value_type=str
+    ) # valueはstr型である必要がある
 
     # Load SRDF
     srdf_file = os.path.join(moveit_config_pkg, 'config', 'sekirei.srdf')
@@ -414,7 +418,7 @@ def generate_launch_description():
         ),
         DeclareLaunchArgument(
             'use_real_hw',
-            default_value='false', # デフォルトではシミュレーション
+            default_value='true', # デフォルトではシミュレーション
             description='Use real hardware if connected'
         ),
         OpaqueFunction(function=launch_setup)

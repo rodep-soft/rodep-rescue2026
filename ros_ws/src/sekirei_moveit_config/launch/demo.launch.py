@@ -50,11 +50,6 @@ def launch_setup(context, *args, **kwargs):
     #     print("[demo.launch.py] No Dynamixel hardware detected - using sekirei_moveit_dummy.urdf with mock_components")
 
     urdf_xacro_path = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit.xacro')
-    # robot_description = Command([
-    #     'xacro ',
-    #     urdf_xacro_path,
-    #     ' use_real_hw:=', LaunchConfiguration('use_real_hw'),
-    # ])
 
     robot_description = ParameterValue(
         Command([
@@ -63,7 +58,7 @@ def launch_setup(context, *args, **kwargs):
             ' use_real_hw:=', LaunchConfiguration('use_real_hw')
         ]),
         value_type=str
-    )
+    ) # valueはstr型である必要がある
 
     # Load SRDF
     srdf_file = os.path.join(moveit_config_pkg, 'config', 'sekirei.srdf')

@@ -526,6 +526,10 @@
                 <param name="initial_value">0.0</param>
             </state_interface>
             <state_interface name="velocity"/>
+            <state_interface name="effort">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+
         </joint>
         <joint name="arm_joint2">
             <command_interface name="position">
@@ -536,6 +540,9 @@
                 <param name="initial_value">0.0</param>
             </state_interface>
             <state_interface name="velocity"/>
+            <state_interface name="effort">
+                <param name="initial_value">0.0</param>
+            </state_interface>
         </joint>
         <joint name="arm_joint3">
             <command_interface name="position">
@@ -546,6 +553,9 @@
                 <param name="initial_value">0.0</param>
             </state_interface>
             <state_interface name="velocity"/>
+            <state_interface name="effort">
+                <param name="initial_value">0.0</param>
+            </state_interface>
         </joint>
         <joint name="arm_joint4">
             <command_interface name="position">
@@ -556,6 +566,9 @@
                 <param name="initial_value">0.0</param>
             </state_interface>
             <state_interface name="velocity"/>
+            <state_interface name="effort">
+                <param name="initial_value">0.0</param>
+            </state_interface>
         </joint>
         <joint name="arm_joint5">
             <command_interface name="position">
@@ -566,6 +579,9 @@
                 <param name="initial_value">0.0</param>
             </state_interface>
             <state_interface name="velocity"/>
+            <state_interface name="effort">
+                <param name="initial_value">0.0</param>
+            </state_interface>
         </joint>
         <joint name="arm_joint6">
             <command_interface name="position">
@@ -576,6 +592,9 @@
                 <param name="initial_value">0.0</param>
             </state_interface>
             <state_interface name="velocity"/>
+            <state_interface name="effort">
+                <param name="initial_value">0.0</param>
+            </state_interface>
         </joint>
 
     </ros2_control>

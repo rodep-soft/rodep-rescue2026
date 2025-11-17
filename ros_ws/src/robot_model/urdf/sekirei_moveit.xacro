@@ -364,7 +364,7 @@
     </transmission>
 
     <!-- ros2_control configuration for dynamixel_hardware_interface -->
-    <xacro:property name="use_real_hw" value="false"/>
+    <xacro:property name="use_real_hw" value="true"/>
 
     <xacro:if value="${use_real_hw}">
     <ros2_control name="sekirei_dynamixel_hw" type="system">

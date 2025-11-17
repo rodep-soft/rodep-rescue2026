@@ -39,6 +39,8 @@ joint_trajectory_controller:
 
 sekirei_arm_controller:
   ros__parameters:
+    hardware_interface: DynamixelHardwareInterface  # ←これ追加した
+
     joints:
       - arm_joint1
       - arm_joint2

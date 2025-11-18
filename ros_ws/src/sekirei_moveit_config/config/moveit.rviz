@@ -10,15 +10,9 @@ Panels:
     Expanded:
       - /Current View1
     Name: Views
-<<<<<<< HEAD
   # バグるからいらん
   # - Class: moveit_rviz_plugin/MotionPlanning
   #   Name: MotionPlanningPanel
-=======
-    Splitter Ratio: 0.5
-  - Class: moveit_rviz_plugin/MotionPlanning
-    Name: MotionPlanningPanel
->>>>>>> ecf084d7b09d296ed8b981fc314e3d8fb4add832
 Visualization Manager:
   Class: ""
   Displays:

@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
+
+# WebSocket通信テスト用スクリプト
+
 import websocket
 import json
 
 def test_rosbridge():
-    print("Connecting to ws://localhost:9090...")
+    print("Connecting...")
 
     try:
         ws = websocket.create_connection('ws://localhost:9090', timeout=2)
-        print("✅ Connected successfully!")
+        print("Connected successfully!")
 
         # Send a simple command to move to home pose
         move_msg = {
@@ -18,15 +21,15 @@ def test_rosbridge():
             }
         }
         ws.send(json.dumps(move_msg))
-        print("✅ Sent move command: home")
+        print("Sent")
 
         ws.close()
-        print("✅ Connection closed successfully")
-        print("\n🎉 rosbridge is working! Ready for Flutter UI!")
+        print("Connection closed successfully")
+        print("\nrosbridge is working! Ready for Flutter UI!")
         return True
 
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f"Error: {e}")
         import traceback
         traceback.print_exc()
         return False

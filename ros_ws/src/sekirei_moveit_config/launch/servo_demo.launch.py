@@ -1,231 +1,308 @@
-"""Robust MoveIt + moveit_servo demo launch
-
-This launch ensures controller_manager and move_group are available before
-starting the standalone moveit_servo node. It waits for required services and
-then launches the servo node with parameters loaded from YAML plus the
-robot_description/semantic provided by MoveIt configs.
-
-Usage:
-  ros2 launch sekirei_moveit_config servo_demo.launch.py
-
-This file is conservative: it uses 'unitless' as the servo command type to
-match the moveit_servo binaries that accept 'unitless' or 'speed_units'. If
-your installation expects a different enum, adjust the parameter accordingly.
-"""
-
-# Moveit_servoの公式repoを参考にした堅牢なlaunch
+# メインのアーム実機制御、シミュレーション用ファイル
 
 import os
-import time
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, OpaqueFunction, ExecuteProcess
-from launch.substitutions import LaunchConfiguration, Command
+from launch.actions import OpaqueFunction, DeclareLaunchArgument, IncludeLaunchDescription
+from launch.launch_description_sources import AnyLaunchDescriptionSource
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
-from ament_index_python.packages import get_package_share_directory
+from launch_ros.parameter_descriptions import ParameterValue
+from launch_ros.substitutions import FindPackageShare
+from ament_index_python.packages import get_package_share_directory, PackageNotFoundError
+from launch.substitutions import Command
+import yaml
 
-def load_moveit_config():
-    # Use static package files from sekirei_moveit_config. Build a
-    # robot_description Command (xacro invocation) and read the SRDF file
-    # contents into a string so the launch system doesn't treat the SRDF as
-    # a params-file (which caused parsing errors).
-    pkg = 'sekirei_moveit_config'
-    pkg_path = get_package_share_directory(pkg)
-    semantic_path = os.path.join(pkg_path, 'config', 'sekirei.srdf')
 
-    # Try a few likely locations for the xacro (sekirei_moveit_config first,
-    # then robot_model). Use the first existing file. If none found, do not
-    # execute xacro to avoid launch-time failures; instead return empty
-    # robot_description and log a warning so the user can inspect files.
-    candidates = [
-        os.path.join(pkg_path, 'urdf', 'sekirei_moveit.xacro'),
-    ]
+def load_yaml(package_name, file_path):
+    package_path = get_package_share_directory(package_name)
+    absolute_file_path = os.path.join(package_path, file_path)
     try:
-        robot_model_pkg = get_package_share_directory('robot_model')
-        candidates.append(os.path.join(robot_model_pkg, 'urdf', 'sekirei_moveit.xacro'))
-    except Exception:
-        pass
-
-    robot_xacro_path = None
-    for p in candidates:
-        if os.path.exists(p):
-            robot_xacro_path = p
-            break
-
-    if robot_xacro_path:
-        robot_description_cmd = Command(['xacro ', robot_xacro_path, ' use_real_hw:=false'])
-    else:
-        print(f"[servo_demo.launch] Warning: no xacro found in candidates: {candidates}; robot_description will be empty")
-        robot_description_cmd = ''
-
-    # Read SRDF content into a string so it will be provided as a parameter
-    # value rather than interpreted as a params-file path by the node.
-    try:
-        with open(semantic_path, 'r') as f:
-            srdf_text = f.read()
-    except Exception:
-        srdf_text = ''
-
-    return {
-        'robot_description': robot_description_cmd,
-        'robot_description_semantic': srdf_text,
-    }
-
-
-def wait_for_services(required_services, timeout=15.0):
-    """Blocking wait for ROS services to appear. Returns True if all found.
-
-    This helper uses `ros2 service list` via the ROS CLI in a subprocess-free
-    manner by polling the file system for /ros2 topics is not ideal here, so
-    we simply poll `ros2 service list` via os.popen to avoid importing rclpy in
-    the launch process (avoids rclpy init conflicts in some environments).
-    """
-    deadline = time.time() + float(timeout)
-    while time.time() < deadline:
-        try:
-            services = os.popen('ros2 service list').read().splitlines()
-        except Exception:
-            services = []
-        missing = [s for s in required_services if s not in services]
-        if not missing:
-            return True
-        time.sleep(0.5)
-    return False
+        with open(absolute_file_path, 'r') as file:
+            return yaml.safe_load(file)
+    except EnvironmentError:
+        return None
 
 
 def launch_setup(context, *args, **kwargs):
-    # Load MoveIt config (may be a dict-like object or the builder result)
-    moveit_config = load_moveit_config()
+    # Get package directories
+    moveit_config_pkg = get_package_share_directory('sekirei_moveit_config')
+    urdf_pkg = get_package_share_directory('robot_model')
 
-    # Paths and common parameters
-    pkg = get_package_share_directory('sekirei_moveit_config')
-    servo_yaml = os.path.join(pkg, 'config', 'moveit_servo.yaml')
+    # Load URDF (use MoveIt-compatible version with collision and inertial)
+    # Check if Dynamixel hardware is connected by looking for USB device
+    import glob
+    dynamixel_connected = False
+    usb_devices = glob.glob('/dev/ttyUSB*')
+    if usb_devices:
+        print(f"[demo.launch.py] Found USB devices: {usb_devices}")
+        # Check if dynamixel_hardware_interface package is available
+        try:
+            _ = get_package_share_directory('dynamixel_hardware_interface')
+            dynamixel_connected = True
+            print("[demo.launch.py] Dynamixel hardware detected - using sekirei_moveit.urdf with dynamixel_hardware_interface")
+        except PackageNotFoundError:
+            print("[demo.launch.py] USB device found but dynamixel_hardware_interface not installed")
 
-    # Node definitions: RViz and controller manager/spawners are started
-    # without delay. The servo node will be started only after the required
-    # services are visible in the ROS graph.
-    rviz_cfg = os.path.join(pkg, 'config', 'moveit.rviz')
+    # if dynamixel_connected:
+    #     urdf_file = os.path.join(moveit_config_pkg, 'urdf', 'sekirei_moveit.urdf')
+    # else:
+    #     urdf_file = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit_dummy.urdf')
+    #     print("[demo.launch.py] No Dynamixel hardware detected - using sekirei_moveit_dummy.urdf with mock_components")
+
+    urdf_xacro_path = os.path.join(urdf_pkg, 'urdf', 'sekirei_moveit.xacro')
+
+    robot_description = ParameterValue(
+        Command([
+            'xacro ',
+            urdf_xacro_path,
+            ' use_real_hw:=', LaunchConfiguration('use_real_hw')
+        ]),
+        value_type=str
+    ) # valueはstr型である必要がある
+
+    # Load SRDF
+    srdf_file = os.path.join(moveit_config_pkg, 'config', 'sekirei.srdf')
+    print(">>> SRDF path:", srdf_file)
+    with open(srdf_file, 'r') as f:
+        robot_description_semantic = f.read()
+
+    # Kinematics config
+    kinematics_yaml = load_yaml('sekirei_moveit_config', 'config/kinematics.yaml')
+
+    # Planning config
+    ompl_planning_yaml = load_yaml('sekirei_moveit_config', 'config/ompl_planning.yaml')
+
+    # Joint limits config
+    joint_limits_yaml = load_yaml('sekirei_moveit_config', 'config/joint_limits.yaml')
+
+    # MoveIt Cpp config (planning pipelines)
+    moveit_cpp_yaml = load_yaml('sekirei_moveit_config', 'config/moveit_cpp.yaml')
+
+
+
+    # Load moveit_controllers.yaml for ros2_control execution
+    moveit_controllers = load_yaml('sekirei_moveit_config', 'config/moveit_controllers.yaml')
+
+    # Trajectory execution and moveit_controller_manager parameters
+    trajectory_execution = {
+        'moveit_manage_controllers': False,  # Let controller_manager handle this
+        'trajectory_execution.allowed_execution_duration_scaling': 3.0,  # Very lenient timing
+        'trajectory_execution.allowed_goal_duration_margin': 5.0,  # Allow много time
+        'trajectory_execution.allowed_start_tolerance': 0.5,  # Very lenient start position tolerance
+        'trajectory_execution.execution_duration_monitoring': False,  # Disable strict monitoring
+        'trajectory_execution.wait_for_trajectory_completion': True,  # Wait for completion
+    }    # ros2_control parameters (instead of fake execution)
+    ros2_controllers_path = os.path.join(moveit_config_pkg, 'config', 'ros2_controllers.yaml')
+    ros2_control_params = load_yaml('sekirei_moveit_config', 'config/ros2_controllers.yaml')
+
+    planning_scene_monitor_parameters = {
+        'publish_planning_scene': True,
+        'publish_geometry_updates': True,
+        'publish_state_updates': True,
+        'publish_transforms_updates': True,
+    }
+
+    # Combine all parameters for move_group
+    move_group_params = {
+        'robot_description': robot_description,
+        'robot_description_semantic': robot_description_semantic,
+        'robot_description_kinematics': kinematics_yaml,
+        'use_sim_time': False,
+    }
+
+    # Add MoveIt Cpp configuration (planning pipelines)
+    if moveit_cpp_yaml:
+        # Convert pipeline_names list to ParameterValue
+        if 'planning_pipelines' in moveit_cpp_yaml:
+            pp = moveit_cpp_yaml['planning_pipelines']
+            if 'pipeline_names' in pp and isinstance(pp['pipeline_names'], list):
+                pp['pipeline_names'] = ParameterValue(pp['pipeline_names'])
+
+        # Convert ompl.planning_plugins list to ParameterValue
+        if 'ompl' in moveit_cpp_yaml and isinstance(moveit_cpp_yaml['ompl'], dict):
+            ompl_config = moveit_cpp_yaml['ompl']
+            if 'planning_plugins' in ompl_config and isinstance(ompl_config['planning_plugins'], list):
+                ompl_config['planning_plugins'] = ParameterValue(ompl_config['planning_plugins'])
+
+        move_group_params.update(moveit_cpp_yaml)
+
+    # Add OMPL planning configuration
+    if ompl_planning_yaml:
+        # Convert planning_plugins list to ParameterValue
+        if 'planning_plugins' in ompl_planning_yaml and isinstance(ompl_planning_yaml['planning_plugins'], list):
+            ompl_planning_yaml['planning_plugins'] = ParameterValue(ompl_planning_yaml['planning_plugins'])
+
+        # Convert request_adapters list to ParameterValue
+        if 'request_adapters' in ompl_planning_yaml and isinstance(ompl_planning_yaml['request_adapters'], list):
+            ompl_planning_yaml['request_adapters'] = ParameterValue(ompl_planning_yaml['request_adapters'])
+
+        # Convert response_adapters list to ParameterValue
+        if 'response_adapters' in ompl_planning_yaml and isinstance(ompl_planning_yaml['response_adapters'], list):
+            ompl_planning_yaml['response_adapters'] = ParameterValue(ompl_planning_yaml['response_adapters'])
+
+        # Convert planner_configs lists in group-specific config
+        if 'sekirei_arm' in ompl_planning_yaml and isinstance(ompl_planning_yaml['sekirei_arm'], dict):
+            if 'planner_configs' in ompl_planning_yaml['sekirei_arm']:
+                if isinstance(ompl_planning_yaml['sekirei_arm']['planner_configs'], list):
+                    ompl_planning_yaml['sekirei_arm']['planner_configs'] = ParameterValue(
+                        ompl_planning_yaml['sekirei_arm']['planner_configs']
+                    )
+
+        # Add with 'ompl.' prefix to match expected namespace
+        for key, value in ompl_planning_yaml.items():
+            move_group_params[f'ompl.{key}'] = value
+
+    # Add joint limits configuration
+    if joint_limits_yaml:
+        move_group_params['robot_description_planning'] = joint_limits_yaml
+
+    # Add trajectory execution parameters
+    move_group_params.update(trajectory_execution)
+    move_group_params.update(planning_scene_monitor_parameters)
+
+    # Add controller configurations from moveit_controllers.yaml
+    if moveit_controllers:
+        # Convert controller_names list to ParameterValue if needed
+        if 'moveit_simple_controller_manager' in moveit_controllers:
+            scm = moveit_controllers['moveit_simple_controller_manager']
+            if 'controller_names' in scm and isinstance(scm['controller_names'], list):
+                scm['controller_names'] = ParameterValue(scm['controller_names'])
+        move_group_params.update(moveit_controllers)
+
+    # ros2_control node (controller_manager) with dummy hardware — only launch if available
+    ros2_nodes = []
+    try:
+        # Will raise PackageNotFoundError if controller_manager isn't installed in the environment
+        _ = get_package_share_directory('controller_manager')
+
+        from launch.actions import TimerAction
+
+        # Load controller parameters from YAML
+        controller_manager_params = ros2_control_params.get('controller_manager', {})
+        controller_manager_params['robot_description'] = robot_description
+
+        ros2_control_node = Node(
+            package='controller_manager',
+            executable='ros2_control_node',
+            parameters=[controller_manager_params, ros2_controllers_path],
+            output='screen',
+        )
+
+        # Spawners for controllers (delayed to wait for controller_manager)
+        joint_state_broadcaster_spawner = Node(
+            package='controller_manager',
+            executable='spawner',
+            arguments=['joint_state_broadcaster', '--controller-manager', '/controller_manager'],
+            output='screen',
+        )
+
+        sekirei_arm_controller_spawner = Node(
+            package='controller_manager',
+            executable='spawner',
+            arguments=['sekirei_arm_controller', '--controller-manager', '/controller_manager'],
+            output='screen',
+        )
+
+        ros2_nodes.append(ros2_control_node)
+        # Increase delays to ensure controller_manager fully initializes and loads controller type definitions
+        ros2_nodes.append(TimerAction(period=4.0, actions=[joint_state_broadcaster_spawner]))
+        ros2_nodes.append(TimerAction(period=5.0, actions=[sekirei_arm_controller_spawner]))
+    except PackageNotFoundError:
+        print("[launch warning] controller_manager package not found; skipping ros2_control_node and spawners. Falling back to MoveIt simple controller manager (fake controllers). Install ros2_control/ros2_controllers to enable hardware controllers.")
+
+    # Start the actual move_group node/action server
+    move_group_node = Node(
+        package='moveit_ros_move_group',
+        executable='move_group',
+        output='screen',
+        namespace='',
+        parameters=[move_group_params],
+        arguments=['--ros-args', '--log-level', 'INFO', '--log-level', 'moveit.trajectory_execution:=DEBUG'],
+    )
+
+    # RViz
+    rviz_config_file = os.path.join(moveit_config_pkg, 'config', 'moveit.rviz')
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
         name='rviz2',
         output='log',
-        arguments=['-d', rviz_cfg] if os.path.exists(rviz_cfg) else [],
-        # Provide robot_description and semantic as named parameters (dicts).
+        arguments=['-d', rviz_config_file] if os.path.exists(rviz_config_file) else [],
         parameters=[
-            {'robot_description': moveit_config.get('robot_description') if isinstance(moveit_config, dict) else moveit_config.robot_description},
-            {'robot_description_semantic': moveit_config.get('robot_description_semantic') if isinstance(moveit_config, dict) else moveit_config.robot_description_semantic},
+            {
+                'robot_description': robot_description,
+                'robot_description_semantic': robot_description_semantic,
+                'robot_description_kinematics': kinematics_yaml,
+            }
         ],
     )
 
-    # ros2_control / controller_manager (if present in the environment)
-    controller_manager_node = Node(
-        package='controller_manager',
-        executable='ros2_control_node',
-        output='screen',
-        parameters=[os.path.join(pkg, 'config', 'ros2_controllers.yaml')],
+    # Static TF
+    static_tf_node = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='static_transform_publisher',
+        output='log',
+        arguments=['0.0', '0.0', '0.0', '0.0', '0.0', '0.0', 'world', 'base_link'],
     )
 
-    # Publish robot_description to the /robot_description topic early so
-    # controller_manager and other nodes that subscribe to the topic can
-    # receive it. We run a small helper script which will call xacro if a
-    # xacro path was found and then publish the produced string with
-    # transient-local durability so late-joining subscribers receive it.
-    publish_script = os.path.join(pkg, 'scripts', 'publish_robot_description.py')
-    publish_action = None
-    if moveit_config.get('robot_description'):
-        # moveit_config['robot_description'] may be a Command substitution or
-        # an empty string. We pass the xacro path and srdf path as args to
-        # the helper script so it knows what to publish. Use absolute paths
-        # if the xacro exists.
-        # Determine the xacro path argument by checking the candidate
-        # resolution earlier (moveit_config['robot_description'] may be a
-        # Command object, but we still have robot_xacro_path from loader).
-        # We recreate the candidate lookup here for the script args.
-        try:
-            # If a real file path was selected earlier, prefer to pass it.
-            xacro_arg = None
-            # We rely on the same heuristic used above: check common locations.
-            candidates = [os.path.join(pkg, 'urdf', 'sekirei_moveit.xacro')]
-            try:
-                robot_model_pkg = get_package_share_directory('robot_model')
-                candidates.append(os.path.join(robot_model_pkg, 'urdf', 'sekirei_moveit.xacro'))
-            except Exception:
-                pass
-            for p in candidates:
-                if os.path.exists(p):
-                    xacro_arg = p
-                    break
-            if xacro_arg:
-                publish_action = ExecuteProcess(cmd=['python3', publish_script, '--xacro', xacro_arg, '--srdf', semantic_path], output='screen')
-            else:
-                # No xacro file found; still launch publisher with empty xacro
-                # so it can publish the SRDF (if desired) or nothing.
-                publish_action = ExecuteProcess(cmd=['python3', publish_script, '--srdf', semantic_path], output='screen')
-        except Exception:
-            publish_action = None
-
-    joint_state_spawner = Node(
-        package='controller_manager',
-        executable='spawner',
-        arguments=['joint_state_broadcaster', '--controller-manager', '/controller_manager'],
-        output='screen',
-    )
-
-    arm_controller_spawner = Node(
-        package='controller_manager',
-        executable='spawner',
-        arguments=['sekirei_arm_controller', '--controller-manager', '/controller_manager'],
-        output='screen',
-    )
-
-    # Build the servo node action but do not start it yet. We will return it
-    # from this function only after we confirm required services exist.
-    servo_node = Node(
-        package='moveit_servo',
-        executable='servo_node',
-        name='servo_node',
-        output='screen',
+    # Publish TF
+    robot_state_publisher = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        name='robot_state_publisher',
+        output='both',
         parameters=[
-            servo_yaml,
-            # Conservative override: use 'unitless' which is accepted by
-            # many moveit_servo builds for pose-like inputs.
-            {'moveit_servo.command_in_type': 'unitless', 'command_in_type': 'unitless'},
-            # If moveit_config is a builder object it exposes mapping-like
-            # attributes. If it's a dict we pass raw files/strings.
-            getattr(moveit_config, 'robot_description', moveit_config.get('robot_description'))
-            if isinstance(moveit_config, dict) else moveit_config.robot_description,
-            getattr(moveit_config, 'robot_description_semantic', moveit_config.get('robot_description_semantic'))
-            if isinstance(moveit_config, dict) else moveit_config.robot_description_semantic,
+            {'robot_description': robot_description},
+            {'publish_robot_description': False},  # Don't republish, ros2_control_node already does
         ],
     )
 
-    # Launch basic nodes immediately, then wait and return servo_node.
-    # Put the publisher before controller_manager so the topic is visible
-    # when controller_manager starts (it subscribes to /robot_description).
-    actions = []
-    if publish_action:
-        actions.append(publish_action)
-    actions.extend([controller_manager_node, joint_state_spawner, arm_controller_spawner, rviz_node])
+    # Don't use joint_state_publisher - controller_manager will handle joint states via ros2_control
 
-    # Define which services must exist before starting Servo. We require the
-    # controller_manager service and at least one move_group planning service.
-    required_services = ['/controller_manager/list_controllers', '/move_group/get_planning_scene']
-    ok = wait_for_services(required_services, timeout=20.0)
-    if not ok:
-        # Best-effort: log a warning to the console and still start servo after
-        # a short delay. This prevents deadlock in CI or minimal environments.
-        print('[servo_demo.launch] Warning: required services not visible after timeout; starting servo anyway')
-        actions.append(servo_node)
-        return actions
+    nodes_to_start = [
+        static_tf_node,
+        robot_state_publisher,
+    ]
 
-    # All required services are present -> start servo
-    print('[servo_demo.launch] Required services visible; starting moveit_servo now')
-    actions.append(servo_node)
-    return actions
+    # add ros2_control nodes if available
+    nodes_to_start += ros2_nodes
+
+    # move_group and rviz are added after controller-related nodes
+    nodes_to_start += [
+        move_group_node,
+        rviz_node,
+    ]
+
+    # Add rosbridge_server for Flutter UI communication
+    use_rosbridge = LaunchConfiguration('use_rosbridge')
+    if use_rosbridge.perform(context) == 'true':
+        rosbridge_node = Node(
+            package='rosbridge_server',
+            executable='rosbridge_websocket',
+            name='rosbridge_websocket',
+            parameters=[{
+                'port': 9090,
+                'address': '0.0.0.0',  # Bind to all network interfaces (allow external access)
+            }],
+            output='screen',
+        )
+        nodes_to_start.append(rosbridge_node)
+
+    return nodes_to_start
 
 
 def generate_launch_description():
     return LaunchDescription([
-        DeclareLaunchArgument('use_sim_time', default_value='false', description='Use simulation time'),
-        OpaqueFunction(function=launch_setup),
+        DeclareLaunchArgument(
+            'use_rosbridge',
+            default_value='false',
+            description='Launch rosbridge_server for web/Flutter UI connection'
+        ),
+        DeclareLaunchArgument(
+            'use_real_hw',
+            default_value='false', # デフォルトではシミュレーション
+            description='Use real hardware if connected'
+        ),
+        OpaqueFunction(function=launch_setup)
     ])

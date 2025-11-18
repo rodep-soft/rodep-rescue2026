@@ -418,7 +418,7 @@ def generate_launch_description():
         ),
         DeclareLaunchArgument(
             'use_real_hw',
-            default_value='true', # デフォルトではシミュレーション
+            default_value='false', # デフォルトではシミュレーション
             description='Use real hardware if connected'
         ),
         OpaqueFunction(function=launch_setup)

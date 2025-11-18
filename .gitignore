@@ -90,7 +90,7 @@ package-lock.json
 
 # === Shell history & config ===
 .bash_history
-.bashrc
+# .bashrc
 .bashrc.swp
 .bash_logout
 .zsh_history

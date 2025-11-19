@@ -116,6 +116,12 @@ def _setup(context, *args, **kwargs):
         executable='joy_node',
         name='joy_node',
         output='screen',
+        parameters=[{
+            'device_id': 0,
+            'deadzone' : 0.1,
+        }]
+
+
     )
 
     #  アームコントローラノード

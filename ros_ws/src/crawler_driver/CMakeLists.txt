@@ -30,9 +30,9 @@ install(TARGETS
   crawler_driver_node
   DESTINATION lib/${PROJECT_NAME})
 
-# YAMLファイルのインストール
-install(DIRECTORY config/
-  DESTINATION share/${PROJECT_NAME}/config)
+# # YAMLファイルのインストール
+# install(DIRECTORY config/
+#   DESTINATION share/${PROJECT_NAME}/config)
 
 
 if(BUILD_TESTING)

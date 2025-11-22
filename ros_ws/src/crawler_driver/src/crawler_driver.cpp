@@ -3,7 +3,7 @@
 #include <std_msgs/msg/bool.hpp>
 
 // #include <iostream>
-// #include <memory>
+#include <memory>
 
 #include <vector>
 #include <thread>
@@ -17,20 +17,25 @@
 #include <custom_interfaces/msg/crawler_velocity.hpp>
 
 // Constants
-constexpr int ROBOCLAW_ADDRESS = 0x80;
-// constexpr int M1_MOTOR_COMMAND = 6;
-// constexpr int M2_MOTOR_COMMAND = 7;
-constexpr int M1_MOTOR_COMMAND = 35;
-constexpr int M2_MOTOR_COMMAND = 36;
-constexpr int M1_ENCODER_COMMAND = 92;
-constexpr int M2_ENCODER_COMMAND = 93;
-constexpr int M1_SET_PID_CONSTANTS_COMMAND = 28;
-constexpr int M2_SET_PID_CONSTANTS_COMMAND = 29;
-constexpr int SERIAL_BAUD_RATE = 38400;
-constexpr int SERIAL_TIMEOUT_MS = 1000;
-constexpr int RESET_QUAD_ENCODER = 20;
-constexpr int M1_QPPS = 53250;
-constexpr int M2_QPPS = 50062;
+#include <chrono>
+namespace {
+constexpr uint8_t ROBOCLAW_ADDRESS = 0x80;
+
+enum class Command : uint8_t {
+  M1_SET_PID = 28,
+  M2_SET_PID = 29,
+  M1_VELOCITY = 35,
+  M2_VELOCITY = 36,
+  M1_ENCODER = 92,
+  M2_ENCODER = 93,
+  RESET_ENCODERS = 20,
+};
+
+constexpr int32_t SERIAL_BAUD_RATE = 38400;
+constexpr auto SERIAL_TIMEOUT_MS = std::chrono::milliseconds(1000);
+constexpr int32_t M1_QPPS = 53250;
+constexpr int32_t M2_QPPS = 50062;
+} // namespace
 
 // RoboclawDriver Class
 class RoboclawDriver {
@@ -113,7 +118,7 @@ public:
   }
 
   bool resetEncoders(std::function<void(bool)> callback) {
-    std::vector<uint8_t> data = {static_cast<uint8_t>(ROBOCLAW_ADDRESS), static_cast<uint8_t>(RESET_QUAD_ENCODER)};
+    std::vector<uint8_t> data = {static_cast<uint8_t>(ROBOCLAW_ADDRESS), static_cast<uint8_t>(Command::RESET_ENCODERS)};
     appendCRC(data);
     asyncSendRoboclawCommand(data, callback);
     return true;
@@ -215,13 +220,13 @@ private:
   }
 
   void init() {
-    roboclaw.setMotorVelocity(M1_MOTOR_COMMAND, 0,
+    roboclaw.setMotorVelocity(static_cast<int>(Command::M1_VELOCITY), 0,
                               [this](bool success) { handleMotorInitResult(success, "M1"); });
-    roboclaw.setMotorVelocity(M2_MOTOR_COMMAND, 0,
+    roboclaw.setMotorVelocity(static_cast<int>(Command::M2_VELOCITY), 0,
                               [this](bool success) { handleMotorInitResult(success, "M2"); });
-    roboclaw.setPIDConstants(M1_SET_PID_CONSTANTS_COMMAND, 0.464f, 0.021f, 0.0f, M1_QPPS,
+    roboclaw.setPIDConstants(static_cast<int>(Command::M1_SET_PID), 0.464f, 0.021f, 0.0f, M1_QPPS,
                              [this](bool success) { handlePIDInitResult(success, "M1"); });
-    roboclaw.setPIDConstants(M2_SET_PID_CONSTANTS_COMMAND, 0.438f, 0.020f, 0.0f, M2_QPPS,
+    roboclaw.setPIDConstants(static_cast<int>(Command::M2_SET_PID), 0.438f, 0.020f, 0.0f, M2_QPPS,
                              [this](bool success) { handlePIDInitResult(success, "M2"); });
     roboclaw.resetEncoders([this](bool success) {
       if (!success) {
@@ -254,13 +259,13 @@ private:
     double M2_counts_per_sec = velocity_to_counts_per_sec(msg->m2_vel);
 
     // Send commands
-    roboclaw.setMotorVelocity(M1_MOTOR_COMMAND, M1_counts_per_sec, [this](bool success) {
+    roboclaw.setMotorVelocity(static_cast<int>(Command::M1_VELOCITY), M1_counts_per_sec, [this](bool success) {
       if (!success) {
         RCLCPP_ERROR(get_logger(), "Failed to send command to M1 motor");
       }
     });
 
-    roboclaw.setMotorVelocity(M2_MOTOR_COMMAND, M2_counts_per_sec, [this](bool success) {
+    roboclaw.setMotorVelocity(static_cast<int>(Command::M2_VELOCITY), M2_counts_per_sec, [this](bool success) {
       if (!success) {
         RCLCPP_ERROR(get_logger(), "Failed to send command to M2 motor");
       }

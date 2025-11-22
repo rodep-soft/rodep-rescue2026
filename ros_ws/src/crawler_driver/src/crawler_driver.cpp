@@ -198,13 +198,14 @@ public:
 
 private:
   RoboclawDriver roboclaw_;
-  double crawler_circumference_;
-  int counts_per_rev_;
-  int gearhead_ratio_;
-  int pulley_ratio_;
-  double counts_per_meter_;
+  double crawler_circumference_{};
+  int counts_per_rev_{};
+  int gearhead_ratio_{};
+  int pulley_ratio_{};
+  double counts_per_meter_{};
 
   rclcpp::Subscription<custom_interfaces::msg::CrawlerVelocity>::SharedPtr subscription_;
+  rclcpp::TimerBase::SharedPtr init_timer_;
 
   inline double velocity_to_counts_per_sec(double velocity) const {
     return velocity * counts_per_meter_;

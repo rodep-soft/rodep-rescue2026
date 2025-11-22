@@ -16,9 +16,6 @@ services:
       - DEBIAN_FRONTEND=noninteractive
       - DISPLAY=${DISPLAY}
     volumes:
-      # Mount host ~/.ssh to the new user's home in container
-      - ~/.ssh:/root/.ssh:ro
-      - ~/.config/fish/config.fish:/root/.config/fish/config.fish
       # Mount your ROS workspace
       - ./:/root/
       - ~/.ccache:/root/.ccache # cache mount

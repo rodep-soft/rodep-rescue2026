@@ -18,7 +18,6 @@ services:
     volumes:
       # Mount host ~/.ssh to the new user's home in container
       - ~/.ssh:/root/.ssh:ro
-      - ~/.bashrc:/root/.bashrc
       - ~/.config/fish/config.fish:/root/.config/fish/config.fish
       # Mount your ROS workspace
       - ./:/root/

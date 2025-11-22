@@ -13,6 +13,7 @@ Panels:
   # バグるからいらん
   # - Class: moveit_rviz_plugin/MotionPlanning
   #   Name: MotionPlanningPanel
+
 Visualization Manager:
   Class: ""
   Displays:

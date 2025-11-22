@@ -1,5 +1,7 @@
 .PHONY: help setup setup-microros build build-ros2 build-flutter build-microros up down exec status logs clean prune restart rebuild rebuild-ros2 rebuild-flutter rebuild-microros shell-flutter shell-microros
 
+SHELL := /bin/bash
+
 # Default target - show help
 help:
 	@echo "Available targets:"
@@ -197,3 +199,6 @@ tidy-fix:
 		! -path '*/eProsima/*' ! -path '*/ros2/*' ! -path '*/micro_ros_setup/*' \
 		! -path '*/build/*' ! -path '*/install/*' ! -path '*/log/*' \
 		-exec clang-tidy -p ros_ws/build --config-file=ros_ws/src/.clang-tidy --fix {} + 2>&1 | grep -v "^[0-9]* warnings generated"
+
+# src:
+# 	. /opt/ros/jazzy/setup.bash

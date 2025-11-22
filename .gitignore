@@ -53,7 +53,6 @@ flutter/**/.flutter-plugins-dependencies
 flutter/**/.packages
 
 # === Docker ===
-*.log
 docker-compose.override.yml
 
 # === Git ===
@@ -80,7 +79,6 @@ COLCON_IGNORE
 
 # === Node/npm (for web interfaces) ===
 node_modules/
-package-lock.json
 
 # === System ===
 .ccache/
@@ -90,11 +88,11 @@ package-lock.json
 
 # === Shell history & config ===
 .bash_history
-# .bashrc
+#.bashrc
 .bashrc.swp
 .bash_logout
 .zsh_history
-.zshrc
+#.zshrc
 .zshrc.swp
 .fish_history
 .lesshst
@@ -128,7 +126,7 @@ Desktop.ini
 *.ppk
 id_rsa
 id_dsa
-*.pub
+# Public keys (*.pub) are safe to commit; do not ignore by default
 
 # === Environment & Secrets ===
 .env
@@ -139,13 +137,15 @@ secrets.yaml
 credentials.json
 
 # === Logs ===
-*.log
-*.log.*
+.log
+.log.*
 logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-*.pdf
-*.gv
+# === custom ===
 .viminfo
+log.txt
+.pdf
+.gv

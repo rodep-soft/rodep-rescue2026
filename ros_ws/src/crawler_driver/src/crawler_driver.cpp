@@ -4,6 +4,7 @@
 
 // #include <iostream>
 // #include <memory>
+
 #include <vector>
 #include <thread>
 #include <functional>
@@ -38,6 +39,9 @@ public:
     : io(), serial(io, port), work(boost::asio::make_work_guard(io)) {
     try {
       configureSerialPort();
+      if (!serial.is_open()) {
+        throw std::runtime_error(std::string("Failed to open serial port: ") + port);
+      }
       io_thread_ = std::thread([this]() { io.run(); });
     } catch (const std::exception& e) {
       throw std::runtime_error(std::string("Failed to configure serial port: ") + e.what());
@@ -45,17 +49,19 @@ public:
   }
 
   ~RoboclawDriver() {
+    // Reset work guard so io_context can stop when no pending handlers
+    work.reset();
     io.stop();
     if (io_thread_.joinable()) {
       io_thread_.join();
     }
-
   }
 
   void asyncSendRoboclawCommand(const std::vector<uint8_t>& data, std::function<void(bool)> callback) {
+    auto write_buf = std::make_shared<std::vector<uint8_t>>(data);
     boost::asio::async_write(
-        serial, boost::asio::buffer(data),
-        [this, callback](const boost::system::error_code& ec, std::size_t /*bytes_transferred*/) {
+        serial, boost::asio::buffer(*write_buf),
+        [this, write_buf, callback](const boost::system::error_code& ec, std::size_t /*bytes_transferred*/) {
           if (ec) {
             RCLCPP_ERROR(rclcpp::get_logger("RoboclawDriver"), "Serial Write Error: %s",
                          ec.message().c_str());
@@ -63,9 +69,9 @@ public:
             return;
           }
 
-          uint8_t response;
-          boost::asio::async_read(serial, boost::asio::buffer(&response, 1),
-                                  [this, callback, response](const boost::system::error_code& ec,
+          auto read_buf = std::make_shared<std::array<uint8_t, 1>>();
+          boost::asio::async_read(serial, boost::asio::buffer(*read_buf),
+                                  [this, read_buf, callback](const boost::system::error_code& ec,
                                                              std::size_t /*bytes_transferred*/) {
                                     if (ec) {
                                       RCLCPP_ERROR(rclcpp::get_logger("RoboclawDriver"),
@@ -74,6 +80,7 @@ public:
                                       return;
                                     }
 
+                                    uint8_t response = (*read_buf)[0];
                                     RCLCPP_DEBUG(rclcpp::get_logger("RoboclawDriver"),
                                                  "Received Response: 0x%02X", response);
                                     callback(true);
@@ -84,9 +91,10 @@ public:
   bool setMotorVelocity(int command, double /*int*/ counts_per_sec,
                         std::function<void(bool)> callback) {
     std::vector<uint8_t> data = {static_cast<uint8_t>(ROBOCLAW_ADDRESS), static_cast<uint8_t>(command)};
-    // test
-    appendInt32(data, static_cast<int>(counts_per_sec));
-    // data.push_back(counts_per_sec);
+    // Convert counts_per_sec to int32 safely (device expects integer counts/sec)
+    long rounded = std::lround(counts_per_sec);
+    long clamped = std::min<long>(std::numeric_limits<int32_t>::max(), std::max<long>(std::numeric_limits<int32_t>::min(), rounded));
+    appendInt32(data, static_cast<int>(clamped));
     appendCRC(data);
     asyncSendRoboclawCommand(data, callback);
     return true;
@@ -236,16 +244,16 @@ private:
     }
   }
 
-  void driver_callback(const custom_interfaces::msg::CrawlerVelocity& msg) {
+  void driver_callback(const custom_interfaces::msg::CrawlerVelocity::SharedPtr msg) {
     if (estop_active_) {
       RCLCPP_WARN(get_logger(), "E-stop is active. Ignoring motor commands.");
       return;
     }
 
-    double M1_counts_per_sec = velocity_to_counts_per_sec(msg.m1_vel);
-    double M2_counts_per_sec = velocity_to_counts_per_sec(msg.m2_vel);
+    double M1_counts_per_sec = velocity_to_counts_per_sec(msg->m1_vel);
+    double M2_counts_per_sec = velocity_to_counts_per_sec(msg->m2_vel);
 
-    // test
+    // Send commands
     roboclaw.setMotorVelocity(M1_MOTOR_COMMAND, M1_counts_per_sec, [this](bool success) {
       if (!success) {
         RCLCPP_ERROR(get_logger(), "Failed to send command to M1 motor");

@@ -248,13 +248,13 @@ private:
     double M2_counts_per_sec = velocity_to_counts_per_sec(msg->m2_vel);
 
     // Send commands
-    roboclaw.setMotorVelocity(static_cast<int>(Command::M1_VELOCITY), M1_counts_per_sec, [this](bool success) {
+    roboclaw_.setMotorVelocity(static_cast<int>(Command::M1_VELOCITY), M1_counts_per_sec, [this](bool success) {
       if (!success) {
         RCLCPP_ERROR(get_logger(), "Failed to send command to M1 motor");
       }
     });
 
-    roboclaw.setMotorVelocity(static_cast<int>(Command::M2_VELOCITY), M2_counts_per_sec, [this](bool success) {
+    roboclaw_.setMotorVelocity(static_cast<int>(Command::M2_VELOCITY), M2_counts_per_sec, [this](bool success) {
       if (!success) {
         RCLCPP_ERROR(get_logger(), "Failed to send command to M2 motor");
       }

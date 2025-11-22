@@ -2,16 +2,18 @@
 
 #include <std_msgs/msg/bool.hpp>
 
-#include <iostream>
-#include <memory>
+// #include <iostream>
+// #include <memory>
 #include <vector>
+#include <thread>
+#include <functional>
+#include <string>
+#include <stdexcept>
+#include <cstdint>
+#include <cstring>
 
 #include <boost/asio.hpp>
 #include <custom_interfaces/msg/crawler_velocity.hpp>
-
-using namespace std;
-using namespace boost::asio;  // Serial communication
-using std::placeholders::_1;  // std::bind
 
 // Constants
 constexpr int ROBOCLAW_ADDRESS = 0x80;
@@ -32,13 +34,13 @@ constexpr int M2_QPPS = 50062;
 // RoboclawDriver Class
 class RoboclawDriver {
 public:
-  explicit RoboclawDriver(const string& port)
+  explicit RoboclawDriver(const std::string& port)
     : io(), serial(io, port), work(boost::asio::make_work_guard(io)) {
     try {
       configureSerialPort();
-      io_thread_ = thread([this]() { io.run(); });
-    } catch (const boost::system::system_error& e) {
-      throw runtime_error("Failed to configure serial port: " + string(e.what()));
+      io_thread_ = std::thread([this]() { io.run(); });
+    } catch (const std::exception& e) {
+      throw std::runtime_error(std::string("Failed to configure serial port: ") + e.what());
     }
   }
 
@@ -47,9 +49,10 @@ public:
     if (io_thread_.joinable()) {
       io_thread_.join();
     }
+
   }
 
-  void asyncSendRoboclawCommand(const vector<uint8_t>& data, std::function<void(bool)> callback) {
+  void asyncSendRoboclawCommand(const std::vector<uint8_t>& data, std::function<void(bool)> callback) {
     boost::asio::async_write(
         serial, boost::asio::buffer(data),
         [this, callback](const boost::system::error_code& ec, std::size_t /*bytes_transferred*/) {
@@ -80,7 +83,7 @@ public:
 
   bool setMotorVelocity(int command, double /*int*/ counts_per_sec,
                         std::function<void(bool)> callback) {
-    vector<uint8_t> data = {ROBOCLAW_ADDRESS, static_cast<uint8_t>(command)};
+    std::vector<uint8_t> data = {static_cast<uint8_t>(ROBOCLAW_ADDRESS), static_cast<uint8_t>(command)};
     // test
     appendInt32(data, static_cast<int>(counts_per_sec));
     // data.push_back(counts_per_sec);
@@ -91,7 +94,7 @@ public:
 
   bool setPIDConstants(int command, float K_p, float K_i, float K_d, int qpps,
                        std::function<void(bool)> callback) {
-    vector<uint8_t> data = {ROBOCLAW_ADDRESS, static_cast<uint8_t>(command)};
+    std::vector<uint8_t> data = {static_cast<uint8_t>(ROBOCLAW_ADDRESS), static_cast<uint8_t>(command)};
     appendFloat32(data, K_d);
     appendFloat32(data, K_p);
     appendFloat32(data, K_i);
@@ -102,28 +105,28 @@ public:
   }
 
   bool resetEncoders(std::function<void(bool)> callback) {
-    vector<uint8_t> data = {ROBOCLAW_ADDRESS, RESET_QUAD_ENCODER};
+    std::vector<uint8_t> data = {static_cast<uint8_t>(ROBOCLAW_ADDRESS), static_cast<uint8_t>(RESET_QUAD_ENCODER)};
     appendCRC(data);
     asyncSendRoboclawCommand(data, callback);
     return true;
   }
 
 private:
-  io_context io;
-  serial_port serial;
-  thread io_thread_;
+  boost::asio::io_context io;
+  boost::asio::serial_port serial;
+  std::thread io_thread_;
   // io_context::work work;  // Keeps io_context running
   boost::asio::executor_work_guard<boost::asio::io_context::executor_type> work;
 
   void configureSerialPort() {
-    serial.set_option(serial_port_base::baud_rate(SERIAL_BAUD_RATE));
-    serial.set_option(serial_port_base::character_size(8));
-    serial.set_option(serial_port_base::parity(serial_port_base::parity::none));
-    serial.set_option(serial_port_base::stop_bits(serial_port_base::stop_bits::one));
-    serial.set_option(serial_port_base::flow_control(serial_port_base::flow_control::none));
+    serial.set_option(boost::asio::serial_port_base::baud_rate(SERIAL_BAUD_RATE));
+    serial.set_option(boost::asio::serial_port_base::character_size(8));
+    serial.set_option(boost::asio::serial_port_base::parity(boost::asio::serial_port_base::parity::none));
+    serial.set_option(boost::asio::serial_port_base::stop_bits(boost::asio::serial_port_base::stop_bits::one));
+    serial.set_option(boost::asio::serial_port_base::flow_control(boost::asio::serial_port_base::flow_control::none));
   }
 
-  uint16_t calculateCRC(const vector<uint8_t>& data) {
+  uint16_t calculateCRC(const std::vector<uint8_t>& data) {
     uint16_t crc = 0;
     for (auto byte : data) {
       crc ^= static_cast<uint16_t>(byte) << 8;
@@ -134,25 +137,25 @@ private:
     return crc;
   }
 
-  void appendCRC(vector<uint8_t>& data) {
+  void appendCRC(std::vector<uint8_t>& data) {
     uint16_t crc = calculateCRC(data);
     data.push_back(static_cast<uint8_t>(crc >> 8));
     data.push_back(static_cast<uint8_t>(crc & 0xFF));
   }
 
-  void appendInt32(vector<uint8_t>& data, int value) {
+  void appendInt32(std::vector<uint8_t>& data, int value) {
     for (int i = 3; i >= 0; --i) {
       data.push_back(static_cast<uint8_t>((value >> (8 * i)) & 0xFF));
     }
   }
 
-  void appendFloat32(vector<uint8_t>& data, float value) {
-    // uint8_t* bytes = reinterpret_cast<uint8_t*>(&value);
-    // for (size_t i = 0; i < sizeof(float); ++i) {
-    //	data.push_back(bytes[i]);
-    //}
+  void appendFloat32(std::vector<uint8_t>& data, float value) {
+    // Reinterpret float bits safely into uint32_t
+    uint32_t as_int = 0;
+    static_assert(sizeof(float) == sizeof(uint32_t), "Unexpected float size");
+    std::memcpy(&as_int, &value, sizeof(float));
     for (int i = 3; i >= 0; --i) {
-      data.push_back(static_cast<uint8_t>((static_cast<int>(value) >> (8 * i)) & 0xFF));
+      data.push_back(static_cast<uint8_t>((as_int >> (8 * i)) & 0xFF));
     }
   }
 };
@@ -170,10 +173,10 @@ public:
     initParams();
 
     subscription_ = create_subscription<custom_interfaces::msg::CrawlerVelocity>(
-        "/crawler_driver", 10, bind(&CrawlerDriver::driver_callback, this, _1));
+        "/crawler_driver", 10, std::bind(&CrawlerDriver::driver_callback, this, std::placeholders::_1));
 
     estop_subscription_ = create_subscription<std_msgs::msg::Bool>(
-        "/emergency_stop", 10, bind(&CrawlerDriver::estop_callback, this, _1));
+        "/emergency_stop", 10, std::bind(&CrawlerDriver::estop_callback, this, std::placeholders::_1));
 
     init();
   }
@@ -219,7 +222,7 @@ private:
     });
   }
 
-  void handleMotorInitResult(bool success, const string& motor_name) {
+  void handleMotorInitResult(bool success, const std::string& motor_name) {
     if (!success) {
       RCLCPP_ERROR(get_logger(), "Failed to initialize %s motor", motor_name.c_str());
     } else if (success) {
@@ -227,7 +230,7 @@ private:
     }
   }
 
-  void handlePIDInitResult(bool success, const string& motor_name) {
+  void handlePIDInitResult(bool success, const std::string& motor_name) {
     if (!success) {
       RCLCPP_ERROR(get_logger(), "Failed to set PID constants for %s motor", motor_name.c_str());
     }
@@ -283,7 +286,7 @@ private:
 
 int main(int argc, char* argv[]) {
   rclcpp::init(argc, argv);
-  rclcpp::spin(make_shared<CrawlerDriver>());
+  rclcpp::spin(std::make_shared<CrawlerDriver>());
   rclcpp::shutdown();
   return 0;
 }

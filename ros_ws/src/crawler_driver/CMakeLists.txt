@@ -33,27 +33,9 @@ target_include_directories(roboclaw_driver PUBLIC
   $<INSTALL_INTERFACE:include>)
 ament_target_dependencies(roboclaw_driver rclcpp)
 
-# V2ドライバー（シンプルな実装）
-add_executable(crawler_driver_v2_node src/crawler_driver_v2.cpp)
-target_link_libraries(crawler_driver_v2_node roboclaw_driver)
-ament_target_dependencies(crawler_driver_v2_node rclcpp std_msgs custom_interfaces)
-
-# V3ドライバー（改善版・推奨）
-add_executable(crawler_driver_v3_node src/crawler_driver_v3.cpp)
-target_link_libraries(crawler_driver_v3_node roboclaw_driver)
-ament_target_dependencies(crawler_driver_v3_node
-  rclcpp
-  std_msgs
-  geometry_msgs
-  nav_msgs
-  tf2
-  tf2_ros)
 
 install(TARGETS
   crawler_driver_node
-  crawler_driver_v2_node
-  crawler_driver_v3_node
-  roboclaw_driver
   DESTINATION lib/${PROJECT_NAME})
 
 # YAMLファイルのインストール

@@ -149,3 +149,5 @@ yarn-error.log*
 # === custom ===
 .viminfo
 log.txt
+.pdf
+.gv

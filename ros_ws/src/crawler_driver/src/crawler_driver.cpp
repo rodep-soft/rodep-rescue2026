@@ -190,8 +190,11 @@ public:
     // Initialize parameters
     initParams();
 
+    // Use a small QoS suitable for control commands
+    rclcpp::QoS control_qos(rclcpp::KeepLast(10));
+    control_qos.reliable();
     subscription_ = create_subscription<custom_interfaces::msg::CrawlerVelocity>(
-        "/crawler_driver", 10, std::bind(&CrawlerDriver::driver_callback, this, std::placeholders::_1));
+        "/crawler_driver", control_qos, std::bind(&CrawlerDriver::driver_callback, this, std::placeholders::_1));
 
     init();
   }

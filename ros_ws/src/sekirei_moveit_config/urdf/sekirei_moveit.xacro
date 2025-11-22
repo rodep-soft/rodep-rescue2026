@@ -1,0 +1,603 @@
+<?xml version="1.0"?>
+
+<!-- 実機制御用のURDF -->
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="sekirei">
+    <!-- Base link with inertial -->
+    <!-- Inertia, mass等はあくまで推定値!! -->
+    <link name="base_link">
+        <inertial>
+            <mass value="1.0"/>
+            <origin xyz="0 0 0"/>
+            <!-- 慣性テンソル -->
+            <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+        </inertial>
+    </link>
+
+    <!-- Arm Base Link -->
+    <link name="arm_base_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://robot_model/meshes/r_a_2019_2020_asm1.STL"/>
+            </geometry>
+            <origin xyz="-0.08 -0.081 0" rpy="1.57 0 0"/>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.1" radius="0.05"/>
+            </geometry>
+            <origin xyz="0 0 0.05" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+            <mass value="0.5"/>
+            <origin xyz="0 0 0.05"/>
+            <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+        </inertial>
+    </link>
+
+    <joint name="arm_base_link_joint" type="fixed">
+        <origin xyz="0.2 0 0.1" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="arm_base_link"/>
+    </joint>
+
+    <!-- Arm Link 1 -->
+    <link name="arm1_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://robot_model/meshes/r_a_2019_2020_asm2.STL"/>
+            </geometry>
+            <origin xyz="0 0 0.004" rpy="1.57 0 0"/>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.08" radius="0.04"/>
+            </geometry>
+            <origin xyz="0 0 0.04" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+            <mass value="0.3"/>
+            <origin xyz="0 0 0.04"/>
+            <inertia ixx="0.0008" ixy="0.0" ixz="0.0" iyy="0.0008" iyz="0.0" izz="0.0002"/>
+        </inertial>
+    </link>
+
+    <joint name="arm_joint1" type="revolute">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <parent link="arm_base_link"/>
+        <child link="arm1_link"/>
+        <limit effort="5" lower="-3.14" upper="3.14" velocity="1.571"/>
+    </joint>
+
+    <!-- Arm Link 2 -->
+    <link name="arm2_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://robot_model/meshes/r_a_2019_2020_asm3.STL"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.45 0.08 0.08"/>
+            </geometry>
+            <origin xyz="0.225 0 0" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+            <mass value="0.6"/>
+            <origin xyz="0.225 0 0"/>
+            <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.010" iyz="0.0" izz="0.010"/>
+        </inertial>
+    </link>
+
+    <joint name="arm_joint2" type="revolute">
+        <origin xyz="0 -0.048 0.078" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <parent link="arm1_link"/>
+        <child link="arm2_link"/>
+        <limit effort="5" lower="-3.14" upper="3.14" velocity="1.571"/>
+    </joint>
+
+    <!-- Arm Link 3 -->
+    <link name="arm3_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://robot_model/meshes/r_a_2019_2020_asm4.STL"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.5 0.08 0.08"/>
+            </geometry>
+            <origin xyz="-0.25 0 0" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+            <mass value="0.5"/>
+            <origin xyz="-0.25 0 0"/>
+            <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.010" iyz="0.0" izz="0.010"/>
+        </inertial>
+    </link>
+
+    <!-- は？？？ -->
+    <joint name="arm_joint3" type="revolute">
+        <origin xyz="0.45 0.007 0.084" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <parent link="arm2_link"/>
+        <child link="arm3_link"/>
+        <limit effort="5" lower="0" upper="3.14" velocity="1.571"/>
+    </joint>
+
+    <!-- Arm Link 4 -->
+    <link name="arm4_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://robot_model/meshes/r_a_2019_2020_asm5.STL"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 3.14 0"/>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.08" radius="0.03"/>
+            </geometry>
+            <origin xyz="0 0 0.04" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+            <mass value="0.2"/>
+            <origin xyz="0 0 0.04"/>
+            <inertia ixx="0.0005" ixy="0.0" ixz="0.0" iyy="0.0005" iyz="0.0" izz="0.0001"/>
+        </inertial>
+    </link>
+
+    <joint name="arm_joint4" type="revolute">
+        <origin xyz="-0.5 0.012 0" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <parent link="arm3_link"/>
+        <child link="arm4_link"/>
+        <limit effort="5" lower="-3.14" upper="3.14" velocity="1.571"/>
+    </joint>
+
+    <!-- Arm Link 5 -->
+    <link name="arm5_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://robot_model/meshes/r_a_2019_l_asm6.STL"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 3.14 0"/>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.06" radius="0.025"/>
+            </geometry>
+            <origin xyz="0 0 0.03" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+            <mass value="0.1"/>
+            <origin xyz="0 0 0.03"/>
+            <inertia ixx="0.0002" ixy="0.0" ixz="0.0" iyy="0.0002" iyz="0.0" izz="0.0001"/>
+        </inertial>
+    </link>
+
+    <joint name="arm_joint5" type="revolute">
+        <origin xyz="0.06525 0.028 0.029647" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <parent link="arm4_link"/>
+        <child link="arm5_link"/>
+        <limit effort="5" lower="-1.57" upper="1.57" velocity="1.571"/>
+    </joint>
+
+    <!-- Arm Link 6 -->
+    <link name="arm6_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://robot_model/meshes/r_a_2019_l_asm7_ver2.STL"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 3.14 0"/>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.05" radius="0.02"/>
+            </geometry>
+            <origin xyz="0 0 0.025" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+            <mass value="0.1"/>
+            <origin xyz="0 0 0.025"/>
+            <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+        </inertial>
+    </link>
+
+    <joint name="arm_joint6" type="revolute">
+        <origin xyz="0.07425 0 -0.03" rpy="0 0 0"/>
+        <axis xyz="1 0 0"/>
+        <parent link="arm5_link"/>
+        <child link="arm6_link"/>
+        <limit effort="5" lower="-3.14" upper="3.14" velocity="1.571"/>
+    </joint>
+
+    <!-- Camera Links (simplified) -->
+    <link name="gui_d435_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://robot_model/meshes/d435.STL"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 0 -1.57"/>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.02 0.09 0.025"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+            <mass value="0.05"/>
+            <origin xyz="0 0 0"/>
+            <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+        </inertial>
+    </link>
+
+    <joint name="gui_d435_joint" type="fixed">
+        <origin xyz="0.066 -0.03105 0" rpy="1.57 0 0"/>
+        <parent link="arm6_link"/>
+        <child link="gui_d435_link"/>
+    </joint>
+
+    <link name="gui_t265_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://robot_model/meshes/t265.STL"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 3.14 1.57"/>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.02 0.108 0.025"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </collision>
+        <inertial>
+            <mass value="0.05"/>
+            <origin xyz="0 0 0"/>
+            <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+        </inertial>
+    </link>
+
+    <joint name="gui_t265_joint" type="fixed">
+        <origin xyz="-0.05945 0.02 0.073" rpy="3.14 3.14 0"/>
+        <parent link="arm1_link"/>
+        <child link="gui_t265_link"/>
+    </joint>
+
+    <!-- transmissions for ros2_control / dynamixel_hardware -->
+    <!-- SimpleTransmission used to map actuator to joint -->
+    <transmission name="arm_joint1_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="arm_joint1_motor">
+        <!-- 減速比しらべて書く -->
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="arm_joint1">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <transmission name="arm_joint2_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="arm_joint2_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="arm_joint2">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <transmission name="arm_joint3_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="arm_joint3_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="arm_joint3">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <transmission name="arm_joint4_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="arm_joint4_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="arm_joint4">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <transmission name="arm_joint5_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="arm_joint5_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="arm_joint5">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <transmission name="arm_joint6_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="arm_joint6_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="arm_joint6">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <!-- ros2_control configuration for dynamixel_hardware_interface -->
+
+    <!-- Launchファイルから実機制御するかを指定する -->
+    <xacro:property name="use_real_hw" value="$(arg use_real_hw)" />
+
+    <xacro:if value="${use_real_hw}">
+    <ros2_control name="sekirei_dynamixel_hw" type="system">
+        <hardware>
+            <!-- plugin provided by dynamixel_hardware_interface package -->
+            <plugin>dynamixel_hardware_interface/DynamixelHardware</plugin>
+            <!-- Assumptions: XM540-W270 on /dev/ttyUSB0 at 1Mbps. -->
+            <param name="port_name">/dev/ttyUSB0</param>
+            <param name="baud_rate">1000000</param>
+            <param name="error_timeout_ms">1000</param>
+            <param name="number_of_joints">6</param>
+            <param name="number_of_transmissions">6</param>
+            <param name="dynamixel_model_folder">/param/dxl_model</param>
+            <param name="disable_torque_at_init">true</param>
+            <param name="ignore_hardware_error">true</param>
+            <param name="ping_retry_count">3</param>
+            <!-- 1:1 mapping: arm_joint1<->dxl21, arm_joint2<->dxl22, ... arm_joint6<->dxl26 (IDs: 21-28, only using 21-26 for 6 joints) -->
+            <!-- このへんあやしい -->
+          <!-- Real-hardware mapping: invert joint3 sign so hardware commands/states match URDF orientation
+              Simulation (use_real_hw=false) will keep the identity mapping in its branch. -->
+          <param name="joint_to_transmission_matrix">1,0,0,0,0,0, 0,1,0,0,0,0, 0,0,-1,0,0,0, 0,0,0,1,0,0, 0,0,0,0,1,0, 0,0,0,0,0,1</param>
+          <param name="transmission_to_joint_matrix">1,0,0,0,0,0, 0,1,0,0,0,0, 0,0,-1,0,0,0, 0,0,0,1,0,0, 0,0,0,0,1,0, 0,0,0,0,0,1</param>
+        </hardware>
+
+        <!-- Joint configurations -->
+        <joint name="arm_joint1">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="arm_joint2">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="arm_joint3">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="arm_joint4">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="arm_joint5">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="arm_joint6">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+
+        <!-- GPIO configurations for Dynamixel motors (IDs: 21-26) -->
+        <!-- Note: ID 26 is XM430-W350 (model 1020), others are XM540-W270 (model 1120) -->
+        <gpio name="dxl1">
+            <param name="type">dxl</param>
+            <param name="ID">21</param>
+            <command_interface name="Goal Position"/>
+            <state_interface name="Present Position"/>
+            <state_interface name="Present Velocity"/>
+            <state_interface name="Present Current"/>
+            <param name="Position P Gain">800</param>
+            <param name="Position I Gain">0</param>
+            <param name="Position D Gain">4000</param>
+            <param name="Drive Mode">1</param>
+        </gpio>
+        <gpio name="dxl2">
+            <param name="type">dxl</param>
+            <param name="ID">22</param>
+            <command_interface name="Goal Position"/>
+            <state_interface name="Present Position"/>
+            <state_interface name="Present Velocity"/>
+            <state_interface name="Present Current"/>
+            <param name="Position P Gain">800</param>
+            <param name="Position I Gain">0</param>
+            <param name="Position D Gain">4000</param>
+            <param name="Drive Mode">0</param>
+        </gpio>
+        <gpio name="dxl3">
+            <param name="type">dxl</param>
+            <param name="ID">23</param>
+            <command_interface name="Goal Position"/>
+            <state_interface name="Present Position"/>
+            <state_interface name="Present Velocity"/>
+            <state_interface name="Present Current"/>
+            <param name="Position P Gain">800</param>
+            <param name="Position I Gain">0</param>
+            <param name="Position D Gain">4000</param>
+            <param name="Drive Mode">1</param>
+            <!-- ここ反転の可能性大きい -->
+            <!-- やっぱちがうかも -->
+            <!-- 向きは1でそろう -->
+        </gpio>
+        <gpio name="dxl4">
+            <param name="type">dxl</param>
+            <param name="ID">24</param>
+            <command_interface name="Goal Position"/>
+            <state_interface name="Present Position"/>
+            <state_interface name="Present Velocity"/>
+            <state_interface name="Present Current"/>
+            <param name="Position P Gain">800</param>
+            <param name="Position I Gain">0</param>
+            <param name="Position D Gain">4000</param>
+            <param name="Drive Mode">0</param>
+        </gpio>
+        <gpio name="dxl5">
+            <param name="type">dxl</param>
+            <param name="ID">25</param>
+            <command_interface name="Goal Position"/>
+            <state_interface name="Present Position"/>
+            <state_interface name="Present Velocity"/>
+            <state_interface name="Present Current"/>
+            <param name="Position P Gain">800</param>
+            <param name="Position I Gain">0</param>
+            <param name="Position D Gain">4000</param>
+            <param name="Drive Mode">0</param>
+        </gpio>
+        <gpio name="dxl6">
+            <param name="type">dxl</param>
+            <param name="ID">26</param>
+            <command_interface name="Goal Position"/>
+            <state_interface name="Present Position"/>
+            <state_interface name="Present Velocity"/>
+            <state_interface name="Present Current"/>
+            <param name="Position P Gain">800</param>
+            <param name="Position I Gain">0</param>
+            <param name="Position D Gain">4000</param>
+            <param name="Drive Mode">0</param>
+        </gpio>
+
+    </ros2_control>
+    </xacro:if>
+
+    <xacro:unless value="${use_real_hw}">
+     <!-- ros2_control configuration for dummy/mock hardware -->
+    <ros2_control name="sekirei_dynamixel_hw" type="system">
+        <hardware>
+            <!-- Using the mock_components GenericSystem for demo (no real Dynamixel) -->
+            <plugin>mock_components/GenericSystem</plugin>
+            <!-- mock_components parameters -->
+            <param name="mock_sensor_commands">false</param>
+            <param name="state_following_offset">0.0</param>
+        </hardware>
+
+        <joint name="arm_joint1">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="effort">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+
+        </joint>
+        <joint name="arm_joint2">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">0</param>
+            </command_interface>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="effort">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+        </joint>
+        <joint name="arm_joint3">
+            <command_interface name="position">
+                <param name="min">0</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="effort">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+        </joint>
+        <joint name="arm_joint4">
+            <command_interface name="position">
+                <param name="min">-4.71</param>
+                <param name="max">0</param>
+            </command_interface>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="effort">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+        </joint>
+        <joint name="arm_joint5">
+            <command_interface name="position">
+                <param name="min">-1.57</param>
+                <param name="max">1.57</param>
+            </command_interface>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="effort">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+        </joint>
+        <joint name="arm_joint6">
+            <command_interface name="position">
+                <param name="min">-3.14</param>
+                <param name="max">3.14</param>
+            </command_interface>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="effort">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+        </joint>
+
+    </ros2_control>
+    </xacro:unless>
+
+</robot>

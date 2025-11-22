@@ -11,8 +11,8 @@ servo_node:
     moveit_servo.pose_command_in_topic: "~/pose_target_cmds"
     moveit_servo.cartesian_command_in_topic: "~/delta_twist_cmds"
     moveit_servo.joint_command_in_topic: "~/delta_joint_cmds"
-    # moveit_servo.command_out_topic: "/sekirei_arm_controller/joint_trajectory"
-    moveit_servo.command_out_topic: "/sekirei_arm_controller/joint_trajectory_controller/commands"
+    moveit_servo.command_out_topic: "/sekirei_arm_controller/joint_trajectory"
+    # moveit_servo.command_out_topic: "/sekirei_arm_controller/joint_trajectory_controller/commands"
     moveit_servo.command_out_type: "trajectory_msgs/JointTrajectory"
 
     moveit_servo.use_output_qos: true

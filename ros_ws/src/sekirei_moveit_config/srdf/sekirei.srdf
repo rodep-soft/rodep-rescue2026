@@ -1,0 +1,111 @@
+<?xml version="1.0" ?>
+<robot name="sekirei">
+    <group name="sekirei_arm">
+        <chain base_link="base_link" tip_link="arm6_link" />
+    </group>
+
+    <!-- Define the end effector -->
+    <end_effector name="end_effector" parent_link="arm6_link" group="sekirei_arm" />
+
+    <!-- Disable collisions between adjacent links -->
+    <disable_collisions link1="base_link" link2="arm_base_link" reason="Adjacent" />
+    <disable_collisions link1="arm_base_link" link2="arm1_link" reason="Adjacent" />
+    <disable_collisions link1="arm1_link" link2="arm2_link" reason="Adjacent" />
+    <disable_collisions link1="arm2_link" link2="arm3_link" reason="Adjacent" />
+    <disable_collisions link1="arm3_link" link2="arm4_link" reason="Adjacent" />
+    <disable_collisions link1="arm4_link" link2="arm5_link" reason="Adjacent" />
+    <disable_collisions link1="arm5_link" link2="arm6_link" reason="Adjacent" />
+
+    <!-- Disable collisions between links that can overlap in certain configurations -->
+    <disable_collisions link1="arm2_link" link2="arm_base_link" reason="Never" />
+    <disable_collisions link1="arm2_link" link2="gui_d435_link" reason="Never" />
+    <disable_collisions link1="arm3_link" link2="arm5_link" reason="Never" />
+    <disable_collisions link1="arm3_link" link2="arm6_link" reason="Never" />
+    <disable_collisions link1="arm3_link" link2="gui_d435_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="gui_t265_link" reason="Default" />
+
+    <!-- Disable collisions for camera links -->
+    <disable_collisions link1="gui_d435_link" link2="arm6_link" reason="Adjacent" />
+    <disable_collisions link1="gui_t265_link" link2="arm1_link" reason="Adjacent" />
+
+    <!-- Named Poses (Preset Positions) -->
+    <!-- Home: Safe initial position, all joints at zero -->
+    <group_state name="home" group="sekirei_arm">
+        <joint name="arm_joint1" value="0.0" />
+        <joint name="arm_joint2" value="0.0" />
+        <joint name="arm_joint3" value="0.0" />
+        <joint name="arm_joint4" value="0.0" />
+        <joint name="arm_joint5" value="0.0" />
+        <joint name="arm_joint6" value="0.0" />
+    </group_state>
+
+    <!-- Ready: Upright ready position -->
+    <group_state name="ready" group="sekirei_arm">
+        <joint name="arm_joint1" value="0.0" />
+        <joint name="arm_joint2" value="-1.57" />
+        <joint name="arm_joint3" value="1.57" />
+        <joint name="arm_joint4" value="0.0" />
+        <joint name="arm_joint5" value="0.0" />
+        <joint name="arm_joint6" value="0.0" />
+    </group_state>
+
+    <!-- Up: Arm fully extended upward -->
+    <group_state name="up" group="sekirei_arm">
+        <joint name="arm_joint1" value="0.0" />
+        <joint name="arm_joint2" value="-1.57" />
+        <joint name="arm_joint3" value="0.0" />
+        <joint name="arm_joint4" value="0.0" />
+        <joint name="arm_joint5" value="-1.57" />
+        <joint name="arm_joint6" value="0.0" />
+    </group_state>
+
+    <!-- Forward: Arm extended forward for picking -->
+    <group_state name="forward" group="sekirei_arm">
+        <joint name="arm_joint1" value="0.0" />
+        <joint name="arm_joint2" value="0.0" />
+        <joint name="arm_joint3" value="0.0" />
+        <joint name="arm_joint4" value="0.0" />
+        <joint name="arm_joint5" value="-1.57" />
+        <joint name="arm_joint6" value="0.0" />
+    </group_state>
+
+    <!-- Compact: Folded position for storage/transport -->
+    <group_state name="compact" group="sekirei_arm">
+        <joint name="arm_joint1" value="0.0" />
+        <joint name="arm_joint2" value="1.57" />
+        <joint name="arm_joint3" value="1.57" />
+        <joint name="arm_joint4" value="0.0" />
+        <joint name="arm_joint5" value="1.57" />
+        <joint name="arm_joint6" value="0.0" />
+    </group_state>
+
+    <!-- Left: Rotated 90 degrees left -->
+    <group_state name="left" group="sekirei_arm">
+        <joint name="arm_joint1" value="1.57" />
+        <joint name="arm_joint2" value="0.0" />
+        <joint name="arm_joint3" value="0.0" />
+        <joint name="arm_joint4" value="0.0" />
+        <joint name="arm_joint5" value="-1.57" />
+        <joint name="arm_joint6" value="0.0" />
+    </group_state>
+
+    <!-- Right: Rotated 90 degrees right -->
+    <group_state name="right" group="sekirei_arm">
+        <joint name="arm_joint1" value="-1.57" />
+        <joint name="arm_joint2" value="0.0" />
+        <joint name="arm_joint3" value="0.0" />
+        <joint name="arm_joint4" value="0.0" />
+        <joint name="arm_joint5" value="-1.57" />
+        <joint name="arm_joint6" value="0.0" />
+    </group_state>
+
+    <!-- Back: Rotated 180 degrees -->
+    <group_state name="back" group="sekirei_arm">
+        <joint name="arm_joint1" value="3.14" />
+        <joint name="arm_joint2" value="0.0" />
+        <joint name="arm_joint3" value="0.0" />
+        <joint name="arm_joint4" value="0.0" />
+        <joint name="arm_joint5" value="-1.57" />
+        <joint name="arm_joint6" value="0.0" />
+    </group_state>
+</robot>

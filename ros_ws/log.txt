@@ -1,369 +1,89 @@
-<<<<<<< HEAD
-[INFO] [launch]: All log files can be found below /root/.ros/log/2025-11-15-18-49-53-264941-tatsv-20588
+[INFO] [launch]: All log files can be found below /root/.ros/log/2025-11-22-08-19-06-416700-tatsv-4369
 [INFO] [launch]: Default logging verbosity is set to INFO
 >>> SRDF path: /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/sekirei.srdf
-[INFO] [static_transform_publisher-1]: process started with pid [20595]
-[INFO] [robot_state_publisher-2]: process started with pid [20596]
-[INFO] [ros2_control_node-3]: process started with pid [20597]
-[INFO] [move_group-4]: process started with pid [20598]
-[INFO] [rviz2-5]: process started with pid [20599]
+[INFO] [static_transform_publisher-1]: process started with pid [4373]
+[INFO] [robot_state_publisher-2]: process started with pid [4374]
+[INFO] [ros2_control_node-3]: process started with pid [4375]
+[INFO] [move_group-4]: process started with pid [4376]
+[INFO] [rviz2-5]: process started with pid [4377]
 [demo.launch] Warning: move_group services not visible after timeout; starting servo anyway
-[INFO] [spawner-6]: process started with pid [20735]
-[INFO] [spawner-6]: process has finished cleanly [pid 20735]
-[INFO] [spawner-7]: process started with pid [20736]
-[INFO] [spawner-7]: process has finished cleanly [pid 20736]
-[static_transform_publisher-1] [WARN] [1763232593.612485366] []: Old-style arguments are deprecated; see --help for new-style arguments
-[static_transform_publisher-1] [INFO] [1763232593.623442129] [static_transform_publisher]: Spinning until stopped - publishing transform
+[INFO] [spawner-6]: process started with pid [4540]
+[INFO] [spawner-6]: process has finished cleanly [pid 4540]
+[INFO] [spawner-7]: process started with pid [4541]
+[INFO] [spawner-7]: process has finished cleanly [pid 4541]
+[static_transform_publisher-1] [WARN] [1763799546.593567901] []: Old-style arguments are deprecated; see --help for new-style arguments
+[static_transform_publisher-1] [INFO] [1763799546.606180295] [static_transform_publisher]: Spinning until stopped - publishing transform
 [static_transform_publisher-1] translation: ('0.000000', '0.000000', '0.000000')
 [static_transform_publisher-1] rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
 [static_transform_publisher-1] from 'world' to 'base_link'
-[INFO] [servo_node-8]: process started with pid [20915]
-[robot_state_publisher-2] [WARN] [1763232593.626068782] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
-[robot_state_publisher-2] [INFO] [1763232593.626153517] [robot_state_publisher]: Robot initialized
+[INFO] [servo_node-8]: process started with pid [4703]
+[robot_state_publisher-2] [WARN] [1763799546.607885346] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[robot_state_publisher-2] [INFO] [1763799546.607978118] [robot_state_publisher]: Robot initialized
 [rviz2-5] QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
-[rviz2-5] [INFO] [1763232593.730170257] [rviz2]: Stereo is NOT SUPPORTED
-[rviz2-5] [INFO] [1763232593.730211445] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
-[rviz2-5] [INFO] [1763232593.742018440] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-5] [INFO] [1763799546.729495937] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-5] [INFO] [1763799546.729563017] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
+[rviz2-5] [INFO] [1763799546.745026219] [rviz2]: Stereo is NOT SUPPORTED
 [rviz2-5] Warning: class_loader.impl: SEVERE WARNING!!! A namespace collision has occurred with plugin factory for class rviz_default_plugins::displays::InteractiveMarkerDisplay. New factory will OVERWRITE existing one. This situation occurs when libraries containing plugins are directly linked against an executable (the one running right now generating this message). Please separate plugins out into their own library or just don't link against the library and use either class_loader::ClassLoader/MultiLibraryClassLoader to open.
 [rviz2-5]          at line 321 in /opt/ros/jazzy/include/class_loader/class_loader/class_loader_core.hpp
-[ros2_control_node-3] [INFO] [1763232593.631714933] [controller_manager]: Using Steady (Monotonic) clock for triggering controller manager cycles.
-[ros2_control_node-3] [INFO] [1763232593.633871180] [controller_manager]: Subscribing to '/robot_description' topic for robot description.
-[ros2_control_node-3] [INFO] [1763232593.655281251] [controller_manager]: update rate is 50 Hz
-[ros2_control_node-3] [INFO] [1763232593.655310978] [controller_manager]: Overruns handling is : enabled
-[ros2_control_node-3] [INFO] [1763232593.655315218] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
-[ros2_control_node-3] [INFO] [1763232593.655373915] [controller_manager]: Successful set up FIFO RT scheduling policy with priority 50.
-[ros2_control_node-3] [INFO] [1763232593.810810503] [controller_manager]: Received robot description from topic.
-[ros2_control_node-3] [INFO] [1763232593.812501977] [controller_manager]: Loading hardware 'sekirei_dynamixel_hw' 
-[ros2_control_node-3] [INFO] [1763232593.812825741] [controller_manager]: Loaded hardware 'sekirei_dynamixel_hw' from plugin 'mock_components/GenericSystem'
-[ros2_control_node-3] [INFO] [1763232593.812863163] [controller_manager]: Initialize hardware 'sekirei_dynamixel_hw' 
-[ros2_control_node-3] [INFO] [1763232593.816672552] [controller_manager]: Successful initialization of hardware 'sekirei_dynamixel_hw'
-[ros2_control_node-3] [INFO] [1763232593.816840272] [resource_manager]: 'configure' hardware 'sekirei_dynamixel_hw' 
-[ros2_control_node-3] [INFO] [1763232593.816846886] [resource_manager]: Successful 'configure' of hardware 'sekirei_dynamixel_hw'
-[ros2_control_node-3] [INFO] [1763232593.816852167] [resource_manager]: 'activate' hardware 'sekirei_dynamixel_hw' 
-[ros2_control_node-3] [INFO] [1763232593.816855468] [resource_manager]: Successful 'activate' of hardware 'sekirei_dynamixel_hw'
-[ros2_control_node-3] [INFO] [1763232593.816895379] [controller_manager]: Registering statistics for : sekirei_dynamixel_hw
-[ros2_control_node-3] [INFO] [1763232593.816943536] [controller_manager]: Resource Manager has been successfully initialized. Starting Controller Manager services...
-[move_group-4] [WARN] [1763232593.650629796] [move_group]: Using default pipeline 'ompl'
-[move_group-4] [INFO] [1763232593.652585192] [move_group.moveit.moveit.ros.rdf_loader]: Loaded robot model in 0 seconds
-[move_group-4] [INFO] [1763232593.652624868] [move_group.moveit.moveit.core.robot_model]: Loading robot model 'sekirei'...
-[move_group-4] [INFO] [1763232593.652634049] [move_group.moveit.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
-[move_group-4] [WARN] [1763232593.652724794] [move_group.moveit.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
-[move_group-4] [WARN] [1763232593.654332149] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
-[move_group-4] [INFO] [1763232593.654391269] [move_group.moveit.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
-[move_group-4] [INFO] [1763232593.668476609] [move_group.moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
-[move_group-4] [INFO] [1763232593.668575677] [move_group.moveit.moveit.ros.moveit_cpp]: Listening to 'joint_states' for joint states
-[move_group-4] [INFO] [1763232593.669053885] [move_group.moveit.moveit.ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
-[move_group-4] [INFO] [1763232593.669310083] [move_group.moveit.moveit.ros.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
-[move_group-4] [INFO] [1763232593.669319354] [move_group.moveit.moveit.ros.planning_scene_monitor]: Stopping existing planning scene publisher.
-[move_group-4] [INFO] [1763232593.669372816] [move_group.moveit.moveit.ros.planning_scene_monitor]: Stopped publishing maintained planning scene.
-[move_group-4] [INFO] [1763232593.669551302] [move_group.moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
-[move_group-4] [INFO] [1763232593.669585059] [move_group.moveit.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
-[move_group-4] [INFO] [1763232593.669967155] [move_group.moveit.moveit.ros.planning_scene_monitor]: Listening to '/planning_scene'
-[move_group-4] [INFO] [1763232593.669975197] [move_group.moveit.moveit.ros.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
-[move_group-4] [INFO] [1763232593.670150976] [move_group.moveit.moveit.ros.planning_scene_monitor]: Listening to 'collision_object'
-[move_group-4] [INFO] [1763232593.670331531] [move_group.moveit.moveit.ros.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
-[move_group-4] [WARN] [1763232593.670473211] [move_group.moveit.moveit.ros.occupancy_map_monitor]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
-[move_group-4] [ERROR] [1763232593.670484598] [move_group.moveit.moveit.ros.occupancy_map_monitor]: No 3D sensor plugin(s) defined for octomap updates
-[move_group-4] [INFO] [1763232593.680485097] [move_group.moveit.moveit.ros.planning_pipeline]: Successfully loaded planner 'OMPL'
-[move_group-4] [INFO] [1763232593.681173590] [move_group]: Try loading adapter 'default_planning_request_adapters/ResolveConstraintFrames'
-[move_group-4] [INFO] [1763232593.681726800] [move_group]: Loaded adapter 'default_planning_request_adapters/ResolveConstraintFrames'
-[move_group-4] [INFO] [1763232593.681736819] [move_group]: Try loading adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
-[move_group-4] [INFO] [1763232593.681836505] [move_group]: Loaded adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
-[move_group-4] [INFO] [1763232593.681841306] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateBounds'
-[move_group-4] [INFO] [1763232593.681855191] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateBounds'
-[move_group-4] [INFO] [1763232593.681857972] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateCollision'
-[move_group-4] [INFO] [1763232593.681864635] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
-[move_group-4] [INFO] [1763232593.682494638] [move_group]: Try loading adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
-[move_group-4] [INFO] [1763232593.683586480] [move_group]: Loaded adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
-[move_group-4] [INFO] [1763232593.683593702] [move_group]: Try loading adapter 'default_planning_response_adapters/ValidateSolution'
-[move_group-4] [INFO] [1763232593.684897518] [move_group]: Loaded adapter 'default_planning_response_adapters/ValidateSolution'
-[move_group-4] [INFO] [1763232593.684909270] [move_group]: Try loading adapter 'default_planning_response_adapters/DisplayMotionPath'
-[move_group-4] [INFO] [1763232593.685233994] [move_group]: Loaded adapter 'default_planning_response_adapters/DisplayMotionPath'
-[move_group-4] [INFO] [1763232593.697623556] [move_group.moveit.moveit.plugins.simple_controller_manager]: Added FollowJointTrajectory controller for sekirei_arm_controller
-[move_group-4] [INFO] [1763232593.697770737] [move_group.moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
-[move_group-4] [INFO] [1763232593.697799076] [move_group.moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
-[move_group-4] [INFO] [1763232593.698265905] [move_group.moveit.moveit.ros.trajectory_execution_manager]: Trajectory execution is not managing controllers
-[move_group-4] [INFO] [1763232593.698278260] [move_group]: MoveGroup debug mode is ON
-[move_group-4] [INFO] [1763232593.708423044] [move_group.moveit.moveit.ros.move_group.executable]: 
-=======
-[INFO] [launch]: All log files can be found below /root/.ros/log/2025-11-17-12-56-39-177323-rodeppc-39468
-[INFO] [launch]: Default logging verbosity is set to INFO
-[demo.launch.py] Found USB devices: ['/dev/ttyUSB0']
-[demo.launch.py] Dynamixel hardware detected - using sekirei_moveit.urdf with dynamixel_hardware_interface
->>> SRDF path: /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/sekirei.srdf
-[INFO] [static_transform_publisher-1]: process started with pid [39472]
-[INFO] [robot_state_publisher-2]: process started with pid [39473]
-[INFO] [ros2_control_node-3]: process started with pid [39474]
-[INFO] [move_group-4]: process started with pid [39475]
-[INFO] [rviz2-5]: process started with pid [39476]
-[static_transform_publisher-1] [WARN] [1763384199.373087003] []: Old-style arguments are deprecated; see --help for new-style arguments
-[static_transform_publisher-1] [INFO] [1763384199.389842522] [static_transform_publisher]: Spinning until stopped - publishing transform
-[static_transform_publisher-1] translation: ('0.000000', '0.000000', '0.000000')
-[static_transform_publisher-1] rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
-[static_transform_publisher-1] from 'world' to 'base_link'
-[robot_state_publisher-2] [WARN] [1763384199.394470034] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
-[robot_state_publisher-2] [INFO] [1763384199.394553527] [robot_state_publisher]: Robot initialized
-[rviz2-5] QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
-[ros2_control_node-3] [INFO] [1763384199.403249869] [controller_manager]: Using Steady (Monotonic) clock for triggering controller manager cycles.
-[ros2_control_node-3] [INFO] [1763384199.406157293] [controller_manager]: Subscribing to '/robot_description' topic for robot description.
-[move_group-4] [WARN] [1763384199.427590290] [move_group]: Using default pipeline 'ompl'
-[ros2_control_node-3] [INFO] [1763384199.427872785] [controller_manager]: update rate is 50 Hz
-[ros2_control_node-3] [INFO] [1763384199.427898289] [controller_manager]: Overruns handling is : enabled
-[ros2_control_node-3] [INFO] [1763384199.427907474] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
-[ros2_control_node-3] [INFO] [1763384199.427985947] [controller_manager]: Successful set up FIFO RT scheduling policy with priority 50.
-[move_group-4] [INFO] [1763384199.430343748] [moveit.moveit.ros.rdf_loader]: Loaded robot model in 0.00253376 seconds
-[move_group-4] [INFO] [1763384199.430394560] [moveit.moveit.core.robot_model]: Loading robot model 'sekirei'...
-[move_group-4] [INFO] [1763384199.430415440] [moveit.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
-[move_group-4] [WARN] [1763384199.430576590] [moveit.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
-[move_group-4] [WARN] [1763384199.433060342] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
-[move_group-4] [INFO] [1763384199.433144733] [moveit.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
-[move_group-4] [INFO] [1763384199.450734786] [moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
-[move_group-4] [INFO] [1763384199.450846079] [moveit.moveit.ros.moveit_cpp]: Listening to 'joint_states' for joint states
-[move_group-4] [INFO] [1763384199.451541773] [moveit.moveit.ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
-[move_group-4] [INFO] [1763384199.451909217] [moveit.moveit.ros.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
-[move_group-4] [INFO] [1763384199.451924360] [moveit.moveit.ros.planning_scene_monitor]: Stopping existing planning scene publisher.
-[move_group-4] [INFO] [1763384199.452002853] [moveit.moveit.ros.planning_scene_monitor]: Stopped publishing maintained planning scene.
-[move_group-4] [INFO] [1763384199.452275978] [moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
-[move_group-4] [INFO] [1763384199.452325318] [moveit.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
-[move_group-4] [INFO] [1763384199.452839869] [moveit.moveit.ros.planning_scene_monitor]: Listening to '/planning_scene'
-[move_group-4] [INFO] [1763384199.452854373] [moveit.moveit.ros.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
-[move_group-4] [INFO] [1763384199.453174053] [moveit.moveit.ros.planning_scene_monitor]: Listening to 'collision_object'
-[move_group-4] [INFO] [1763384199.453491882] [moveit.moveit.ros.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
-[move_group-4] [WARN] [1763384199.453750386] [moveit.moveit.ros.occupancy_map_monitor]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
-[move_group-4] [ERROR] [1763384199.453770883] [moveit.moveit.ros.occupancy_map_monitor]: No 3D sensor plugin(s) defined for octomap updates
-[ros2_control_node-3] [INFO] [1763384199.579765111] [controller_manager]: Received robot description from topic.
-[ros2_control_node-3] [INFO] [1763384199.582088114] [controller_manager]: Loading hardware 'sekirei_dynamixel_hw' 
-[ros2_control_node-3] [INFO] [1763384199.588419918] [controller_manager]: Loaded hardware 'sekirei_dynamixel_hw' from plugin 'dynamixel_hardware_interface/DynamixelHardware'
-[ros2_control_node-3] [INFO] [1763384199.588491987] [controller_manager]: Initialize hardware 'sekirei_dynamixel_hw' 
-[ros2_control_node-3] transmission_to_joint_matrix_ 
-[ros2_control_node-3] [0][0] 1.000000, [0][1] 0.000000, [0][2] 0.000000, [0][3] 0.000000, [0][4] 0.000000, [0][5] 0.000000, 
-[ros2_control_node-3] [1][0] 0.000000, [1][1] 1.000000, [1][2] 0.000000, [1][3] 0.000000, [1][4] 0.000000, [1][5] 0.000000, 
-[ros2_control_node-3] [2][0] 0.000000, [2][1] 0.000000, [2][2] -1.000000, [2][3] 0.000000, [2][4] 0.000000, [2][5] 0.000000, 
-[ros2_control_node-3] [3][0] 0.000000, [3][1] 0.000000, [3][2] 0.000000, [3][3] 1.000000, [3][4] 0.000000, [3][5] 0.000000, 
-[ros2_control_node-3] [4][0] 0.000000, [4][1] 0.000000, [4][2] 0.000000, [4][3] 0.000000, [4][4] 1.000000, [4][5] 0.000000, 
-[ros2_control_node-3] [5][0] 0.000000, [5][1] 0.000000, [5][2] 0.000000, [5][3] 0.000000, [5][4] 0.000000, [5][5] 1.000000, 
-[ros2_control_node-3] joint_to_transmission_matrix_ 
-[ros2_control_node-3] [0][0] 1.000000, [0][1] 0.000000, [0][2] 0.000000, [0][3] 0.000000, [0][4] 0.000000, [0][5] 0.000000, 
-[ros2_control_node-3] [1][0] 0.000000, [1][1] 1.000000, [1][2] 0.000000, [1][3] 0.000000, [1][4] 0.000000, [1][5] 0.000000, 
-[ros2_control_node-3] [2][0] 0.000000, [2][1] 0.000000, [2][2] -1.000000, [2][3] 0.000000, [2][4] 0.000000, [2][5] 0.000000, 
-[ros2_control_node-3] [3][0] 0.000000, [3][1] 0.000000, [3][2] 0.000000, [3][3] 1.000000, [3][4] 0.000000, [3][5] 0.000000, 
-[ros2_control_node-3] [4][0] 0.000000, [4][1] 0.000000, [4][2] 0.000000, [4][3] 0.000000, [4][4] 1.000000, [4][5] 0.000000, 
-[ros2_control_node-3] [5][0] 0.000000, [5][1] 0.000000, [5][2] 0.000000, [5][3] 0.000000, [5][4] 0.000000, [5][5] 1.000000, 
-[ros2_control_node-3] [INFO] [1763384199.593407801] [dynamixel_hardware_interface]: Torque will be disabled during initialization if it is enabled at initialization.
-[ros2_control_node-3] [INFO] [1763384199.593427005] [dynamixel_hardware_interface]: port_name /dev/ttyUSB0 / baudrate 1000000
-[ros2_control_node-3] Dynamixel Information File List.
-[ros2_control_node-3] num: 30, name: mx_28.model
-[ros2_control_node-3] num: 220, name: omy_hat.model
-[ros2_control_node-3] num: 230, name: omy_end.model
-[ros2_control_node-3] num: 231, name: omy_end_rh_p12_rn.model
-[ros2_control_node-3] num: 311, name: mx_64.model
-[ros2_control_node-3] num: 321, name: mx_106.model
-[ros2_control_node-3] num: 350, name: xl320.model
-[ros2_control_node-3] num: 536, name: sensorxel_joy.model
-[ros2_control_node-3] num: 537, name: ffw_g40_imu.model
-[ros2_control_node-3] num: 600, name: sensorxel_joy.model
-[ros2_control_node-3] num: 601, name: ffw_g10_led.model
-[ros2_control_node-3] num: 602, name: ffw_g10_rcu.model
-[ros2_control_node-3] num: 620, name: ffw_sg2_steer_1.model
-[ros2_control_node-3] num: 621, name: ffw_sg2_steer_2.model
-[ros2_control_node-3] num: 622, name: ffw_sg2_steer_3.model
-[ros2_control_node-3] num: 623, name: ffw_sg2_drive_1.model
-[ros2_control_node-3] num: 624, name: ffw_sg2_drive_2.model
-[ros2_control_node-3] num: 625, name: ffw_sg2_drive_3.model
-[ros2_control_node-3] num: 1000, name: xh430_w350.model
-[ros2_control_node-3] num: 1001, name: xd430_t350.model
-[ros2_control_node-3] num: 1010, name: xh430_w210.model
-[ros2_control_node-3] num: 1011, name: xd430_t210.model
-[ros2_control_node-3] num: 1020, name: xm430_w350.model
-[ros2_control_node-3] num: 1030, name: xm430_w210.model
-[ros2_control_node-3] num: 1040, name: xh430_v350.model
-[ros2_control_node-3] num: 1050, name: xh430_v210.model
-[ros2_control_node-3] num: 1060, name: xl430_w250.model
-[ros2_control_node-3] num: 1070, name: xc430_w150.model
-[ros2_control_node-3] num: 1070, name: xc430_w150.model
-[ros2_control_node-3] num: 1080, name: xc430_w240.model
-[ros2_control_node-3] num: 1080, name: xc430_w240.model
-[ros2_control_node-3] num: 1090, name: 2xl430_w250.model
-[ros2_control_node-3] num: 1100, name: xh540_w270.model
-[ros2_control_node-3] num: 1101, name: xd540_t270.model
-[ros2_control_node-3] num: 1110, name: xh540_w150.model
-[ros2_control_node-3] num: 1111, name: xd540_t150.model
-[ros2_control_node-3] num: 1120, name: xm540_w270.model
-[ros2_control_node-3] num: 1130, name: xm540_w150.model
-[ros2_control_node-3] num: 1140, name: xh540_v270.model
-[ros2_control_node-3] num: 1150, name: xh540_v150.model
-[ros2_control_node-3] num: 1160, name: 2xc430_w250.model
-[ros2_control_node-3] num: 1170, name: xw540_t260.model
-[ros2_control_node-3] num: 1180, name: xw540_t140.model
-[ros2_control_node-3] num: 1190, name: xl330_m077.model
-[ros2_control_node-3] num: 1200, name: xl330_m288.model
-[ros2_control_node-3] num: 1210, name: xc330_t181.model
-[ros2_control_node-3] num: 1220, name: xc330_t288.model
-[ros2_control_node-3] num: 1230, name: xc330_m181.model
-[ros2_control_node-3] num: 1240, name: xc330_m288.model
-[ros2_control_node-3] num: 1270, name: xw430_t333.model
-[ros2_control_node-3] num: 1310, name: xw540_h260.model
-[ros2_control_node-3] num: 2000, name: ph42_020_s300.model
-[ros2_control_node-3] num: 2010, name: ph54_100_s500.model
-[ros2_control_node-3] num: 2020, name: ph54_200_s500.model
-[ros2_control_node-3] num: 2100, name: pm42_010_s260.model
-[ros2_control_node-3] num: 2110, name: pm54_040_s250.model
-[ros2_control_node-3] num: 2120, name: pm54_060_s250.model
-[ros2_control_node-3] num: 4000, name: ym070_210_m001.model
-[ros2_control_node-3] num: 4010, name: ym070_210_b001.model
-[ros2_control_node-3] num: 4020, name: ym070_210_r051.model
-[ros2_control_node-3] num: 4030, name: ym070_210_r099.model
-[ros2_control_node-3] num: 4040, name: ym070_210_a051.model
-[ros2_control_node-3] num: 4050, name: ym070_210_a099.model
-[ros2_control_node-3] num: 4120, name: ym080_230_m001.model
-[ros2_control_node-3] num: 4130, name: ym080_230_b001.model
-[ros2_control_node-3] num: 4140, name: ym080_230_r051.model
-[ros2_control_node-3] num: 4150, name: ym080_230_r099.model
-[ros2_control_node-3] num: 4160, name: ym080_230_a051.model
-[ros2_control_node-3] num: 4170, name: ym080_230_a099.model
-[ros2_control_node-3] num: 35074, name: rh_p12_rn.model
-[ros2_control_node-3] num: 43289, name: m42_10_s260_ra.model
-[ros2_control_node-3] num: 46097, name: m54_40_s250_ra.model
-[ros2_control_node-3] num: 46353, name: m54_60_s250_ra.model
-[ros2_control_node-3] num: 51201, name: h42_20_s300_ra.model
-[ros2_control_node-3] num: 53769, name: h54_100_s500_ra.model
-[ros2_control_node-3] num: 54025, name: h54_200_s500_ra.model
-[ros2_control_node-3] [INFO] [1763384199.593854322] [dynamixel_hardware_interface]: $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-[ros2_control_node-3] [INFO] [1763384199.593865143] [dynamixel_hardware_interface]: $$$$$ Init Dxl Comm Port
-[ros2_control_node-3] [INFO] [1763384199.594010566] [dynamixel_hardware_interface]: $$$$$ Init Items for type: controller
-[ros2_control_node-3] [INFO] [1763384199.594021350] [dynamixel_hardware_interface]: $$$$$ Init Items for type: virtual_dxl
-[ros2_control_node-3] Succeeded to open the port!
-[ros2_control_node-3] Succeeded to change the [1000000] baudrate!
-[ros2_control_node-3] [ID:021] Request ping	 - Ping succeeded. Dynamixel model number : 1120 (xm540_w270.model)
-[ros2_control_node-3] [ID:022] Request ping	 - Ping succeeded. Dynamixel model number : 1120 (xm540_w270.model)
-[ros2_control_node-3] [ID:023] Request ping	 - Ping succeeded. Dynamixel model number : 1120 (xm540_w270.model)
-[ros2_control_node-3] [ID:024] Request ping	 - Ping succeeded. Dynamixel model number : 1120 (xm540_w270.model)
-[ros2_control_node-3] [ID:025] Request ping	 - Ping succeeded. Dynamixel model number : 1120 (xm540_w270.model)
-[ros2_control_node-3] [ID:026] Request ping	 - Ping succeeded. Dynamixel model number : 1020 (xm430_w350.model)
-[ros2_control_node-3] [INFO] [1763384199.785720685] [dynamixel_hardware_interface]: Trying to connect to the communication port...
-[ros2_control_node-3] [InitTorqueStates][ID:021] Current torque state: OFF
-[ros2_control_node-3] [InitTorqueStates][ID:022] Current torque state: OFF
-[ros2_control_node-3] [InitTorqueStates][ID:023] Current torque state: OFF
-[ros2_control_node-3] [InitTorqueStates][ID:024] Current torque state: OFF
-[ros2_control_node-3] [InitTorqueStates][ID:025] Current torque state: OFF
-[ros2_control_node-3] [InitTorqueStates][ID:026] Current torque state: OFF
-[ros2_control_node-3] [INFO] [1763384199.881367668] [dynamixel_hardware_interface]: $$$$$ Init Items for type: dxl
-[ros2_control_node-3] [INFO] [1763384199.881420285] [dynamixel_hardware_interface]: [ID:21] item_name:Drive Mode	data:1
-[ros2_control_node-3] [INFO] [1763384199.897373066] [dynamixel_hardware_interface]: [ID:21] item_name:Position D Gain	data:4000
-[ros2_control_node-3] [INFO] [1763384199.913370466] [dynamixel_hardware_interface]: [ID:21] item_name:Position I Gain	data:0
-[ros2_control_node-3] [INFO] [1763384199.929326222] [dynamixel_hardware_interface]: [ID:21] item_name:Position P Gain	data:800
-[ros2_control_node-3] [INFO] [1763384199.945327218] [dynamixel_hardware_interface]: [ID:22] item_name:Drive Mode	data:0
-[ros2_control_node-3] [INFO] [1763384199.961286138] [dynamixel_hardware_interface]: [ID:22] item_name:Position D Gain	data:4000
-[ros2_control_node-3] [INFO] [1763384199.977323090] [dynamixel_hardware_interface]: [ID:22] item_name:Position I Gain	data:0
-[ros2_control_node-3] [INFO] [1763384199.993320254] [dynamixel_hardware_interface]: [ID:22] item_name:Position P Gain	data:800
-[ros2_control_node-3] [INFO] [1763384200.009330697] [dynamixel_hardware_interface]: [ID:23] item_name:Drive Mode	data:1
-[ros2_control_node-3] [INFO] [1763384200.025327775] [dynamixel_hardware_interface]: [ID:23] item_name:Position D Gain	data:4000
-[ros2_control_node-3] [INFO] [1763384200.041296188] [dynamixel_hardware_interface]: [ID:23] item_name:Position I Gain	data:0
-[rviz2-5] [INFO] [1763384200.048322051] [rviz2]: Stereo is NOT SUPPORTED
-[rviz2-5] [INFO] [1763384200.048435600] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
-[ros2_control_node-3] [INFO] [1763384200.057318554] [dynamixel_hardware_interface]: [ID:23] item_name:Position P Gain	data:800
-[rviz2-5] [INFO] [1763384200.063240824] [rviz2]: Stereo is NOT SUPPORTED
-[ros2_control_node-3] [INFO] [1763384200.073346171] [dynamixel_hardware_interface]: [ID:24] item_name:Drive Mode	data:0
-[ros2_control_node-3] [INFO] [1763384200.089296559] [dynamixel_hardware_interface]: [ID:24] item_name:Position D Gain	data:4000
-[ros2_control_node-3] [INFO] [1763384200.105341991] [dynamixel_hardware_interface]: [ID:24] item_name:Position I Gain	data:0
-[ros2_control_node-3] [INFO] [1763384200.121297951] [dynamixel_hardware_interface]: [ID:24] item_name:Position P Gain	data:800
-[ros2_control_node-3] [INFO] [1763384200.137306855] [dynamixel_hardware_interface]: [ID:25] item_name:Drive Mode	data:0
-[rviz2-5] Warning: class_loader.impl: SEVERE WARNING!!! A namespace collision has occurred with plugin factory for class rviz_default_plugins::displays::InteractiveMarkerDisplay. New factory will OVERWRITE existing one. This situation occurs when libraries containing plugins are directly linked against an executable (the one running right now generating this message). Please separate plugins out into their own library or just don't link against the library and use either class_loader::ClassLoader/MultiLibraryClassLoader to open.
-[rviz2-5]          at line 321 in /opt/ros/jazzy/include/class_loader/class_loader/class_loader_core.hpp
-[rviz2-5] [WARN] [1763384200.147570679] [rcl.logging_rosout]: Publisher already registered for node name: 'rviz2'. If this is due to multiple nodes with the same name then all logs for the logger named 'rviz2' will go out over the existing publisher. As soon as any node with that name is destructed it will unregister the publisher, preventing any further logs for that name from being published on the rosout topic.
-[ros2_control_node-3] [INFO] [1763384200.153303385] [dynamixel_hardware_interface]: [ID:25] item_name:Position D Gain	data:4000
-[ros2_control_node-3] [INFO] [1763384200.169310266] [dynamixel_hardware_interface]: [ID:25] item_name:Position I Gain	data:0
-[ros2_control_node-3] [INFO] [1763384200.185295910] [dynamixel_hardware_interface]: [ID:25] item_name:Position P Gain	data:800
-[ros2_control_node-3] [INFO] [1763384200.201297243] [dynamixel_hardware_interface]: [ID:26] item_name:Drive Mode	data:0
-[ros2_control_node-3] [INFO] [1763384200.217288363] [dynamixel_hardware_interface]: [ID:26] item_name:Position D Gain	data:4000
-[ros2_control_node-3] [INFO] [1763384200.233340446] [dynamixel_hardware_interface]: [ID:26] item_name:Position I Gain	data:0
-[ros2_control_node-3] [INFO] [1763384200.249287066] [dynamixel_hardware_interface]: [ID:26] item_name:Position P Gain	data:800
-[ros2_control_node-3] [INFO] [1763384200.265339817] [dynamixel_hardware_interface]: $$$$$ Init Items for type: sensor
-[ros2_control_node-3] [INFO] [1763384200.265362896] [dynamixel_hardware_interface]: $$$$$ Init Dxl Read Items
-[ros2_control_node-3] Dynamixel Read Type : sync read
-[ros2_control_node-3] ID : 21, 22, 23, 24, 25, 26, 
-[ros2_control_node-3] Read items : 	Present Position	Present Velocity	Present Current
-[ros2_control_node-3] set fast sync read (indirect addr) : addr 634, size 10
-[ros2_control_node-3] FastSyncRead handler set up successfully.
-[ros2_control_node-3] Success to set SyncRead handler using indirect address
-[ros2_control_node-3] [INFO] [1763384201.225431403] [dynamixel_hardware_interface]: $$$$$ Init Dxl Write Items
-[ros2_control_node-3] Dynamixel Write Type : sync write
-[ros2_control_node-3] ID : 21, 22, 23, 24, 25, 26, 
-[ros2_control_node-3] Write items : 	Goal Position
-[ros2_control_node-3] set sync write (indirect addr) : addr 224, size 4
-[ros2_control_node-3] Success to set SyncWrite handler using indirect address
-[ros2_control_node-3] [INFO] [1763384201.614420476] [controller_manager]: Successful initialization of hardware 'sekirei_dynamixel_hw'
-[ros2_control_node-3] [INFO] [1763384201.614929660] [resource_manager]: 'configure' hardware 'sekirei_dynamixel_hw' 
-[ros2_control_node-3] [INFO] [1763384201.614936631] [resource_manager]: Successful 'configure' of hardware 'sekirei_dynamixel_hw'
-[ros2_control_node-3] [INFO] [1763384201.614943106] [resource_manager]: 'activate' hardware 'sekirei_dynamixel_hw' 
-[ros2_control_node-3] [INFO] [1763384201.625283028] [dynamixel_hardware_interface]: Sync joint state to command (joint: arm_joint1, position, 0.0874796 <- position, 0.0874796
-[ros2_control_node-3] [INFO] [1763384201.625298435] [dynamixel_hardware_interface]: Sync joint state to command (joint: arm_joint2, position, 0.639982 <- position, 0.639982
-[ros2_control_node-3] [INFO] [1763384201.625304591] [dynamixel_hardware_interface]: Sync joint state to command (joint: arm_joint3, position, -1.34135 <- position, -1.34135
-[ros2_control_node-3] [INFO] [1763384201.625310002] [dynamixel_hardware_interface]: Sync joint state to command (joint: arm_joint4, position, 0.0521808 <- position, 0.0521808
-[ros2_control_node-3] [INFO] [1763384201.625315550] [dynamixel_hardware_interface]: Sync joint state to command (joint: arm_joint5, position, -0.0966408 <- position, -0.0966408
-[ros2_control_node-3] [INFO] [1763384201.625320922] [dynamixel_hardware_interface]: Sync joint state to command (joint: arm_joint6, position, 2.90371 <- position, 2.90371
-[ros2_control_node-3] [INFO] [1763384201.625406156] [dynamixel_hardware_interface]: Enabling torque for Dynamixels
-[ros2_control_node-3] [ID:021] Torque ON
-[ros2_control_node-3] [ID:022] Torque ON
-[ros2_control_node-3] [ID:023] Torque ON
-[ros2_control_node-3] [ID:024] Torque ON
-[ros2_control_node-3] [ID:025] Torque ON
-[ros2_control_node-3] [ID:026] Torque ON
-[ros2_control_node-3] [INFO] [1763384201.721131160] [dynamixel_hardware_interface]: Dynamixel Hardware Start!
-[ros2_control_node-3] [INFO] [1763384201.721146248] [resource_manager]: Successful 'activate' of hardware 'sekirei_dynamixel_hw'
-[ros2_control_node-3] [INFO] [1763384201.721185303] [controller_manager]: Registering statistics for : sekirei_dynamixel_hw
-[ros2_control_node-3] [INFO] [1763384201.721232791] [controller_manager]: Resource Manager has been successfully initialized. Starting Controller Manager services...
-[rviz2-5] [ERROR] [1763384203.174264352] [rviz2.moveit.ros.motion_planning_frame]: Action server: /recognize_objects not available
-[rviz2-5] [INFO] [1763384203.184767614] [rviz2.moveit.ros.motion_planning_frame]: MoveGroup namespace changed: / -> . Reloading params.
-[rviz2-5] [ERROR] [1763384203.192442948] [rviz2]: PluginlibFactory: The plugin for class 'moveit_rviz_plugin/MotionPlanning' failed to load. Error: According to the loaded plugin descriptions the class moveit_rviz_plugin/MotionPlanning with base class type rviz_common::Panel does not exist. Declared types are 
-[rviz2-5] [INFO] [1763384203.265477723] [rviz2.moveit.ros.rdf_loader]: Loaded robot model in 0.00375856 seconds
-[rviz2-5] [INFO] [1763384203.265613781] [rviz2.moveit.core.robot_model]: Loading robot model 'sekirei'...
-[rviz2-5] [INFO] [1763384203.265644312] [rviz2.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
-[rviz2-5] [WARN] [1763384203.265934216] [rviz2.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
-[rviz2-5] [WARN] [1763384203.270560132] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
-[rviz2-5] [INFO] [1763384203.270728054] [rviz2.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
-[rviz2-5] [INFO] [1763384203.292841079] [rviz2.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
-[rviz2-5] [INFO] [1763384203.293932800] [rviz2.moveit.ros.planning_scene_monitor]: Listening to '/monitored_planning_scene'
-[INFO] [spawner-6]: process started with pid [39592]
-[spawner-6] [INFO] [1763384203.572056263] [spawner_joint_state_broadcaster]: waiting for service /controller_manager/list_controllers to become available...
-[rviz2-5] [INFO] [1763384203.617822936] [interactive_marker_display_96325805701776]: Connected on namespace: /rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic
-[rviz2-5] [WARN] [1763384203.619576480] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
-[rviz2-5] [INFO] [1763384203.626725622] [interactive_marker_display_96325805701776]: Sending request for interactive markers
-[rviz2-5] [INFO] [1763384203.661454553] [interactive_marker_display_96325805701776]: Service response received for initialization
-[ros2_control_node-3] [INFO] [1763384204.324082355] [controller_manager]: Loading controller : 'joint_state_broadcaster' of type 'joint_state_broadcaster/JointStateBroadcaster'
-[ros2_control_node-3] [INFO] [1763384204.324106608] [controller_manager]: Loading controller 'joint_state_broadcaster'
-[ros2_control_node-3] [INFO] [1763384204.326414268] [controller_manager]: Controller 'joint_state_broadcaster' node arguments: --ros-args --params-file /tmp/launch_params_yna1n6zo --params-file /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/ros2_controllers.yaml 
-[spawner-6] [INFO] [1763384204.346386783] [spawner_joint_state_broadcaster]: [94mLoaded [1mjoint_state_broadcaster[0m
-[ros2_control_node-3] [INFO] [1763384204.347352452] [controller_manager]: Configuring controller: 'joint_state_broadcaster'
-[ros2_control_node-3] [INFO] [1763384204.347449871] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
-[INFO] [spawner-7]: process started with pid [39610]
-[ros2_control_node-3] [INFO] [1763384204.362491359] [controller_manager]: Activating controllers: [ joint_state_broadcaster ]
-[ros2_control_node-3] [INFO] [1763384204.377506325] [controller_manager]: Successfully switched controllers!
-[spawner-6] [INFO] [1763384204.394381628] [spawner_joint_state_broadcaster]: [92mConfigured and activated [1mjoint_state_broadcaster[0m
-[move_group-4] [INFO] [1763384204.411182576] [moveit.moveit.ros.planning_pipeline]: Successfully loaded planner 'OMPL'
-[move_group-4] [INFO] [1763384204.412460661] [move_group]: Try loading adapter 'default_planning_request_adapters/ResolveConstraintFrames'
-[move_group-4] [INFO] [1763384204.413378241] [move_group]: Loaded adapter 'default_planning_request_adapters/ResolveConstraintFrames'
-[move_group-4] [INFO] [1763384204.413392826] [move_group]: Try loading adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
-[move_group-4] [INFO] [1763384204.413818490] [move_group]: Loaded adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
-[move_group-4] [INFO] [1763384204.413832791] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateBounds'
-[move_group-4] [INFO] [1763384204.413856995] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateBounds'
-[move_group-4] [INFO] [1763384204.413881057] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateCollision'
-[move_group-4] [INFO] [1763384204.413892823] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
-[move_group-4] [INFO] [1763384204.415077266] [move_group]: Try loading adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
-[move_group-4] [INFO] [1763384204.417093702] [move_group]: Loaded adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
-[move_group-4] [INFO] [1763384204.417111485] [move_group]: Try loading adapter 'default_planning_response_adapters/ValidateSolution'
-[move_group-4] [INFO] [1763384204.419536396] [move_group]: Loaded adapter 'default_planning_response_adapters/ValidateSolution'
-[move_group-4] [INFO] [1763384204.419562435] [move_group]: Try loading adapter 'default_planning_response_adapters/DisplayMotionPath'
-[move_group-4] [INFO] [1763384204.420079949] [move_group]: Loaded adapter 'default_planning_response_adapters/DisplayMotionPath'
-[move_group-4] [INFO] [1763384204.448244599] [moveit.moveit.plugins.simple_controller_manager]: Added FollowJointTrajectory controller for sekirei_arm_controller
-[move_group-4] [INFO] [1763384204.448378573] [moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
-[move_group-4] [INFO] [1763384204.448401416] [moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
-[move_group-4] [INFO] [1763384204.448849318] [moveit.moveit.ros.trajectory_execution_manager]: Trajectory execution is not managing controllers
-[move_group-4] [INFO] [1763384204.448870590] [move_group]: MoveGroup debug mode is ON
-[rviz2-5] [INFO] [1763384204.465264879] [rviz2.moveit.ros.motion_planning_frame]: group sekirei_arm
-[rviz2-5] [INFO] [1763384204.465314974] [rviz2.moveit.ros.motion_planning_frame]: Constructing new MoveGroup connection for group 'sekirei_arm' in namespace ''
-[move_group-4] [INFO] [1763384204.480113224] [moveit.moveit.ros.move_group.executable]: 
->>>>>>> ecf084d7b09d296ed8b981fc314e3d8fb4add832
+[ros2_control_node-3] [INFO] [1763799546.623110686] [controller_manager]: Using Steady (Monotonic) clock for triggering controller manager cycles.
+[ros2_control_node-3] [INFO] [1763799546.625876559] [controller_manager]: Subscribing to '/robot_description' topic for robot description.
+[ros2_control_node-3] [INFO] [1763799546.647975434] [controller_manager]: update rate is 50 Hz
+[ros2_control_node-3] [INFO] [1763799546.648009840] [controller_manager]: Overruns handling is : enabled
+[ros2_control_node-3] [INFO] [1763799546.648014241] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
+[ros2_control_node-3] [INFO] [1763799546.648064736] [controller_manager]: Successful set up FIFO RT scheduling policy with priority 50.
+[ros2_control_node-3] [INFO] [1763799546.791461278] [controller_manager]: Received robot description from topic.
+[ros2_control_node-3] [INFO] [1763799546.793184739] [controller_manager]: Loading hardware 'sekirei_dynamixel_hw' 
+[ros2_control_node-3] [INFO] [1763799546.793475391] [controller_manager]: Loaded hardware 'sekirei_dynamixel_hw' from plugin 'mock_components/GenericSystem'
+[ros2_control_node-3] [INFO] [1763799546.793511255] [controller_manager]: Initialize hardware 'sekirei_dynamixel_hw' 
+[ros2_control_node-3] [INFO] [1763799546.797215181] [controller_manager]: Successful initialization of hardware 'sekirei_dynamixel_hw'
+[ros2_control_node-3] [INFO] [1763799546.797372627] [resource_manager]: 'configure' hardware 'sekirei_dynamixel_hw' 
+[ros2_control_node-3] [INFO] [1763799546.797376771] [resource_manager]: Successful 'configure' of hardware 'sekirei_dynamixel_hw'
+[ros2_control_node-3] [INFO] [1763799546.797381568] [resource_manager]: 'activate' hardware 'sekirei_dynamixel_hw' 
+[ros2_control_node-3] [INFO] [1763799546.797384759] [resource_manager]: Successful 'activate' of hardware 'sekirei_dynamixel_hw'
+[ros2_control_node-3] [INFO] [1763799546.797428454] [controller_manager]: Registering statistics for : sekirei_dynamixel_hw
+[ros2_control_node-3] [INFO] [1763799546.797474543] [controller_manager]: Resource Manager has been successfully initialized. Starting Controller Manager services...
+[move_group-4] [WARN] [1763799546.634251966] [move_group]: Using default pipeline 'ompl'
+[move_group-4] [INFO] [1763799546.636119773] [move_group.moveit.moveit.ros.rdf_loader]: Loaded robot model in 0 seconds
+[move_group-4] [INFO] [1763799546.636152554] [move_group.moveit.moveit.core.robot_model]: Loading robot model 'sekirei'...
+[move_group-4] [INFO] [1763799546.636161556] [move_group.moveit.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[move_group-4] [WARN] [1763799546.636247489] [move_group.moveit.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
+[move_group-4] [WARN] [1763799546.637762278] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[move_group-4] [INFO] [1763799546.637810961] [move_group.moveit.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
+[move_group-4] [INFO] [1763799546.651599723] [move_group.moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[move_group-4] [INFO] [1763799546.651694794] [move_group.moveit.moveit.ros.moveit_cpp]: Listening to 'joint_states' for joint states
+[move_group-4] [INFO] [1763799546.652222697] [move_group.moveit.moveit.ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[move_group-4] [INFO] [1763799546.652504875] [move_group.moveit.moveit.ros.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
+[move_group-4] [INFO] [1763799546.652516059] [move_group.moveit.moveit.ros.planning_scene_monitor]: Stopping existing planning scene publisher.
+[move_group-4] [INFO] [1763799546.652575079] [move_group.moveit.moveit.ros.planning_scene_monitor]: Stopped publishing maintained planning scene.
+[move_group-4] [INFO] [1763799546.652765851] [move_group.moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[move_group-4] [INFO] [1763799546.652804142] [move_group.moveit.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+[move_group-4] [INFO] [1763799546.652992278] [move_group.moveit.moveit.ros.planning_scene_monitor]: Listening to '/planning_scene'
+[move_group-4] [INFO] [1763799546.653003408] [move_group.moveit.moveit.ros.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[move_group-4] [INFO] [1763799546.653490131] [move_group.moveit.moveit.ros.planning_scene_monitor]: Listening to 'collision_object'
+[move_group-4] [INFO] [1763799546.653690285] [move_group.moveit.moveit.ros.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[move_group-4] [WARN] [1763799546.653802753] [move_group.moveit.moveit.ros.occupancy_map_monitor]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
+[move_group-4] [ERROR] [1763799546.653812820] [move_group.moveit.moveit.ros.occupancy_map_monitor]: No 3D sensor plugin(s) defined for octomap updates
+[move_group-4] [INFO] [1763799546.663998224] [move_group.moveit.moveit.ros.planning_pipeline]: Successfully loaded planner 'OMPL'
+[move_group-4] [INFO] [1763799546.664594295] [move_group]: Try loading adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[move_group-4] [INFO] [1763799546.665246084] [move_group]: Loaded adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[move_group-4] [INFO] [1763799546.665256470] [move_group]: Try loading adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[move_group-4] [INFO] [1763799546.665378244] [move_group]: Loaded adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[move_group-4] [INFO] [1763799546.665383700] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[move_group-4] [INFO] [1763799546.665398344] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[move_group-4] [INFO] [1763799546.665401199] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-4] [INFO] [1763799546.665408464] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-4] [INFO] [1763799546.665960822] [move_group]: Try loading adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
+[move_group-4] [INFO] [1763799546.667304197] [move_group]: Loaded adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
+[move_group-4] [INFO] [1763799546.667311883] [move_group]: Try loading adapter 'default_planning_response_adapters/ValidateSolution'
+[move_group-4] [INFO] [1763799546.668609310] [move_group]: Loaded adapter 'default_planning_response_adapters/ValidateSolution'
+[move_group-4] [INFO] [1763799546.668620698] [move_group]: Try loading adapter 'default_planning_response_adapters/DisplayMotionPath'
+[move_group-4] [INFO] [1763799546.668999531] [move_group]: Loaded adapter 'default_planning_response_adapters/DisplayMotionPath'
+[move_group-4] [INFO] [1763799546.681354791] [move_group.moveit.moveit.plugins.simple_controller_manager]: Added FollowJointTrajectory controller for sekirei_arm_controller
+[move_group-4] [INFO] [1763799546.681454306] [move_group.moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-4] [INFO] [1763799546.681473029] [move_group.moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-4] [INFO] [1763799546.681788975] [move_group.moveit.moveit.ros.trajectory_execution_manager]: Trajectory execution is not managing controllers
+[move_group-4] [INFO] [1763799546.681802347] [move_group]: MoveGroup debug mode is ON
+[move_group-4] [INFO] [1763799546.692648920] [move_group.moveit.moveit.ros.move_group.executable]: 
 [move_group-4] 
 [move_group-4] ********************************************************
 [move_group-4] * MoveGroup using: 
@@ -382,13 +102,8 @@
 [move_group-4] *     - save_geometry_to_file
 [move_group-4] ********************************************************
 [move_group-4] 
-<<<<<<< HEAD
-[move_group-4] [INFO] [1763232593.708459908] [move_group.moveit.moveit.ros.move_group.context]: MoveGroup context using pipeline ompl
-[move_group-4] [INFO] [1763232593.708467404] [move_group.moveit.moveit.ros.move_group.context]: MoveGroup context initialization complete
-=======
-[move_group-4] [INFO] [1763384204.480277410] [moveit.moveit.ros.move_group.context]: MoveGroup context using pipeline ompl
-[move_group-4] [INFO] [1763384204.480319335] [moveit.moveit.ros.move_group.context]: MoveGroup context initialization complete
->>>>>>> ecf084d7b09d296ed8b981fc314e3d8fb4add832
+[move_group-4] [INFO] [1763799546.692690660] [move_group.moveit.moveit.ros.move_group.context]: MoveGroup context using pipeline ompl
+[move_group-4] [INFO] [1763799546.692698706] [move_group.moveit.moveit.ros.move_group.context]: MoveGroup context initialization complete
 [move_group-4] [96mLoading 'move_group/ApplyPlanningSceneService'...[0m
 [move_group-4] [96mLoading 'move_group/ClearOctomapService'...[0m
 [move_group-4] [96mLoading 'move_group/GetUrdfService'...[0m
@@ -405,927 +120,101 @@
 [move_group-4] 
 [move_group-4] [92mYou can start planning now![0m
 [move_group-4] 
-<<<<<<< HEAD
-[ros2_control_node-3] [INFO] [1763232594.267271484] [controller_manager]: Loading controller : 'joint_state_broadcaster' of type 'joint_state_broadcaster/JointStateBroadcaster'
-[ros2_control_node-3] [INFO] [1763232594.267300100] [controller_manager]: Loading controller 'joint_state_broadcaster'
-[ros2_control_node-3] [INFO] [1763232594.269018871] [controller_manager]: Controller 'joint_state_broadcaster' node arguments: --ros-args --params-file /tmp/launch_params_46mbjdjf --params-file /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/ros2_controllers.yaml 
-[ros2_control_node-3] [INFO] [1763232594.276992514] [controller_manager]: Configuring controller: 'joint_state_broadcaster'
-[ros2_control_node-3] [INFO] [1763232594.277068675] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
-[ros2_control_node-3] [INFO] [1763232594.296809702] [controller_manager]: Activating controllers: [ joint_state_broadcaster ]
-[ros2_control_node-3] [INFO] [1763232594.315578219] [controller_manager]: Successfully switched controllers!
-[ros2_control_node-3] [INFO] [1763232594.673562018] [controller_manager]: Loading controller : 'sekirei_arm_controller' of type 'joint_trajectory_controller/JointTrajectoryController'
-[ros2_control_node-3] [INFO] [1763232594.673606112] [controller_manager]: Loading controller 'sekirei_arm_controller'
-[ros2_control_node-3] [INFO] [1763232594.675057032] [controller_manager]: Controller 'sekirei_arm_controller' node arguments: --ros-args --params-file /tmp/launch_params_46mbjdjf --params-file /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/ros2_controllers.yaml 
-[ros2_control_node-3] [INFO] [1763232594.697421380] [controller_manager]: Configuring controller: 'sekirei_arm_controller'
-[ros2_control_node-3] [INFO] [1763232594.697575645] [sekirei_arm_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
-[ros2_control_node-3] [INFO] [1763232594.697595371] [sekirei_arm_controller]: Command interfaces are [position] and state interfaces are [position velocity].
-[ros2_control_node-3] [INFO] [1763232594.697613113] [sekirei_arm_controller]: Using 'splines' interpolation method.
-[ros2_control_node-3] [INFO] [1763232594.699152496] [sekirei_arm_controller]: Action status changes will be monitored at 20.00 Hz.
-[ros2_control_node-3] [INFO] [1763232594.716803986] [controller_manager]: Activating controllers: [ sekirei_arm_controller ]
-[ros2_control_node-3] [INFO] [1763232594.735710034] [controller_manager]: Successfully switched controllers!
-[rviz2-5] [ERROR] [1763232596.829170593] [moveit_2473069765.moveit.ros.motion_planning_frame]: Action server: /recognize_objects not available
-[rviz2-5] [INFO] [1763232596.838403572] [moveit_2473069765.moveit.ros.motion_planning_frame]: MoveGroup namespace changed: / -> . Reloading params.
-[rviz2-5] [INFO] [1763232596.890545560] [moveit_2473069765.moveit.ros.rdf_loader]: Loaded robot model in 0.0032675 seconds
-[rviz2-5] [INFO] [1763232596.890602408] [moveit_2473069765.moveit.core.robot_model]: Loading robot model 'sekirei'...
-[rviz2-5] [INFO] [1763232596.890614406] [moveit_2473069765.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
-[rviz2-5] [WARN] [1763232596.890750355] [moveit_2473069765.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
-[rviz2-5] [WARN] [1763232596.893761226] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
-[rviz2-5] [INFO] [1763232596.893887422] [moveit_2473069765.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
-[rviz2-5] [INFO] [1763232596.907401081] [moveit_2473069765.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
-[rviz2-5] [INFO] [1763232596.907819325] [moveit_2473069765.moveit.ros.planning_scene_monitor]: Listening to '/monitored_planning_scene'
-[rviz2-5] [INFO] [1763232597.186632714] [interactive_marker_display_94161424677200]: Connected on namespace: /rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic
-[rviz2-5] [WARN] [1763232597.187920920] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
-[rviz2-5] [INFO] [1763232597.192553775] [moveit_2473069765.moveit.ros.motion_planning_frame]: group sekirei_arm
-[rviz2-5] [INFO] [1763232597.192602762] [moveit_2473069765.moveit.ros.motion_planning_frame]: Constructing new MoveGroup connection for group 'sekirei_arm' in namespace ''
-[rviz2-5] [INFO] [1763232597.204549019] [moveit_2473069765.moveit.ros.move_group_interface]: Ready to take commands for planning group sekirei_arm.
-[rviz2-5] [INFO] [1763232597.221952046] [interactive_marker_display_94161424677200]: Sending request for interactive markers
-[rviz2-5] [INFO] [1763232597.254869368] [interactive_marker_display_94161424677200]: Service response received for initialization
-[spawner-6] [INFO] [1763232594.013701800] [spawner_joint_state_broadcaster]: waiting for service /controller_manager/list_controllers to become available...
-[spawner-6] [INFO] [1763232594.276333326] [spawner_joint_state_broadcaster]: [94mLoaded [1mjoint_state_broadcaster[0m
-[spawner-6] [INFO] [1763232594.336507482] [spawner_joint_state_broadcaster]: [92mConfigured and activated [1mjoint_state_broadcaster[0m
-[spawner-7] [INFO] [1763232594.414079787] [spawner_sekirei_arm_controller]: waiting for service /controller_manager/list_controllers to become available...
-[spawner-7] [INFO] [1763232594.696534629] [spawner_sekirei_arm_controller]: [94mLoaded [1msekirei_arm_controller[0m
-[spawner-7] [INFO] [1763232594.756473679] [spawner_sekirei_arm_controller]: [92mConfigured and activated [1msekirei_arm_controller[0m
-[servo_node-8] [INFO] [1763232614.526445768] [servo_node]: Enabled SCHED_FIFO and higher thread priority.
-[servo_node-8] [WARN] [1763232614.526655687] [servo_node]: Realtime kernel is recommended for better performance.
-[servo_node-8] [INFO] [1763232614.528894738] [servo_node.moveit.moveit.ros.rdf_loader]: Loaded robot model in 0.00162815 seconds
-[servo_node-8] [INFO] [1763232614.528936485] [servo_node.moveit.moveit.core.robot_model]: Loading robot model 'sekirei'...
-[servo_node-8] [INFO] [1763232614.528947222] [servo_node.moveit.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
-[servo_node-8] [WARN] [1763232614.529042802] [servo_node.moveit.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
-[servo_node-8] [WARN] [1763232614.530875669] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
-[servo_node-8] [INFO] [1763232614.530922641] [servo_node.moveit.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
-[servo_node-8] [INFO] [1763232614.538352964] [servo_node.moveit.moveit.ros.current_state_monitor]: Listening to joint states on topic '/joint_states'
-[servo_node-8] [INFO] [1763232614.542444943] [servo_node.moveit.moveit.ros.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
-[servo_node-8] [INFO] [1763232614.542479289] [servo_node.moveit.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
-[servo_node-8] [INFO] [1763232614.543522031] [servo_node.moveit.moveit.ros.planning_scene_monitor]: Listening to '/planning_scene'
-[servo_node-8] [INFO] [1763232614.543546949] [servo_node.moveit.moveit.ros.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
-[servo_node-8] [INFO] [1763232614.543841747] [servo_node.moveit.moveit.ros.planning_scene_monitor]: Listening to 'collision_object'
-[servo_node-8] [INFO] [1763232614.544095481] [servo_node.moveit.moveit.ros.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
-[servo_node-8] [INFO] [1763232614.544813738] [servo_node.moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on '/servo_node/publish_planning_scene'
-[servo_node-8] [INFO] [1763232615.245535074] [servo_node.moveit.moveit.ros.move_group.collision_monitor]: Collision monitor started
-[servo_node-8] [WARN] [1763232615.245590770] [servo_node.moveit.moveit.ros.servo]: No smoothing plugin loaded
-[servo_node-8] [INFO] [1763232615.245599034] [servo_node.moveit.moveit.ros.servo]: Servo initialized successfully
-[servo_node-8] [INFO] [1763232615.250698747] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232616.250741133] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232617.250791803] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232618.250834403] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232619.250891868] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232620.250948098] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232621.251007406] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232622.251051319] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232623.251109749] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232624.251159149] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232625.251209009] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232626.251248398] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232627.251310346] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232628.251355652] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232629.251432670] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232630.251498812] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232631.251563625] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232632.251609133] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232633.251666907] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232634.251725522] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232635.251776876] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232636.251827035] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232637.251875332] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232638.251913970] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232639.251991993] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232640.252039686] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232641.252091042] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232642.252145592] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232643.252235411] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232644.252343714] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232645.252429353] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232646.252488270] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232647.252578886] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232648.252653769] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232649.252700188] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232650.252751691] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232651.252827168] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232652.252885190] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232653.252933580] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232654.252992508] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232655.253086923] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232656.253150187] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232657.253198897] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232658.253259203] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232659.253329654] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232660.253433368] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232661.253502563] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232662.253558377] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232663.253626094] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232664.253689251] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232665.253747097] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232666.253804559] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232667.253902569] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232668.253966020] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232669.254020571] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232670.254102277] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232671.254239289] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232672.254323107] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232673.254373344] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232674.254440117] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232675.254503339] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232676.254554190] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232677.254605234] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232678.254672444] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232679.254742562] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232680.254796536] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232681.254847585] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232682.254902988] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232683.254960305] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232684.255022024] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232685.255074782] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232686.255130681] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232687.255191489] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232688.255258533] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232689.255311044] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232690.255367733] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232691.255451901] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232692.255517770] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232693.255570934] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232694.255649056] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232695.255703674] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232696.255745672] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232697.255782859] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232698.255822534] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232699.255862921] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232700.255903014] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232701.255939850] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232702.255976686] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232703.256016274] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232704.256058024] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232705.256098493] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232706.256140841] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232707.256185781] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232708.256225237] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232709.256270203] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232710.256314328] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232711.256358987] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232712.256409158] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232713.256492410] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232714.256608137] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232715.256708964] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232716.256768700] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232717.256862085] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232718.256942542] [servo_node]: Waiting to receive robot state update.
-[rviz2-5] [INFO] [1763232718.996613489] [moveit_2473069765.moveit.ros.move_group_interface]: MoveGroup action client/server ready
-[move_group-4] [INFO] [1763232718.997261143] [move_group.moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
-[rviz2-5] [INFO] [1763232718.997417590] [moveit_2473069765.moveit.ros.move_group_interface]: Planning request accepted
-[move_group-4] [INFO] [1763232718.997536643] [move_group.moveit.moveit.ros.move_group.move_action]: executing..
-[move_group-4] [INFO] [1763232718.997656625] [move_group.moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
-[move_group-4] [INFO] [1763232718.997683775] [move_group.moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
-[move_group-4] [INFO] [1763232718.997891254] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
-[move_group-4] [INFO] [1763232718.997950087] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
-[move_group-4] [INFO] [1763232718.997962993] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
-[move_group-4] [INFO] [1763232718.998008032] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
-[move_group-4] [INFO] [1763232718.998958959] [move_group.moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
-[move_group-4] [INFO] [1763232718.999152522] [move_group]: Calling Planner 'OMPL'
-[move_group-4] [INFO] [1763232719.011621806] [move_group]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
-[move_group-4] [INFO] [1763232719.011690566] [move_group]: Calling PlanningResponseAdapter 'ValidateSolution'
-[move_group-4] [INFO] [1763232719.011727279] [move_group]: Calling PlanningResponseAdapter 'DisplayMotionPath'
-[move_group-4] [WARN] [1763232719.011784768] [move_group.moveit.moveit.ros.planning_pipeline]: The planner plugin did not fill out the 'planner_id' field of the MotionPlanResponse. Setting it to the planner ID name of the MotionPlanRequest assuming that the planner plugin does warn you if it does not use the requested planner.
-[move_group-4] [INFO] [1763232719.011818205] [move_group.moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
-[rviz2-5] [INFO] [1763232719.012043996] [moveit_2473069765.moveit.ros.move_group_interface]: Planning request complete!
-[rviz2-5] [INFO] [1763232719.012821177] [moveit_2473069765.moveit.ros.move_group_interface]: time taken to generate plan: 0.0123034 seconds
-[servo_node-8] [INFO] [1763232719.257023607] [servo_node]: Waiting to receive robot state update.
-[move_group-4] [INFO] [1763232719.685145190] [move_group.moveit.moveit.ros.move_group.clear_octomap_service]: Execution request received
-[move_group-4] [INFO] [1763232719.685232757] [move_group.moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
-[move_group-4] [INFO] [1763232719.685253479] [move_group.moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
-[rviz2-5] [INFO] [1763232719.685236631] [moveit_2473069765.moveit.ros.move_group_interface]: Execute request accepted
-[move_group-4] [INFO] [1763232719.685368556] [move_group.moveit.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.5
-[move_group-4] [INFO] [1763232719.685502897] [move_group.moveit.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
-[move_group-4] [INFO] [1763232719.685534025] [move_group.moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
-[move_group-4] [INFO] [1763232719.685547419] [move_group.moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
-[move_group-4] [INFO] [1763232719.685688570] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to sekirei_arm_controller
-[ros2_control_node-3] [INFO] [1763232719.685983806] [sekirei_arm_controller]: Received new action goal
-[ros2_control_node-3] [INFO] [1763232719.686045450] [sekirei_arm_controller]: Accepted new action goal
-[move_group-4] [INFO] [1763232719.686227671] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sekirei_arm_controller started execution
-[move_group-4] [INFO] [1763232719.686244923] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
-[ros2_control_node-3] [INFO] [1763232719.695488669] [sekirei_arm_controller]: Goal reached, success!
-[move_group-4] [INFO] [1763232719.736559331] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'sekirei_arm_controller' successfully finished
-[move_group-4] [INFO] [1763232719.736611472] [move_group.moveit.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
-[move_group-4] [INFO] [1763232719.736676382] [move_group.moveit.moveit.ros.move_group.clear_octomap_service]: Execution completed: SUCCEEDED
-[rviz2-5] [INFO] [1763232719.736842410] [moveit_2473069765.moveit.ros.move_group_interface]: Execute request success!
-[servo_node-8] [INFO] [1763232720.257064287] [servo_node]: Waiting to receive robot state update.
-[move_group-4] [INFO] [1763232720.900829855] [move_group.moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
-[move_group-4] [INFO] [1763232720.900942177] [move_group.moveit.moveit.ros.move_group.move_action]: executing..
-[move_group-4] [INFO] [1763232720.901070693] [move_group.moveit.moveit.ros.move_group.move_action]: Combined planning and execution request received for MoveGroup action. Forwarding to planning and execution pipeline.
-[move_group-4] [INFO] [1763232720.901190235] [move_group.moveit.moveit.ros.move_group.move_action]: Goal constraints are already satisfied. No need to plan or execute any motions
-[move_group-4] [INFO] [1763232720.901211466] [move_group.moveit.moveit.ros.move_group.move_action]: Requested path and goal constraints are already met.
-[rviz2-5] [INFO] [1763232720.900995045] [moveit_2473069765.moveit.ros.move_group_interface]: Plan and Execute request accepted
-[rviz2-5] [INFO] [1763232720.901281935] [moveit_2473069765.moveit.ros.move_group_interface]: Plan and Execute request complete!
-[servo_node-8] [INFO] [1763232721.257112360] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232722.257158229] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232723.257199413] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232724.257245770] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232725.257295916] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232726.257345603] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232727.257441568] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232728.257528517] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232729.257579017] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232730.257645890] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232731.257696944] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232732.257746625] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232733.257798612] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232734.257867234] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232735.257961279] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232736.258071101] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232737.258131530] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232738.258211334] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232739.258281152] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232740.258332754] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232741.258421071] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232742.258489712] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232743.258570257] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232744.258776320] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232745.258955682] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232746.259033089] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232747.259069791] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232748.259107543] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232749.259147495] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232750.259199708] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232751.259259696] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232752.259334028] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232753.259434163] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232754.259506597] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232755.259580168] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232756.259621560] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232757.259666606] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232758.259735345] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232759.259841885] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232760.259882295] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232761.259931759] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232762.259989219] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232763.260032280] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232764.260081723] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232765.260136916] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232766.260202641] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232767.260291430] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232768.260331293] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232769.260427625] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232770.260510448] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232771.260564941] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232772.260608138] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232773.260658557] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232774.260715241] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232775.260767516] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232776.260809576] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232777.260856985] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232778.260920825] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232779.260988212] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232780.261048003] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232781.261105714] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232782.261164823] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232783.261236930] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232784.261301020] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232785.261359936] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232786.261417570] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232787.261469882] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232788.261540761] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232789.261593230] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232790.261668469] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232791.261766359] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232792.261827255] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232793.261888501] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232794.261956706] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232795.262029798] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232796.262115872] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232797.262174324] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232798.262256049] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232799.262330835] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232800.262428404] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232801.262481554] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232802.262537271] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232803.262584619] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232804.262627725] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232805.262737927] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232806.262814128] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232807.262870641] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232808.262917647] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232809.263002307] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232810.263064593] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232811.263127345] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232812.263201780] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232813.263262239] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232814.263315809] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232815.263353020] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232816.263394683] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232817.263460313] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232818.263520149] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232819.263581196] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232820.263632214] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232821.263690406] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232822.263739816] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232823.263792358] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232824.263851072] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232825.263904224] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232826.263956068] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232827.264024784] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232828.264110957] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232829.264171281] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232830.264269689] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232831.264414306] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232832.264484833] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232833.264551301] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232834.264619676] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232835.264667019] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232836.264720442] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232837.264788233] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232838.264842856] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232839.264903366] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232840.264947148] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232841.264994581] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232842.265054620] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232843.265096987] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232844.265156755] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232845.265214014] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232846.265280832] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232847.265325789] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232848.265367940] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232849.265424153] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232850.265468098] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232851.265526130] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232852.265579450] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232853.265632765] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232854.265688969] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232855.265736576] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232856.265781474] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232857.265847969] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232858.265908982] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232859.265988635] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232860.266033203] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232861.266087304] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232862.266143065] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232863.266180777] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232864.266233698] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232865.266285183] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232866.266333949] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232867.266369384] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232868.266437811] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232869.266528597] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232870.266585785] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232871.266626740] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232872.266668816] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232873.266721617] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232874.266816338] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232875.266857912] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232876.266903599] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232877.266957595] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232878.267007361] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232879.267051305] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232880.267108171] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232881.267170426] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232882.267221869] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232883.267299779] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232884.267357452] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232885.267433950] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232886.267489071] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232887.267552313] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232888.267593542] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232889.267684015] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232890.267737662] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232891.267806051] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232892.267883171] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232893.268018488] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232894.268065382] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232895.268099700] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232896.268137234] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232897.268222666] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232898.268268217] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232899.268339059] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232900.268399897] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232901.268482725] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232902.268527195] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232903.268563378] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232904.268615917] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232905.268666529] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232906.268707860] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232907.268772812] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232908.268809218] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232909.268856045] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232910.268911002] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232911.268977322] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232912.269028880] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232913.269083236] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232914.269169311] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232915.269234713] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232916.269314776] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232917.269367444] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232918.269418544] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232919.269466635] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232920.269503410] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232921.269556037] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232922.269609741] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232923.269667258] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232924.269707073] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232925.269755977] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232926.269804216] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232927.269838796] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232928.269886348] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232929.269931740] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232930.269977681] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232931.270045545] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232932.270085981] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232933.270133010] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232934.270177682] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232935.270215255] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232936.270256192] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232937.270356742] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232938.270420284] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232939.270458621] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232940.270557145] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232941.270609450] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232942.270684503] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232943.270736813] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232944.270779692] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232945.270833221] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232946.270877945] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232947.270937933] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232948.270980019] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232949.271064630] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232950.271120349] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232951.271172031] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232952.271241499] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232953.271296240] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232954.271346631] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232955.271390688] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232956.271435622] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232957.271489885] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232958.271568064] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232959.271608583] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232960.271667484] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232961.271722340] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232962.271779788] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232963.271817626] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232964.271877084] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232965.271925935] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232966.271966447] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232967.272015388] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232968.272058564] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232969.272144271] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232970.272234970] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232971.272277204] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232972.272341293] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232973.272491479] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232974.272561420] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232975.272671071] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232976.272729367] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232977.272781421] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232978.272845970] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232979.272898059] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232980.272978517] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232981.273068858] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232982.273121201] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232983.273175482] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232984.273233740] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232985.273297649] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232986.273356507] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232987.273422090] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232988.273501870] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232989.273595854] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232990.273684160] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232991.273772018] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232992.273831448] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232993.273885471] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232994.273966114] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232995.274022224] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232996.274081294] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232997.274138955] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232998.274191240] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763232999.274242597] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233000.274304860] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233001.274411716] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233002.274498143] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233003.274554229] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233004.274612667] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233005.274665478] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233006.274716163] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233007.274772113] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233008.274834908] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233009.274894385] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233010.274955876] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233011.275029022] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233012.275107121] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233013.275157837] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233014.275203113] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233015.275288705] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233016.275344786] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233017.275402428] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233018.275505746] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233019.275551476] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233020.275620646] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233021.275672421] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233022.275725349] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233023.275775085] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233024.275816516] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233025.275852076] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233026.275891413] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233027.275928048] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233028.275969843] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233029.276018499] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233030.276066029] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233031.276101443] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233032.276140626] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233033.276177840] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233034.276218809] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233035.276259666] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233036.276301112] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233037.276340502] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233038.276392707] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233039.276435388] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233040.276474976] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233041.276511662] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233042.276559769] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233043.276596131] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233044.276632646] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233045.276681638] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233046.276716920] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233047.276751657] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233048.276786603] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233049.276871395] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233050.276906232] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233051.276942341] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233052.276984028] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233053.277056482] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233054.277090291] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233055.277135802] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233056.277179809] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233057.277216971] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233058.277255637] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233059.277300284] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233060.277357750] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233061.277437370] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233062.277506489] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233063.277557838] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233064.277618273] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233065.277666552] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233066.277705305] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233067.277753973] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233068.277797841] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233069.277881906] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233070.277929105] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233071.277968997] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233072.278020189] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233073.278054357] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233074.278089001] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233075.278124370] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233076.278163365] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233077.278210695] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233078.278244758] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233079.278283089] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233080.278354940] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233081.278421584] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233082.278498411] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233083.278539134] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233084.278585524] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233085.278637328] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233086.278730365] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233087.278774327] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233088.278860886] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233089.278924979] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233090.278960236] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233091.279009629] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233092.279061680] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233093.279108049] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233094.279192653] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233095.279272482] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233096.279357127] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233097.279435514] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233098.279477057] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233099.279545532] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233100.279600903] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233101.279669856] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233102.279703479] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233103.279742831] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233104.279791765] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233105.279829289] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233106.279867230] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233107.279907844] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233108.279991689] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233109.280028141] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233110.280064952] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233111.280105485] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233112.280154343] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233113.280216396] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233114.280252409] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233115.280295915] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233116.280346810] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233117.280389037] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233118.280421450] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233119.280472480] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233120.280536822] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233121.280572271] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233122.280618897] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233123.280669586] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233124.280718753] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233125.280755163] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233126.280790509] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233127.280875079] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233128.280984000] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233129.281031613] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233130.281080246] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233131.281171373] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233132.281259218] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233133.281358747] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233134.281443206] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233135.281639581] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233136.281733274] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233137.281780356] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233138.281818344] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233139.281886234] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233140.281942512] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233141.282021669] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233142.282107637] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233143.282182444] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233144.282264078] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233145.282338735] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233146.282390978] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233147.282501891] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233148.282556149] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233149.282609884] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233150.282685958] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233151.282765819] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233152.282823541] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233153.282865468] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233154.282927530] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233155.283007421] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233156.283061059] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233157.283146648] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233158.283289303] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233159.283397007] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233160.283476858] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233161.283515502] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233162.283595012] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233163.283682407] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233164.283728021] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233165.283761511] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233166.283799861] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233167.283917287] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233168.284026848] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233169.284201315] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233170.284310636] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233171.284408511] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233172.284472834] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233173.284555079] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233174.284595394] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233175.284682207] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233176.284742110] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233177.284820223] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233178.284871895] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233179.284926725] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233180.284980805] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233181.285016091] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233182.285061423] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233183.285161730] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233184.285215715] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233185.285254050] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233186.285308507] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233187.285376719] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233188.285475242] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233189.285510808] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233190.285585814] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233191.285673192] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233192.285723428] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233193.285798174] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233194.285880068] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233195.285939252] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233196.286029149] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233197.286064734] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233198.286104716] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233199.286159638] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233200.286218409] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233201.286268274] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233202.286330829] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233203.286390523] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233204.286442468] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233205.286486907] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233206.286528275] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233207.286594274] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233208.286641695] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233209.286695085] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233210.286782283] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233211.286848103] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233212.286890869] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233213.286925272] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233214.286961225] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233215.287011076] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233216.287057797] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233217.287116468] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233218.287165810] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233219.287225083] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233220.287273338] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233221.287314366] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233222.287354846] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233223.287419462] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233224.287491710] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233225.287537388] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233226.287587479] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233227.287640298] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233228.287689663] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233229.287741051] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233230.287834967] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233231.287886475] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233232.287931996] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233233.287982157] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233234.288026224] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233235.288081375] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233236.288126511] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233237.288173181] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233238.288215649] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233239.288273444] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233240.288351488] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233241.288403321] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233242.288443167] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233243.288507097] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233244.288550440] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233245.288585754] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233246.288630681] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233247.288678559] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233248.288767970] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233249.288816596] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233250.288865074] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233251.288952430] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233252.288997705] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233253.289038685] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233254.289089922] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233255.289148706] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233256.289224513] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233257.289265603] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233258.289319014] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233259.289429900] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233260.289474442] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233261.289555448] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233262.289618896] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233263.289662860] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233264.289753091] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233265.289794764] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233266.289845029] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233267.289905136] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233268.289954255] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233269.290008438] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233270.290061688] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233271.290113943] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233272.290161378] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233273.290202336] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233274.290251610] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233275.290298470] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233276.290342696] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233277.290423805] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233278.290481989] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233279.290538655] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233280.290586662] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233281.290632448] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233282.290686293] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233283.290731256] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233284.290777410] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233285.290818964] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233286.290870362] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233287.290964754] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233288.291009755] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233289.291051151] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233290.291104079] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233291.291154544] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233292.291210167] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233293.291296696] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233294.291399611] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233295.291494840] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233296.291541482] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233297.291588297] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233298.291641992] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233299.291690126] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233300.291768959] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233301.291849348] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233302.291917858] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233303.291962500] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233304.292021064] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233305.292109742] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233306.292176915] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233307.292224017] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233308.292280125] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233309.292318611] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233310.292374133] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233311.292439940] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233312.292491888] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233313.292542541] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233314.292602054] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233315.292655362] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233316.292699267] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233317.292751492] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233318.292802238] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233319.292851191] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233320.292897795] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233321.292958697] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233322.293013823] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233323.293074015] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233324.293151894] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233325.293239190] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233326.293344839] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233327.293443115] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233328.293522149] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233329.293601590] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233330.293693554] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233331.293740879] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233332.293819335] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233333.293862765] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233334.293918792] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233335.294000216] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233336.294046240] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233337.294099441] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233338.294199730] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233339.294245522] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233340.294292031] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233341.294334185] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233342.294433911] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233343.294490469] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233344.294533505] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233345.294615056] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233346.294677467] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233347.294725925] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233348.294775747] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233349.294828069] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233350.294886674] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233351.294943909] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233352.295008209] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233353.295075449] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233354.295130591] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233355.295226855] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233356.295285969] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233357.295385585] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233358.295498640] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233359.295556165] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233360.295612412] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233361.295664911] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233362.295717206] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233363.295757596] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233364.295809939] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233365.295851862] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233366.295892598] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233367.295926835] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233368.295964146] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233369.296002722] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233370.296041785] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233371.296077738] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233372.296113496] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233373.296148285] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233374.296185795] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233375.296219113] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233376.296257250] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233377.296294604] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233378.296332617] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233379.296369037] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233380.296411517] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233381.296447336] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233382.296483026] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233383.296520058] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233384.296570965] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233385.296646975] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233386.296705098] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233387.296742401] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233388.296777331] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233389.296829649] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233390.296873805] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233391.296920004] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233392.296957706] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233393.296997850] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233394.297049665] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233395.297098198] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233396.297139956] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233397.297189941] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233398.297244626] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233399.297278046] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233400.297315092] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233401.297358355] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233402.297430363] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233403.297470826] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233404.297523665] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233405.297582050] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233406.297628331] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233407.297667467] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233408.297723336] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233409.297780245] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233410.297834190] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233411.297870416] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233412.297909384] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233413.297959258] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233414.298004381] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233415.298042895] [servo_node]: Waiting to receive robot state update.
-[servo_node-8] [INFO] [1763233416.298084913] [servo_node]: Waiting to receive robot state update.
-=======
-[rviz2-5] [INFO] [1763384204.487388605] [rviz2.moveit.ros.move_group_interface]: Ready to take commands for planning group sekirei_arm.
-[INFO] [spawner-6]: process has finished cleanly [pid 39592]
-[spawner-7] [INFO] [1763384204.618944966] [spawner_sekirei_arm_controller]: waiting for service /controller_manager/list_controllers to become available...
-[ros2_control_node-3] [INFO] [1763384205.120924276] [controller_manager]: Loading controller : 'sekirei_arm_controller' of type 'joint_trajectory_controller/JointTrajectoryController'
-[ros2_control_node-3] [INFO] [1763384205.120978272] [controller_manager]: Loading controller 'sekirei_arm_controller'
-[ros2_control_node-3] [INFO] [1763384205.122789159] [controller_manager]: Controller 'sekirei_arm_controller' node arguments: --ros-args --params-file /tmp/launch_params_yna1n6zo --params-file /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/ros2_controllers.yaml 
-[spawner-7] [INFO] [1763384205.146317735] [spawner_sekirei_arm_controller]: [94mLoaded [1msekirei_arm_controller[0m
-[ros2_control_node-3] [INFO] [1763384205.147234765] [controller_manager]: Configuring controller: 'sekirei_arm_controller'
-[ros2_control_node-3] [INFO] [1763384205.147393142] [sekirei_arm_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
-[ros2_control_node-3] [INFO] [1763384205.147416832] [sekirei_arm_controller]: Command interfaces are [position] and state interfaces are [position velocity].
-[ros2_control_node-3] [INFO] [1763384205.147438538] [sekirei_arm_controller]: Using 'splines' interpolation method.
-[ros2_control_node-3] [INFO] [1763384205.149247756] [sekirei_arm_controller]: Action status changes will be monitored at 20.00 Hz.
-[ros2_control_node-3] [INFO] [1763384205.162352258] [controller_manager]: Activating controllers: [ sekirei_arm_controller ]
-[ros2_control_node-3] [INFO] [1763384205.177330406] [controller_manager]: Successfully switched controllers!
-[spawner-7] [INFO] [1763384205.194050036] [spawner_sekirei_arm_controller]: [92mConfigured and activated [1msekirei_arm_controller[0m
-[INFO] [spawner-7]: process has finished cleanly [pid 39610]
->>>>>>> ecf084d7b09d296ed8b981fc314e3d8fb4add832
+[ros2_control_node-3] [INFO] [1763799548.634934950] [controller_manager]: Loading controller : 'sekirei_arm_controller' of type 'joint_trajectory_controller/JointTrajectoryController'
+[ros2_control_node-3] [INFO] [1763799548.634966885] [controller_manager]: Loading controller 'sekirei_arm_controller'
+[ros2_control_node-3] [INFO] [1763799548.636893572] [controller_manager]: Controller 'sekirei_arm_controller' node arguments: --ros-args --params-file /tmp/launch_params_tky4oa7e --params-file /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/ros2_controllers.yaml 
+[ros2_control_node-3] [INFO] [1763799548.650350446] [controller_manager]: Configuring controller: 'sekirei_arm_controller'
+[ros2_control_node-3] [INFO] [1763799548.650533264] [sekirei_arm_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+[ros2_control_node-3] [INFO] [1763799548.650551566] [sekirei_arm_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+[ros2_control_node-3] [INFO] [1763799548.650570927] [sekirei_arm_controller]: Using 'splines' interpolation method.
+[ros2_control_node-3] [INFO] [1763799548.654312568] [sekirei_arm_controller]: Action status changes will be monitored at 20.00 Hz.
+[ros2_control_node-3] [INFO] [1763799548.669446197] [controller_manager]: Activating controllers: [ sekirei_arm_controller ]
+[ros2_control_node-3] [INFO] [1763799548.688379573] [controller_manager]: Successfully switched controllers!
+[ros2_control_node-3] [INFO] [1763799549.041800381] [controller_manager]: Loading controller : 'joint_state_broadcaster' of type 'joint_state_broadcaster/JointStateBroadcaster'
+[ros2_control_node-3] [INFO] [1763799549.041841310] [controller_manager]: Loading controller 'joint_state_broadcaster'
+[ros2_control_node-3] [INFO] [1763799549.042805210] [controller_manager]: Controller 'joint_state_broadcaster' node arguments: --ros-args --params-file /tmp/launch_params_tky4oa7e --params-file /root/ros_ws/install/sekirei_moveit_config/share/sekirei_moveit_config/config/ros2_controllers.yaml 
+[ros2_control_node-3] [INFO] [1763799549.070250761] [controller_manager]: Configuring controller: 'joint_state_broadcaster'
+[ros2_control_node-3] [INFO] [1763799549.070313409] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
+[ros2_control_node-3] [INFO] [1763799549.089824573] [controller_manager]: Activating controllers: [ joint_state_broadcaster ]
+[ros2_control_node-3] [INFO] [1763799549.108393073] [controller_manager]: Successfully switched controllers!
+[ros2_control_node-3] [INFO] [1763799558.720215954] [sekirei_arm_controller]: Received new action goal
+[ros2_control_node-3] [INFO] [1763799558.720262674] [sekirei_arm_controller]: Accepted new action goal
+[rviz2-5] [ERROR] [1763799549.866855585] [moveit_2277432613.moveit.ros.motion_planning_frame]: Action server: /recognize_objects not available
+[rviz2-5] [INFO] [1763799549.879801718] [moveit_2277432613.moveit.ros.motion_planning_frame]: MoveGroup namespace changed: / -> . Reloading params.
+[rviz2-5] [INFO] [1763799549.944995545] [moveit_2277432613.moveit.ros.rdf_loader]: Loaded robot model in 0.0026593 seconds
+[rviz2-5] [INFO] [1763799549.945076401] [moveit_2277432613.moveit.core.robot_model]: Loading robot model 'sekirei'...
+[rviz2-5] [INFO] [1763799549.945092946] [moveit_2277432613.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[rviz2-5] [WARN] [1763799549.945273879] [moveit_2277432613.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
+[rviz2-5] [WARN] [1763799549.948610538] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[rviz2-5] [INFO] [1763799549.948729609] [moveit_2277432613.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
+[rviz2-5] [INFO] [1763799549.997874983] [moveit_2277432613.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+[rviz2-5] [INFO] [1763799549.998592848] [moveit_2277432613.moveit.ros.planning_scene_monitor]: Listening to '/monitored_planning_scene'
+[rviz2-5] [INFO] [1763799550.270520290] [interactive_marker_display_94838789929040]: Connected on namespace: /rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic
+[rviz2-5] [WARN] [1763799550.271805275] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[rviz2-5] [INFO] [1763799550.276182687] [moveit_2277432613.moveit.ros.motion_planning_frame]: group sekirei_arm
+[rviz2-5] [INFO] [1763799550.276247443] [moveit_2277432613.moveit.ros.motion_planning_frame]: Constructing new MoveGroup connection for group 'sekirei_arm' in namespace ''
+[rviz2-5] [INFO] [1763799550.288921234] [moveit_2277432613.moveit.ros.move_group_interface]: Ready to take commands for planning group sekirei_arm.
+[rviz2-5] [INFO] [1763799550.320264815] [interactive_marker_display_94838789929040]: Sending request for interactive markers
+[rviz2-5] [INFO] [1763799550.353807054] [interactive_marker_display_94838789929040]: Service response received for initialization
+[rviz2-5] [INFO] [1763799557.910796401] [moveit_2277432613.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+[rviz2-5] [INFO] [1763799557.911503704] [moveit_2277432613.moveit.ros.move_group_interface]: Planning request accepted
+[rviz2-5] [INFO] [1763799557.950056083] [moveit_2277432613.moveit.ros.move_group_interface]: Planning request complete!
+[rviz2-5] [INFO] [1763799557.950224677] [moveit_2277432613.moveit.ros.move_group_interface]: time taken to generate plan: 0.0179141 seconds
+[rviz2-5] [INFO] [1763799558.719526929] [moveit_2277432613.moveit.ros.move_group_interface]: Execute request accepted
+[move_group-4] [INFO] [1763799557.911367836] [move_group.moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[move_group-4] [INFO] [1763799557.911591902] [move_group.moveit.moveit.ros.move_group.move_action]: executing..
+[move_group-4] [INFO] [1763799557.911726582] [move_group.moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-4] [INFO] [1763799557.911747838] [move_group.moveit.moveit.ros.move_group.capability]: Using planning pipeline 'ompl'
+[move_group-4] [INFO] [1763799557.912027405] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[move_group-4] [INFO] [1763799557.912075216] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[move_group-4] [INFO] [1763799557.912087024] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[move_group-4] [INFO] [1763799557.912121029] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[move_group-4] [INFO] [1763799557.917044566] [move_group.moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'sekirei_arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[move_group-4] [INFO] [1763799557.918928710] [move_group]: Calling Planner 'OMPL'
+[move_group-4] [INFO] [1763799557.937195243] [move_group]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[move_group-4] [INFO] [1763799557.948941458] [move_group]: Calling PlanningResponseAdapter 'ValidateSolution'
+[move_group-4] [INFO] [1763799557.949520471] [move_group]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[move_group-4] [WARN] [1763799557.949642015] [move_group.moveit.moveit.ros.planning_pipeline]: The planner plugin did not fill out the 'planner_id' field of the MotionPlanResponse. Setting it to the planner ID name of the MotionPlanRequest assuming that the planner plugin does warn you if it does not use the requested planner.
+[move_group-4] [INFO] [1763799557.949712463] [move_group.moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[move_group-4] [INFO] [1763799558.719425419] [move_group.moveit.moveit.ros.move_group.clear_octomap_service]: Execution request received
+[move_group-4] [INFO] [1763799558.719489087] [move_group.moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-4] [INFO] [1763799558.719512336] [move_group.moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-4] [INFO] [1763799558.719607302] [move_group.moveit.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.5
+[move_group-4] [INFO] [1763799558.719671528] [move_group.moveit.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[move_group-4] [INFO] [1763799558.719698906] [move_group.moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-4] [INFO] [1763799558.719710805] [move_group.moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-4] [INFO] [1763799558.719848719] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to sekirei_arm_controller
+[move_group-4] [INFO] [1763799558.720461955] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sekirei_arm_controller started execution
+[move_group-4] [INFO] [1763799558.720472894] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[spawner-6] [INFO] [1763799548.779750765] [spawner_joint_state_broadcaster]: waiting for service /controller_manager/list_controllers to become available...
+[spawner-6] [INFO] [1763799549.069234570] [spawner_joint_state_broadcaster]: [94mLoaded [1mjoint_state_broadcaster[0m
+[spawner-6] [INFO] [1763799549.129282719] [spawner_joint_state_broadcaster]: [92mConfigured and activated [1mjoint_state_broadcaster[0m
+[spawner-7] [INFO] [1763799547.632745209] [spawner_sekirei_arm_controller]: waiting for service /controller_manager/list_controllers to become available...
+[spawner-7] [INFO] [1763799548.649444432] [spawner_sekirei_arm_controller]: [94mLoaded [1msekirei_arm_controller[0m
+[spawner-7] [INFO] [1763799548.709412259] [spawner_sekirei_arm_controller]: [92mConfigured and activated [1msekirei_arm_controller[0m
+[servo_node-8] [INFO] [1763799567.595439224] [servo_node]: Enabled SCHED_FIFO and higher thread priority.
+[servo_node-8] [WARN] [1763799567.595562549] [servo_node]: Realtime kernel is recommended for better performance.
+[servo_node-8] [INFO] [1763799567.597841225] [servo_node.moveit.moveit.ros.rdf_loader]: Loaded robot model in 0.00177382 seconds
+[servo_node-8] [INFO] [1763799567.597883925] [servo_node.moveit.moveit.core.robot_model]: Loading robot model 'sekirei'...
+[servo_node-8] [INFO] [1763799567.597893535] [servo_node.moveit.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[servo_node-8] [WARN] [1763799567.598004010] [servo_node.moveit.moveit.core.robot_model]: Could not identify parent group for end-effector 'end_effector'
+[servo_node-8] [WARN] [1763799567.599765794] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[servo_node-8] [INFO] [1763799567.599814953] [servo_node.moveit.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'sekirei_arm': 1 1 1 1 1 1
+[servo_node-8] [INFO] [1763799567.606559250] [servo_node.moveit.moveit.ros.current_state_monitor]: Listening to joint states on topic '/joint_states'
+[servo_node-8] [INFO] [1763799567.610292704] [servo_node.moveit.moveit.ros.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
+[servo_node-8] [INFO] [1763799567.610317666] [servo_node.moveit.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+[servo_node-8] [INFO] [1763799567.611296243] [servo_node.moveit.moveit.ros.planning_scene_monitor]: Listening to '/planning_scene'
+[servo_node-8] [INFO] [1763799567.611317734] [servo_node.moveit.moveit.ros.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[servo_node-8] [INFO] [1763799567.611545959] [servo_node.moveit.moveit.ros.planning_scene_monitor]: Listening to 'collision_object'
+[servo_node-8] [INFO] [1763799567.611758481] [servo_node.moveit.moveit.ros.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[servo_node-8] [INFO] [1763799567.612338944] [servo_node.moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on '/servo_node/publish_planning_scene'
+[servo_node-8] [INFO] [1763799567.812674429] [servo_node.moveit.moveit.ros.move_group.collision_monitor]: Collision monitor started
+[servo_node-8] [WARN] [1763799567.812719967] [servo_node.moveit.moveit.ros.servo]: No smoothing plugin loaded
+[servo_node-8] [INFO] [1763799567.812729313] [servo_node.moveit.moveit.ros.servo]: Servo initialized successfully
+[servo_node-8] [INFO] [1763799567.818585797] [servo_node]: Waiting to receive robot state update.
+[ros2_control_node-3] [INFO] [1763799567.928229316] [sekirei_arm_controller]: Goal reached, success!
+[move_group-4] [INFO] [1763799567.970685555] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'sekirei_arm_controller' successfully finished
+[move_group-4] [INFO] [1763799567.970741776] [move_group.moveit.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[move_group-4] [INFO] [1763799567.970816544] [move_group.moveit.moveit.ros.move_group.clear_octomap_service]: Execution completed: SUCCEEDED
+[rviz2-5] [INFO] [1763799567.971001209] [moveit_2277432613.moveit.ros.move_group_interface]: Execute request success!
+[rviz2-5] [WARN] [1763799568.971563523] [moveit_2277432613.moveit.ros.planning_scene_monitor]: Maybe failed to update robot state, time diff: 0.023s

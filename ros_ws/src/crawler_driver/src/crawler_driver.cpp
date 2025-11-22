@@ -2,7 +2,6 @@
 
 #include <std_msgs/msg/bool.hpp>
 
-// #include <iostream>
 #include <memory>
 
 #include <vector>
@@ -128,7 +127,6 @@ private:
   boost::asio::io_context io;
   boost::asio::serial_port serial;
   std::thread io_thread_;
-  // io_context::work work;  // Keeps io_context running
   boost::asio::executor_work_guard<boost::asio::io_context::executor_type> work;
 
   void configureSerialPort() {

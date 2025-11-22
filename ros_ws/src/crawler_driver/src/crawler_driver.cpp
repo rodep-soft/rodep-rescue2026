@@ -1,7 +1,5 @@
 #include <rclcpp/rclcpp.hpp>
 
-#include <std_msgs/msg/bool.hpp>
-
 #include <memory>
 
 #include <vector>
@@ -186,9 +184,6 @@ public:
     subscription_ = create_subscription<custom_interfaces::msg::CrawlerVelocity>(
         "/crawler_driver", 10, std::bind(&CrawlerDriver::driver_callback, this, std::placeholders::_1));
 
-    estop_subscription_ = create_subscription<std_msgs::msg::Bool>(
-        "/emergency_stop", 10, std::bind(&CrawlerDriver::estop_callback, this, std::placeholders::_1));
-
     init();
   }
 
@@ -199,10 +194,8 @@ private:
   int gearhead_ratio_;
   int pulley_ratio_;
   double counts_per_meter_;
-  bool estop_active_ = false;  // E-stop state
 
   rclcpp::Subscription<custom_interfaces::msg::CrawlerVelocity>::SharedPtr subscription_;
-  rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr estop_subscription_;
 
   inline double velocity_to_counts_per_sec(double velocity) const {
     return velocity * counts_per_meter_;
@@ -248,11 +241,6 @@ private:
   }
 
   void driver_callback(const custom_interfaces::msg::CrawlerVelocity::SharedPtr msg) {
-    if (estop_active_) {
-      RCLCPP_WARN(get_logger(), "E-stop is active. Ignoring motor commands.");
-      return;
-    }
-
     double M1_counts_per_sec = velocity_to_counts_per_sec(msg->m1_vel);
     double M2_counts_per_sec = velocity_to_counts_per_sec(msg->m2_vel);
 
@@ -270,29 +258,6 @@ private:
     });
   }
 
-  void estop_callback(const std_msgs::msg::Bool::SharedPtr msg) {
-    estop_active_ = msg->data;
-
-    if (estop_active_) {
-      RCLCPP_WARN(get_logger(), "E-stop activated. Stopping all motors.");
-      stopMotors();
-    } else {
-      RCLCPP_INFO(get_logger(), "E-stop deactivated. Resuming motor control.");
-    }
-  }
-
-  void stopMotors() {
-    roboclaw.setMotorVelocity(static_cast<int>(Command::M1_VELOCITY), 0, [](bool success) {
-      if (!success) {
-        RCLCPP_ERROR(rclcpp::get_logger("RoboclawDriver"), "Failed to stop M1 motor");
-      }
-    });
-    roboclaw.setMotorVelocity(static_cast<int>(Command::M2_VELOCITY), 0, [](bool success) {
-      if (!success) {
-        RCLCPP_ERROR(rclcpp::get_logger("RoboclawDriver"), "Failed to stop M2 motor");
-      }
-    });
-  }
 };
 
 int main(int argc, char* argv[]) {

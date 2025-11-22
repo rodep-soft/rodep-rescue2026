@@ -18,7 +18,12 @@
 #include <cmath>
 #include <limits>
 #include <chrono>
+
+
 namespace {
+
+// RoboclawのアドレスはMotionStudioから確認、変更することができる
+// デフォルト値は0x80
 constexpr uint8_t ROBOCLAW_ADDRESS = 0x80;
 
 enum class Command : uint8_t {
@@ -176,6 +181,7 @@ private:
 class CrawlerDriver : public rclcpp::Node {
 public:
   CrawlerDriver() : Node("crawler_driver"), roboclaw_("/dev/roboclaw") {
+    // 実機に合わせて変更。Yamlから指定できると良い
     declare_parameter("crawler_circumference", 0.39);
     declare_parameter("counts_per_rev", 256);
     declare_parameter("gearhead_ratio", 66);

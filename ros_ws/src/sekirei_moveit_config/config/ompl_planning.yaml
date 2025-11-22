@@ -36,7 +36,7 @@ planner_configs:
     type: geometric::PRMstar
 
 sekirei_arm:
-  default_planner_config: RRTConnect
+  default_planner_config: RRTConnect # とりま爆速
   planner_configs:
     - SBL
     - EST

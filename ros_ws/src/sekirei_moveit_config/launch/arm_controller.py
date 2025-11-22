@@ -382,8 +382,8 @@ def launch_setup(context, *args, **kwargs):
             # Load YAML and also explicitly set the command type under both
             # the moveit_servo.* prefixed name and the plain name so the
             # node definitely sees the setting at startup.
-            {"moveit_servo.command_in_type": "unitless", "command_in_type": "unitless"},
-            # {'command_in_type': 'unitless'},
+            # {"moveit_servo.command_in_type": "unitless", "command_in_type": "unitless"},
+            # {"command_in_type": "unitless"},
             os.path.join(moveit_config_pkg, "config", "moveit_servo.yaml"),
             # Ensure the servo starts in a command mode the installed
             # moveit_servo supports. The binary on this system accepts

@@ -3,7 +3,7 @@ servo_node:
     moveit_servo.move_group_name: "sekirei_arm"
 
     moveit_servo.command_in_type: "unitless"
-    command_in_type: "unitless"
+    # command_in_type: "unitless"
     moveit_servo.base_frame: "base_link"
     moveit_servo.ee_frame: "arm6_link"
 
@@ -11,8 +11,8 @@ servo_node:
     moveit_servo.pose_command_in_topic: "~/pose_target_cmds"
     moveit_servo.cartesian_command_in_topic: "~/delta_twist_cmds"
     moveit_servo.joint_command_in_topic: "~/delta_joint_cmds"
-    # moveit_servo.command_out_topic: "/sekirei_arm_controller/joint_trajectory"
-    moveit_servo.command_out_topic: "/sekirei_arm_controller/joint_trajectory_controller/commands"
+    moveit_servo.command_out_topic: "/sekirei_arm_controller/joint_trajectory"
+    # moveit_servo.command_out_topic: "/sekirei_arm_controller/joint_trajectory_controller/commands"
     moveit_servo.command_out_type: "trajectory_msgs/JointTrajectory"
 
     moveit_servo.use_output_qos: true
@@ -20,10 +20,8 @@ servo_node:
       reliability: best_effort
       durability: volatile
 
-
     moveit_servo.status_topic: "~/status"
-    moveit_servo.controller_name: "sekirei_arm_controller" 
-
+    moveit_servo.controller_name: "sekirei_arm_controller"
 
     moveit_servo.publish_period: 0.05
     moveit_servo.max_expected_latency: 0.2
@@ -51,7 +49,6 @@ servo_node:
 
     moveit_servo.allow_integration_in_goal_trajectories: true
 
-
     moveit_servo.use_smoothing: false
     moveit_servo.smoothing_filter_plugin_name: "online_signal_smoothing::ButterworthFilterPlugin"
 
@@ -65,4 +62,4 @@ servo_node:
     moveit_servo.joint_limit_margins: [0.1]
     moveit_servo.override_velocity_scaling_factor: 0.5
 
-    moveit_servo.joint_topic: "/joint_states"
+    # moveit_servo.joint_topic: "/joint_states"

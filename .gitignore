@@ -149,3 +149,4 @@ yarn-error.log*
 log.txt
 .pdf
 .gv
+.config

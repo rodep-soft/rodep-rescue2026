@@ -284,12 +284,12 @@ private:
   }
 
   void stopMotors() {
-    roboclaw.setMotorVelocity(M1_MOTOR_COMMAND, 0, [](bool success) {
+    roboclaw.setMotorVelocity(static_cast<int>(Command::M1_VELOCITY), 0, [](bool success) {
       if (!success) {
         RCLCPP_ERROR(rclcpp::get_logger("RoboclawDriver"), "Failed to stop M1 motor");
       }
     });
-    roboclaw.setMotorVelocity(M2_MOTOR_COMMAND, 0, [](bool success) {
+    roboclaw.setMotorVelocity(static_cast<int>(Command::M2_VELOCITY), 0, [](bool success) {
       if (!success) {
         RCLCPP_ERROR(rclcpp::get_logger("RoboclawDriver"), "Failed to stop M2 motor");
       }

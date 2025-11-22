@@ -26,14 +26,6 @@ find_package(custom_interfaces REQUIRED)
 add_executable(crawler_driver_node src/crawler_driver.cpp)
 ament_target_dependencies(crawler_driver_node rclcpp std_msgs geometry_msgs custom_interfaces)
 
-# Roboclawライブラリ（共通）
-add_library(roboclaw_driver src/roboclaw_driver.cpp)
-target_include_directories(roboclaw_driver PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include>)
-ament_target_dependencies(roboclaw_driver rclcpp)
-
-
 install(TARGETS
   crawler_driver_node
   DESTINATION lib/${PROJECT_NAME})

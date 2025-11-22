@@ -496,7 +496,7 @@ def generate_launch_description():
         [
             DeclareLaunchArgument(
                 "use_rosbridge",
-                default_value="false",
+                default_value="false",  # Flutterや外部と通信する場合だけTrue
                 description="Launch rosbridge_server for web/Flutter UI connection",
             ),
             DeclareLaunchArgument(

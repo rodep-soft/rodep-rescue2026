@@ -1,4 +1,4 @@
-FROM osrf/ros:jazzy-desktop
+FROM docker.io/osrf/ros:jazzy-desktop
 
 
 # --- Install base tools and ROS packages ---

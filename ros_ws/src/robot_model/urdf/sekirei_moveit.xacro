@@ -301,8 +301,8 @@
     <transmission name="arm_joint1_trans">
         <type>transmission_interface/SimpleTransmission</type>
         <actuator name="arm_joint1_motor">
-        <!-- 減速比しらべて書く -->
-            <mechanicalReduction>1</mechanicalReduction>
+        <!-- 減速比しらべて書く (negative values can be set??)-->
+            <mechanicalReduction>20</mechanicalReduction>
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </actuator>
         <joint name="arm_joint1">
@@ -313,7 +313,7 @@
     <transmission name="arm_joint2_trans">
         <type>transmission_interface/SimpleTransmission</type>
         <actuator name="arm_joint2_motor">
-            <mechanicalReduction>1</mechanicalReduction>
+            <mechanicalReduction>20</mechanicalReduction>
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </actuator>
         <joint name="arm_joint2">
@@ -324,8 +324,9 @@
     <transmission name="arm_joint3_trans">
         <type>transmission_interface/SimpleTransmission</type>
         <actuator name="arm_joint3_motor">
-            <mechanicalReduction>1</mechanicalReduction>
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>20</mechanicalReduction>
+	    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+	 
         </actuator>
         <joint name="arm_joint3">
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
@@ -389,8 +390,8 @@
             <!-- このへんあやしい -->
           <!-- Real-hardware mapping: invert joint3 sign so hardware commands/states match URDF orientation
               Simulation (use_real_hw=false) will keep the identity mapping in its branch. -->
-          <param name="joint_to_transmission_matrix">1,0,0,0,0,0, 0,1,0,0,0,0, 0,0,-1,0,0,0, 0,0,0,1,0,0, 0,0,0,0,1,0, 0,0,0,0,0,1</param>
-          <param name="transmission_to_joint_matrix">1,0,0,0,0,0, 0,1,0,0,0,0, 0,0,-1,0,0,0, 0,0,0,1,0,0, 0,0,0,0,1,0, 0,0,0,0,0,1</param>
+          <param name="joint_to_transmission_matrix">1,0,0,0,0,0, 0,1,0,0,0,0, 0,0,1,0,0,0, 0,0,0,1,0,0, 0,0,0,0,1,0, 0,0,0,0,0,1</param>
+          <param name="transmission_to_joint_matrix">1,0,0,0,0,0, 0,1,0,0,0,0, 0,0,1,0,0,0, 0,0,0,1,0,0, 0,0,0,0,1,0, 0,0,0,0,0,1</param>
         </hardware>
 
         <!-- Joint configurations -->

@@ -58,7 +58,11 @@ debug-test:
 	fi
 	bash -c "source install/setup.bash && gdb -ex run $(TEST)"
 
+unitless:
+	ros2 service call /servo_node/switch_command_type moveit_msgs/srv/ServoCommandType "{command_type: 0}"
 
+twist:
+	ros2 service call /servo_node/switch_command_type moveit_msgs/srv/ServoCommandType "{command_type: 1}"
 
 
 .PHONY: build build-debug build-debug-asan build-release build-relwithdebinfo src clean clean-debug find debug-node debug-node-gui debug-test

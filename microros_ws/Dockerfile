@@ -1,4 +1,4 @@
-FROM osrf/ros:jazzy-desktop-full
+FROM docker.io/osrf/ros:jazzy-desktop-full
 
 # Install dependencies for both Agent and Firmware build
 RUN apt-get update && apt-get install -y \

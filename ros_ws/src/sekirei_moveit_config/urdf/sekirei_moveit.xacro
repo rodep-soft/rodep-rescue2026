@@ -413,13 +413,13 @@
             <mechanicalReduction>1</mechanicalReduction>
             <hardwareInterface
             >hardware_interface/PositionJointInterface</hardwareInterface>
+            <scale>-1</scale>
         </actuator>
         <joint name="arm_joint3">
             <hardwareInterface
             >hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
-        <!-- <scale>1</scale> -->
-        <!-- これで逆転させたらうまくいくかも。。？ -->
+
     </transmission>
 
     <transmission name="arm_joint4_trans">

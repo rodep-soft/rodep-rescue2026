@@ -1,6 +1,33 @@
-# rodep-rescue2026
+# What's this?
 
-## Quick Start (初回セットアップ)
+RobocupRescueの制御用repoです。
+
+## 開発者用
+
+### 作業時の注意
+
+- mainにはrulesetで直接pushできないようになっています
+- 必ずFlutter, microros, ros2の３つのCIをすべてpassしたことを確認してからmergeすること。即ち、PRを出さずに勝手にmergeしてはいけない。
+- MainでCIに失敗したらhotfix/ブランチを切り早急に対処すること
+
+### 作業環境
+
+推奨の環境
+- Host: Ubuntu24.04 (WSL2でも化だが、Device/Network周り注意)
+- Virtual Env: Docker/Docker-Compose (Podman一部可/podman-composeはバグる)
+- Shell: Bash
+- CPU: x86_64 (armだとdocker compose buildでコケる)
+
+Yano's setup:
+- Host: ArchLinux(rolling) / WSL2 (less common)
+- Virtual Env: Docker/Docker-Compose
+- Shell: Fish (bass)
+- CPU: x86_64
+
+
+
+
+### Quick Start (Setup)
 
 ```bash
 # 1. リポジトリをclone
@@ -9,12 +36,6 @@ cd rodep-rescue2026
 
 # 2. 初回セットアップ（submodule取得 + 全コンテナをビルド + micro-ROS firmwareを展開）
 make setup
-
-# 3. コンテナ起動
-make up
-
-# 4. ROS2コンテナにアクセス
-make exec
 ```
 
 ### micro-ROS開発の場合
@@ -30,19 +51,4 @@ make exec
   ```
 - 詳細は [docs/microros-nucleo-f446re.md](docs/microros-nucleo-f446re.md) を参照
 
-## Branch rules
-
-- mainへのpushは不可能
-- 作業時は必ずbranchを切って、PRを出すこと
-- ciが通っていないのにmergeしない
-
-## Directory explanation
-
-- ros_ws -> メインのROS2 workspace
-  - src -> nodeのpkgを配置
-  - sandbox -> 試験的なコード(特にルールはなし)
-- microros_ws -> micro-ROS開発環境（STM32 Nucleo F446RE用）
-  - src/micro_ros_setup -> micro-ROS setup（submodule、forkを編集可能）
-  - firmware -> ビルド成果物（make setupで展開、.gitignoreで除外）
-- scripts -> モーターの単体テストやbash script
-- docs -> Linuxのsetupや書き留
+### 

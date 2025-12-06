@@ -31,33 +31,33 @@ RUN apt-get update && \
 
 # Build micro-ROS tools (as per tutorial)
 SHELL ["/bin/bash", "-c"]
-RUN source /opt/ros/jazzy/setup.bash && \
+RUN . /opt/ros/jazzy/setup.bash && \
     colcon build && \
-    source install/local_setup.bash
+    . install/local_setup.bash
 
 # Download micro-ROS-Agent packages (create step)
-RUN source /opt/ros/jazzy/setup.bash && \
-    source install/local_setup.bash && \
+RUN . /opt/ros/jazzy/setup.bash && \
+    . install/local_setup.bash && \
     ros2 run micro_ros_setup create_agent_ws.sh
 
 # Build micro-ROS agent (build step)
-RUN source /opt/ros/jazzy/setup.bash && \
-    source install/local_setup.bash && \
+RUN . /opt/ros/jazzy/setup.bash && \
+    . install/local_setup.bash && \
     ros2 run micro_ros_setup build_agent.sh
 
 # Create firmware workspace for STM32 Nucleo F446RE
-RUN source /opt/ros/jazzy/setup.bash && \
-    source install/local_setup.bash && \
+RUN . /opt/ros/jazzy/setup.bash && \
+    . install/local_setup.bash && \
     ros2 run micro_ros_setup create_firmware_ws.sh freertos nucleo_f446re
 
 # Configure ping_pong app with serial transport
-RUN source /opt/ros/jazzy/setup.bash && \
-    source install/local_setup.bash && \
+RUN . /opt/ros/jazzy/setup.bash && \
+    . install/local_setup.bash && \
     ros2 run micro_ros_setup configure_firmware.sh ping_pong -t serial
 
 # Build firmware (this may take some time)
-RUN source /opt/ros/jazzy/setup.bash && \
-    source install/local_setup.bash && \
+RUN . /opt/ros/jazzy/setup.bash && \
+    . install/local_setup.bash && \
     ros2 run micro_ros_setup build_firmware.sh
 
 # Setup entrypoint to source ROS 2 and micro-ROS

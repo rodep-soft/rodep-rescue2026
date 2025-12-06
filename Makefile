@@ -200,5 +200,6 @@ tidy-fix:
 		! -path '*/build/*' ! -path '*/install/*' ! -path '*/log/*' \
 		-exec clang-tidy -p ros_ws/build --config-file=ros_ws/src/.clang-tidy --fix {} + 2>&1 | grep -v "^[0-9]* warnings generated"
 
-# src:
-# 	. /opt/ros/jazzy/setup.bash
+servo-link:
+	sudo ln -s ./scripts/servo/launch.bash /usr/local/bin/servo
+

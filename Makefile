@@ -205,4 +205,4 @@ servo-link:
 
 
 html:
-	sphinx-build -b html source build
+	sphinx-build -b html source build/html

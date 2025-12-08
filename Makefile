@@ -203,3 +203,6 @@ tidy-fix:
 servo-link:
 	sudo ln -s ./scripts/servo/launch.bash /usr/local/bin/servo
 
+
+html:
+	sphinx-build -b html source build/html

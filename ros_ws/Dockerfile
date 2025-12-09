@@ -1,5 +1,5 @@
-FROM docker.io/osrf/ros:jazzy-desktop
-
+# FROM docker.io/osrf/ros:jazzy-desktop
+FROM docker.io/osrf/ros:jazzy-desktop-full
 
 # --- Install base tools and ROS packages ---
 RUN apt-get update && apt-get upgrade -y && \

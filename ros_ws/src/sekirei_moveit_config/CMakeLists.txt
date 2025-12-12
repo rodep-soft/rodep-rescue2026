@@ -24,6 +24,8 @@ install(PROGRAMS
   scripts/move_to_named_pose.py
   scripts/moveit_bridge.py
   scripts/joy_to_jointjog.py
+
+  scripts/fake_controller.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

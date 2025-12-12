@@ -5,7 +5,7 @@
     </group>
 
     <!-- Define the end effector -->
-    <end_effector name="end_effector" parent_link="arm6_link" group="sekirei_arm" />
+    <end_effector name="end_effector" parent_link="arm6_link" parent_group="sekirei_arm" group="sekirei_arm" />
 
     <!-- Disable collisions between adjacent links -->
     <disable_collisions link1="base_link" link2="arm_base_link" reason="Adjacent" />
@@ -31,12 +31,12 @@
     <!-- Named Poses (Preset Positions) -->
     <!-- Home: Safe initial position, all joints at zero -->
     <group_state name="home" group="sekirei_arm">
-        <joint name="arm_joint1" value="0.0" />
-        <joint name="arm_joint2" value="0.0" />
-        <joint name="arm_joint3" value="0.0" />
-        <joint name="arm_joint4" value="0.0" />
-        <joint name="arm_joint5" value="0.0" />
-        <joint name="arm_joint6" value="0.0" />
+        <joint name="arm_joint1" value="0.01" />
+        <joint name="arm_joint2" value="1.69" />
+        <joint name="arm_joint3" value="-1.44" />
+        <joint name="arm_joint4" value="0.02" />
+        <joint name="arm_joint5" value="-0.08" />
+        <joint name="arm_joint6" value="2.87" />
     </group_state>
 
     <!-- Ready: Upright ready position -->

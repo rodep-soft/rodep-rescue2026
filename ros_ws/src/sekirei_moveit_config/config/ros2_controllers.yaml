@@ -1,46 +1,18 @@
 controller_manager:
   ros__parameters:
-    update_rate: 50  # Hz (reduced from 100 to improve communication stability with 6 servos at 1Mbps)
-
-    sekirei_arm_controller:
-      type: joint_trajectory_controller/JointTrajectoryController
+    update_rate: 50
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
+    sekirei_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
 
-
-# Real hardware joint_trajectory_controller (for dynamixel_hardware)
-joint_trajectory_controller:
-  ros__parameters:
-    joints:
-      - arm_joint1
-      - arm_joint2
-      - arm_joint3
-      - arm_joint4
-      - arm_joint5
-      - arm_joint6
-
-    command_interfaces:
-      - position
-
-    state_interfaces:
-      - position
-      - velocity
-
-    action_monitor_rate: 20.0
-
-    allow_partial_joints_goal: false
-    open_loop_control: false
-    allow_integration_in_goal_trajectories: true
-    constraints:
-      stopped_velocity_tolerance: 0.01
-      goal_time: 0.0
+joint_state_broadcaster:
+  ros__parameters: {}
 
 sekirei_arm_controller:
   ros__parameters:
-    hardware_interface: DynamixelHardwareInterface  # ←これ追加した
-
     joints:
       - arm_joint1
       - arm_joint2
@@ -56,33 +28,22 @@ sekirei_arm_controller:
       - position
       - velocity
 
+    
+    state_publish_rate: 50.0
     action_monitor_rate: 20.0
 
     allow_partial_joints_goal: false
-    # Change: closed loopにする
     open_loop_control: false
-    allow_integration_in_goal_trajectories: false  # Don't modify trajectory
+    allow_integration_in_goal_trajectories: false
     allow_nonzero_velocity_at_trajectory_end: true
-    start_with_holding: false  # Don't add holding point
-    action_monitor_rate: 20.0
-    state_publish_rate: 50.0
+    start_with_holding: false
+
     constraints:
-      stopped_velocity_tolerance: 1.0  # Very lenient
-      goal_time: 0.0  # No timeout on goal completion
+      stopped_velocity_tolerance: 1.0
+      goal_time: 0.0
       arm_joint1: {trajectory: 2.0, goal: 1.0}
       arm_joint2: {trajectory: 2.0, goal: 1.0}
       arm_joint3: {trajectory: 2.0, goal: 1.0}
       arm_joint4: {trajectory: 2.0, goal: 1.0}
       arm_joint5: {trajectory: 2.0, goal: 1.0}
       arm_joint6: {trajectory: 2.0, goal: 1.0}
-
-joint_state_broadcaster:
-  ros__parameters:
-    {}
-      #   joints:
-      # - arm_joint1
-      # - arm_joint2
-      # - arm_joint3
-      # - arm_joint4
-      # - arm_joint5
-      # - arm_joint6

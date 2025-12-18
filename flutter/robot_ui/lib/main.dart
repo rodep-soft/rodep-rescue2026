@@ -46,15 +46,36 @@ class CameraImageWidget extends StatefulWidget {
 class _CameraImageWidgetState extends State<CameraImageWidget> {
   Uint8List? _currentImage;
   String _imageStatus = 'No image received';
+  DateTime? _lastUpdateTime;
+  int _frameSkipCounter = 0;
+  static const int _frameSkip = 2; // Process every 3rd frame (skip 2)
 
   @override
   void initState() {
     super.initState();
     widget.imageStream.listen((imageData) {
-      if (mounted && imageData != null) {
+      if (!mounted || imageData == null) return;
+
+      // Frame skipping to reduce CPU load (skip 3 out of 4 frames)
+      _frameSkipCounter++;
+      if (_frameSkipCounter < 3) {
+        return; // Skip this frame
+      }
+      _frameSkipCounter = 0;
+
+      // Throttle updates (max 8 FPS on display, 125ms interval)
+      final now = DateTime.now();
+      if (_lastUpdateTime != null &&
+          now.difference(_lastUpdateTime!).inMilliseconds < 125) {
+        return; // Skip if less than 125ms since last update
+      }
+      _lastUpdateTime = now;
+
+      // Async setState to avoid blocking
+      if (mounted) {
         setState(() {
           _currentImage = imageData;
-          _imageStatus = 'Image received (${imageData.length} bytes)';
+          _imageStatus = 'Image: ${(imageData.length / 1024).toStringAsFixed(1)} KB';
         });
       }
     });
@@ -96,13 +117,20 @@ class _CameraImageWidgetState extends State<CameraImageWidget> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Center(
-                child: Image.memory(
-                  _currentImage!,
-                  fit: BoxFit.contain,
-                  gaplessPlayback: true, // Prevents flickering during updates
-                  errorBuilder: (context, error, stackTrace) {
-                    return Text('Error displaying image: $error');
-                  },
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxWidth: 480, // Smaller display for performance
+                    maxHeight: 360,
+                  ),
+                  child: Image.memory(
+                    _currentImage!,
+                    fit: BoxFit.contain,
+                    gaplessPlayback: true, // Prevents flickering during updates
+                    cacheWidth: 480, // Decode at lower resolution for speed
+                    errorBuilder: (context, error, stackTrace) {
+                      return Text('Error displaying image: $error');
+                    },
+                  ),
                 ),
               ),
             )
@@ -136,6 +164,7 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
   final List<String> _subscribedTopics = [];
 
   // WebSocket address configuration
+  // String _wsAddress = '100.110.229.126';
   String _wsAddress = 'localhost';
   String _wsPort = '9090';
 
@@ -174,6 +203,8 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
         _subscribeToTopic('/chatter', 'std_msgs/String');
         // Subscribe to compressed image topic
         _subscribeToTopic('/image_raw/compressed', 'sensor_msgs/CompressedImage');
+        // Subscribe to arm status from moveit_bridge
+        _subscribeToTopic('/arm_status', 'std_msgs/String');
       });
 
       // Listen to incoming messages
@@ -357,6 +388,40 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
       '/test_topic',
       'std_msgs/String',
       {'data': 'Hello from Flutter!'},
+    );
+  }
+
+  // Move to named pose
+  void _moveToNamedPose(String poseName) {
+    if (!_isConnected) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Not connected to ROS')),
+      );
+      return;
+    }
+
+    _publishToTopic(
+      '/move_to_pose',
+      'std_msgs/String',
+      {'data': poseName},
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Moving to pose: $poseName')),
+    );
+  }
+
+  // Widget for pose button
+  Widget _poseButton(String label, String poseName, IconData icon) {
+    return ElevatedButton.icon(
+      onPressed: _isConnected ? () => _moveToNamedPose(poseName) : null,
+      icon: Icon(icon),
+      label: Text(label),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.blue.shade100,
+        foregroundColor: Colors.blue.shade900,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      ),
     );
   }
 
@@ -654,6 +719,53 @@ class _ROS2HomePageState extends State<ROS2HomePage> {
                   ))),
               const SizedBox(height: 20),
             ],
+
+            // MoveIt Control - Named Poses
+            Card(
+              color: Colors.blue.shade50,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.precision_manufacturing, color: Colors.blue.shade700),
+                        const SizedBox(width: 8),
+                        const Text(
+                          'MoveIt Control - Named Poses',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    const Text(
+                      'Click a button to move the arm to a preset position:',
+                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                    ),
+                    const SizedBox(height: 12),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        _poseButton('Home', 'home', Icons.home),
+                        _poseButton('Ready', 'ready', Icons.front_hand),
+                        _poseButton('Up', 'up', Icons.arrow_upward),
+                        _poseButton('Forward', 'forward', Icons.arrow_forward),
+                        _poseButton('Compact', 'compact', Icons.compress),
+                        _poseButton('Left', 'left', Icons.arrow_back),
+                        _poseButton('Right', 'right', Icons.arrow_forward),
+                        _poseButton('Back', 'back', Icons.arrow_downward),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
 
             // Action Buttons
             Wrap(

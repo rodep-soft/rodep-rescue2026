@@ -1,1 +1,5 @@
-repositories: {}
+repositories:
+  dynamixel_hardware:
+    type: git
+    url: https://github.com/ros-controls/dynamixel_hardware.git
+    version: jazzy

@@ -13,13 +13,42 @@ repos:
 #     -   id: black
 
 -   repo: https://github.com/pre-commit/mirrors-clang-format
-    rev: v21.1.2
+    rev: v21.1.5
     hooks:
     -   id: clang-format
+        # ROS2 C++ files only (in ros_ws/src/)
+        files: ^ros_ws/src/.*\.(cpp|hpp|h|cc|cxx)$
         exclude: |
-          ^microros_ws/firmware/toolchain/
-          ^\.local/
-          ^\.cache/
-          ^\.venv/
-          ^env/
-          ^build/
+          (?x)^(
+              ros_ws/src/eProsima/.*|
+              ros_ws/src/ros2/.*|
+              ros_ws/src/micro_ros_setup/.*|
+              microros_ws/firmware/toolchain/.*|
+              \.local/.*|
+              \.cache/.*|
+              \.venv/.*|
+              env/.*|
+              .*/build/.*|
+              .*/install/.*|
+              .*/log/.*
+          )$
+
+# clang-tidy is disabled in pre-commit due to complexity
+# Use 'make tidy' or 'make tidy-fix' manually instead
+# Requires: cd ros_ws && colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+#
+# -   repo: https://github.com/pocc/pre-commit-hooks
+#     rev: v1.3.5
+#     hooks:
+#     -   id: clang-tidy
+#         args: [-p=ros_ws/build, --config-file=ros_ws/src/.clang-tidy]
+#         files: ^ros_ws/src/.*\.(cpp|hpp|h|cc|cxx)$
+#         exclude: |
+#           (?x)^(
+#               ros_ws/src/eProsima/.*|
+#               ros_ws/src/ros2/.*|
+#               ros_ws/src/micro_ros_setup/.*|
+#               .*/build/.*|
+#               .*/install/.*|
+#               .*/log/.*
+#           )$

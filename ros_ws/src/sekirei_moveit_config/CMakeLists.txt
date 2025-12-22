@@ -7,7 +7,16 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(dynamixel_sdk REQUIRED)
 
+add_executable(ee_controller src/ee_controller.cpp)
+ament_target_dependencies(ee_controller rclcpp sensor_msgs dynamixel_sdk)
+install(TARGETS
+  ee_controller
+  DESTINATION lib/${PROJECT_NAME}
+)
 # Install launch files
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME}

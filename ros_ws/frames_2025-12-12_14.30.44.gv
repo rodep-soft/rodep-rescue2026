@@ -1,0 +1,16 @@
+digraph G {
+"world" -> "base_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"arm_base_link" -> "arm1_link"[label=" Broadcaster: default_authority\nAverage rate: 12.821\nBuffer length: 3.12\nMost recent transform: 1765517444.360863\nOldest transform: 1765517441.241016\n"];
+"base_link" -> "arm_base_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"arm1_link" -> "arm2_link"[label=" Broadcaster: default_authority\nAverage rate: 12.821\nBuffer length: 3.12\nMost recent transform: 1765517444.360863\nOldest transform: 1765517441.241016\n"];
+"arm2_link" -> "arm3_link"[label=" Broadcaster: default_authority\nAverage rate: 12.821\nBuffer length: 3.12\nMost recent transform: 1765517444.360863\nOldest transform: 1765517441.241016\n"];
+"arm3_link" -> "arm4_link"[label=" Broadcaster: default_authority\nAverage rate: 12.821\nBuffer length: 3.12\nMost recent transform: 1765517444.360863\nOldest transform: 1765517441.241016\n"];
+"arm4_link" -> "arm5_link"[label=" Broadcaster: default_authority\nAverage rate: 12.821\nBuffer length: 3.12\nMost recent transform: 1765517444.360863\nOldest transform: 1765517441.241016\n"];
+"arm5_link" -> "arm6_link"[label=" Broadcaster: default_authority\nAverage rate: 12.821\nBuffer length: 3.12\nMost recent transform: 1765517444.360863\nOldest transform: 1765517441.241016\n"];
+"arm6_link" -> "gui_d435_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"arm1_link" -> "gui_t265_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1765517444.3775504"[ shape=plaintext ] ;
+}->"world";
+}

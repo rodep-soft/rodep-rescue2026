@@ -5,6 +5,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="sekirei">
     <!-- Base link with inertial -->
     <!-- Inertia, mass等はあくまで推定値!! -->
+    <xacro:arg name="use_real_hw" default="false"/>
     <link name="base_link">
         <inertial>
             <mass value="1.0"/>
@@ -371,7 +372,7 @@
     <!-- Launchファイルから実機制御するかを指定する -->
     <xacro:property name="use_real_hw" value="$(arg use_real_hw)" />
 
-    <xacro:if value="${use_real_hw}">
+    <xacro:if value="$(arg use_real_hw)">
     <ros2_control name="sekirei_dynamixel_hw" type="system">
         <hardware>
             <!-- plugin provided by dynamixel_hardware_interface package -->
@@ -507,7 +508,7 @@
     </ros2_control>
     </xacro:if>
 
-    <xacro:unless value="${use_real_hw}">
+    <xacro:unless value="$(arg use_real_hw)">
      <!-- ros2_control configuration for dummy/mock hardware -->
     <ros2_control name="sekirei_dynamixel_hw" type="system">
         <hardware>

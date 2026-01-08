@@ -74,6 +74,7 @@ public:
     RCLCPP_INFO(get_logger(), "Succeeded to set baudrate: %d", baudrate_);
 
     // SyncWrite（両方同時にGOAL_POSITIONを送る）
+    //4はデータ長(byte)
     sync_write_goal_pos_ = std::make_unique<dynamixel::GroupSyncWrite>(
       port_handler_, packet_handler_, ADDR_GOAL_POSITION, 4);
 
@@ -184,7 +185,7 @@ private:
   std::vector<int32_t> last_buttons_;
 
 private:
-  // ---------- Low-level helpers ----------
+  //write関数は1バイト、2バイト、4バイト用を用意
   bool write1(uint8_t id, uint16_t addr, uint8_t val) {
     uint8_t dxl_error = 0;
     int r = packet_handler_->write1ByteTxRx(port_handler_, id, addr, val, &dxl_error);
@@ -232,8 +233,7 @@ private:
     // Torque OFF
     write1(id, ADDR_TORQUE_ENABLE, 0);
 
-    // Operating Mode：まずは3（Position Control）で動作安定を優先
-    // ※もしあなたが mode=5 を使いたいなら 5 にしてもOK
+    // Operating Mode: Position Control (3)
     write1(id, ADDR_OPERATING_MODE, 3);
 
     // 保険：最大出力上限（判定には使わない）

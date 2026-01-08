@@ -3,6 +3,7 @@
 #include <chrono>
 #include <cmath>
 #include <cstdint>
+#include <cstdio>   
 #include <memory>
 #include <mutex>
 #include <string>
@@ -12,12 +13,18 @@
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/joy.hpp"
 
-// ===== Control Table (XM/X series想定) =====
-#define ADDR_OPERATING_MODE     11
-#define ADDR_CURRENT_LIM        38
-#define ADDR_TORQUE_ENABLE      64
-#define ADDR_GOAL_POSITION     116
-#define ADDR_PRESENT_POSITION  132
+// ===== Control Table (XM series) =====
+#define ADDR_OPERATING_MODE            11
+#define ADDR_TORQUE_ENABLE             64
+#define ADDR_SHUTDOWN                  63
+#define ADDR_HARDWARE_ERROR_STATUS     70
+
+#define ADDR_GOAL_POSITION            116
+#define ADDR_PRESENT_POSITION         132
+
+// Diagnostics (XM series)
+#define ADDR_PRESENT_INPUT_VOLTAGE    144  // 2 bytes, 0.1[V]
+#define ADDR_PRESENT_TEMPERATURE      146  // 1 byte, [°C]
 
 #define PROTOCOL_VERSION 2.0
 
@@ -33,12 +40,11 @@ public:
 
     // 制御パラメータ（位置ベース停止）
     declare_parameter<int>("loop_ms", 20);
-    declare_parameter<int>("step_pos", 20);          // 1周期で進めるtick（小さいほど優しい）
-    declare_parameter<int>("epsilon_pos", 30);       // 目標到達判定
-    declare_parameter<int>("stall_pos_delta", 100);   // 位置変化がこれ以下なら「動いてない」
-    declare_parameter<int>("stall_consecutive", 4);  // stall連続回数で停止
-    declare_parameter<int>("close_timeout_ms", 3000);// 閉じ動作タイムアウト
-    declare_parameter<int>("current_limit", 160);    // 保険：最大出力上限（判定には使わない）
+    declare_parameter<int>("step_pos", 50);            // 1周期で進めるtick（小さいほど優しい）
+    declare_parameter<int>("epsilon_pos", 30);         // 目標到達判定
+    declare_parameter<int>("stall_pos_delta", 100);    // 位置変化がこれ以下なら「動いてない」
+    declare_parameter<int>("stall_consecutive", 4);    // stall連続回数で停止
+    declare_parameter<int>("close_timeout_ms", 3000);  // 閉じ動作タイムアウト
 
     get_parameter("device_name", device_name_);
     get_parameter("baudrate", baudrate_);
@@ -50,7 +56,6 @@ public:
     get_parameter("stall_pos_delta", stall_pos_delta_);
     get_parameter("stall_consecutive", stall_consecutive_);
     get_parameter("close_timeout_ms", close_timeout_ms_);
-    get_parameter("current_limit", current_limit_);
 
     // ===== Dynamixel SDK =====
     port_handler_ = dynamixel::PortHandler::getPortHandler(device_name_.c_str());
@@ -74,7 +79,7 @@ public:
     RCLCPP_INFO(get_logger(), "Succeeded to set baudrate: %d", baudrate_);
 
     // SyncWrite（両方同時にGOAL_POSITIONを送る）
-    //4はデータ長(byte)
+    // 4はGoal Positionのデータ長(byte)
     sync_write_goal_pos_ = std::make_unique<dynamixel::GroupSyncWrite>(
       port_handler_, packet_handler_, ADDR_GOAL_POSITION, 4);
 
@@ -123,19 +128,16 @@ public:
     std::lock_guard<std::mutex> lk(mtx_);
     if (!port_handler_ || !packet_handler_) return;
 
+    // 終了時に状態ダンプ（最後に何が起きてたか確認しやすい）
     for (uint8_t id : ids_) {
-      uint8_t dxl_error = 0;
-      int r = packet_handler_->write1ByteTxRx(
-        port_handler_, id, ADDR_TORQUE_ENABLE, 0, &dxl_error);
-
-      if (r != COMM_SUCCESS) {
-        RCLCPP_ERROR(get_logger(), "[ID:%d] %s", id, packet_handler_->getTxRxResult(r));
-      } else if (dxl_error != 0) {
-        RCLCPP_ERROR(get_logger(), "[ID:%d] %s", id, packet_handler_->getRxPacketError(dxl_error));
-      } else {
-        RCLCPP_INFO(get_logger(), "Disabled torque [ID:%d]", id);
-      }
+      printDiagnostics(id);
     }
+
+    // Torque OFF
+    for (uint8_t id : ids_) {
+      write1(id, ADDR_TORQUE_ENABLE, 0);
+    }
+
     port_handler_->closePort();
     RCLCPP_INFO(get_logger(), "Closed the port");
   }
@@ -168,7 +170,6 @@ private:
   int stall_pos_delta_{100};
   int stall_consecutive_{8};
   int close_timeout_ms_{3000};
-  int current_limit_{160};
 
   // ===== State =====
   std::mutex mtx_;
@@ -185,7 +186,7 @@ private:
   std::vector<int32_t> last_buttons_;
 
 private:
-  //write関数は1バイト、2バイト、4バイト用を用意
+  // ===== Utils: read/write =====
   bool write1(uint8_t id, uint16_t addr, uint8_t val) {
     uint8_t dxl_error = 0;
     int r = packet_handler_->write1ByteTxRx(port_handler_, id, addr, val, &dxl_error);
@@ -214,6 +215,34 @@ private:
     return true;
   }
 
+  bool read1(uint8_t id, uint16_t addr, uint8_t& out) {
+    uint8_t dxl_error = 0;
+    int r = packet_handler_->read1ByteTxRx(port_handler_, id, addr, &out, &dxl_error);
+    if (r != COMM_SUCCESS) {
+      RCLCPP_ERROR(get_logger(), "[ID:%d] %s", id, packet_handler_->getTxRxResult(r));
+      return false;
+    }
+    if (dxl_error != 0) {
+      RCLCPP_ERROR(get_logger(), "[ID:%d] %s", id, packet_handler_->getRxPacketError(dxl_error));
+      return false;
+    }
+    return true;
+  }
+
+  bool read2(uint8_t id, uint16_t addr, uint16_t& out) {
+    uint8_t dxl_error = 0;
+    int r = packet_handler_->read2ByteTxRx(port_handler_, id, addr, &out, &dxl_error);
+    if (r != COMM_SUCCESS) {
+      RCLCPP_ERROR(get_logger(), "[ID:%d] %s", id, packet_handler_->getTxRxResult(r));
+      return false;
+    }
+    if (dxl_error != 0) {
+      RCLCPP_ERROR(get_logger(), "[ID:%d] %s", id, packet_handler_->getRxPacketError(dxl_error));
+      return false;
+    }
+    return true;
+  }
+
   bool read4(uint8_t id, uint16_t addr, uint32_t& out) {
     uint8_t dxl_error = 0;
     int r = packet_handler_->read4ByteTxRx(port_handler_, id, addr, &out, &dxl_error);
@@ -228,6 +257,50 @@ private:
     return true;
   }
 
+  // ===== Diagnostics =====
+  static std::string hwErrorToString(uint8_t s) {
+    if (s == 0) return "OK(0)";
+    std::string t;
+    auto add = [&](const char* x){ if(!t.empty()) t += " | "; t += x; };
+
+    // X/XM系でよく見るビット割り当て（複数同時に立ち得る）
+    if (s & 0x01) add("InputVoltage");
+    if (s & 0x02) add("MotorHallSensor");
+    if (s & 0x04) add("Overheating");
+    if (s & 0x08) add("MotorEncoder");
+    if (s & 0x10) add("ElectricalShock");
+    if (s & 0x20) add("Overload");
+
+    char buf[32];
+    std::snprintf(buf, sizeof(buf), " (0x%02X)", s);
+    t += buf;
+    return t;
+  }
+
+  void printDiagnostics(uint8_t id) {
+    uint8_t hw = 0, temp = 0, shutdown = 0;
+    uint16_t vin_raw = 0;
+
+    const bool ok_hw = read1(id, ADDR_HARDWARE_ERROR_STATUS, hw);
+    const bool ok_sd = read1(id, ADDR_SHUTDOWN, shutdown);
+    const bool ok_v  = read2(id, ADDR_PRESENT_INPUT_VOLTAGE, vin_raw);
+    const bool ok_t  = read1(id, ADDR_PRESENT_TEMPERATURE, temp);
+
+    if (ok_hw) {
+      RCLCPP_WARN(get_logger(), "[ID:%d] HardwareErrorStatus=%s", id, hwErrorToString(hw).c_str());
+    }
+    if (ok_sd) {
+      RCLCPP_WARN(get_logger(), "[ID:%d] Shutdown(63)=0x%02X", id, shutdown);
+    }
+    if (ok_v) {
+      const double vin = static_cast<double>(vin_raw) * 0.1;  // 0.1V単位
+      RCLCPP_WARN(get_logger(), "[ID:%d] PresentInputVoltage=%.1fV (raw=%u)", id, vin, vin_raw);
+    }
+    if (ok_t) {
+      RCLCPP_WARN(get_logger(), "[ID:%d] PresentTemperature=%uC", id, temp);
+    }
+  }
+
   // ---------- Setup ----------
   void setupDynamixel(uint8_t id) {
     // Torque OFF
@@ -236,13 +309,13 @@ private:
     // Operating Mode: Position Control (3)
     write1(id, ADDR_OPERATING_MODE, 3);
 
-    // 保険：最大出力上限（判定には使わない）
-    write2(id, ADDR_CURRENT_LIM, static_cast<uint16_t>(current_limit_));
-
     // Torque ON
     write1(id, ADDR_TORQUE_ENABLE, 1);
 
-    RCLCPP_INFO(get_logger(), "[ID:%d] setup done (mode=3, current_lim=%d)", id, current_limit_);
+    // 起動直後の状態も見れるように
+    printDiagnostics(id);
+
+    RCLCPP_INFO(get_logger(), "Setup done [ID:%d]", id);
   }
 
   // ---------- Read/Write ----------
@@ -310,10 +383,24 @@ private:
     std::lock_guard<std::mutex> lk(mtx_);
     if (mode_ == Mode::IDLE) return;
 
+    // ★エラーが出た瞬間に詳細を吐いて安全停止
+    for (uint8_t id : ids_) {
+      uint8_t hw = 0;
+      if (read1(id, ADDR_HARDWARE_ERROR_STATUS, hw) && hw != 0) {
+        RCLCPP_ERROR(get_logger(), "[ID:%d] HARDWARE ERROR! %s", id, hwErrorToString(hw).c_str());
+        printDiagnostics(id);
+
+        // 安全側：停止
+        mode_ = Mode::IDLE;
+        write1(id, ADDR_TORQUE_ENABLE, 0);
+        return;
+      }
+    }
+
     if (mode_ == Mode::CLOSING) {
       stepClosingLocked();
     } else if (mode_ == Mode::HOLDING) {
-      // HOLDは、保持目標を送ってあるので基本何もしない
+      // HOLDは保持目標を送ってあるので基本何もしない
     }
   }
 

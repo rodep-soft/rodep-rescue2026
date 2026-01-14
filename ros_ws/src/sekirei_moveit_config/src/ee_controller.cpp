@@ -15,6 +15,7 @@
 
 // ===== Control Table (XM series) =====
 #define ADDR_OPERATING_MODE            11
+#define ADDR_CURRENT_LIMIT             38
 #define ADDR_TORQUE_ENABLE             64
 #define ADDR_SHUTDOWN                  63
 #define ADDR_HARDWARE_ERROR_STATUS     70
@@ -25,6 +26,8 @@
 
 #define ADDR_PRESENT_INPUT_VOLTAGE    144
 #define ADDR_PRESENT_TEMPERATURE      146
+
+
 
 #define PROTOCOL_VERSION 2.0
 
@@ -146,7 +149,8 @@ private:
   // ===== Setup =====
   void setupDynamixel(uint8_t id) {
     write1(id, ADDR_TORQUE_ENABLE, 0);
-    write1(id, ADDR_OPERATING_MODE, 3); //
+    write1(id, ADDR_OPERATING_MODE, 5); //position current control mode
+    write1(id, ADDR_CURRENT_LIMIT, 119); //360mA
     write1(id, ADDR_TORQUE_ENABLE, 1);
   }
 
@@ -159,32 +163,60 @@ private:
     }
   }
 
-  void readAndPrintCurrentLocked() {
-  for (uint8_t id : ids_) {
-    uint16_t raw = 0;
-    if (!read2(id, ADDR_PRESENT_CURRENT, raw)) continue;
+  void readCurrentCurrent() {
+    for (uint8_t id : ids_) {
+      double current_mA[2] = {0.0, 0.0};
+      uint16_t raw = 0;
+      if (!read2(id, ADDR_PRESENT_CURRENT, raw)) continue;
 
-    int16_t signed_raw = static_cast<int16_t>(raw);
-    double current_mA = signed_raw * 2.69;
-
-    RCLCPP_INFO(
-      get_logger(),
-      "[ID:%d] PresentCurrent = %+7.1f mA (raw=%d)",
-      id, current_mA, signed_raw
-    );
-
-    // 電流リミット（絶対値）
-    if (std::abs(current_mA) > 600.0) {
-      RCLCPP_WARN(
+      int16_t signed_raw = static_cast<int16_t>(raw);
+      current_mA[id] = signed_raw * 2.69;
+      
+      RCLCPP_INFO(
         get_logger(),
-        "[ID:%d] Over current detected (|I|=%.1f mA) -> HOLD",
-        id, std::abs(current_mA)
+        "[ID:%d] PresentCurrent = %+7.1f mA (raw=%d)",
+        id, current_mA[id], signed_raw
       );
-      holdHereLocked();
-      return;
+
+      // 電流リミット（絶対値）
+      if (std::abs(current_mA[0]) > 400.0 && std::abs(current_mA[1]) > 400.0) {
+        RCLCPP_WARN(
+          get_logger(),
+          "[ID:%d] Over current detected (|I|=%.1f mA) -> HOLD",
+          id, std::abs(current_mA[id])
+        );
+        holdHereLocked();
+        return;
+      }
     }
   }
-}
+
+//   void readAndPrintCurrentLocked() {
+//   for (uint8_t id : ids_) {
+//     uint16_t raw = 0;
+//     if (!read2(id, ADDR_PRESENT_CURRENT, raw)) continue;
+
+//     int16_t signed_raw = static_cast<int16_t>(raw);
+//     double current_mA = signed_raw * 2.69;
+
+//     RCLCPP_INFO(
+//       get_logger(),
+//       "[ID:%d] PresentCurrent = %+7.1f mA (raw=%d)",
+//       id, current_mA, signed_raw
+//     );
+
+//     // 電流リミット（絶対値）
+//     if (std::abs(current_mA) > 400.0) {
+//       RCLCPP_WARN(
+//         get_logger(),
+//         "[ID:%d] Over current detected (|I|=%.1f mA) -> HOLD",
+//         id, std::abs(current_mA)
+//       );
+//       holdHereLocked();
+//       return;
+//     }
+//   }
+// }
 
 
   void syncWriteGoalPositions(const std::array<int, 2>& goals) {
@@ -207,16 +239,16 @@ private:
   void startOpenLocked() {
     target_pos_ = gripper_open_;
     syncWriteGoalPositions(target_pos_);
-    mode_ = Mode::IDLE;
+    mode_ = Mode::IDLE;//開く動作は途中で止めない
   }
 
   void startCloseLocked() {
-    mode_ = Mode::CLOSING;
+    mode_ = Mode::CLOSING; 
     target_pos_ = gripper_close_;
-    stall_count_ = 0;
-    close_start_time_ = now();
-    readPositions();
-    prev_pos_ = current_pos_;
+    //stall_count_ = 0;
+    //close_start_time_ = now();
+    //readPositions();
+    //prev_pos_ = current_pos_;
   }
 
   // ===== Timer =====
@@ -224,26 +256,25 @@ private:
     std::lock_guard<std::mutex> lk(mtx_);
 
     
-
-
     if (mode_ != Mode::CLOSING) return;
 
     readPositions();
 
-    int dp0 = std::abs(current_pos_[0] - prev_pos_[0]);
-    int dp1 = std::abs(current_pos_[1] - prev_pos_[1]);
+    // int dp0 = std::abs(current_pos_[0] - prev_pos_[0]);
+    // int dp1 = std::abs(current_pos_[1] - prev_pos_[1]);
 
-    if (dp0 <= stall_pos_delta_ || dp1 <= stall_pos_delta_)
-      stall_count_++;
-    else
-      stall_count_ = 0;
+    // if (dp0 <= stall_pos_delta_ || dp1 <= stall_pos_delta_)
+    //   stall_count_++;
+    // else
+    //   stall_count_ = 0;
+    readCurrentCurrent();
 
-    prev_pos_ = current_pos_;
+    // prev_pos_ = current_pos_;
 
-    if (stall_count_ >= stall_consecutive_) {
-      holdHereLocked();
-      return;
-    }
+    // if (stall_count_ >= stall_consecutive_) {
+    //   holdHereLocked();
+    //   return;
+    // }
 
     std::array<int, 2> next = current_pos_;
     for (int i = 0; i < 2; ++i) {

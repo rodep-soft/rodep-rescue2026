@@ -47,7 +47,7 @@ public:
       write1(id, ADDR_TORQUE_ENABLE, 0);
       write1(id, ADDR_OPERATING_MODE, 5);     // Current-based Position
       write2(id, ADDR_CURRENT_LIMIT, 300);
-      write2(id, ADDR_GOAL_CURRENT, 119);
+      write2(id, ADDR_GOAL_CURRENT, 110);
       write1(id, ADDR_TORQUE_ENABLE, 1);
     }
 
@@ -66,12 +66,13 @@ public:
       write1(id, ADDR_TORQUE_ENABLE, 0);
     }
     port_handler_->closePort();
+    RCLCPP_INFO(this->get_logger(), "EEController stopped");
   }
 
 private:
   std::vector<uint8_t> ids_{27, 28};
   std::vector<int32_t> close_positions_{2776, 2139};
-  std::vector<int32_t> open_positions_{3242, 1593};
+  std::vector<int32_t> open_positions_{3345, 1525};
 
   std::string device_;
   int baud_rate_;
@@ -153,7 +154,7 @@ private:
       port_handler_, ids_[0], ADDR_PRESENT_CURRENT,
       reinterpret_cast<uint16_t*>(&current), &err);
 
-    if (std::abs(current) > 119) {
+    if (std::abs(current) > 105) {
       over_current_count_++;
     } else {
       over_current_count_ = 0;
@@ -163,7 +164,7 @@ private:
       stopAtCurrentPosition();
       closing_ = false;
       over_current_count_ = 0;
-      RCLCPP_INFO(this->get_logger(), "Grasp detected → stop");
+      RCLCPP_INFO(this->get_logger(), "Grasp detected  stopping motors.");
     }
   }
 

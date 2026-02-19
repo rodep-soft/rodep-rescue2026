@@ -198,13 +198,13 @@ def _setup(context, *args, **kwargs):
     )
     nodes.append(joy_teleop)
 
-    ee_pose_teleop= Node(
-        package='sekirei_moveit_config',
-        executable='ee_controller',
-        name='ee_controller',
-        output='screen',
-    )
-    nodes.append(ee_pose_teleop)
+    # ee_pose_teleop= Node(
+    #     package='sekirei_moveit_config',
+    #     executable='ee_controller',
+    #     name='ee_controller',
+    #     output='screen',
+    # )
+    # nodes.append(ee_pose_teleop)
 
     return nodes
 

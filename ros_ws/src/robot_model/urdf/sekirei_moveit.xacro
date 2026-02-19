@@ -139,7 +139,7 @@
         <axis xyz="0 1 0"/>
         <parent link="arm2_link"/>
         <child link="arm3_link"/>
-        <limit effort="5" lower="0" upper="3.14" velocity="1.571"/>
+        <limit effort="5" lower="-3.14" upper="3.14" velocity="1.571"/>
     </joint>
 
     <!-- Arm Link 4 -->

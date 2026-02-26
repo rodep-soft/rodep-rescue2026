@@ -13,12 +13,15 @@ find_package(geometry_msgs REQUIRED)
 find_package(dynamixel_sdk REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
+find_package(control_msgs REQUIRED)
+find_package(moveit_msgs REQUIRED)
+find_package(std_srvs REQUIRED)
 
 add_executable(ee_controller src/ee_controller.cpp)
 add_executable(joy_teleop src/joy_teleop.cpp)
 ament_target_dependencies(ee_controller rclcpp sensor_msgs dynamixel_sdk)
 target_link_libraries(ee_controller dynamixel_sdk::dynamixel_sdk)
-ament_target_dependencies(joy_teleop rclcpp sensor_msgs geometry_msgs dynamixel_sdk moveit_ros_planning_interface  tf2_geometry_msgs)
+ament_target_dependencies(joy_teleop rclcpp sensor_msgs geometry_msgs dynamixel_sdk moveit_ros_planning_interface  tf2_geometry_msgs control_msgs moveit_msgs std_srvs)
 
 install(TARGETS
   ee_controller

@@ -48,13 +48,3 @@ sekirei_arm_controller:
       arm_joint5: {trajectory: 2.0, goal: 1.0}
       arm_joint6: {trajectory: 2.0, goal: 1.0}
       
-      
-      
-    
-    
-    # arm_joint1 4
-    # arm_joint2 81 
-    # arm_joint3 -179
-    # arm_joint4 1
-    # arm_joint5 -1
-    # arm_joint6 -179

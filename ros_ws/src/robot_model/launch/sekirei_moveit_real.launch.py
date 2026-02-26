@@ -8,38 +8,31 @@ from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 from ament_index_python.packages import get_package_share_directory
 
+
 def _generate_urdf_from_xacro_real() -> str:
     xacro_path = os.path.join(
         get_package_share_directory("robot_model"),
         "urdf",
         "sekirei_moveit.xacro",
     )
-    # use_real_hw:=true を指定して展開
-    doc = xacro.process_file(
-        xacro_path,
-        mappings={"use_real_hw": "true"}
-    )
+    doc = xacro.process_file(xacro_path, mappings={"use_real_hw": "true"})
     return doc.toxml()
 
 
-
 def _load_text(package: str, relative: str) -> str:
-    """パッケージ内のテキストファイル(URDF, SRDFなど)を読むヘルパ."""
     path = os.path.join(get_package_share_directory(package), relative)
     with open(path, "r") as f:
         return f.read()
 
 
 def _load_yaml(package: str, relative: str):
-    """YAML設定ファイルを読むヘルパ."""
     path = os.path.join(get_package_share_directory(package), relative)
     with open(path, "r") as f:
         return yaml.safe_load(f)
 
 
 def _setup(context, *args, **kwargs):
-    # === 1. 各種ファイル読み込み ===
-    # ここは「今まで MoveIt で使っていた sekirei.urdf」を読む想定
+    # === 1. MoveIt基本ファイル ===
     urdf_text = _generate_urdf_from_xacro_real()
     srdf_text = _load_text("sekirei_moveit_config", "config/sekirei.srdf")
     kin_yaml = _load_yaml("sekirei_moveit_config", "config/kinematics.yaml")
@@ -48,21 +41,26 @@ def _setup(context, *args, **kwargs):
     ctrl_yaml = _load_yaml("sekirei_moveit_config", "config/moveit_controllers.yaml")
     joints_limits_yaml = _load_yaml("sekirei_moveit_config", "config/joint_limits.yaml")
 
-    # === 2. MoveGroup 用パラメータのベース ===
+    # Servo param file path（←ここが重要：ロードしない）
+    servo_params_file = os.path.join(
+        get_package_share_directory("sekirei_moveit_config"),
+        "config",
+        "servo_parameters.yaml",
+    )
+
+    # === 2. MoveGroup params ===
     move_group_params = {
         "robot_description": urdf_text,
         "robot_description_semantic": srdf_text,
         "robot_description_kinematics": kin_yaml,
         "robot_description_planning": joints_limits_yaml,
 
-        # 時間・シーン周り
         "use_sim_time": False,
         "publish_planning_scene": True,
         "publish_geometry_updates": True,
         "publish_state_updates": True,
         "publish_transforms_updates": True,
 
-        # 実行周り（適宜調整可）
         "moveit_manage_controllers": True,
         "trajectory_execution.allowed_execution_duration_scaling": 1.2,
         "trajectory_execution.allowed_goal_duration_margin": 0.5,
@@ -70,9 +68,8 @@ def _setup(context, *args, **kwargs):
         "moveit_fake_controller_manager.fake_execution_type": "interpolate",
     }
 
-    # === 3. MoveItCpp 設定（moveit_cpp.yaml） ===
+    # === 3. MoveItCpp設定 ===
     if cpp_yaml:
-        # pipeline_names が list だと ParameterValue に包んだほうが安全
         if (
             "planning_pipelines" in cpp_yaml
             and isinstance(cpp_yaml["planning_pipelines"].get("pipeline_names"), list)
@@ -80,26 +77,16 @@ def _setup(context, *args, **kwargs):
             cpp_yaml["planning_pipelines"]["pipeline_names"] = ParameterValue(
                 cpp_yaml["planning_pipelines"]["pipeline_names"]
             )
-
-        # ompl.planning_plugins も list の場合は包む
-        if "ompl" in cpp_yaml and isinstance(
-            cpp_yaml["ompl"].get("planning_plugins"), list
-        ):
+        if "ompl" in cpp_yaml and isinstance(cpp_yaml["ompl"].get("planning_plugins"), list):
             cpp_yaml["ompl"]["planning_plugins"] = ParameterValue(
                 cpp_yaml["ompl"]["planning_plugins"]
             )
-
         move_group_params.update(cpp_yaml)
 
-    # === 4. OMPL 設定（ompl_planning.yaml） ===
+    # === 4. OMPL設定 ===
     if ompl_yaml:
-        # ルートに planning_plugins が list である場合
         if isinstance(ompl_yaml.get("planning_plugins"), list):
-            ompl_yaml["planning_plugins"] = ParameterValue(
-                ompl_yaml["planning_plugins"]
-            )
-
-        # sekirei_arm 配下の planner_configs が list なら包む
+            ompl_yaml["planning_plugins"] = ParameterValue(ompl_yaml["planning_plugins"])
         if (
             "sekirei_arm" in ompl_yaml
             and isinstance(ompl_yaml["sekirei_arm"].get("planner_configs"), list)
@@ -107,14 +94,10 @@ def _setup(context, *args, **kwargs):
             ompl_yaml["sekirei_arm"]["planner_configs"] = ParameterValue(
                 ompl_yaml["sekirei_arm"]["planner_configs"]
             )
-
-        # OMPL の設定は "ompl.xxx" というキーで move_group に渡す
         for k, v in ompl_yaml.items():
             move_group_params[f"ompl.{k}"] = v
 
-    # === 5. MoveIt コントローラ設定（moveit_controllers.yaml） ===
-    # ここで real の FollowJointTrajectory controller（sekirei_arm_controller）
-    # を参照しているはず。
+    # === 5. controller設定 ===
     if ctrl_yaml and "moveit_simple_controller_manager" in ctrl_yaml:
         scm = ctrl_yaml["moveit_simple_controller_manager"]
         if isinstance(scm.get("controller_names"), list):
@@ -123,8 +106,7 @@ def _setup(context, *args, **kwargs):
 
     nodes = []
 
-    # === 6. world -> base_link の static TF ===
-    # （bringup 側で同じものを出しているなら、ここは削ってもOK）
+    # === 6. static TF world->base_link ===
     nodes.append(
         Node(
             package="tf2_ros",
@@ -135,11 +117,7 @@ def _setup(context, *args, **kwargs):
         )
     )
 
-    # ★ここでは robot_state_publisher は起動しない
-    #   → 実機 bringup (sekirei_robot_state_publisher.launch.py) 側で
-    #      /robot_description + /tf を出している前提
-
-    # === 7. MoveGroup ノード ===
+    # === 7. move_group ===
     nodes.append(
         Node(
             package="moveit_ros_move_group",
@@ -149,6 +127,25 @@ def _setup(context, *args, **kwargs):
         )
     )
 
+    # === 7.5 MoveIt Servo ===
+    nodes.append(
+        Node(
+            package="moveit_servo",
+            executable="servo_node",   # Jazzyではこれ（あなたのログで確認済み）
+            name="servo_node",
+            output="screen",
+            parameters=[
+                # Servoノードにもrobot modelを渡す（別プロセスなので必要）
+                {
+                    "robot_description": urdf_text,
+                    "robot_description_semantic": srdf_text,
+                    "robot_description_kinematics": kin_yaml,
+                    "use_sim_time": False,
+                },
+                servo_params_file,  # ←ここが重要：YAMLはファイルで渡す
+            ],
+        )
+    )
 
     # === 8. RViz2 ===
     rviz_cfg = os.path.join(
@@ -156,13 +153,11 @@ def _setup(context, *args, **kwargs):
         "config",
         "moveit.rviz",
     )
-
     rviz_params = {
         "robot_description": urdf_text,
         "robot_description_semantic": srdf_text,
         "robot_description_kinematics": kin_yaml,
     }
-
     nodes.append(
         Node(
             package="rviz2",
@@ -173,38 +168,43 @@ def _setup(context, *args, **kwargs):
             parameters=[rviz_params],
         )
     )
-    joy_node= Node(
-        package='joy',
-        executable='joy_node',
-        name='joy_node',
-        output='screen',
-        parameters=[{
-            'device_id': 0,
-            'deadzone' : 0.1,
-        }]
-    )
-    nodes.append(joy_node)
 
-    joy_teleop= Node(
-        package='sekirei_moveit_config',
-        executable='joy_teleop',
-        name='joy_teleop',
-        output='screen',
-        parameters=[{
-            'robot_description': urdf_text,
-            'robot_description_semantic': srdf_text,
-            'robot_description_kinematics': kin_yaml,
-        }]
+    # === 9. joy_node ===
+    nodes.append(
+        Node(
+            package="joy",
+            executable="joy_node",
+            name="joy_node",
+            output="screen",
+            parameters=[{
+                "device_id": 0,
+                "deadzone": 0.1,
+            }],
+        )
     )
-    nodes.append(joy_teleop)
 
-    # ee_pose_teleop= Node(
-    #     package='sekirei_moveit_config',
-    #     executable='ee_controller',
-    #     name='ee_controller',
-    #     output='screen',
-    # )
-    # nodes.append(ee_pose_teleop)
+    # === 10. Joy teleop（Servo版）===
+    # ここは「あなたがビルドした実行ファイル名」に合わせる
+    nodes.append(
+        Node(
+            package="sekirei_moveit_config",
+            executable="joy_teleop",   # ←ここがServo teleopの実行ファイル名
+            name="joy_teleop",
+            output="screen",
+            parameters=[{
+                "servo_node_name": "/servo_node",
+                "planning_frame": "base_link",  # servo_parameters.yamlと合わせる
+                "base_vel_topic": "/base_velocity_controller/commands",
+                "jog_joint4_name": "arm_joint4",
+                "jog_joint6_name": "arm_joint6",
+                "stick_deadzone": 0.20,
+                "trigger_deadzone": 0.05,
+                "publish_hz": 50.0,
+                "axis_dpad_y": 7,
+                "axis_dpad_x": 6,
+            }],
+        )
+    )
 
     return nodes
 

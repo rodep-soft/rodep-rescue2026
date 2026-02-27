@@ -13,6 +13,7 @@
 #include <mutex>
 #include <string>
 #include <vector>
+#include <fmt/format.h>
 
 using std::placeholders::_1;
 
@@ -24,6 +25,7 @@ public:
   {
     servo_node_name_ = declare_parameter<std::string>("servo_node_name", "/servo_node");
     planning_frame_  = declare_parameter<std::string>("planning_frame", "base_link");
+    command_frame_   = declare_parameter<std::string>("command_frame", "arm6_link");
 
     twist_topic_ = declare_parameter<std::string>(
       "twist_topic", servo_node_name_ + "/delta_twist_cmds");
@@ -33,7 +35,7 @@ public:
       "switch_command_type_srv", servo_node_name_ + "/switch_command_type");
 
     twist_scale_  = declare_parameter<double>("twist_scale", 0.6);   // [-1..1]
-    joint_scale_  = declare_parameter<double>("joint_scale", 0.6);   // [-1..1]
+    joint_scale_  = declare_parameter<double>("joint_scale", 0.8);   // [-1..1]
     stick_deadzone_   = declare_parameter<double>("stick_deadzone", 0.20);
     trigger_deadzone_ = declare_parameter<double>("trigger_deadzone", 0.05);
 
@@ -45,13 +47,13 @@ public:
 
     default_command_type_ = declare_parameter<int>("default_command_type", 0); // 0=JOINT_JOG
 
-    // ジョグ対象（十字横→joint1、十字縦→joint4、L2/R2→joint6）
+    // 十字横→joint1、十字縦→joint4、L2/R2→joint6
     jog_joint1_name_ = declare_parameter<std::string>("jog_joint1_name", "arm_joint1");
+    jog_joint3_name_ = declare_parameter<std::string>("jog_joint3_name", "arm_joint3");
     jog_joint4_name_ = declare_parameter<std::string>("jog_joint4_name", "arm_joint4");
     jog_joint6_name_ = declare_parameter<std::string>("jog_joint6_name", "arm_joint6");
 
-    // joystick mapping（あなたの実測）
-    axis_lx_      = declare_parameter<int>("axis_lx", 0); // 左スティック横（左が+）
+    // joystick mapping
     axis_ly_      = declare_parameter<int>("axis_ly", 1); // 左スティック縦（上が+）
     axis_ry_      = declare_parameter<int>("axis_ry", 4); // 右スティック縦（上が+）
     axis_l2_      = declare_parameter<int>("axis_l2", 2); // L2（離す=1, 押すと0へ）
@@ -59,7 +61,9 @@ public:
     axis_dpad_x_  = declare_parameter<int>("axis_dpad_x", 6); // 十字横（左が+ / 右が-）
     axis_dpad_y_  = declare_parameter<int>("axis_dpad_y", 7); // 十字縦（上が+）
 
-    // 右が -1 なので「右を+」にしたいなら true
+    button_cross_ = declare_parameter<int>("button_cross", 0); // 十字ボタン（クロス）
+    button_triangle_ = declare_parameter<int>("button_triangle", 2); // 十字ボタン（三角）
+
     invert_dpad_x_ = declare_parameter<bool>("invert_dpad_x", true);
 
     joy_sub_ = create_subscription<sensor_msgs::msg::Joy>(
@@ -79,7 +83,7 @@ public:
     last_joy_time_ = now();
     current_cmd_type_.store(-1);
 
-    // 起動時に自動セット（手動不要）
+    // 起動時に自動セット
     requestCommandType(static_cast<int8_t>(default_command_type_));
 
     RCLCPP_INFO(get_logger(),
@@ -105,13 +109,20 @@ private:
     return msg.axes[static_cast<size_t>(idx)];
   }
 
+  // safe button access (avoids out-of-range reads that can freeze the servo node)
+  int button(const sensor_msgs::msg::Joy& msg, int idx) const
+  {
+    if (idx < 0 || static_cast<size_t>(idx) >= msg.buttons.size()) return 0;
+    return msg.buttons[static_cast<size_t>(idx)];
+  }
+
   double triggerPress01(const sensor_msgs::msg::Joy& msg, int idx) const
   {
     // 離す=1.0、押すと0へ → 押し込み量
     const double v = axis(msg, idx);
     double p = 1.0 - v;
     p = std::clamp(p, 0.0, 1.0);
-    if (p < trigger_deadzone_) p = 0.0;
+    if (p < 0.5) p = 0.0;
     return p;
   }
 
@@ -170,7 +181,7 @@ private:
     if (stale) return;
 
     // ---- 十字（デジタル化）----
-    double dpad_x = axis(joy, axis_dpad_x_);
+    double dpad_x = -axis(joy, axis_dpad_x_);
     double dpad_y = axis(joy, axis_dpad_y_);
     if (invert_dpad_x_) dpad_x = -dpad_x;
     dpad_x = digitalize(dpad_x, dpad_threshold_);
@@ -178,6 +189,8 @@ private:
 
     const double joint1 = dpad_x * joint_scale_;
     const double joint4 = -dpad_y * joint_scale_;
+    // triangle/cross are used for joint3; use safe accessor to avoid bad indices
+    const double joint3 = (button(joy, button_cross_) - button(joy, button_triangle_)) * joint_scale_;
 
     // ---- joint6（R2-L2）----
     const double l2p = triggerPress01(joy, axis_l2_);
@@ -185,20 +198,19 @@ private:
     const double joint6 = std::clamp((r2p - l2p) * joint_scale_, -1.0, 1.0);
 
     // ---- Twist（平行移動のみ）----
-    const double lx = apply_deadzone(axis(joy, axis_lx_), stick_deadzone_);
     const double ly = apply_deadzone(axis(joy, axis_ly_), stick_deadzone_);
     const double ry = apply_deadzone(axis(joy, axis_ry_), stick_deadzone_);
 
     const double tx = std::clamp(ly * twist_scale_, -1.0, 1.0);
-    const double ty = std::clamp(lx * twist_scale_, -1.0, 1.0);
     const double tz = std::clamp(ry * twist_scale_, -1.0, 1.0);
 
     const bool joint1_on = (joint1 != 0.0);
+    const bool joint3_on = (joint3 != 0.0);
     const bool joint4_on = (joint4 != 0.0);
     const bool joint6_on = (joint6 != 0.0);
-    const bool joint_active = joint1_on || joint4_on || joint6_on;
+    const bool joint_active = joint1_on ||  joint3_on || joint4_on || joint6_on;
 
-    const bool twist_active = (tx != 0.0) || (ty != 0.0) || (tz != 0.0);
+    const bool twist_active = (tx != 0.0) || (tz != 0.0);
 
     // 優先：関節ジョグ > Twist
     if (joint_active) {
@@ -206,10 +218,11 @@ private:
 
       control_msgs::msg::JointJog jog;
       jog.header.stamp = now_t;
-      jog.header.frame_id = planning_frame_;
+      jog.header.frame_id = command_frame_;
 
-      // ★動いてる関節だけ送る（混線防止）
+      // 動いてる関節だけ送る（混線防止）
       if (joint1_on) { jog.joint_names.push_back(jog_joint1_name_); jog.velocities.push_back(joint1); }
+      if (joint3_on) { jog.joint_names.push_back(jog_joint3_name_); jog.velocities.push_back(joint3); }
       if (joint4_on) { jog.joint_names.push_back(jog_joint4_name_); jog.velocities.push_back(joint4); }
       if (joint6_on) { jog.joint_names.push_back(jog_joint6_name_); jog.velocities.push_back(joint6); }
 
@@ -223,9 +236,8 @@ private:
 
       geometry_msgs::msg::TwistStamped twist;
       twist.header.stamp = now_t;
-      twist.header.frame_id = planning_frame_;
+      twist.header.frame_id = command_frame_;
       twist.twist.linear.x = tx;
-      twist.twist.linear.y = ty;
       twist.twist.linear.z = tz;
       twist.twist.angular.x = 0.0;
       twist.twist.angular.y = 0.0;
@@ -249,18 +261,21 @@ private:
 
   std::string servo_node_name_;
   std::string planning_frame_;
+  std::string command_frame_;
   std::string twist_topic_;
   std::string joint_topic_;
   std::string switch_srv_;
 
   std::string jog_joint1_name_;
+  std::string jog_joint3_name_;
   std::string jog_joint4_name_;
   std::string jog_joint6_name_;
 
-  int axis_lx_, axis_ly_, axis_ry_;
+  int axis_ly_, axis_ry_;
   int axis_l2_, axis_r2_;
   int axis_dpad_x_, axis_dpad_y_;
   bool invert_dpad_x_;
+  int button_cross_, button_triangle_;
 
   double twist_scale_;
   double joint_scale_;

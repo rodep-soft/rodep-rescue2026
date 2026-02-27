@@ -4,6 +4,8 @@
         <chain base_link="base_link" tip_link="arm6_link" />
     </group>
 
+    <!-- Define the end effector -->
+    <end_effector name="end_effector" parent_link="arm6_link" group="sekirei_arm" />
 
     <!-- Disable collisions between adjacent links -->
     <disable_collisions link1="base_link" link2="arm_base_link" reason="Adjacent" />

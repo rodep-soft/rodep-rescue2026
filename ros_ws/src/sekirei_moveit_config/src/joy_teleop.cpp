@@ -24,7 +24,6 @@ public:
   : Node("joy_teleop")
   {
     servo_node_name_ = declare_parameter<std::string>("servo_node_name", "/servo_node");
-    planning_frame_  = declare_parameter<std::string>("planning_frame", "base_link");
     command_frame_   = declare_parameter<std::string>("command_frame", "arm6_link");
 
     twist_topic_ = declare_parameter<std::string>(
@@ -36,22 +35,11 @@ public:
 
     twist_scale_  = declare_parameter<double>("twist_scale", 0.6);   // [-1..1]
     joint_scale_  = declare_parameter<double>("joint_scale", 0.8);   // [-1..1]
-    stick_deadzone_   = declare_parameter<double>("stick_deadzone", 0.20);
-    trigger_deadzone_ = declare_parameter<double>("trigger_deadzone", 0.05);
 
-    // 十字はデジタル化する（0.5超えたら±1、それ以外0）
-    dpad_threshold_ = declare_parameter<double>("dpad_threshold", 0.5);
-
-    publish_hz_      = declare_parameter<double>("publish_hz", 50.0);
     joy_timeout_sec_ = declare_parameter<double>("joy_timeout_sec", 0.25);
 
     default_command_type_ = declare_parameter<int>("default_command_type", 0); // 0=JOINT_JOG
 
-    // 十字横→joint1、十字縦→joint4、L2/R2→joint6
-    jog_joint1_name_ = declare_parameter<std::string>("jog_joint1_name", "arm_joint1");
-    jog_joint3_name_ = declare_parameter<std::string>("jog_joint3_name", "arm_joint3");
-    jog_joint4_name_ = declare_parameter<std::string>("jog_joint4_name", "arm_joint4");
-    jog_joint6_name_ = declare_parameter<std::string>("jog_joint6_name", "arm_joint6");
 
     // joystick mapping
     axis_ly_      = declare_parameter<int>("axis_ly", 1); // 左スティック縦（上が+）
@@ -61,10 +49,8 @@ public:
     axis_dpad_x_  = declare_parameter<int>("axis_dpad_x", 6); // 十字横（左が+ / 右が-）
     axis_dpad_y_  = declare_parameter<int>("axis_dpad_y", 7); // 十字縦（上が+）
 
-    button_cross_ = declare_parameter<int>("button_cross", 0); // 十字ボタン（クロス）
-    button_triangle_ = declare_parameter<int>("button_triangle", 2); // 十字ボタン（三角）
-
-    invert_dpad_x_ = declare_parameter<bool>("invert_dpad_x", true);
+    button_cross_ = declare_parameter<int>("button_cross", 0); // クロス
+    button_triangle_ = declare_parameter<int>("button_triangle", 2); // 三角
 
     joy_sub_ = create_subscription<sensor_msgs::msg::Joy>(
       "/joy", rclcpp::SensorDataQoS(), std::bind(&JoyServoTeleop::joyCb, this, _1));
@@ -74,53 +60,25 @@ public:
 
     switch_client_ = create_client<moveit_msgs::srv::ServoCommandType>(switch_srv_);
 
-    const double hz = std::max(1.0, publish_hz_);
-    timer_period_ = 1.0 / hz;
+    timer_period_ = 1.0 / 50;//50Hz
     timer_ = create_wall_timer(
       std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::duration<double>(timer_period_)),
       std::bind(&JoyServoTeleop::publishLoop, this));
 
     last_joy_time_ = now();
-    current_cmd_type_.store(-1);
+    current_cmd_type_.store(default_command_type_);
 
-    // 起動時に自動セット
-    requestCommandType(static_cast<int8_t>(default_command_type_));
 
     RCLCPP_INFO(get_logger(),
       "JoyServoTeleop ready. joint=%s twist=%s (auto switch)", joint_topic_.c_str(), twist_topic_.c_str());
   }
 
 private:
-  static double apply_deadzone(double v, double dz)
-  {
-    return (std::abs(v) < dz) ? 0.0 : v;
-  }
-
-  static double digitalize(double v, double thr)
-  {
-    if (v >  thr) return  1.0;
-    if (v < -thr) return -1.0;
-    return 0.0;
-  }
-
-  double axis(const sensor_msgs::msg::Joy& msg, int idx) const
-  {
-    if (idx < 0 || static_cast<size_t>(idx) >= msg.axes.size()) return 0.0;
-    return msg.axes[static_cast<size_t>(idx)];
-  }
-
-  // safe button access (avoids out-of-range reads that can freeze the servo node)
-  int button(const sensor_msgs::msg::Joy& msg, int idx) const
-  {
-    if (idx < 0 || static_cast<size_t>(idx) >= msg.buttons.size()) return 0;
-    return msg.buttons[static_cast<size_t>(idx)];
-  }
 
   double triggerPress01(const sensor_msgs::msg::Joy& msg, int idx) const
   {
-    // 離す=1.0、押すと0へ → 押し込み量
-    const double v = axis(msg, idx);
-    double p = 1.0 - v;
+    // 離す=1.0、押すと0へ → 押し込み量にする
+    double p = 1.0 - msg.axes[idx];
     p = std::clamp(p, 0.0, 1.0);
     if (p < 0.5) p = 0.0;
     return p;
@@ -180,17 +138,10 @@ private:
     const bool stale = (now_t - stamp).seconds() > joy_timeout_sec_;
     if (stale) return;
 
-    // ---- 十字（デジタル化）----
-    double dpad_x = -axis(joy, axis_dpad_x_);
-    double dpad_y = axis(joy, axis_dpad_y_);
-    if (invert_dpad_x_) dpad_x = -dpad_x;
-    dpad_x = digitalize(dpad_x, dpad_threshold_);
-    dpad_y = digitalize(dpad_y, dpad_threshold_);
-
-    const double joint1 = dpad_x * joint_scale_;
-    const double joint4 = -dpad_y * joint_scale_;
+    const double joint1 = joy.axes[axis_dpad_x_] * joint_scale_;
+    const double joint4 = -joy.axes[axis_dpad_y_] * joint_scale_;
     // triangle/cross are used for joint3; use safe accessor to avoid bad indices
-    const double joint3 = (button(joy, button_cross_) - button(joy, button_triangle_)) * joint_scale_;
+    const double joint3 = (joy.buttons[button_cross_] - joy.buttons[button_triangle_]) * joint_scale_;
 
     // ---- joint6（R2-L2）----
     const double l2p = triggerPress01(joy, axis_l2_);
@@ -198,11 +149,8 @@ private:
     const double joint6 = std::clamp((r2p - l2p) * joint_scale_, -1.0, 1.0);
 
     // ---- Twist（平行移動のみ）----
-    const double ly = apply_deadzone(axis(joy, axis_ly_), stick_deadzone_);
-    const double ry = apply_deadzone(axis(joy, axis_ry_), stick_deadzone_);
-
-    const double tx = std::clamp(ly * twist_scale_, -1.0, 1.0);
-    const double tz = std::clamp(ry * twist_scale_, -1.0, 1.0);
+    const double tx = std::clamp(joy.axes[axis_ly_] * twist_scale_, -1.0, 1.0);
+    const double tz = std::clamp(joy.axes[axis_ry_] * twist_scale_, -1.0, 1.0);
 
     const bool joint1_on = (joint1 != 0.0);
     const bool joint3_on = (joint3 != 0.0);
@@ -221,10 +169,10 @@ private:
       jog.header.frame_id = command_frame_;
 
       // 動いてる関節だけ送る（混線防止）
-      if (joint1_on) { jog.joint_names.push_back(jog_joint1_name_); jog.velocities.push_back(joint1); }
-      if (joint3_on) { jog.joint_names.push_back(jog_joint3_name_); jog.velocities.push_back(joint3); }
-      if (joint4_on) { jog.joint_names.push_back(jog_joint4_name_); jog.velocities.push_back(joint4); }
-      if (joint6_on) { jog.joint_names.push_back(jog_joint6_name_); jog.velocities.push_back(joint6); }
+      if (joint1_on) { jog.joint_names.push_back("arm_joint1"); jog.velocities.push_back(joint1); }
+      if (joint3_on) { jog.joint_names.push_back("arm_joint3"); jog.velocities.push_back(joint3); }
+      if (joint4_on) { jog.joint_names.push_back("arm_joint4"); jog.velocities.push_back(joint4); }
+      if (joint6_on) { jog.joint_names.push_back("arm_joint6"); jog.velocities.push_back(joint6); }
 
       jog.duration = timer_period_;
       joint_pub_->publish(jog);
@@ -260,29 +208,18 @@ private:
   rclcpp::Time last_joy_time_;
 
   std::string servo_node_name_;
-  std::string planning_frame_;
   std::string command_frame_;
   std::string twist_topic_;
   std::string joint_topic_;
   std::string switch_srv_;
 
-  std::string jog_joint1_name_;
-  std::string jog_joint3_name_;
-  std::string jog_joint4_name_;
-  std::string jog_joint6_name_;
-
   int axis_ly_, axis_ry_;
   int axis_l2_, axis_r2_;
   int axis_dpad_x_, axis_dpad_y_;
-  bool invert_dpad_x_;
   int button_cross_, button_triangle_;
 
   double twist_scale_;
   double joint_scale_;
-  double stick_deadzone_;
-  double trigger_deadzone_;
-  double dpad_threshold_;
-  double publish_hz_;
   double joy_timeout_sec_;
   int default_command_type_;
   double timer_period_;

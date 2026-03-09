@@ -8,6 +8,9 @@ controller_manager:
     sekirei_arm_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
+    gripper_controller:
+      type: forward_command_controller/ForwardCommandController
+
 joint_state_broadcaster:
   ros__parameters: {}
 
@@ -47,4 +50,11 @@ sekirei_arm_controller:
       arm_joint4: {trajectory: 2.0, goal: 1.0}
       arm_joint5: {trajectory: 2.0, goal: 1.0}
       arm_joint6: {trajectory: 2.0, goal: 1.0}
+    
+gripper_controller:
+  ros__parameters:
+    joints:
+      - gripper_joint27
+      - gripper_joint28
+      interfaces_name: position
       

@@ -131,18 +131,17 @@ def _setup(context, *args, **kwargs):
     nodes.append(
         Node(
             package="moveit_servo",
-            executable="servo_node",   # Jazzyではこれ（あなたのログで確認済み）
+            executable="servo_node",   
             name="servo_node",
             output="screen",
             parameters=[
-                # Servoノードにもrobot modelを渡す（別プロセスなので必要）
                 {
                     "robot_description": urdf_text,
                     "robot_description_semantic": srdf_text,
                     "robot_description_kinematics": kin_yaml,
                     "use_sim_time": False,
                 },
-                servo_params_file,  # ←ここが重要：YAMLはファイルで渡す
+                servo_params_file,  
             ],
         )
     )
@@ -184,27 +183,42 @@ def _setup(context, *args, **kwargs):
     )
 
     # === 10. Joy teleop（Servo版）===
-    # ここは「あなたがビルドした実行ファイル名」に合わせる
     nodes.append(
         Node(
             package="sekirei_moveit_config",
-            executable="joy_teleop",   # ←ここがServo teleopの実行ファイル名
+            executable="joy_teleop",   
             name="joy_teleop",
             output="screen",
-            parameters=[{
-                "servo_node_name": "/servo_node",
-                "planning_frame": "base_link",  # servo_parameters.yamlと合わせる
-                "base_vel_topic": "/base_velocity_controller/commands",
-                "jog_joint4_name": "arm_joint4",
-                "jog_joint6_name": "arm_joint6",
-                "stick_deadzone": 0.20,
-                "trigger_deadzone": 0.05,
-                "publish_hz": 50.0,
-                "axis_dpad_y": 7,
-                "axis_dpad_x": 6,
-            }],
         )
     )
+
+    nodes.append(
+        Node(
+            package="sekirei_moveit_config",
+            executable="grippet_joy_teleop",
+            name="grippet_joy_teleop",
+            output="screen",
+            parameters=[{
+                "joy_topic": "/joy",
+                "command_topic": "/gripper_controller/commands",
+                "joint_states_topic": "/joint_states",
+
+                "joint_names": ["gripper_joint_27", "gripper_joint_28"],
+
+                "close_targets": [2776.0, 2139.0],
+                "open_targets":  [3345.0, 1525.0],
+
+                "close_button": 0,
+                "open_button": 1,
+
+                "use_grasp_detection": True,
+                "effort_threshold": 105.0,
+                "consecutive_count": 3,
+                "loop_ms": 50,
+            }],
+
+            )
+        )
     return nodes
 
 

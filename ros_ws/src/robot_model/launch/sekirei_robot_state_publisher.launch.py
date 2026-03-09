@@ -20,9 +20,9 @@ def generate_launch_description():
     robot_description = {
         'robot_description': ParameterValue(
             Command([
-                'xacro ',          # 最後にスペースを入れるのがポイント
+                'xacro ',          
                 xacro_file,
-                ' use_real_hw:=',  # ここも前にスペース
+                ' use_real_hw:=',
                 use_real_hw
             ]),
             value_type=str,
@@ -51,6 +51,15 @@ def generate_launch_description():
         output='screen'
     )
 
+    gripper_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=['gripper_controller', '--controller-manager', '/controller_manager'],
+        output='screen'
+    )
+
+
+
     # joint_state_broadcaster
     jsb_spawner = Node(
         package='controller_manager',
@@ -78,6 +87,7 @@ def generate_launch_description():
         declare_use_real_hw,
         robot_state_publisher,
         ros2_control_node,
+        gripper_spawner,
         jsb_spawner,
         arm_spawner,
     ])

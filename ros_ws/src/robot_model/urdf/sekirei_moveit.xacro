@@ -5,6 +5,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="sekirei">
     <!-- Base link with inertial -->
     <!-- Inertia, mass等はあくまで推定値!! -->
+    <xacro:arg name="use_real_hw" default="false"/>
     <link name="base_link">
         <inertial>
             <mass value="1.0"/>
@@ -135,10 +136,10 @@
     <!-- は？？？ -->
     <joint name="arm_joint3" type="revolute">
         <origin xyz="0.45 0.007 0.084" rpy="0 0 0"/>
-        <axis xyz="0 1 0"/>
+        <axis xyz="0 -1 0"/>
         <parent link="arm2_link"/>
         <child link="arm3_link"/>
-        <limit effort="5" lower="0" upper="3.14" velocity="1.571"/>
+        <limit effort="5" lower="-3.14" upper="3.14" velocity="1.571"/>
     </joint>
 
     <!-- Arm Link 4 -->
@@ -296,6 +297,26 @@
         <child link="gui_t265_link"/>
     </joint>
 
+
+    <link name="gripper_left_link"/>
+    <link name="gripper_right_link"/>
+
+    <joint name="gripper_joint7" type="revolute">
+    <parent link="arm6_link"/>
+    <child link="gripper_left_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.57" upper="1.57" effort="5" velocity="1.0"/>
+    </joint>
+
+    <joint name="gripper_joint8" type="revolute">
+    <parent link="arm6_link"/>
+    <child link="gripper_right_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.57" upper="1.57" effort="5" velocity="1.0"/>
+    </joint>
+
     <!-- transmissions for ros2_control / dynamixel_hardware -->
     <!-- SimpleTransmission used to map actuator to joint -->
     <transmission name="arm_joint1_trans">
@@ -366,12 +387,38 @@
         </joint>
     </transmission>
 
+    <transmission name="gripper_joint7_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="gripper_joint7_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface
+            >hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="gripper_joint7">
+            <hardwareInterface
+            >hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <transmission name="gripper_joint8_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="gripper_joint8_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface
+            >hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="gripper_joint8">
+            <hardwareInterface
+            >hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
     <!-- ros2_control configuration for dynamixel_hardware_interface -->
 
     <!-- Launchファイルから実機制御するかを指定する -->
     <xacro:property name="use_real_hw" value="$(arg use_real_hw)" />
 
-    <xacro:if value="${use_real_hw}">
+    <xacro:if value="$(arg use_real_hw)">
     <ros2_control name="sekirei_dynamixel_hw" type="system">
         <hardware>
             <!-- plugin provided by dynamixel_hardware_interface package -->
@@ -380,8 +427,8 @@
             <param name="port_name">/dev/ttyUSB0</param>
             <param name="baud_rate">1000000</param>
             <param name="error_timeout_ms">1000</param>
-            <param name="number_of_joints">6</param>
-            <param name="number_of_transmissions">6</param>
+            <param name="number_of_joints">8</param>
+            <param name="number_of_transmissions">8</param>
             <param name="dynamixel_model_folder">/param/dxl_model</param>
             <param name="disable_torque_at_init">true</param>
             <param name="ignore_hardware_error">true</param>
@@ -390,8 +437,12 @@
             <!-- このへんあやしい -->
           <!-- Real-hardware mapping: invert joint3 sign so hardware commands/states match URDF orientation
               Simulation (use_real_hw=false) will keep the identity mapping in its branch. -->
-          <param name="joint_to_transmission_matrix">1,0,0,0,0,0, 0,1,0,0,0,0, 0,0,1,0,0,0, 0,0,0,1,0,0, 0,0,0,0,1,0, 0,0,0,0,0,1</param>
-          <param name="transmission_to_joint_matrix">1,0,0,0,0,0, 0,1,0,0,0,0, 0,0,1,0,0,0, 0,0,0,1,0,0, 0,0,0,0,1,0, 0,0,0,0,0,1</param>
+          <param
+                    name="joint_to_transmission_matrix"
+                >1,0,0,0,0,0,0,0, 0,1,0,0,0,0,0,0, 0,0,1,0,0,0,0,0, 0,0,0,1,0,0,0,0, 0,0,0,0,1,0,0,0, 0,0,0,0,0,1,0,0, 0,0,0,0,0,0,1,0, 0,0,0,0,0,0,0,1</param>
+         <param
+                    name="transmission_to_joint_matrix"
+                >1,0,0,0,0,0,0,0, 0,1,0,0,0,0,0,0, 0,0,1,0,0,0,0,0, 0,0,0,1,0,0,0,0, 0,0,0,0,1,0,0,0, 0,0,0,0,0,1,0,0, 0,0,0,0,0,0,1,0, 0,0,0,0,0,0,0,1</param>
         </hardware>
 
         <!-- Joint configurations -->
@@ -424,6 +475,20 @@
             <command_interface name="position"/>
             <state_interface name="position"/>
             <state_interface name="velocity"/>
+        </joint>
+
+        <joint name="gripper_joint7">
+            <command_interface name="position" />
+            <state_interface name="position" />
+            <state_interface name="velocity" />
+            <state_interface name="effort" />
+        </joint>
+
+        <joint name="gripper_joint8">
+            <command_interface name="position" />
+            <state_interface name="position" />
+            <state_interface name="velocity" />
+            <state_interface name="effort" />
         </joint>
 
         <!-- GPIO configurations for Dynamixel motors (IDs: 21-26) -->
@@ -504,10 +569,36 @@
             <param name="Drive Mode">0</param>
         </gpio>
 
+        <gpio name="dxl7">
+            <param name="type">dxl</param>
+            <param name="ID">27</param>
+            <command_interface name="Goal Position" />
+            <state_interface name="Present Position" />
+            <state_interface name="Present Velocity" />
+            <state_interface name="Present Current" />
+            <param name="Position P Gain">800</param>
+            <param name="Position I Gain">0</param>
+            <param name="Position D Gain">4000</param>
+            <param name="Drive Mode">0</param>
+        </gpio>
+
+        <gpio name="dxl8">
+            <param name="type">dxl</param>
+            <param name="ID">28</param>
+            <command_interface name="Goal Position" />
+            <state_interface name="Present Position" />
+            <state_interface name="Present Velocity" />
+            <state_interface name="Present Current" />
+            <param name="Position P Gain">800</param>
+            <param name="Position I Gain">0</param>
+            <param name="Position D Gain">4000</param>
+            <param name="Drive Mode">0</param>
+        </gpio>
+
     </ros2_control>
     </xacro:if>
 
-    <xacro:unless value="${use_real_hw}">
+    <xacro:unless value="$(arg use_real_hw)">
      <!-- ros2_control configuration for dummy/mock hardware -->
     <ros2_control name="sekirei_dynamixel_hw" type="system">
         <hardware>
@@ -593,6 +684,34 @@
                 <param name="initial_value">0.0</param>
             </state_interface>
             <state_interface name="velocity"/>
+            <state_interface name="effort">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+        </joint>
+
+        <joint name="gripper_joint7">
+            <command_interface name="position">
+                <param name="min">-1.57</param>
+                <param name="max">1.57</param>
+            </command_interface>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity" />
+            <state_interface name="effort">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+        </joint>
+
+        <joint name="gripper_joint8">
+            <command_interface name="position">
+                <param name="min">-1.57</param>
+                <param name="max">1.57</param>
+            </command_interface>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity" />
             <state_interface name="effort">
                 <param name="initial_value">0.0</param>
             </state_interface>

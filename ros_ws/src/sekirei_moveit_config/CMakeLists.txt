@@ -7,6 +7,27 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(dynamixel_sdk REQUIRED)
+find_package(moveit_ros_planning_interface REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
+find_package(control_msgs REQUIRED)
+find_package(moveit_msgs REQUIRED)
+find_package(std_srvs REQUIRED)
+find_package(fmt REQUIRED)
+
+add_executable(gripper_joy_teleop src/gripper_joy_teleop.cpp)
+ament_target_dependencies(gripper_joy_teleop rclcpp sensor_msgs std_msgs)
+add_executable(joy_teleop src/joy_teleop.cpp)
+ament_target_dependencies(joy_teleop rclcpp sensor_msgs geometry_msgs dynamixel_sdk moveit_ros_planning_interface  tf2_geometry_msgs control_msgs moveit_msgs std_srvs fmt)
+
+install(TARGETS
+  gripper_joy_teleop
+  joy_teleop
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 # Install launch files
 install(DIRECTORY launch

@@ -10,12 +10,7 @@ find_package(ament_cmake REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
-find_package(rclcpp REQUIRED)
-find_package(geometry_msgs REQUIRED)
-find_package(moveit_ros_planning_interface REQUIRED)
-find_package(sensor_msgs REQUIRED)
-find_package(tf2_geometry_msgs REQUIRED)
-find_package(tf2 REQUIRED)
+
 
 
 
@@ -32,21 +27,6 @@ if(BUILD_TESTING)
 endif()
 
 
-
-add_executable(joy_teleop src/joy_teleop.cpp)
-ament_target_dependencies(joy_teleop
-  rclcpp
-  sensor_msgs
-  geometry_msgs
-  moveit_ros_planning_interface
-  tf2_geometry_msgs
-)
-
-
-install(TARGETS
-  joy_teleop
-  DESTINATION lib/${PROJECT_NAME}
-)
 
 
 # CMakeLists.txt に以下を追加または確認してください

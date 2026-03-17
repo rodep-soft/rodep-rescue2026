@@ -195,8 +195,8 @@ def _setup(context, *args, **kwargs):
     nodes.append(
         Node(
             package="sekirei_moveit_config",
-            executable="grippet_joy_teleop",
-            name="grippet_joy_teleop",
+            executable="gripper_joy_teleop",
+            name="gripper_joy_teleop",
             output="screen",
             parameters=[{
                 "joy_topic": "/joy",
@@ -205,14 +205,14 @@ def _setup(context, *args, **kwargs):
 
                 "joint_names": ["gripper_joint_27", "gripper_joint_28"],
 
-                "close_targets": [2776.0, 2139.0],
-                "open_targets":  [3345.0, 1525.0],
+                "close_targets": [0.0, 0.0],
+                "open_targets":  [0.9, -0.9],
 
                 "close_button": 0,
                 "open_button": 1,
 
                 "use_grasp_detection": True,
-                "effort_threshold": 105.0,
+                "effort_threshold": 0.8,
                 "consecutive_count": 3,
                 "loop_ms": 50,
             }],

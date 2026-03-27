@@ -85,6 +85,11 @@ node_modules/
 .cache/
 .local/
 *.autosave
+# 邪魔なので弾く　
+.rviz2
+.ros
+
+
 
 # === Shell history & config ===
 .bash_history

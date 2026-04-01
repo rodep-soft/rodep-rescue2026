@@ -1,4 +1,4 @@
-.PHONY: help setup setup-microros build build-ros2 build-flutter build-microros up down exec status logs clean prune restart rebuild rebuild-ros2 rebuild-flutter rebuild-microros shell-flutter shell-microros
+.PHONY: help setup setup-microros build build-ros2 build-flutter build-microros up down exec status logs clean prune restart rebuild rebuild-ros2 rebuild-flutter rebuild-microros shell-flutter shell-microros docs html
 
 SHELL := /bin/bash
 
@@ -45,6 +45,7 @@ help:
 	@echo "  tidy-fix      - Run clang-tidy with auto-fix"
 
 # === Initial Setup ===
+# make setupでmicrorosのサブモジュールの取得、composeのビルド等を一気に行う
 setup: check-submodules build setup-microros
 	@echo "✅ Setup complete! You can now:"
 	@echo "  - Edit FreeRTOS apps: microros_ws/firmware/freertos_apps/apps/"
@@ -52,6 +53,7 @@ setup: check-submodules build setup-microros
 	@echo "  - Start containers: make up"
 	@echo "  - Access micro-ROS container: make shell-microros"
 
+# このコマンドでsubmoduleの中身を取得
 check-submodules:
 	@echo "Initializing/updating submodules..."
 	@git submodule update --init --recursive
@@ -68,6 +70,7 @@ build:
 	docker compose build
 
 # Build specific services
+# ros2で作業するときはこれだけでいい
 build-ros2:
 	docker compose build ros2_container
 
@@ -174,6 +177,7 @@ check-format:
 		-exec clang-format --dry-run --Werror {} +
 
 # === Code Analysis ===
+# いまのとこtidyは使えてないので以下はあまり意味ない
 tidy:
 	@echo "Running clang-tidy on ROS2 C++ files..."
 	@if [ ! -f ros_ws/build/compile_commands.json ]; then \
@@ -206,3 +210,6 @@ servo-link:
 
 html:
 	sphinx-build -b html source build/html
+
+docs:
+	xdg-open ./build/html/index.html

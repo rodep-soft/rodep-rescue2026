@@ -23,6 +23,9 @@ services:
       # GUIを起動するためには、ホスト側で$ xhost +local:dockerする必要がある
 
   microros_agent:
+    profiles: 
+      - microros
+
     build:
       context: .
       dockerfile: ./microros_ws/Dockerfile
@@ -40,6 +43,9 @@ services:
       - /dev/ttyACM0:/dev/ttyACM0 # STM32 Nucleo F446RE (ST-Link virtual COM port)
 
   flutter:
+    profiles:
+      - flutter
+
     build:
       context: .
       dockerfile: ./flutter/Dockerfile

@@ -15,6 +15,7 @@
 #include <vector>
 
 using std::placeholders::_1;
+using ServoCommandType = moveit_msgs::srv::ServoCommandType;
 
 class JoyServoTeleop : public rclcpp::Node
 {
@@ -70,8 +71,6 @@ public:
   }
 
 private:
-  static constexpr int kJointJog = 0;
-  static constexpr int kTwist = 1;
 
   double getAxis(const sensor_msgs::msg::Joy& msg, int idx) const
   {
@@ -103,7 +102,7 @@ private:
     return applyDeadzone(p);
   }
 
-  void requestCommandType(int type)
+  void requestCommandType(int8_t type)
   {
     if (current_cmd_type_.load() == type) {
       return;
@@ -198,7 +197,7 @@ private:
 
     // 優先 joint jog
     if (joint_active) {
-      requestCommandType(kJointJog);
+      requestCommandType(ServoCommandType::Request::JOINT_JOG);
 
       control_msgs::msg::JointJog jog;
       jog.header.stamp = now_t;
@@ -226,7 +225,7 @@ private:
     }
 
     if (twist_active) {
-      requestCommandType(kTwist);
+      requestCommandType(ServoCommandType::Request::TWIST);
 
       geometry_msgs::msg::TwistStamped twist;
       twist.header.stamp = now_t;
@@ -274,7 +273,7 @@ private:
   double joy_timeout_sec_;
   double timer_period_;
 
-  std::atomic<int> current_cmd_type_{-1};
+  std::atomic<int8_t> current_cmd_type_{-1};
   std::atomic<bool> switch_in_flight_{false};
 };
 
